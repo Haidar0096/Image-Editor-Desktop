@@ -10,6 +10,7 @@ get _defaultButtonStyle => ButtonStyle(
 get themeData => ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal).copyWith(
         surface: Colors.teal,
+        background: Colors.grey,
       ),
       textTheme: Typography.whiteRedwoodCity,
       elevatedButtonTheme: ElevatedButtonThemeData(style: _defaultButtonStyle),

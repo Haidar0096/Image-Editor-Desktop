@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_editor/presentation/screens/editor_screen/widgets/editor_canvas.dart';
+import 'package:photo_editor/presentation/screens/editor_screen/widgets/left_panel.dart';
+import 'package:photo_editor/presentation/screens/editor_screen/widgets/right_panel.dart';
 
 class EditorScreen extends StatelessWidget {
   static const routeName = '/editor-screen';
@@ -8,9 +10,24 @@ class EditorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final toc = Theme.of(context);
     return Scaffold(
-      body: Center(
-        child: Text(AppLocalizations.of(context)!.welcomeText),
+      backgroundColor: toc.colorScheme.background,
+      body: Row(
+        children: const [
+          Expanded(
+            flex: 5,
+            child: LeftPanel(),
+          ),
+          Expanded(
+            flex: 85,
+            child: EditorCanvas(),
+          ),
+          Expanded(
+            flex: 10,
+            child: RightPanel(),
+          ),
+        ],
       ),
     );
   }

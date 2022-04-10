@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,8 +9,13 @@ import 'package:photo_editor/presentation/common/animations/route_transitions.da
 import 'package:photo_editor/presentation/common/styles/styles.dart' as styles;
 import 'package:photo_editor/presentation/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/presentation/screens/editor_screen/editor_screen.dart';
+import 'package:window_size/window_size.dart' as window_size;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    window_size.setWindowMinSize(const Size(600, 600));
+  }
   runApp(const PhotoEditorApp());
 }
 
