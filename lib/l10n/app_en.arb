@@ -1,0 +1,20 @@
+{
+  "welcomeText": "Welcome To School Activities App",
+  "continueText": "continue",
+  "homeScreenTitle": "Home Screen",
+  "editImage": "Edit Image",
+  "settings": "Settings",
+  "settingsScreenTitle": "Settings",
+  "changeLanguage": "Change Language",
+  "language": "language",
+  "errorScreenText": "An error has occurred, please contact the developer.",
+  "editImageScreenTitle": "Edit Image",
+  "addImage": "Add Image",
+  "addStaticText": "Add Static Text",
+  "typeText": "Type the text here:",
+  "addVariableText": "Add Variable Text",
+  "save": "Save",
+  "done": "Done",
+  "bringToFront": "Bring to front",
+  "removeElement": "Remove Element"
+}

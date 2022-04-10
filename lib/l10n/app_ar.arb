@@ -1,0 +1,20 @@
+{
+  "welcomeText": "أهلا بك الى تطبيق الأنشطة المدرسية",
+  "continueText": "متابعة",
+  "homeScreenTitle": "الصفحة الرئيسية",
+  "editImage": "تعديل صورة",
+  "settings": "الاعدادات",
+  "settingsScreenTitle": "الاعدادات",
+  "changeLanguage": "تغيير اللغة",
+  "language": "اللغة",
+  "errorScreenText": "حدث خطأ ما، رجاء تواصل مع مطور البرنامج",
+  "editImageScreenTitle": "تعديل صورة",
+  "addImage": "إضافة صورة",
+  "addStaticText": "إضافة نص ثابت",
+  "typeText": "أدخل النص",
+  "addVariableText": "إضافة نص متغير",
+  "save": "حفظ",
+  "done": "تم",
+  "bringToFront": "إحضار إلى المقدمة",
+  "removeElement": "إزالة العنصر"
+}
