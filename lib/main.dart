@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:photo_editor/dependency_injection/service_locator.dart'
     as service_locator;
 import 'package:photo_editor/localization/localization_cubit.dart';
@@ -20,7 +22,12 @@ void main() async {
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     window_size.setWindowMinSize(const Size(1000, 700));
   }
-  runApp(const PhotoEditorApp());
+  final storage = await HydratedStorage.build(
+      storageDirectory: await getApplicationSupportDirectory());
+  HydratedBlocOverrides.runZoned(
+    () => runApp(const PhotoEditorApp()),
+    storage: storage,
+  );
 }
 
 class PhotoEditorApp extends StatelessWidget {

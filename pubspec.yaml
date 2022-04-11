@@ -53,6 +53,7 @@ dependencies:
       url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
   path_provider:
+  hydrated_bloc: ^8.1.0
 
 dev_dependencies:
   flutter_test:
