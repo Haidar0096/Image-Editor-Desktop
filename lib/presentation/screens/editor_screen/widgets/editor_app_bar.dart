@@ -38,12 +38,12 @@ class EditorAppBar extends StatelessWidget {
     );
   }
 
-  Row _buildUpperRow(BuildContext context, ThemeData toc) {
+  Widget _buildUpperRow(BuildContext context, ThemeData toc) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 5.0),
+          padding: const EdgeInsets.only(left: 8.0),
           child: _dropDownMenu(
             context: context,
             title: AppLocalizations.of(context)!.file,
@@ -66,14 +66,26 @@ class EditorAppBar extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 5.0),
-          child: TextButton(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: InkWell(
             child: Text(
               AppLocalizations.of(context)!.about,
               style: toc.textTheme.bodyMedium,
             ),
-            onPressed: () {
+            onTap: () {
               // todo show "about" dialog
+            },
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: InkWell(
+            child: Text(
+              AppLocalizations.of(context)!.settings,
+              style: toc.textTheme.bodyMedium,
+            ),
+            onTap: () {
+              // todo show settings dialog
             },
           ),
         ),
