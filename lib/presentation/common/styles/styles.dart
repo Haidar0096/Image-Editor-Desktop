@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
 get _defaultButtonStyle => ButtonStyle(
-      padding: MaterialStateProperty.all(const EdgeInsets.all(23)),
-      shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(23)))),
+      padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
     );
 
 /// The theme of the app.
 get themeData => ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal).copyWith(
-        surface: Colors.teal,
-        background: Colors.grey,
+      colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey).copyWith(
+        background: Colors.grey.shade500,
       ),
       textTheme: Typography.whiteRedwoodCity,
       elevatedButtonTheme: ElevatedButtonThemeData(style: _defaultButtonStyle),

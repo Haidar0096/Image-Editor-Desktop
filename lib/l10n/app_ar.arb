@@ -16,5 +16,8 @@
   "save": "حفظ",
   "done": "تم",
   "bringToFront": "إحضار إلى المقدمة",
-  "removeElement": "إزالة العنصر"
+  "removeElement": "إزالة العنصر",
+  "file": "الملف  ",
+  "generate": "توليد",
+  "about": "حول"
 }

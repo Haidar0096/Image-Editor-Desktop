@@ -16,5 +16,8 @@
   "save": "Save",
   "done": "Done",
   "bringToFront": "Bring to front",
-  "removeElement": "Remove Element"
+  "removeElement": "Remove Element",
+  "file": "File",
+  "generate": "Generate",
+  "about": "About"
 }
