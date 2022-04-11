@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:photo_editor/presentation/common/extensions/text_extension.dart';
+import 'package:photo_editor/presentation/screens/settings_screen.dart';
 
 //todo move redo and undo to lower bar
 class EditorAppBar extends StatelessWidget {
@@ -43,7 +44,7 @@ class EditorAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: _dropDownMenu(
             context: context,
             title: AppLocalizations.of(context)!.file,
@@ -66,7 +67,7 @@ class EditorAppBar extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: InkWell(
             child: Text(
               AppLocalizations.of(context)!.about,
@@ -78,14 +79,14 @@ class EditorAppBar extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: InkWell(
             child: Text(
               AppLocalizations.of(context)!.settings,
               style: toc.textTheme.bodyMedium,
             ),
             onTap: () {
-              // todo show settings dialog
+              Navigator.of(context).pushNamed(SettingsScreen.routeName);
             },
           ),
         ),

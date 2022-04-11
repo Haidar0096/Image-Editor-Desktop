@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 Route fadeInRoute(
         {required Widget child, RouteSettings? settings, Duration? duration}) =>
     PageRouteBuilder(
-      transitionDuration: duration ?? const Duration(milliseconds: 500),
+      transitionDuration: duration ?? const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) => child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) =>
           FadeTransition(

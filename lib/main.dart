@@ -11,6 +11,7 @@ import 'package:photo_editor/presentation/common/animations/route_transitions.da
 import 'package:photo_editor/presentation/common/styles/styles.dart' as styles;
 import 'package:photo_editor/presentation/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/presentation/screens/editor_screen/editor_screen.dart';
+import 'package:photo_editor/presentation/screens/settings_screen.dart';
 import 'package:window_size/window_size.dart' as window_size;
 
 void main() async {
@@ -49,6 +50,11 @@ class PhotoEditorApp extends StatelessWidget {
       case EditorScreen.routeName:
         return route_transitions.fadeInRoute(
           child: const EditorScreen(),
+          settings: routeSettings,
+        );
+      case SettingsScreen.routeName:
+        return route_transitions.fadeInRoute(
+          child: const SettingsScreen(),
           settings: routeSettings,
         );
     }
