@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_editor/dependency_injection/service_locator.dart'
+    as service_locator;
 import 'package:photo_editor/localization/localization_cubit.dart';
 import 'package:photo_editor/presentation/common/animations/route_transitions.dart'
     as route_transitions;
@@ -13,8 +15,9 @@ import 'package:window_size/window_size.dart' as window_size;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  service_locator.configureDependencies();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    window_size.setWindowMinSize(const Size(600, 600));
+    window_size.setWindowMinSize(const Size(1000, 700));
   }
   runApp(const PhotoEditorApp());
 }
