@@ -11,7 +11,7 @@ import 'package:photo_editor/ui/common/animations/route_transitions.dart' as rou
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/editor_screen.dart';
-import 'package:photo_editor/ui/screens/settings_screen.dart';
+import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
 import 'package:window_size/window_size.dart' as window_size;
 
 void main() async {

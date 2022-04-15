@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_editor/ui/common/widgets/custom_popup_menu.dart';
-import 'package:photo_editor/ui/screens/settings_screen.dart';
+import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditorAppBar extends StatelessWidget {
