@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:photo_editor/presentation/screens/editor_screen/widgets/editor_app_bar.dart';
-import 'package:photo_editor/presentation/screens/editor_screen/widgets/editor_canvas.dart';
-import 'package:photo_editor/presentation/screens/editor_screen/widgets/left_panel.dart';
-import 'package:photo_editor/presentation/screens/editor_screen/widgets/right_panel.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_app_bar.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_canvas.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/left_panel.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/right_panel.dart';
 
 class EditorScreen extends StatelessWidget {
   static const routeName = '/editor-screen';

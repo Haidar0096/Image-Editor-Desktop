@@ -54,6 +54,7 @@ dependencies:
       path: plugins/window_size
   path_provider:
   hydrated_bloc: ^8.1.0
+  fast_immutable_collections:
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photo_editor/ui/common/widgets/custom_popup_menu.dart';
+import 'package:photo_editor/ui/screens/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:photo_editor/presentation/common/extensions/text_extension.dart';
-import 'package:photo_editor/presentation/screens/settings_screen.dart';
 
 //todo move redo and undo to lower bar
 class EditorAppBar extends StatelessWidget {
@@ -45,25 +45,18 @@ class EditorAppBar extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: _dropDownMenu(
-            context: context,
-            title: AppLocalizations.of(context)!.file,
-            items: [
-              _menuButton(
-                context: context,
-                text: AppLocalizations.of(context)!.save,
-                onTap: () {
-                  // todo save editor as image
-                },
-              ),
-              _menuButton(
-                context: context,
-                text: AppLocalizations.of(context)!.generate,
-                onTap: () {
-                  // todo generate images
-                },
-              ),
-            ],
+          child: _buildDropDownMenu(context),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: InkWell(
+            child: Text(
+              AppLocalizations.of(context)!.settings,
+              style: toc.textTheme.bodyMedium,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed(SettingsScreen.routeName);
+            },
           ),
         ),
         Padding(
@@ -78,18 +71,6 @@ class EditorAppBar extends StatelessWidget {
             },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: InkWell(
-            child: Text(
-              AppLocalizations.of(context)!.settings,
-              style: toc.textTheme.bodyMedium,
-            ),
-            onTap: () {
-              Navigator.of(context).pushNamed(SettingsScreen.routeName);
-            },
-          ),
-        ),
       ],
     );
   }
@@ -97,25 +78,25 @@ class EditorAppBar extends StatelessWidget {
   Row _buildLowerRow() {
     return Row(
       children: [
-        _action(
+        _lowerRowAction(
           iconData: Icons.undo,
           onPressed: () {
             //todo undo
           },
         ),
-        _action(
+        _lowerRowAction(
           iconData: Icons.redo,
           onPressed: () {
             //todo redo
           },
         ),
-        _action(
+        _lowerRowAction(
           iconData: Icons.text_fields,
           onPressed: () {
             //todo add text
           },
         ),
-        _action(
+        _lowerRowAction(
           iconData: Icons.add_a_photo,
           onPressed: () {
             //todo add image
@@ -125,30 +106,39 @@ class EditorAppBar extends StatelessWidget {
     );
   }
 
-  Widget _dropDownMenu({
-    required BuildContext context,
-    required String title,
-    required List<PopupMenuItem> items,
-  }) {
-    final text = Text(
-      title,
-      style: Theme.of(context).textTheme.bodyMedium,
-    );
-    final textSize = text.getSize();
-    return PopupMenuButton(
-      child: text,
-      itemBuilder: (context) => items,
-      offset: Offset(0.0, textSize.height),
+  Widget _buildDropDownMenu(context) {
+    return KPopupMenuButton(
+      child: Text(
+        AppLocalizations.of(context)!.file,
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
+      offsetBuilder: (buttonSize) => Offset(0.0, buttonSize.height),
+      itemBuilder: (context) => [
+        _buildMenuButton(
+          context: context,
+          text: AppLocalizations.of(context)!.save,
+          onTap: () {
+            // todo save editor as image
+          },
+        ),
+        _buildMenuButton(
+          context: context,
+          text: AppLocalizations.of(context)!.generate,
+          onTap: () {
+            // todo generate images
+          },
+        ),
+      ],
     );
   }
 
-  PopupMenuItem _menuButton({
+  KPopupMenuItem _buildMenuButton({
     required BuildContext context,
     required String text,
     required void Function() onTap,
   }) {
     final toc = Theme.of(context);
-    return PopupMenuItem(
+    return KPopupMenuItem(
       child: Text(
         text,
         style: toc.textTheme.button!.copyWith(color: toc.colorScheme.onSurface),
@@ -157,7 +147,7 @@ class EditorAppBar extends StatelessWidget {
     );
   }
 
-  Widget _action({
+  Widget _lowerRowAction({
     required IconData iconData,
     required void Function() onPressed,
   }) =>

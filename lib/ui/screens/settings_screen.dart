@@ -43,44 +43,7 @@ class SettingsScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return SimpleDialog(
-                    titlePadding: const EdgeInsets.all(15.0),
-                    title: Column(
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.changeLanguage,
-                          style: toc.textTheme.headlineLarge!.copyWith(
-                            color: toc.colorScheme.onBackground,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Divider(
-                          color: toc.colorScheme.onBackground,
-                        ),
-                      ],
-                    ),
-                    children: [
-                      ...Language.languages.map(
-                        (lang) => TextButton(
-                          child: Text(
-                            lang.value,
-                            style: toc.textTheme.headlineMedium!.copyWith(
-                              color: toc.colorScheme.onBackground,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          onPressed: () {
-                            context.read<LocalizationCubit>().setLanguage(lang);
-                          },
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              );
+              _showSelectLanguageDialog(context);
             },
           ),
           Divider(
@@ -106,6 +69,48 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showSelectLanguageDialog(BuildContext context) {
+    final toc = Theme.of(context);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          titlePadding: const EdgeInsets.all(15.0),
+          title: Column(
+            children: [
+              Text(
+                AppLocalizations.of(context)!.changeLanguage,
+                style: toc.textTheme.headlineLarge!.copyWith(
+                  color: toc.colorScheme.onBackground,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Divider(
+                color: toc.colorScheme.onBackground,
+              ),
+            ],
+          ),
+          children: [
+            ...Language.languages.map(
+              (lang) => TextButton(
+                child: Text(
+                  lang.value,
+                  style: toc.textTheme.headlineMedium!.copyWith(
+                    color: toc.colorScheme.onBackground,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: () {
+                  context.read<LocalizationCubit>().setLanguage(lang);
+                },
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

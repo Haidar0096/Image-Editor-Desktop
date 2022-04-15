@@ -3,7 +3,7 @@ import 'dart:io' as io;
 import 'package:dartz/dartz.dart';
 import 'package:file_picker/file_picker.dart' as api;
 import 'package:injectable/injectable.dart';
-import 'package:photo_editor/domain/file_picker/file_picker.dart';
+import 'package:photo_editor/services/file_picker/file_picker.dart';
 
 @Injectable(as: FilePicker)
 class FilePickerImpl implements FilePicker {

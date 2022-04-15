@@ -8,8 +8,8 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i5;
 
-import '../domain/file_picker/file_picker.dart' as _i3;
-import '../domain/file_picker/file_picker_impl.dart' as _i4;
+import '../services/file_picker/file_picker.dart' as _i3;
+import '../services/file_picker/file_picker_impl.dart' as _i4;
 import 'service_locator.dart' as _i6; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

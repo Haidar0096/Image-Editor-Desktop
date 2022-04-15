@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_editor/dependency_injection/service_locator.dart';
-import 'package:photo_editor/domain/file_picker/file_picker.dart';
+import 'package:photo_editor/services/file_picker/file_picker.dart';
 
 class EditorCanvas extends StatelessWidget {
   const EditorCanvas({Key? key}) : super(key: key);
