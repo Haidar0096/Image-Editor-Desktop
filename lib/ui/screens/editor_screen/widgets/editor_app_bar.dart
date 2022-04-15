@@ -3,7 +3,6 @@ import 'package:photo_editor/ui/common/widgets/custom_popup_menu.dart';
 import 'package:photo_editor/ui/screens/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-//todo move redo and undo to lower bar
 class EditorAppBar extends StatelessWidget {
   const EditorAppBar({Key? key}) : super(key: key);
 
