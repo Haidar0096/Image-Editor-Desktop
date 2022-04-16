@@ -84,7 +84,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.9"
+    version: "2.1.10"
   build_runner_core:
     dependency: transitive
     description:
@@ -581,6 +581,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  replay_bloc:
+    dependency: "direct main"
+    description:
+      name: replay_bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   screenshot:
     dependency: "direct main"
     description:
