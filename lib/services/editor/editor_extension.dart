@@ -28,6 +28,16 @@ extension EditorExtension on Editor {
     return copyWith(elements: elements.removeWhere((e) => e.id == id));
   }
 
+  /// Translates the given element's rect by the given offset.
+  /// Returns the same editor if the id of the element was not found.
+  Editor translateElement(ElementId id, Offset delta) {
+    return optionOf(elements.where((e) => e.id == id).firstOrNull).fold(
+      () => this,
+      (element) => updateElement(
+          element.copyWith(rect: element.rect.translate(delta.dx, delta.dy))),
+    );
+  }
+
   /// Returns an option of the element with the given id
   Option<Element> elementById(ElementId id) =>
       optionOf(elements.where((element) => element.id == id).firstOrNull);

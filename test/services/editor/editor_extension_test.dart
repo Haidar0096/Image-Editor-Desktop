@@ -76,7 +76,7 @@ void main() {
           Editor.fromSet({updatedImage}));
     });
     test(
-        'Updating an element which does not exist in the editor add it to the editor',
+        'Updating an element which does not exist in the editor adds it to the editor',
         () {
       expect(
         Editor.empty().updateElement(image),
@@ -195,6 +195,42 @@ void main() {
     });
     test('Should return none if the element does not exist', () {
       expect(Editor.empty().elementById('1'), none());
+    });
+  });
+
+  group('translateElement', () {
+    test('Can translate an element that is in the editor', () {
+      // set up used variables
+      Element image = Element(
+        id: '1',
+        showOrder: 1,
+        elementType: const ElementType.image(path: 'image.jpeg'),
+        rect: const Offset(50, 50) & const Size(100, 100),
+      );
+      Editor expected = Editor.fromSet({
+        image.copyWith(rect: const Offset(150, 150) & const Size(100, 100))
+      });
+      expect(
+        Editor.fromSet({image})
+            .translateElement(image.id, const Offset(100, 100)),
+        expected,
+      );
+    });
+    test(
+        'Translating an element which is not in the editor returns the same editor',
+        () {
+      // set up used variables
+      Element image = Element(
+        id: '1',
+        showOrder: 1,
+        elementType: const ElementType.image(path: 'image.jpeg'),
+        rect: const Offset(50, 50) & const Size(100, 100),
+      );
+      final Editor editor = Editor.fromSet({});
+      expect(
+        editor.translateElement(image.id, const Offset(100, 100)),
+        editor,
+      );
     });
   });
 }
