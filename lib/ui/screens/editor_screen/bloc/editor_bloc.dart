@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:ui';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
@@ -9,16 +8,23 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_state_error.dart';
 import 'package:replay_bloc/replay_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'editor_event.dart';
-
 part 'editor_state.dart';
-
+part 'editor_state_error.dart';
 part 'editor_bloc.freezed.dart';
+
+/// Transformer of events of type [T] which ignores incoming events until current processing event is done,
+/// plus adding a guard [Duration] between events so that it is guaranteed that minimum duration between
+/// processing of an event and processing of a successive event is [Duration].
+EventTransformer<T> debounceDroppable<T>(Duration duration) {
+  return (events, mapper) {
+    return droppable<T>().call(events.debounceTime(duration), mapper);
+  };
+}
 
 @Injectable()
 class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
@@ -26,55 +32,60 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
   final Logger _logger;
   final ElementIdGenerator _elementIdGenerator;
 
-  EditorBloc(this._filePicker, this._logger, this._elementIdGenerator)
-      : super(EditorState.initial()) {
-    _logger.i('created editor bloc with state $state');
+  @override
+  bool shouldReplay(EditorState state) {
+    return state.editor.elements.isNotEmpty &&
+        state.draggedElementId is! None &&
+        state.dragPosition is! None &&
+        state.selectedElementId is! None;
+  }
 
-    on<AddImage>(
-      (event, emit) async => await _handleAddImage(event, emit),
-      transformer: droppable(),
-    );
+  @override
+  void onEvent(EditorEvent event) {
+    super.onEvent(event);
+    _logger.i('Editor Bloc: an event has arrived:\n$event\n');
+  }
 
-    on<AddText>((event, emit) async {
-      // todo add text
-    }, transformer: droppable());
-
-    on<Undo>(
-      (event, emit) async => await _handleUndo(event, emit),
-      transformer: droppable(),
-    );
-
-    on<Redo>(
-      (event, emit) async => await _handleRedo(event, emit),
-      transformer: droppable(),
-    );
-
-    on<DragStart>(
-      (event, emit) async => await _handleDragStart(event, emit),
-      transformer: droppable(),
-    );
-
-    on<DragUpdate>(
-      (event, emit) async => await _handleDragUpdate(event, emit),
-      transformer: droppable(),
-    );
-
-    on<DragEnd>(
-      (event, emit) async => await _handleDragEnd(event, emit),
-      transformer: droppable(),
-    );
-
-    on<TapUp>(
-      (event, emit) async => await _handleTapUp(event, emit),
-      transformer: droppable(),
-      // transformer: droppable(),
+  @override
+  void onChange(Change<EditorState> change) {
+    super.onChange(change);
+    _logger.d(
+      'Editor bloc: state is changing \nfrom:\n${change.currentState}\nto:\n${change.nextState}\n',
     );
   }
 
-  Future<void> _handleAddImage(AddImage event, Emitter emit) async {
-    (await _filePicker.pickSingleFile(
-            allowedExtensions: allowedFileExtensions.unlock))
-        .fold(
+  EditorBloc(
+    this._filePicker,
+    this._logger,
+    this._elementIdGenerator,
+  ) : super(EditorState.initial()) {
+    _logger.i('created editor bloc with state $state');
+
+    on<EditorTextAdded>((event, emit) async {
+      // TODO: add text
+    }, transformer: droppable());
+
+    on<EditorImageAdded>(_handleAddImage, transformer: droppable());
+
+    on<EditorUndoTapped>(_handleUndo, transformer: droppable());
+
+    on<EditorRedoTapped>(_handleRedo, transformer: droppable());
+
+    on<EditorDragStarted>(_handleDragStart, transformer: droppable());
+
+    on<EditorDragUpdated>(_handleDragUpdate, transformer: droppable());
+
+    on<EditorDragEnded>(_handleDragEnd, transformer: droppable());
+
+    on<EditorTappedUp>(_handleTapUp, transformer: droppable());
+  }
+
+  Future<void> _handleAddImage(EditorImageAdded event, Emitter emit) async {
+    final result = await _filePicker.pickSingleFile(
+      allowedExtensions: allowedFileExtensions.unlock,
+    );
+
+    result.fold(
       () {},
       (file) => emit(
         state.copyWith(
@@ -83,9 +94,9 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
               id: _elementIdGenerator.generate(),
               rect: const Rect.fromLTWH(0.0, 0.0, 250, 250),
               elementType: ElementType.image(path: file.path),
-              showOrder:
-                  optionOf(state.editor.elementsSortedByShowOrder.lastOrNull)
-                      .fold(() => 1, (e) => e.showOrder + 1),
+              showOrder: optionOf(
+                state.editor.elementsSortedByShowOrder.lastOrNull,
+              ).fold(() => 1, (e) => e.showOrder + 1),
             ),
           ),
         ),
@@ -93,17 +104,19 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleUndo(Undo event, Emitter emit) async {
-    // undo();
-    // todo see if there is something further to undo as well
+  Future<void> _handleUndo(EditorUndoTapped event, Emitter emit) async {
+    if (canUndo) undo();
+
+    // TODO: see if there is something further to undo as well
   }
 
-  Future<void> _handleRedo(Redo event, Emitter emit) async {
-    // redo();
-    // todo see if there is something further to redo as well
+  Future<void> _handleRedo(EditorRedoTapped event, Emitter emit) async {
+    if (canRedo) redo();
+
+    // TODO: see if there is something further to redo as well
   }
 
-  Future<void> _handleDragStart(DragStart event, Emitter emit) async {
+  Future<void> _handleDragStart(EditorDragStarted event, Emitter emit) async {
     state.dragPosition.fold(() {
       // no dragPosition
       state.draggedElementId.fold(() {
@@ -129,7 +142,7 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleDragUpdate(DragUpdate event, Emitter emit) async {
+  Future<void> _handleDragUpdate(EditorDragUpdated event, Emitter emit) async {
     state.dragPosition.fold(() {
       // no dragPosition
       // do nothing
@@ -156,7 +169,7 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleDragEnd(DragEnd event, Emitter emit) async {
+  Future<void> _handleDragEnd(EditorDragEnded event, Emitter emit) async {
     state.draggedElementId.fold(
       () {
         // no draggedElementId, just clear dragPosition
@@ -181,7 +194,7 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleTapUp(TapUp event, Emitter emit) async {
+  Future<void> _handleTapUp(EditorTappedUp event, Emitter emit) async {
     final elements = state.editor.elementsAtPosition(event.localPosition);
     if (elements.isNotEmpty) {
       emit(state.copyWith(selectedElementId: some(elements.last.id)));
@@ -197,26 +210,5 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
         },
       );
     }
-  }
-
-  @override
-  void onEvent(EditorEvent event) {
-    super.onEvent(event);
-    _logger.i('Editor Bloc: an event has arrived:\n$event\n');
-  }
-
-  @override
-  void onChange(Change<EditorState> change) {
-    super.onChange(change);
-    _logger.d(
-        'Editor bloc: state is changing \nfrom:\n${change.currentState}\nto:\n${change.nextState}\n');
-  }
-
-  /// Transformer of events of type [T] which ignores incoming events until current processing event is done,
-  /// plus adding a guard [duration] between events so that it is guaranteed that minimum duration between
-  /// processing of an event and processing of a successive event is [duration].
-  EventTransformer<T> debounceDroppable<T>(Duration duration) {
-    return (events, mapper) =>
-        droppable<T>().call(events.debounceTime(duration), mapper);
   }
 }

@@ -91,25 +91,25 @@ class EditorAppBar extends StatelessWidget {
         _lowerRowAction(
           iconData: Icons.undo,
           onPressed: () {
-            context.read<EditorBloc>().add(const Undo());
+            context.read<EditorBloc>().add(const EditorUndoTapped());
           },
         ),
         _lowerRowAction(
           iconData: Icons.redo,
           onPressed: () {
-            context.read<EditorBloc>().add(const Redo());
+            context.read<EditorBloc>().add(const EditorRedoTapped());
           },
         ),
         _lowerRowAction(
           iconData: Icons.text_fields,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddText());
+            context.read<EditorBloc>().add(const EditorTextAdded());
           },
         ),
         _lowerRowAction(
           iconData: Icons.add_a_photo,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddImage());
+            context.read<EditorBloc>().add(const EditorImageAdded());
           },
         ),
       ],
