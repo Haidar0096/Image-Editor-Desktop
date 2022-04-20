@@ -5,31 +5,31 @@ abstract class EditorEvent extends ReplayEvent {
 }
 
 /// Fires when user wants to add an image to the editor.
-class AddImage extends EditorEvent {
-  const AddImage();
+class EditorImageAdded extends EditorEvent {
+  const EditorImageAdded();
 }
 
 /// Fires when user wants to add a text to the editor.
-class AddText extends EditorEvent {
-  const AddText();
+class EditorTextAdded extends EditorEvent {
+  const EditorTextAdded();
 }
 
 /// Fires when user wants to undo the last change to the bloc state.
-class Undo extends EditorEvent {
-  const Undo();
+class EditorUndoTapped extends EditorEvent {
+  const EditorUndoTapped();
 }
 
 /// Fires when user wants to redo the last change to the bloc state.
-class Redo extends EditorEvent {
-  const Redo();
+class EditorRedoTapped extends EditorEvent {
+  const EditorRedoTapped();
 }
 
 /// Fires when a drag starts on the editor canvas.
-class DragStart extends EditorEvent {
+class EditorDragStarted extends EditorEvent {
   /// The local position in the widget where the drag started.
   final Offset localPosition;
 
-  const DragStart(this.localPosition);
+  const EditorDragStarted(this.localPosition);
 
   @override
   String toString() {
@@ -38,11 +38,11 @@ class DragStart extends EditorEvent {
 }
 
 /// Fires when an ongoing drag is updated.
-class DragUpdate extends EditorEvent {
+class EditorDragUpdated extends EditorEvent {
   /// The local position in the widget where the drag update has happened.
   final Offset localPosition;
 
-  const DragUpdate(this.localPosition);
+  const EditorDragUpdated(this.localPosition);
 
   @override
   String toString() {
@@ -51,14 +51,14 @@ class DragUpdate extends EditorEvent {
 }
 
 /// Fires when an ongoing drag has ended.
-class DragEnd extends EditorEvent {
-  const DragEnd();
+class EditorDragEnded extends EditorEvent {
+  const EditorDragEnded();
 }
 
 /// Fires when user taps-up on the editor.
-class TapUp extends EditorEvent {
+class EditorTappedUp extends EditorEvent {
   /// The local position where the tap happened.
   final Offset localPosition;
 
-  const TapUp(this.localPosition);
+  const EditorTappedUp(this.localPosition);
 }

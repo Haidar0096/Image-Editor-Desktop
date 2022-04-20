@@ -68,20 +68,20 @@ class EditorWidget extends StatelessWidget {
                   onTapUp: (details) {
                     context
                         .read<EditorBloc>()
-                        .add(TapUp(details.localPosition));
+                        .add(EditorTappedUp(details.localPosition));
                   },
                   onPanStart: (details) {
                     context
                         .read<EditorBloc>()
-                        .add(DragStart(details.localPosition));
+                        .add(EditorDragStarted(details.localPosition));
                   },
                   onPanUpdate: (details) {
                     context
                         .read<EditorBloc>()
-                        .add(DragUpdate(details.localPosition));
+                        .add(EditorDragUpdated(details.localPosition));
                   },
                   onPanEnd: (details) {
-                    context.read<EditorBloc>().add(const DragEnd());
+                    context.read<EditorBloc>().add(const EditorDragEnded());
                   },
                 ),
               ),

@@ -10,7 +10,6 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_state_error.dart';
 import 'package:test/test.dart';
 
 import 'editor_bloc_test.mocks.dart';
@@ -80,7 +79,7 @@ void main() {
         filePicker: mockFilePicker,
         elementIdGenerator: mockElementIdGenerator,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
@@ -117,7 +116,7 @@ void main() {
         filePicker: mockFilePicker,
         elementIdGenerator: mockElementIdGenerator,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -149,7 +148,7 @@ void main() {
       build: () => createEditorBloc(
         filePicker: mockFilePicker,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () => [],
     );
   });
@@ -188,7 +187,7 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
@@ -208,7 +207,7 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -228,7 +227,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -248,7 +247,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image2.rect.center)),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.simultaneousDragStart)],
@@ -262,7 +261,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image2.rect.center)),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.simultaneousDragStart)],
@@ -296,7 +295,7 @@ void main() {
           selectedElementId: none(),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final image2Dragged = image2.copyWith(
               rect: image2.rect.translate(
@@ -319,7 +318,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final image2Dragged = image2.copyWith(
               rect: image2.rect.translate(
@@ -342,7 +341,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final expectedState = EditorState(
             editor: Editor.fromSet({image1, image2}),
@@ -362,7 +361,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () => [],
       );
     },
@@ -392,7 +391,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -412,7 +411,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.dragPositionNotSet)],
@@ -427,7 +426,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -464,7 +463,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(TapUp(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorTappedUp(image2.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -484,7 +483,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(240, 240))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(240, 240))),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -504,7 +503,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(500, 500))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(500, 500))),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -524,7 +523,7 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(500, 500))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(500, 500))),
       expect: () => [],
     );
   });
