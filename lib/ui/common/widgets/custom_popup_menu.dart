@@ -1153,15 +1153,20 @@ class KPopupMenuButtonState<T> extends State<KPopupMenuButton<T>> {
     assert(debugCheckHasMaterialLocalizations(context));
 
     if (widget.child != null) {
-      return Tooltip(
-        message: widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
-        child: InkWell(
-          onTap: widget.enabled ? showButtonMenu : null,
-          canRequestFocus: _canRequestFocus,
-          enableFeedback: enableFeedback,
-          child: widget.child,
-        ),
+      final InkWell inkwell = InkWell(
+        onTap: widget.enabled ? showButtonMenu : null,
+        canRequestFocus: _canRequestFocus,
+        enableFeedback: enableFeedback,
+        child: widget.child,
       );
+      if(widget.tooltip!=null) {
+        return Tooltip(
+          message: widget.tooltip ??
+              MaterialLocalizations.of(context).showMenuTooltip,
+          child: inkwell,
+        );
+      }
+      return inkwell;
     }
 
     return IconButton(

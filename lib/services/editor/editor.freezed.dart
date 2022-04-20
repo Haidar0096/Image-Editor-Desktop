@@ -17,10 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$EditorTearOff {
   const _$EditorTearOff();
 
-  _Editor call(
-      {required ui.Rect rect, required IMap<String, Element> elements}) {
+  _Editor call({required ISet<Element> elements}) {
     return _Editor(
-      rect: rect,
       elements: elements,
     );
   }
@@ -31,8 +29,7 @@ const $Editor = _$EditorTearOff();
 
 /// @nodoc
 mixin _$Editor {
-  ui.Rect get rect => throw _privateConstructorUsedError;
-  IMap<String, Element> get elements => throw _privateConstructorUsedError;
+  ISet<Element> get elements => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EditorCopyWith<Editor> get copyWith => throw _privateConstructorUsedError;
@@ -42,7 +39,7 @@ mixin _$Editor {
 abstract class $EditorCopyWith<$Res> {
   factory $EditorCopyWith(Editor value, $Res Function(Editor) then) =
       _$EditorCopyWithImpl<$Res>;
-  $Res call({ui.Rect rect, IMap<String, Element> elements});
+  $Res call({ISet<Element> elements});
 }
 
 /// @nodoc
@@ -55,18 +52,13 @@ class _$EditorCopyWithImpl<$Res> implements $EditorCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? rect = freezed,
     Object? elements = freezed,
   }) {
     return _then(_value.copyWith(
-      rect: rect == freezed
-          ? _value.rect
-          : rect // ignore: cast_nullable_to_non_nullable
-              as ui.Rect,
       elements: elements == freezed
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
-              as IMap<String, Element>,
+              as ISet<Element>,
     ));
   }
 }
@@ -76,7 +68,7 @@ abstract class _$EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
   factory _$EditorCopyWith(_Editor value, $Res Function(_Editor) then) =
       __$EditorCopyWithImpl<$Res>;
   @override
-  $Res call({ui.Rect rect, IMap<String, Element> elements});
+  $Res call({ISet<Element> elements});
 }
 
 /// @nodoc
@@ -90,18 +82,13 @@ class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? rect = freezed,
     Object? elements = freezed,
   }) {
     return _then(_Editor(
-      rect: rect == freezed
-          ? _value.rect
-          : rect // ignore: cast_nullable_to_non_nullable
-              as ui.Rect,
       elements: elements == freezed
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
-              as IMap<String, Element>,
+              as ISet<Element>,
     ));
   }
 }
@@ -109,16 +96,14 @@ class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Editor implements _Editor {
-  const _$_Editor({required this.rect, required this.elements});
+  const _$_Editor({required this.elements});
 
   @override
-  final ui.Rect rect;
-  @override
-  final IMap<String, Element> elements;
+  final ISet<Element> elements;
 
   @override
   String toString() {
-    return 'Editor(rect: $rect, elements: $elements)';
+    return 'Editor(elements: $elements)';
   }
 
   @override
@@ -126,15 +111,12 @@ class _$_Editor implements _Editor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Editor &&
-            const DeepCollectionEquality().equals(other.rect, rect) &&
             const DeepCollectionEquality().equals(other.elements, elements));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(rect),
-      const DeepCollectionEquality().hash(elements));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(elements));
 
   @JsonKey(ignore: true)
   @override
@@ -143,14 +125,10 @@ class _$_Editor implements _Editor {
 }
 
 abstract class _Editor implements Editor {
-  const factory _Editor(
-      {required ui.Rect rect,
-      required IMap<String, Element> elements}) = _$_Editor;
+  const factory _Editor({required ISet<Element> elements}) = _$_Editor;
 
   @override
-  ui.Rect get rect;
-  @override
-  IMap<String, Element> get elements;
+  ISet<Element> get elements;
   @override
   @JsonKey(ignore: true)
   _$EditorCopyWith<_Editor> get copyWith => throw _privateConstructorUsedError;
@@ -163,11 +141,13 @@ class _$ElementTearOff {
   _Element call(
       {required String id,
       required ElementType elementType,
-      required ui.Rect rect}) {
+      required Rect rect,
+      required int showOrder}) {
     return _Element(
       id: id,
       elementType: elementType,
       rect: rect,
+      showOrder: showOrder,
     );
   }
 }
@@ -179,7 +159,8 @@ const $Element = _$ElementTearOff();
 mixin _$Element {
   String get id => throw _privateConstructorUsedError;
   ElementType get elementType => throw _privateConstructorUsedError;
-  ui.Rect get rect => throw _privateConstructorUsedError;
+  Rect get rect => throw _privateConstructorUsedError;
+  int get showOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ElementCopyWith<Element> get copyWith => throw _privateConstructorUsedError;
@@ -189,7 +170,7 @@ mixin _$Element {
 abstract class $ElementCopyWith<$Res> {
   factory $ElementCopyWith(Element value, $Res Function(Element) then) =
       _$ElementCopyWithImpl<$Res>;
-  $Res call({String id, ElementType elementType, ui.Rect rect});
+  $Res call({String id, ElementType elementType, Rect rect, int showOrder});
 
   $ElementTypeCopyWith<$Res> get elementType;
 }
@@ -207,6 +188,7 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
     Object? id = freezed,
     Object? elementType = freezed,
     Object? rect = freezed,
+    Object? showOrder = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -220,7 +202,11 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
       rect: rect == freezed
           ? _value.rect
           : rect // ignore: cast_nullable_to_non_nullable
-              as ui.Rect,
+              as Rect,
+      showOrder: showOrder == freezed
+          ? _value.showOrder
+          : showOrder // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -237,7 +223,7 @@ abstract class _$ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
   factory _$ElementCopyWith(_Element value, $Res Function(_Element) then) =
       __$ElementCopyWithImpl<$Res>;
   @override
-  $Res call({String id, ElementType elementType, ui.Rect rect});
+  $Res call({String id, ElementType elementType, Rect rect, int showOrder});
 
   @override
   $ElementTypeCopyWith<$Res> get elementType;
@@ -257,6 +243,7 @@ class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
     Object? id = freezed,
     Object? elementType = freezed,
     Object? rect = freezed,
+    Object? showOrder = freezed,
   }) {
     return _then(_Element(
       id: id == freezed
@@ -270,7 +257,11 @@ class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
       rect: rect == freezed
           ? _value.rect
           : rect // ignore: cast_nullable_to_non_nullable
-              as ui.Rect,
+              as Rect,
+      showOrder: showOrder == freezed
+          ? _value.showOrder
+          : showOrder // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -279,18 +270,23 @@ class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
 
 class _$_Element implements _Element {
   const _$_Element(
-      {required this.id, required this.elementType, required this.rect});
+      {required this.id,
+      required this.elementType,
+      required this.rect,
+      required this.showOrder});
 
   @override
   final String id;
   @override
   final ElementType elementType;
   @override
-  final ui.Rect rect;
+  final Rect rect;
+  @override
+  final int showOrder;
 
   @override
   String toString() {
-    return 'Element(id: $id, elementType: $elementType, rect: $rect)';
+    return 'Element(id: $id, elementType: $elementType, rect: $rect, showOrder: $showOrder)';
   }
 
   @override
@@ -301,7 +297,8 @@ class _$_Element implements _Element {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.elementType, elementType) &&
-            const DeepCollectionEquality().equals(other.rect, rect));
+            const DeepCollectionEquality().equals(other.rect, rect) &&
+            const DeepCollectionEquality().equals(other.showOrder, showOrder));
   }
 
   @override
@@ -309,7 +306,8 @@ class _$_Element implements _Element {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(elementType),
-      const DeepCollectionEquality().hash(rect));
+      const DeepCollectionEquality().hash(rect),
+      const DeepCollectionEquality().hash(showOrder));
 
   @JsonKey(ignore: true)
   @override
@@ -321,14 +319,17 @@ abstract class _Element implements Element {
   const factory _Element(
       {required String id,
       required ElementType elementType,
-      required ui.Rect rect}) = _$_Element;
+      required Rect rect,
+      required int showOrder}) = _$_Element;
 
   @override
   String get id;
   @override
   ElementType get elementType;
   @override
-  ui.Rect get rect;
+  Rect get rect;
+  @override
+  int get showOrder;
   @override
   @JsonKey(ignore: true)
   _$ElementCopyWith<_Element> get copyWith =>
@@ -339,24 +340,15 @@ abstract class _Element implements Element {
 class _$ElementTypeTearOff {
   const _$ElementTypeTearOff();
 
-  _Image image({required io.File file}) {
-    return _Image(
-      file: file,
+  ImageElementType image({required String path}) {
+    return ImageElementType(
+      path: path,
     );
   }
 
-  _Text text(
-      {required String value,
-      ui.TextDirection textDirection = ui.TextDirection.ltr,
-      required double fontSize,
-      required ui.FontStyle fontStyle,
-      required ui.FontWeight fontWeight}) {
-    return _Text(
+  TextElementType text({required String value}) {
+    return TextElementType(
       value: value,
-      textDirection: textDirection,
-      fontSize: fontSize,
-      fontStyle: fontStyle,
-      fontWeight: fontWeight,
     );
   }
 }
@@ -368,45 +360,39 @@ const $ElementType = _$ElementTypeTearOff();
 mixin _$ElementType {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(io.File file) image,
-    required TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)
-        text,
+    required TResult Function(String path) image,
+    required TResult Function(String value) text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Image value) image,
-    required TResult Function(_Text value) text,
+    required TResult Function(ImageElementType value) image,
+    required TResult Function(TextElementType value) text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -429,97 +415,94 @@ class _$ElementTypeCopyWithImpl<$Res> implements $ElementTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ImageCopyWith<$Res> {
-  factory _$ImageCopyWith(_Image value, $Res Function(_Image) then) =
-      __$ImageCopyWithImpl<$Res>;
-  $Res call({io.File file});
+abstract class $ImageElementTypeCopyWith<$Res> {
+  factory $ImageElementTypeCopyWith(
+          ImageElementType value, $Res Function(ImageElementType) then) =
+      _$ImageElementTypeCopyWithImpl<$Res>;
+  $Res call({String path});
 }
 
 /// @nodoc
-class __$ImageCopyWithImpl<$Res> extends _$ElementTypeCopyWithImpl<$Res>
-    implements _$ImageCopyWith<$Res> {
-  __$ImageCopyWithImpl(_Image _value, $Res Function(_Image) _then)
-      : super(_value, (v) => _then(v as _Image));
+class _$ImageElementTypeCopyWithImpl<$Res>
+    extends _$ElementTypeCopyWithImpl<$Res>
+    implements $ImageElementTypeCopyWith<$Res> {
+  _$ImageElementTypeCopyWithImpl(
+      ImageElementType _value, $Res Function(ImageElementType) _then)
+      : super(_value, (v) => _then(v as ImageElementType));
 
   @override
-  _Image get _value => super._value as _Image;
+  ImageElementType get _value => super._value as ImageElementType;
 
   @override
   $Res call({
-    Object? file = freezed,
+    Object? path = freezed,
   }) {
-    return _then(_Image(
-      file: file == freezed
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as io.File,
+    return _then(ImageElementType(
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Image implements _Image {
-  const _$_Image({required this.file});
+class _$ImageElementType implements ImageElementType {
+  const _$ImageElementType({required this.path});
 
   @override
-  final io.File file;
+  final String path;
 
   @override
   String toString() {
-    return 'ElementType.image(file: $file)';
+    return 'ElementType.image(path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Image &&
-            const DeepCollectionEquality().equals(other.file, file));
+            other is ImageElementType &&
+            const DeepCollectionEquality().equals(other.path, path));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(file));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(path));
 
   @JsonKey(ignore: true)
   @override
-  _$ImageCopyWith<_Image> get copyWith =>
-      __$ImageCopyWithImpl<_Image>(this, _$identity);
+  $ImageElementTypeCopyWith<ImageElementType> get copyWith =>
+      _$ImageElementTypeCopyWithImpl<ImageElementType>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(io.File file) image,
-    required TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)
-        text,
+    required TResult Function(String path) image,
+    required TResult Function(String value) text,
   }) {
-    return image(file);
+    return image(path);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
   }) {
-    return image?.call(file);
+    return image?.call(path);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
     required TResult orElse(),
   }) {
     if (image != null) {
-      return image(file);
+      return image(path);
     }
     return orElse();
   }
@@ -527,8 +510,8 @@ class _$_Image implements _Image {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Image value) image,
-    required TResult Function(_Text value) text,
+    required TResult Function(ImageElementType value) image,
+    required TResult Function(TextElementType value) text,
   }) {
     return image(this);
   }
@@ -536,8 +519,8 @@ class _$_Image implements _Image {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
   }) {
     return image?.call(this);
   }
@@ -545,8 +528,8 @@ class _$_Image implements _Image {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
     required TResult orElse(),
   }) {
     if (image != null) {
@@ -556,156 +539,104 @@ class _$_Image implements _Image {
   }
 }
 
-abstract class _Image implements ElementType {
-  const factory _Image({required io.File file}) = _$_Image;
+abstract class ImageElementType implements ElementType {
+  const factory ImageElementType({required String path}) = _$ImageElementType;
 
-  io.File get file;
+  String get path;
   @JsonKey(ignore: true)
-  _$ImageCopyWith<_Image> get copyWith => throw _privateConstructorUsedError;
+  $ImageElementTypeCopyWith<ImageElementType> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$TextCopyWith<$Res> {
-  factory _$TextCopyWith(_Text value, $Res Function(_Text) then) =
-      __$TextCopyWithImpl<$Res>;
-  $Res call(
-      {String value,
-      ui.TextDirection textDirection,
-      double fontSize,
-      ui.FontStyle fontStyle,
-      ui.FontWeight fontWeight});
+abstract class $TextElementTypeCopyWith<$Res> {
+  factory $TextElementTypeCopyWith(
+          TextElementType value, $Res Function(TextElementType) then) =
+      _$TextElementTypeCopyWithImpl<$Res>;
+  $Res call({String value});
 }
 
 /// @nodoc
-class __$TextCopyWithImpl<$Res> extends _$ElementTypeCopyWithImpl<$Res>
-    implements _$TextCopyWith<$Res> {
-  __$TextCopyWithImpl(_Text _value, $Res Function(_Text) _then)
-      : super(_value, (v) => _then(v as _Text));
+class _$TextElementTypeCopyWithImpl<$Res>
+    extends _$ElementTypeCopyWithImpl<$Res>
+    implements $TextElementTypeCopyWith<$Res> {
+  _$TextElementTypeCopyWithImpl(
+      TextElementType _value, $Res Function(TextElementType) _then)
+      : super(_value, (v) => _then(v as TextElementType));
 
   @override
-  _Text get _value => super._value as _Text;
+  TextElementType get _value => super._value as TextElementType;
 
   @override
   $Res call({
     Object? value = freezed,
-    Object? textDirection = freezed,
-    Object? fontSize = freezed,
-    Object? fontStyle = freezed,
-    Object? fontWeight = freezed,
   }) {
-    return _then(_Text(
+    return _then(TextElementType(
       value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-      textDirection: textDirection == freezed
-          ? _value.textDirection
-          : textDirection // ignore: cast_nullable_to_non_nullable
-              as ui.TextDirection,
-      fontSize: fontSize == freezed
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
-              as double,
-      fontStyle: fontStyle == freezed
-          ? _value.fontStyle
-          : fontStyle // ignore: cast_nullable_to_non_nullable
-              as ui.FontStyle,
-      fontWeight: fontWeight == freezed
-          ? _value.fontWeight
-          : fontWeight // ignore: cast_nullable_to_non_nullable
-              as ui.FontWeight,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Text implements _Text {
-  const _$_Text(
-      {required this.value,
-      this.textDirection = ui.TextDirection.ltr,
-      required this.fontSize,
-      required this.fontStyle,
-      required this.fontWeight});
+class _$TextElementType implements TextElementType {
+  const _$TextElementType({required this.value});
 
   @override
   final String value;
-  @JsonKey()
-  @override
-  final ui.TextDirection textDirection;
-  @override
-  final double fontSize;
-  @override
-  final ui.FontStyle fontStyle;
-  @override
-  final ui.FontWeight fontWeight;
 
   @override
   String toString() {
-    return 'ElementType.text(value: $value, textDirection: $textDirection, fontSize: $fontSize, fontStyle: $fontStyle, fontWeight: $fontWeight)';
+    return 'ElementType.text(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Text &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality().equals(other.fontStyle, fontStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.fontWeight, fontWeight));
+            other is TextElementType &&
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(fontStyle),
-      const DeepCollectionEquality().hash(fontWeight));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
-  _$TextCopyWith<_Text> get copyWith =>
-      __$TextCopyWithImpl<_Text>(this, _$identity);
+  $TextElementTypeCopyWith<TextElementType> get copyWith =>
+      _$TextElementTypeCopyWithImpl<TextElementType>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(io.File file) image,
-    required TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)
-        text,
+    required TResult Function(String path) image,
+    required TResult Function(String value) text,
   }) {
-    return text(value, textDirection, fontSize, fontStyle, fontWeight);
+    return text(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
   }) {
-    return text?.call(value, textDirection, fontSize, fontStyle, fontWeight);
+    return text?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(io.File file)? image,
-    TResult Function(String value, ui.TextDirection textDirection,
-            double fontSize, ui.FontStyle fontStyle, ui.FontWeight fontWeight)?
-        text,
+    TResult Function(String path)? image,
+    TResult Function(String value)? text,
     required TResult orElse(),
   }) {
     if (text != null) {
-      return text(value, textDirection, fontSize, fontStyle, fontWeight);
+      return text(value);
     }
     return orElse();
   }
@@ -713,8 +644,8 @@ class _$_Text implements _Text {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Image value) image,
-    required TResult Function(_Text value) text,
+    required TResult Function(ImageElementType value) image,
+    required TResult Function(TextElementType value) text,
   }) {
     return text(this);
   }
@@ -722,8 +653,8 @@ class _$_Text implements _Text {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
   }) {
     return text?.call(this);
   }
@@ -731,8 +662,8 @@ class _$_Text implements _Text {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Image value)? image,
-    TResult Function(_Text value)? text,
+    TResult Function(ImageElementType value)? image,
+    TResult Function(TextElementType value)? text,
     required TResult orElse(),
   }) {
     if (text != null) {
@@ -742,19 +673,11 @@ class _$_Text implements _Text {
   }
 }
 
-abstract class _Text implements ElementType {
-  const factory _Text(
-      {required String value,
-      ui.TextDirection textDirection,
-      required double fontSize,
-      required ui.FontStyle fontStyle,
-      required ui.FontWeight fontWeight}) = _$_Text;
+abstract class TextElementType implements ElementType {
+  const factory TextElementType({required String value}) = _$TextElementType;
 
   String get value;
-  ui.TextDirection get textDirection;
-  double get fontSize;
-  ui.FontStyle get fontStyle;
-  ui.FontWeight get fontWeight;
   @JsonKey(ignore: true)
-  _$TextCopyWith<_Text> get copyWith => throw _privateConstructorUsedError;
+  $TextElementTypeCopyWith<TextElementType> get copyWith =>
+      throw _privateConstructorUsedError;
 }

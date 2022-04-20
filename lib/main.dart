@@ -9,6 +9,7 @@ import 'package:photo_editor/dependency_injection/service_locator.dart' as servi
 import 'package:photo_editor/localization/localization_cubit.dart';
 import 'package:photo_editor/ui/common/animations/route_transitions.dart' as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
+import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/editor_screen.dart';
 import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
@@ -60,6 +61,11 @@ class PhotoEditorApp extends StatelessWidget {
       case SettingsScreen.routeName:
         return route_transitions.fadeInRoute(
           child: const SettingsScreen(),
+          settings: routeSettings,
+        );
+      case AboutScreen.routeName:
+        return route_transitions.fadeInRoute(
+          child: const AboutScreen(),
           settings: routeSettings,
         );
     }

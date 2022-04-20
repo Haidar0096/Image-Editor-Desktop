@@ -19,5 +19,11 @@
   "removeElement": "Remove Element",
   "file": "File",
   "generate": "Generate",
-  "about": "About"
+  "about": "About",
+  "comingSoon": "Coming Soon",
+  "appName": "Image Editor",
+  "appVersion": "Version: 1.0",
+  "pressAnywhereToGoBack": "Press anywhere to go back.",
+  "errorHasOccurred" : "An error has occurred."
+
 }

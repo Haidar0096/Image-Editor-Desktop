@@ -1,5 +1,5 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'dart:ui' as ui;
+import 'dart:ui';
 
 import 'languages.dart';
 
@@ -9,18 +9,18 @@ part 'localization_state.dart';
 class LocalizationCubit extends HydratedCubit<LocalizationState> {
   LocalizationCubit()
       : super(LocalizationState(
-            locale: ui.Locale.fromSubtags(languageCode: Language.en.value)));
+            locale: Locale.fromSubtags(languageCode: Language.en.value)));
 
   void setLanguage(Language language) {
     emit(LocalizationState(
-        locale: ui.Locale.fromSubtags(languageCode: language.value)));
+        locale: Locale.fromSubtags(languageCode: language.value)));
   }
 
-  ui.Locale get locale => state.locale;
+  Locale get locale => state.locale;
 
   @override
   LocalizationState? fromJson(Map<String, dynamic> json) => LocalizationState(
-        locale: ui.Locale.fromSubtags(languageCode: json['language_code']),
+        locale: Locale.fromSubtags(languageCode: json['language_code']),
       );
 
   @override

@@ -1,49 +1,49 @@
-import 'package:dartz/dartz.dart' hide IMap;
-import 'package:photo_editor/extensions/rect_extension.dart';
+import 'dart:ui';
+
+import 'package:dartz/dartz.dart' hide ISet, IList;
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:photo_editor/services/editor/editor.dart';
+import 'package:collection/collection.dart';
 
 extension EditorExtension on Editor {
-  /// Adds an element to the editor.
-  /// Fails if:
-  /// - the element id already exists
-  /// - the element rect is not within bounds of the editor rect
-  Either<String, Editor> addElement(Element element) {
-    if (elements.containsKey(element.id)) {
-      return const Left(
-          'Cannot add an element with an existing key to the editor');
+  /// Adds an element to the editor. Returns the same editor if the id
+  /// of the added element already exists in the editor.
+  Editor addElement(Element element) {
+    if (elements.any((e) => e.id == element.id)) {
+      return this;
     }
-    if (!rect.containsRect(element.rect)) {
-      return const Left(
-          'Cannot add an element which is not bounded within the editor rect.');
-    }
-    return Right(copyWith(elements: elements.add(element.id, element)));
+    return copyWith(elements: elements.add(element));
   }
 
-  /// Updates an element in the editor.
-  /// Fails if:
-  /// - the element id does not exist
-  /// - the element rect is not within bounds of the editor rect
-  Either<String, Editor> updateElement(Element updated) {
-    if (!elements.containsKey(updated.id)) {
-      return const Left(
-          'Cannot update an element that does not exist in the editor.');
-    }
-    if (!rect.containsRect(updated.rect)) {
-      return const Left(
-          'Cannot update an element to have a rect that is not within the editor rect bounds.');
-    }
-    return Right(
-        copyWith(elements: elements.update(updated.id, (value) => updated)));
+  /// Updates the element in the editor which has the provided element's id.
+  /// If no such element exists, then the element will be added to the editor.
+  Editor updateElement(Element updated) {
+    return copyWith(
+      elements: elements.removeWhere((e) => e.id == updated.id).add(updated),
+    );
   }
 
-  /// Removes an element from the editor.
-  /// Fails if:
-  /// - the element with id = [id] does not exist in the editor.
-  Either<String, Editor> removeElement(ElementId id) {
-    if (!elements.containsKey(id)) {
-      return const Left(
-          'Cannot remove an element whose id already does not exist in the editor.');
-    }
-    return Right(copyWith(elements: elements.remove(id)));
+  /// Removes an element from the editor. Returns the same editor if the id does not exist.
+  Editor removeElement(ElementId id) {
+    return copyWith(elements: elements.removeWhere((e) => e.id == id));
   }
+
+  /// Returns an option of the element with the given id
+  Option<Element> elementById(ElementId id) =>
+      optionOf(elements.where((element) => element.id == id).firstOrNull);
+
+  /// Returns the elements sorted by their show order, or an empty list if the editor
+  /// is empty.
+  IList<Element> get elementsSortedByShowOrder =>
+      elements.sorted((a, b) => a.showOrder.compareTo(b.showOrder)).lock;
+
+  /// Returns a list of the elements present at a given position sorted by their show order,
+  /// or an empty list if the editor is empty.
+  IList<Element> elementsAtPosition(Offset position) => elements
+      .where((element) {
+        return element.rect.contains(position);
+      })
+      .sorted((a, b) => a.showOrder.compareTo(b.showOrder))
+      .toList()
+      .lock;
 }

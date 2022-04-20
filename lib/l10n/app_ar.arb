@@ -19,5 +19,10 @@
   "removeElement": "إزالة العنصر",
   "file": "الملف  ",
   "generate": "توليد",
-  "about": "حول"
+  "about": "حول",
+  "comingSoon": "آت قريبا",
+  "appName": "برنامج تعديل الصور",
+  "appVersion": "Version: 1.0",
+  "pressAnywhereToGoBack": "اضغط في أي مكان للرجوع",
+  "errorHasOccurred" : "حدث خطأ ما."
 }
