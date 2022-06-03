@@ -90,26 +90,44 @@ class EditorAppBar extends StatelessWidget {
       children: [
         _lowerRowAction(
           iconData: Icons.undo,
+          message: AppLocalizations.of(context)!.undo,
           onPressed: () {
-            context.read<EditorBloc>().add(const Undo());
+            context.read<EditorBloc>().add(const EditorUndoTapped());
           },
         ),
         _lowerRowAction(
           iconData: Icons.redo,
+          message: AppLocalizations.of(context)!.redo,
           onPressed: () {
-            context.read<EditorBloc>().add(const Redo());
+            context.read<EditorBloc>().add(const EditorRedoTapped());
           },
         ),
         _lowerRowAction(
-          iconData: Icons.text_fields,
+          iconData: Icons.text_fields_outlined,
+          message: AppLocalizations.of(context)!.addStaticText,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddText());
+            context.read<EditorBloc>().add(const EditorStaticTextAdded());
+          },
+        ),
+        _lowerRowAction(
+          iconData: Icons.functions,
+          message: AppLocalizations.of(context)!.addVariableText,
+          onPressed: () {
+            context.read<EditorBloc>().add(const EditorVariableTextAdded());
           },
         ),
         _lowerRowAction(
           iconData: Icons.add_a_photo,
+          message: AppLocalizations.of(context)!.addImage,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddImage());
+            context.read<EditorBloc>().add(const EditorImageAdded());
+          },
+        ),
+        _lowerRowAction(
+          iconData: Icons.clear_rounded,
+          message: AppLocalizations.of(context)!.clearEditor,
+          onPressed: () {
+            context.read<EditorBloc>().add(const EditorCleared());
           },
         ),
       ],
@@ -160,14 +178,19 @@ class EditorAppBar extends StatelessWidget {
   Widget _lowerRowAction({
     required IconData iconData,
     required void Function() onPressed,
+    String? message,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Material(
         color: Colors.transparent,
-        child: InkWell(
-          child: Icon(iconData),
-          onTap: onPressed,
+        child: Tooltip(
+          message: message,
+          textStyle: const TextStyle(fontSize: 20),
+          child: InkWell(
+            child: Icon(iconData),
+            onTap: onPressed,
+          ),
         ),
       ),
     );

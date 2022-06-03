@@ -233,4 +233,20 @@ void main() {
       );
     });
   });
+  group('clear', () {
+    test('Should clear the editor if it is not empty.', () {
+      // set up used variables
+      Element image = Element(
+        id: '1',
+        showOrder: 1,
+        elementType: const ElementType.image(path: 'image.jpeg'),
+        rect: const Offset(50, 50) & const Size(100, 100),
+      );
+      Editor editor = Editor.fromSet({image});
+      expect(
+        editor.clear(),
+        Editor.empty(),
+      );
+    });
+  });
 }

@@ -38,6 +38,11 @@ extension EditorExtension on Editor {
     );
   }
 
+  /// Removes all the elements from the editor.
+  Editor clear() {
+    return copyWith(elements: elements.clear());
+  }
+
   /// Returns an option of the element with the given id
   Option<Element> elementById(ElementId id) =>
       optionOf(elements.where((element) => element.id == id).firstOrNull);

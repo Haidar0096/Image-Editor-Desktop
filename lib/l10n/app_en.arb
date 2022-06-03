@@ -24,6 +24,8 @@
   "appName": "Image Editor",
   "appVersion": "Version: 1.0",
   "pressAnywhereToGoBack": "Press anywhere to go back.",
-  "errorHasOccurred" : "An error has occurred."
-
+  "errorHasOccurred" : "An error has occurred.",
+  "undo": "Undo",
+  "redo": "Redo",
+  "clearEditor":"Clear Editor"
 }

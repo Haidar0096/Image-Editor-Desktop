@@ -9,31 +9,38 @@ import 'package:mockito/mockito.dart';
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
+import 'package:photo_editor/services/history/history.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_state_error.dart';
 import 'package:test/test.dart';
 
 import 'editor_bloc_test.mocks.dart';
 
-@GenerateMocks([Logger, ElementIdGenerator, FilePicker])
+@GenerateMocks(
+  [Logger, ElementIdGenerator, FilePicker],
+  customMocks: [MockSpec<History<Editor>>(as: #MockEditorHistory)],
+)
 void main() {
   EditorBloc createEditorBloc({
     FilePicker? filePicker,
     Logger? logger,
     ElementIdGenerator? elementIdGenerator,
+    History<Editor>? history,
   }) =>
       EditorBloc(
         filePicker ?? MockFilePicker(),
         logger ?? MockLogger(),
         elementIdGenerator ?? MockElementIdGenerator(),
+        history ?? History<Editor>(),
       );
 
   group('initialization tests', () {
+    // define mock editor history
     blocTest<EditorBloc, EditorState>(
       'Emits no states when created',
       build: () => createEditorBloc(),
       expect: () => [],
     );
+
     test('Should have correct initial state', () {
       final editorBloc = createEditorBloc();
       expect(
@@ -41,6 +48,212 @@ void main() {
         EditorState.initial(),
       );
     });
+  });
+  group('Event Undo', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
+      elementType: ElementType.image(path: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    late MockFilePicker mockFilePicker;
+    late MockElementIdGenerator mockElementIdGenerator;
+
+    blocTest<EditorBloc, EditorState>(
+      'Undo replays previous state in history if it exists.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // add an image
+        bloc.add(const EditorImageAdded());
+        // then undo
+        bloc.add(const EditorUndoTapped());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState.initial(),
+        ];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Undo does not change the state if there is no previous state in history.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // undo
+        bloc.add(const EditorUndoTapped());
+        // add image
+        bloc.add(const EditorImageAdded());
+        // undo
+        bloc.add(const EditorUndoTapped());
+        // undo again
+        bloc.add(const EditorUndoTapped());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState.initial(),
+        ];
+      },
+    );
+  });
+  group('Event Redo', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
+      elementType: ElementType.image(path: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    late MockFilePicker mockFilePicker;
+    late MockElementIdGenerator mockElementIdGenerator;
+
+    blocTest<EditorBloc, EditorState>(
+      'Redo replays next state in history if it exists.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // add an image
+        bloc.add(const EditorImageAdded());
+        // then undo
+        bloc.add(const EditorUndoTapped());
+        // then redo
+        bloc.add(const EditorRedoTapped());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState.initial(),
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+        ];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Redo does not change the state if there is no next state in history.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // redo
+        bloc.add(const EditorRedoTapped());
+        // add an image
+        bloc.add(const EditorImageAdded());
+        // then redo
+        bloc.add(const EditorRedoTapped());
+        // then undo
+        bloc.add(const EditorUndoTapped());
+        // then redo
+        bloc.add(const EditorRedoTapped());
+        // then redo again
+        bloc.add(const EditorRedoTapped());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState.initial(),
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+        ];
+      },
+    );
   });
   group('Event AddImage', () {
     // define elements used in tests
@@ -80,7 +293,7 @@ void main() {
         filePicker: mockFilePicker,
         elementIdGenerator: mockElementIdGenerator,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
@@ -117,7 +330,7 @@ void main() {
         filePicker: mockFilePicker,
         elementIdGenerator: mockElementIdGenerator,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -149,17 +362,61 @@ void main() {
       build: () => createEditorBloc(
         filePicker: mockFilePicker,
       ),
-      act: (bloc) => bloc.add(const AddImage()),
+      act: (bloc) => bloc.add(const EditorImageAdded()),
       expect: () => [],
     );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save the state after an image is selected.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // add image
+        bloc.add(const EditorImageAdded());
+        // undo
+        bloc.add(const EditorUndoTapped());
+        // redo
+        bloc.add(const EditorRedoTapped());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState.initial(),
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+        ];
+      },
+    );
   });
-  group('Event AddText', () {
+  group('Event AddStaticText', () {
     //todo implements tests
   });
-  group('Event Undo', () {
-    //todo implements tests
-  });
-  group('Event Redo', () {
+  group('Event AddVariableText', () {
     //todo implements tests
   });
   group('Event DragStart', () {
@@ -188,7 +445,7 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
@@ -208,7 +465,7 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -228,7 +485,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image1.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -248,7 +505,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image2.rect.center)),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.simultaneousDragStart)],
@@ -262,7 +519,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(DragStart(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorDragStarted(image2.rect.center)),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.simultaneousDragStart)],
@@ -296,7 +553,7 @@ void main() {
           selectedElementId: none(),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final image2Dragged = image2.copyWith(
               rect: image2.rect.translate(
@@ -319,7 +576,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final image2Dragged = image2.copyWith(
               rect: image2.rect.translate(
@@ -342,7 +599,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () {
           final expectedState = EditorState(
             editor: Editor.fromSet({image1, image2}),
@@ -362,7 +619,7 @@ void main() {
           selectedElementId: some(image1.id),
         ),
         build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const DragUpdate(Offset(300, 300))),
+        act: (bloc) => bloc.add(const EditorDragUpdated(Offset(300, 300))),
         expect: () => [],
       );
     },
@@ -383,6 +640,10 @@ void main() {
       showOrder: 2,
       id: '2',
     );
+
+    late MockFilePicker mockFilePicker;
+    late ElementIdGenerator mockElementIdGenerator;
+
     blocTest<EditorBloc, EditorState>(
       'Should mutate only dragPosition when draggedElementId is none()',
       seed: () => EditorState(
@@ -392,7 +653,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -412,7 +673,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () => [],
       errors: () =>
           [const EditorStateError(EditorStateError.dragPositionNotSet)],
@@ -427,7 +688,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const DragEnd()),
+      act: (bloc) => bloc.add(const EditorDragEnded()),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -436,6 +697,91 @@ void main() {
           selectedElementId: some(image1.id),
         );
         return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'should save the state after dragging an element ends.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        bloc.add(const EditorImageAdded());
+        bloc.add(EditorDragStarted(image1.rect.topLeft));
+        bloc.add(EditorDragUpdated(image1.rect.topRight));
+        bloc.add(const EditorDragEnded());
+        bloc.add(const EditorUndoTapped());
+        bloc.add(const EditorRedoTapped());
+      },
+      expect: () {
+        return [
+          // after add event
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          // after start drag event
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: some(image1.id),
+            dragPosition: some(image1.rect.topLeft),
+            selectedElementId: none(),
+          ),
+          // after update drag event
+          EditorState(
+            editor: Editor.fromSet({
+              image1.copyWith(
+                  rect: image1.rect.translate(image1.rect.width, 0.0)),
+            }),
+            draggedElementId: some(image1.id),
+            dragPosition: some(image1.rect.topRight),
+            selectedElementId: none(),
+          ),
+          // after drag end event
+          EditorState(
+            editor: Editor.fromSet({
+              image1.copyWith(
+                  rect: image1.rect.translate(image1.rect.width, 0.0)),
+            }),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          // after undo event
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          // after redo event
+          EditorState(
+            editor: Editor.fromSet({
+              image1.copyWith(
+                  rect: image1.rect.translate(image1.rect.width, 0.0)),
+            }),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+        ];
       },
     );
   });
@@ -464,7 +810,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(TapUp(image2.rect.center)),
+      act: (bloc) => bloc.add(EditorTappedUp(image2.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -484,7 +830,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(240, 240))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(240, 240))),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -504,7 +850,7 @@ void main() {
         selectedElementId: some(image1.id),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(500, 500))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(500, 500))),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
@@ -524,8 +870,88 @@ void main() {
         selectedElementId: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const TapUp(Offset(500, 500))),
+      act: (bloc) => bloc.add(const EditorTappedUp(Offset(500, 500))),
       expect: () => [],
+    );
+  });
+  group('Event EditorCleared', () {
+    // define elements used in tests
+
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
+      elementType: ElementType.image(path: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    late MockFilePicker mockFilePicker;
+    late ElementIdGenerator mockElementIdGenerator;
+
+    blocTest<EditorBloc, EditorState>(
+      'Should clear editor and clear drag states if it has elements',
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        draggedElementId: some(image1.id),
+        dragPosition: some(image1.rect.center),
+        selectedElementId: none(),
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) => bloc.add(const EditorCleared()),
+      expect: () => [
+        EditorState.initial(),
+      ],
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should not emit any state when editor is already empty.',
+      seed: () => EditorState.initial(),
+      build: () => createEditorBloc(),
+      act: (bloc) => bloc.add(const EditorCleared()),
+      expect: () => [],
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save editor state if it has elements',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        bloc.add(const EditorImageAdded());
+        bloc.add(const EditorCleared());
+        bloc.add(const EditorUndoTapped());
+        bloc.add(const EditorRedoTapped());
+      },
+      expect: () => [
+        EditorState(
+          editor: Editor.fromSet({image1}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: none(),
+        ),
+        EditorState.initial(),
+        EditorState(
+          editor: Editor.fromSet({image1}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: none(),
+        ),
+        EditorState.initial(),
+      ],
     );
   });
 }
