@@ -2,19 +2,23 @@ import 'dart:ui';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
-import 'package:replay_bloc/replay_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:photo_editor/services/history/history.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'editor_event.dart';
+
 part 'editor_state.dart';
+
 part 'editor_state_error.dart';
+
 part 'editor_bloc.freezed.dart';
 
 /// Transformer of events of type [T] which ignores incoming events until current processing event is done,
@@ -27,18 +31,11 @@ EventTransformer<T> debounceDroppable<T>(Duration duration) {
 }
 
 @Injectable()
-class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
+class EditorBloc extends Bloc<EditorEvent, EditorState> {
   final FilePicker _filePicker;
   final Logger _logger;
   final ElementIdGenerator _elementIdGenerator;
-
-  @override
-  bool shouldReplay(EditorState state) {
-    return state.editor.elements.isNotEmpty &&
-        state.draggedElementId is! None &&
-        state.dragPosition is! None &&
-        state.selectedElementId is! None;
-  }
+  final History<Editor> _editorHistory;
 
   @override
   void onEvent(EditorEvent event) {
@@ -58,11 +55,16 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     this._filePicker,
     this._logger,
     this._elementIdGenerator,
+    this._editorHistory,
   ) : super(EditorState.initial()) {
     _logger.i('created editor bloc with state $state');
 
-    on<EditorTextAdded>((event, emit) async {
-      // TODO: add text
+    on<EditorStaticTextAdded>((event, emit) async {
+      // TODO: add static text
+    }, transformer: droppable());
+
+    on<EditorVariableTextAdded>((event, emit) async {
+      // TODO: add variable text
     }, transformer: droppable());
 
     on<EditorImageAdded>(_handleAddImage, transformer: droppable());
@@ -78,6 +80,52 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
     on<EditorDragEnded>(_handleDragEnd, transformer: droppable());
 
     on<EditorTappedUp>(_handleTapUp, transformer: droppable());
+
+    on<EditorCleared>(_handleClearEditor, transformer: droppable());
+
+    _saveState(state);
+  }
+
+  void _saveState(EditorState s) {
+    _editorHistory.top.fold(() {
+      // history is empty, save the state directly
+      _editorHistory.push(s.editor);
+    }, (topEditor) {
+      // history is not empty, only save current state if top state is not same as current
+      if (topEditor != s.editor) {
+        _editorHistory.push(s.editor);
+      }
+    });
+  }
+
+  Future<void> _handleUndo(EditorUndoTapped event, Emitter emit) async {
+    _editorHistory.previous.fold(() {
+      // there is no previous history available, do nothing
+    }, (Editor previousEditor) {
+      if (previousEditor != state.editor) {
+        emit(state.copyWith(
+          editor: previousEditor,
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: none(),
+        ));
+      }
+    });
+  }
+
+  Future<void> _handleRedo(EditorRedoTapped event, Emitter emit) async {
+    _editorHistory.next.fold(() {
+      // no next history editor entry available, do nothing
+    }, (Editor nextEditor) {
+      if (nextEditor != state.editor) {
+        emit(state.copyWith(
+          editor: nextEditor,
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: none(),
+        ));
+      }
+    });
   }
 
   Future<void> _handleAddImage(EditorImageAdded event, Emitter emit) async {
@@ -87,40 +135,36 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
 
     result.fold(
       () {},
-      (file) => emit(
-        state.copyWith(
-          editor: state.editor.addElement(
-            Element(
-              id: _elementIdGenerator.generate(),
-              rect: const Rect.fromLTWH(0.0, 0.0, 250, 250),
-              elementType: ElementType.image(path: file.path),
-              showOrder: optionOf(
-                state.editor.elementsSortedByShowOrder.lastOrNull,
-              ).fold(() => 1, (e) => e.showOrder + 1),
-            ),
+      (file) {
+        final Editor editor = state.editor.addElement(
+          Element(
+            id: _elementIdGenerator.generate(),
+            rect: const Rect.fromLTWH(0.0, 0.0, 250, 250),
+            elementType: ElementType.image(path: file.path),
+            showOrder: optionOf(
+              state.editor.elementsSortedByShowOrder.lastOrNull,
+            ).fold(() => 1, (e) => e.showOrder + 1),
           ),
-        ),
-      ),
+        );
+
+        emit(
+          state.copyWith(
+            editor: editor,
+          ),
+        );
+
+        // save the state after adding the image
+        _saveState(state);
+      },
     );
-  }
-
-  Future<void> _handleUndo(EditorUndoTapped event, Emitter emit) async {
-    if (canUndo) undo();
-
-    // TODO: see if there is something further to undo as well
-  }
-
-  Future<void> _handleRedo(EditorRedoTapped event, Emitter emit) async {
-    if (canRedo) redo();
-
-    // TODO: see if there is something further to redo as well
   }
 
   Future<void> _handleDragStart(EditorDragStarted event, Emitter emit) async {
     state.dragPosition.fold(() {
-      // no dragPosition
+      // no dragPosition is set
       state.draggedElementId.fold(() {
-        // no draggedElementId, can drag
+        // no draggedElementId set, can drag
+
         emit(
           state.copyWith(
             dragPosition: some(event.localPosition),
@@ -172,13 +216,13 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
   Future<void> _handleDragEnd(EditorDragEnded event, Emitter emit) async {
     state.draggedElementId.fold(
       () {
-        // no draggedElementId, just clear dragPosition
+        // no draggedElementId set, just clear dragPosition
         emit(state.copyWith(dragPosition: none()));
       },
       (draggedId) {
         // draggedElementId is set, check dragPosition
         state.dragPosition.fold(() {
-          // no dragPosition, invalid state
+          // no dragPosition set, invalid state
           _logger.e(EditorStateError.dragPositionNotSet);
           throw const EditorStateError(EditorStateError.dragPositionNotSet);
         }, (dragPosition) {
@@ -189,6 +233,9 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
               dragPosition: none(),
             ),
           );
+
+          // save state after drag end
+          _saveState(state);
         });
       },
     );
@@ -210,5 +257,17 @@ class EditorBloc extends ReplayBloc<EditorEvent, EditorState> {
         },
       );
     }
+  }
+
+  Future<void> _handleClearEditor(EditorCleared event, Emitter emit) async {
+    emit(state.copyWith(
+      editor: state.editor.clear(),
+      selectedElementId: none(),
+      draggedElementId: none(),
+      dragPosition: none(),
+    ));
+
+    //save the state after clearing the editor
+    _saveState(state);
   }
 }

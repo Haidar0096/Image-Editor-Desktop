@@ -1,6 +1,6 @@
 part of 'editor_bloc.dart';
 
-abstract class EditorEvent extends ReplayEvent {
+abstract class EditorEvent{
   const EditorEvent();
 }
 
@@ -9,9 +9,14 @@ class EditorImageAdded extends EditorEvent {
   const EditorImageAdded();
 }
 
-/// Fires when user wants to add a text to the editor.
-class EditorTextAdded extends EditorEvent {
-  const EditorTextAdded();
+/// Fires when user wants to add a static text to the editor.
+class EditorStaticTextAdded extends EditorEvent {
+  const EditorStaticTextAdded();
+}
+
+/// Fires when user wants to add a variable text to the editor.
+class EditorVariableTextAdded extends EditorEvent {
+  const EditorVariableTextAdded();
 }
 
 /// Fires when user wants to undo the last change to the bloc state.
@@ -61,4 +66,9 @@ class EditorTappedUp extends EditorEvent {
   final Offset localPosition;
 
   const EditorTappedUp(this.localPosition);
+}
+
+/// Fires when clear editor button is tapped.
+class EditorCleared extends EditorEvent{
+  const EditorCleared();
 }

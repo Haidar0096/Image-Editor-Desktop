@@ -35,24 +35,27 @@ class EditorWidget extends StatelessWidget {
                   );
 
                   // decorate element if selected
-                  stackChild = state.selectedElementId.fold(() {
-                    // no selected element
-                    return stackChild;
-                  }, (selectedId) {
-                    // selected element
-                    if (element.id == selectedId) {
-                      // this element is selected
-                      return Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.red, width: 1.0),
-                        ),
-                        child: stackChild,
-                      );
-                    } else {
-                      // this element is not selected
+                  stackChild = state.selectedElementId.fold(
+                    () {
+                      // there is no selected element
                       return stackChild;
-                    }
-                  });
+                    },
+                    (selectedId) {
+                      // there is selected element
+                      if (element.id == selectedId) {
+                        // this element is selected
+                        return Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.red, width: 1.0),
+                          ),
+                          child: stackChild,
+                        );
+                      } else {
+                        // this element is not selected
+                        return stackChild;
+                      }
+                    },
+                  );
 
                   // wrap with Positioned
                   stackChild = Positioned.fromRect(
