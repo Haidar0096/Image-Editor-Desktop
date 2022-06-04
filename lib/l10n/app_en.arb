@@ -27,5 +27,11 @@
   "errorHasOccurred" : "An error has occurred.",
   "undo": "Undo",
   "redo": "Redo",
-  "clearEditor":"Clear Editor"
+  "clearEditor":"Clear Editor",
+  "properties": "Properties",
+  "fileName": "File Name",
+  "showOrder": "Show Order",
+  "size": "Size",
+  "chooseAnElementToSeeItsProperties": "Choose an element to see its properties.",
+  "resetSize": "Reset Size"
 }

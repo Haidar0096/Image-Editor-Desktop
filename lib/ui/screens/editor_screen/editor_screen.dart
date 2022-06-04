@@ -38,16 +38,20 @@ class EditorScreen extends StatelessWidget {
             Expanded(
               flex: bodyFlex,
               child: Row(
-                children: const [
-                  Expanded(
+                children: [
+                  const Expanded(
                     flex: leftPanelFlex,
                     child: LeftPanel(),
                   ),
                   Expanded(
                     flex: editorWidgetFlex,
-                    child: EditorWidget(),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return EditorWidget(constraints: constraints);
+                      },
+                    ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: rightPanelFlex,
                     child: RightPanel(),
                   ),

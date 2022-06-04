@@ -24,8 +24,14 @@
   "appName": "برنامج تعديل الصور",
   "appVersion": "Version: 1.0",
   "pressAnywhereToGoBack": "اضغط في أي مكان للرجوع",
-  "errorHasOccurred" : "حدث خطأ ما.",
+  "errorHasOccurred": "حدث خطأ ما.",
   "undo": "Undo",
   "redo": "Redo",
-  "clearEditor":"محو كل شيء"
+  "clearEditor": "محو كل شيء",
+  "properties": "الخصائص",
+  "fileName": "اسم الملف",
+  "showOrder": "مستوى الظهور",
+  "size": "الحجم",
+  "chooseAnElementToSeeItsProperties": "اخنر عنصرا لتر خصائصه.",
+  "resetSize": "اعادة الحجم"
 }

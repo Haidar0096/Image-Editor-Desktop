@@ -18,5 +18,5 @@ void configureDependencies() => $initGetIt(serviceLocator);
 abstract class RegisterModule {
   Logger get logger => Logger();
 
-  History<Editor> get editorHistory => History<Editor>(maxSize: 200);
+  History<Editor> get editorHistory => History<Editor>(maxSize: 30);
 }
