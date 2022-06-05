@@ -49,7 +49,7 @@ void main() {
       );
     });
   });
-  group('Event Undo', () {
+  group('UndoEditorEvent', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
@@ -143,7 +143,7 @@ void main() {
       },
     );
   });
-  group('Event Redo', () {
+  group('RedoEditorEvent', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
@@ -255,7 +255,7 @@ void main() {
       },
     );
   });
-  group('Event AddImage', () {
+  group('AddImageEditorEvent', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
@@ -413,13 +413,13 @@ void main() {
       },
     );
   });
-  group('Event AddStaticText', () {
+  group('AddStaticTextEditorEvent', () {
     //todo implements tests
   });
-  group('Event AddVariableText', () {
+  group('AddVariableTextEditorEvent', () {
     //todo implements tests
   });
-  group('Event DragStart', () {
+  group('DragStartEditorEvent', () {
     // define elements used in tests
     // image with top-left at (0,0)
     const Element image1 = Element(
@@ -526,7 +526,7 @@ void main() {
     );
   });
   group(
-    'Event DragUpdate',
+    'DragUpdateEditorEvent',
     () {
       // define elements used in tests
       // image with top-left at (0,0)
@@ -624,7 +624,7 @@ void main() {
       );
     },
   );
-  group('Event DragEnd', () {
+  group('DragEndEditorEvent', () {
     // define elements used in tests
     // image with top-left at (0,0)
     const Element image1 = Element(
@@ -785,7 +785,7 @@ void main() {
       },
     );
   });
-  group('Event TapUp', () {
+  group('TapUpEditorEvent', () {
     // define elements used in tests
     // image with top-left at (0,0)
     const Element image1 = Element(
@@ -874,7 +874,7 @@ void main() {
       expect: () => [],
     );
   });
-  group('Event ClearEditorEvent', () {
+  group('ClearEditorEvent', () {
     // define elements used in tests
 
     const Element image1 = Element(
@@ -952,6 +952,114 @@ void main() {
         ),
         EditorState.initial(),
       ],
+    );
+  });
+  group('RemoveElementEditorEvent', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
+      elementType: ElementType.image(path: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+    const Element image2 = Element(
+      rect: Rect.fromLTWH(125.0, 125.0, 250, 250),
+      elementType: ElementType.image(path: 'hello_world.jpeg'),
+      showOrder: 2,
+      id: '2',
+    );
+
+    late MockFilePicker mockFilePicker;
+    late MockElementIdGenerator mockElementIdGenerator;
+
+    blocTest<EditorBloc, EditorState>(
+      'Should remove the selected element and clear selection states.',
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1, image2}),
+        draggedElementId: some(image1.id),
+        dragPosition: some(image1.rect.center),
+        selectedElementId: some(image1.id),
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) => bloc.add(RemoveElementEditorEvent(elementId: image1.id)),
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image2}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          )
+        ];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save the state after removing an element.',
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+                allowedExtensions: captureThat(
+                    equals(allowedFileExtensions.unlock),
+                    named: 'allowedExtensions')))
+            .thenAnswer((realInvocation) async =>
+                some(File((image1.elementType as ImageElementType).path)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+      },
+      build: () => createEditorBloc(
+        filePicker: mockFilePicker,
+        elementIdGenerator: mockElementIdGenerator,
+      ),
+      act: (bloc) {
+        // add an image element
+        bloc.add(const AddImageEditorEvent());
+        // tap on the element to select it
+        bloc.add(TapUpEditorEvent(image1.rect.center));
+        // remove the element
+        bloc.add(RemoveElementEditorEvent(elementId: image1.id));
+        // undo
+        bloc.add(const UndoEditorEvent());
+        // redo
+        bloc.add(const RedoEditorEvent());
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: some(image1.id),
+          ),
+          EditorState(
+            editor: Editor.empty(),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState(
+            editor: Editor.fromSet({image1}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+          EditorState(
+            editor: Editor.empty(),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: none(),
+          ),
+        ];
+      },
     );
   });
 }

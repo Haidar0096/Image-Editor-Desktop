@@ -63,6 +63,12 @@ class _$EditorEventTearOff {
   ClearEditorEvent clearEditor() {
     return const ClearEditorEvent();
   }
+
+  RemoveElementEditorEvent removeElement({required String elementId}) {
+    return RemoveElementEditorEvent(
+      elementId: elementId,
+    );
+  }
 }
 
 /// @nodoc
@@ -82,6 +88,7 @@ mixin _$EditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +103,7 @@ mixin _$EditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +118,7 @@ mixin _$EditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,6 +134,7 @@ mixin _$EditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -139,6 +149,7 @@ mixin _$EditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -153,6 +164,7 @@ mixin _$EditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -225,6 +237,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return addImage();
   }
@@ -242,6 +255,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return addImage?.call();
   }
@@ -259,6 +273,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -280,6 +295,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return addImage(this);
   }
@@ -297,6 +313,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return addImage?.call(this);
   }
@@ -314,6 +331,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -379,6 +397,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return addStaticText();
   }
@@ -396,6 +415,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return addStaticText?.call();
   }
@@ -413,6 +433,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -434,6 +455,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return addStaticText(this);
   }
@@ -451,6 +473,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return addStaticText?.call(this);
   }
@@ -468,6 +491,7 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -534,6 +558,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return addVariableText();
   }
@@ -551,6 +576,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return addVariableText?.call();
   }
@@ -568,6 +594,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -589,6 +616,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return addVariableText(this);
   }
@@ -606,6 +634,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return addVariableText?.call(this);
   }
@@ -623,6 +652,7 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -687,6 +717,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return undo();
   }
@@ -704,6 +735,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return undo?.call();
   }
@@ -721,6 +753,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -742,6 +775,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return undo(this);
   }
@@ -759,6 +793,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return undo?.call(this);
   }
@@ -776,6 +811,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -840,6 +876,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return redo();
   }
@@ -857,6 +894,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return redo?.call();
   }
@@ -874,6 +912,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -895,6 +934,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return redo(this);
   }
@@ -912,6 +952,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return redo?.call(this);
   }
@@ -929,6 +970,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -1021,6 +1063,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return dragStart(localPosition);
   }
@@ -1038,6 +1081,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return dragStart?.call(localPosition);
   }
@@ -1055,6 +1099,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (dragStart != null) {
@@ -1076,6 +1121,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return dragStart(this);
   }
@@ -1093,6 +1139,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return dragStart?.call(this);
   }
@@ -1110,6 +1157,7 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (dragStart != null) {
@@ -1209,6 +1257,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return dragUpdate(localPosition);
   }
@@ -1226,6 +1275,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return dragUpdate?.call(localPosition);
   }
@@ -1243,6 +1293,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (dragUpdate != null) {
@@ -1264,6 +1315,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return dragUpdate(this);
   }
@@ -1281,6 +1333,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return dragUpdate?.call(this);
   }
@@ -1298,6 +1351,7 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (dragUpdate != null) {
@@ -1369,6 +1423,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return dragEnd();
   }
@@ -1386,6 +1441,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return dragEnd?.call();
   }
@@ -1403,6 +1459,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (dragEnd != null) {
@@ -1424,6 +1481,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return dragEnd(this);
   }
@@ -1441,6 +1499,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return dragEnd?.call(this);
   }
@@ -1458,6 +1517,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (dragEnd != null) {
@@ -1549,6 +1609,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return tapUp(localPosition);
   }
@@ -1566,6 +1627,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return tapUp?.call(localPosition);
   }
@@ -1583,6 +1645,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (tapUp != null) {
@@ -1604,6 +1667,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return tapUp(this);
   }
@@ -1621,6 +1685,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return tapUp?.call(this);
   }
@@ -1638,6 +1703,7 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (tapUp != null) {
@@ -1708,6 +1774,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     required TResult Function() dragEnd,
     required TResult Function(Offset localPosition) tapUp,
     required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
   }) {
     return clearEditor();
   }
@@ -1725,6 +1792,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
   }) {
     return clearEditor?.call();
   }
@@ -1742,6 +1810,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function()? dragEnd,
     TResult Function(Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -1763,6 +1832,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     required TResult Function(DragEndEditorEvent value) dragEnd,
     required TResult Function(TapUpEditorEvent value) tapUp,
     required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
   }) {
     return clearEditor(this);
   }
@@ -1780,6 +1850,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
   }) {
     return clearEditor?.call(this);
   }
@@ -1797,6 +1868,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function(DragEndEditorEvent value)? dragEnd,
     TResult Function(TapUpEditorEvent value)? tapUp,
     TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -1808,6 +1880,200 @@ class _$ClearEditorEvent implements ClearEditorEvent {
 
 abstract class ClearEditorEvent implements EditorEvent {
   const factory ClearEditorEvent() = _$ClearEditorEvent;
+}
+
+/// @nodoc
+abstract class $RemoveElementEditorEventCopyWith<$Res> {
+  factory $RemoveElementEditorEventCopyWith(RemoveElementEditorEvent value,
+          $Res Function(RemoveElementEditorEvent) then) =
+      _$RemoveElementEditorEventCopyWithImpl<$Res>;
+  $Res call({String elementId});
+}
+
+/// @nodoc
+class _$RemoveElementEditorEventCopyWithImpl<$Res>
+    extends _$EditorEventCopyWithImpl<$Res>
+    implements $RemoveElementEditorEventCopyWith<$Res> {
+  _$RemoveElementEditorEventCopyWithImpl(RemoveElementEditorEvent _value,
+      $Res Function(RemoveElementEditorEvent) _then)
+      : super(_value, (v) => _then(v as RemoveElementEditorEvent));
+
+  @override
+  RemoveElementEditorEvent get _value =>
+      super._value as RemoveElementEditorEvent;
+
+  @override
+  $Res call({
+    Object? elementId = freezed,
+  }) {
+    return _then(RemoveElementEditorEvent(
+      elementId: elementId == freezed
+          ? _value.elementId
+          : elementId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
+  const _$RemoveElementEditorEvent({required this.elementId});
+
+  @override
+
+  /// The id of the element to be removed
+  final String elementId;
+
+  @override
+  String toString() {
+    return 'EditorEvent.removeElement(elementId: $elementId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is RemoveElementEditorEvent &&
+            const DeepCollectionEquality().equals(other.elementId, elementId));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(elementId));
+
+  @JsonKey(ignore: true)
+  @override
+  $RemoveElementEditorEventCopyWith<RemoveElementEditorEvent> get copyWith =>
+      _$RemoveElementEditorEventCopyWithImpl<RemoveElementEditorEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addImage,
+    required TResult Function() addStaticText,
+    required TResult Function() addVariableText,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(Offset localPosition) dragStart,
+    required TResult Function(Offset localPosition) dragUpdate,
+    required TResult Function() dragEnd,
+    required TResult Function(Offset localPosition) tapUp,
+    required TResult Function() clearEditor,
+    required TResult Function(String elementId) removeElement,
+  }) {
+    return removeElement(elementId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function()? addStaticText,
+    TResult Function()? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(Offset localPosition)? dragStart,
+    TResult Function(Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
+  }) {
+    return removeElement?.call(elementId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function()? addStaticText,
+    TResult Function()? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(Offset localPosition)? dragStart,
+    TResult Function(Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function(String elementId)? removeElement,
+    required TResult orElse(),
+  }) {
+    if (removeElement != null) {
+      return removeElement(elementId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddImageEditorEvent value) addImage,
+    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
+    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
+    required TResult Function(UndoEditorEvent value) undo,
+    required TResult Function(RedoEditorEvent value) redo,
+    required TResult Function(DragStartEditorEvent value) dragStart,
+    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
+    required TResult Function(DragEndEditorEvent value) dragEnd,
+    required TResult Function(TapUpEditorEvent value) tapUp,
+    required TResult Function(ClearEditorEvent value) clearEditor,
+    required TResult Function(RemoveElementEditorEvent value) removeElement,
+  }) {
+    return removeElement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddImageEditorEvent value)? addImage,
+    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
+    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
+    TResult Function(UndoEditorEvent value)? undo,
+    TResult Function(RedoEditorEvent value)? redo,
+    TResult Function(DragStartEditorEvent value)? dragStart,
+    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
+    TResult Function(DragEndEditorEvent value)? dragEnd,
+    TResult Function(TapUpEditorEvent value)? tapUp,
+    TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
+  }) {
+    return removeElement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddImageEditorEvent value)? addImage,
+    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
+    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
+    TResult Function(UndoEditorEvent value)? undo,
+    TResult Function(RedoEditorEvent value)? redo,
+    TResult Function(DragStartEditorEvent value)? dragStart,
+    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
+    TResult Function(DragEndEditorEvent value)? dragEnd,
+    TResult Function(TapUpEditorEvent value)? tapUp,
+    TResult Function(ClearEditorEvent value)? clearEditor,
+    TResult Function(RemoveElementEditorEvent value)? removeElement,
+    required TResult orElse(),
+  }) {
+    if (removeElement != null) {
+      return removeElement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveElementEditorEvent implements EditorEvent {
+  const factory RemoveElementEditorEvent({required String elementId}) =
+      _$RemoveElementEditorEvent;
+
+  /// The id of the element to be removed
+  String get elementId;
+  @JsonKey(ignore: true)
+  $RemoveElementEditorEventCopyWith<RemoveElementEditorEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

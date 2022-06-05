@@ -42,4 +42,10 @@ class EditorEvent with _$EditorEvent {
 
   /// Fires when clear editor button is tapped.
   const factory EditorEvent.clearEditor() = ClearEditorEvent;
+
+  /// Fires when remove element button is tapped
+  const factory EditorEvent.removeElement({
+    /// The id of the element to be removed
+    required ElementId elementId,
+  }) = RemoveElementEditorEvent;
 }

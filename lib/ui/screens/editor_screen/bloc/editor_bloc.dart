@@ -84,6 +84,9 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
     on<ClearEditorEvent>(_handleClearEditor, transformer: droppable());
 
+    on<RemoveElementEditorEvent>(_handleRemoveElement,
+        transformer: droppable());
+
     // save the initial state of the editor
     _saveState(state);
   }
@@ -272,6 +275,21 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     ));
 
     //save the state after clearing the editor
+    _saveState(state);
+  }
+
+  Future<void> _handleRemoveElement(
+      RemoveElementEditorEvent event, Emitter emit) async {
+    emit(
+      state.copyWith(
+        editor: state.editor.removeElement(event.elementId),
+        selectedElementId: none(),
+        draggedElementId: none(),
+        dragPosition: none(),
+      ),
+    );
+
+    // save the state after removing
     _saveState(state);
   }
 }
