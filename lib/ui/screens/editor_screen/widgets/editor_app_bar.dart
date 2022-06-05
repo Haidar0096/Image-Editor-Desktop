@@ -92,42 +92,42 @@ class EditorAppBar extends StatelessWidget {
           iconData: Icons.undo,
           message: AppLocalizations.of(context)!.undo,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorUndoTapped());
+            context.read<EditorBloc>().add(const UndoEditorEvent());
           },
         ),
         _lowerRowAction(
           iconData: Icons.redo,
           message: AppLocalizations.of(context)!.redo,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorRedoTapped());
+            context.read<EditorBloc>().add(const RedoEditorEvent());
           },
         ),
         _lowerRowAction(
           iconData: Icons.text_fields_outlined,
           message: AppLocalizations.of(context)!.addStaticText,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorStaticTextAdded());
+            context.read<EditorBloc>().add(const AddStaticTextEditorEvent());
           },
         ),
         _lowerRowAction(
           iconData: Icons.functions,
           message: AppLocalizations.of(context)!.addVariableText,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorVariableTextAdded());
+            context.read<EditorBloc>().add(const AddVariableTextEditorEvent());
           },
         ),
         _lowerRowAction(
           iconData: Icons.add_a_photo,
           message: AppLocalizations.of(context)!.addImage,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorImageAdded());
+            context.read<EditorBloc>().add(const AddImageEditorEvent());
           },
         ),
         _lowerRowAction(
           iconData: Icons.clear_rounded,
           message: AppLocalizations.of(context)!.clearEditor,
           onPressed: () {
-            context.read<EditorBloc>().add(const EditorCleared());
+            context.read<EditorBloc>().add(const ClearEditorEvent());
           },
         ),
       ],

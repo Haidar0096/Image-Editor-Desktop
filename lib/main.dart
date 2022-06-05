@@ -5,9 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:photo_editor/dependency_injection/service_locator.dart' as service_locator;
+import 'package:photo_editor/dependency_injection/service_locator.dart'
+    as service_locator;
 import 'package:photo_editor/localization/localization_cubit.dart';
-import 'package:photo_editor/ui/common/animations/route_transitions.dart' as route_transitions;
+import 'package:photo_editor/ui/common/animations/route_transitions.dart'
+    as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';

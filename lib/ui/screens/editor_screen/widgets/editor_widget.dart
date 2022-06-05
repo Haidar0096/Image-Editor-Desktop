@@ -142,20 +142,22 @@ class _EditorWidgetState extends State<EditorWidget> {
     return Positioned.fill(
       child: GestureDetector(
         onTapUp: (details) {
-          context.read<EditorBloc>().add(EditorTappedUp(details.localPosition));
+          context
+              .read<EditorBloc>()
+              .add(TapUpEditorEvent(details.localPosition));
         },
         onPanStart: (details) {
           context
               .read<EditorBloc>()
-              .add(EditorDragStarted(details.localPosition));
+              .add(DragStartEditorEvent(details.localPosition));
         },
         onPanUpdate: (details) {
           context
               .read<EditorBloc>()
-              .add(EditorDragUpdated(details.localPosition));
+              .add(DragUpdateEditorEvent(details.localPosition));
         },
         onPanEnd: (details) {
-          context.read<EditorBloc>().add(const EditorDragEnded());
+          context.read<EditorBloc>().add(const DragEndEditorEvent());
         },
       ),
     );

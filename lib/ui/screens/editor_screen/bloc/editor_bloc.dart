@@ -59,30 +59,32 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   ) : super(EditorState.initial()) {
     _logger.i('created editor bloc with state $state');
 
-    on<EditorStaticTextAdded>((event, emit) async {
+    // register event handlers
+    on<AddStaticTextEditorEvent>((event, emit) async {
       // TODO: add static text
     }, transformer: droppable());
 
-    on<EditorVariableTextAdded>((event, emit) async {
+    on<AddVariableTextEditorEvent>((event, emit) async {
       // TODO: add variable text
     }, transformer: droppable());
 
-    on<EditorImageAdded>(_handleAddImage, transformer: droppable());
+    on<AddImageEditorEvent>(_handleAddImage, transformer: droppable());
 
-    on<EditorUndoTapped>(_handleUndo, transformer: droppable());
+    on<UndoEditorEvent>(_handleUndo, transformer: droppable());
 
-    on<EditorRedoTapped>(_handleRedo, transformer: droppable());
+    on<RedoEditorEvent>(_handleRedo, transformer: droppable());
 
-    on<EditorDragStarted>(_handleDragStart, transformer: droppable());
+    on<DragStartEditorEvent>(_handleDragStart, transformer: droppable());
 
-    on<EditorDragUpdated>(_handleDragUpdate, transformer: droppable());
+    on<DragUpdateEditorEvent>(_handleDragUpdate, transformer: droppable());
 
-    on<EditorDragEnded>(_handleDragEnd, transformer: droppable());
+    on<DragEndEditorEvent>(_handleDragEnd, transformer: droppable());
 
-    on<EditorTappedUp>(_handleTapUp, transformer: droppable());
+    on<TapUpEditorEvent>(_handleTapUp, transformer: droppable());
 
-    on<EditorCleared>(_handleClearEditor, transformer: droppable());
+    on<ClearEditorEvent>(_handleClearEditor, transformer: droppable());
 
+    // save the initial state of the editor
     _saveState(state);
   }
 
@@ -98,7 +100,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleUndo(EditorUndoTapped event, Emitter emit) async {
+  Future<void> _handleUndo(UndoEditorEvent event, Emitter emit) async {
     _editorHistory.previous.fold(() {
       // there is no previous history available, do nothing
     }, (Editor previousEditor) {
@@ -113,7 +115,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleRedo(EditorRedoTapped event, Emitter emit) async {
+  Future<void> _handleRedo(RedoEditorEvent event, Emitter emit) async {
     _editorHistory.next.fold(() {
       // no next history editor entry available, do nothing
     }, (Editor nextEditor) {
@@ -128,7 +130,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleAddImage(EditorImageAdded event, Emitter emit) async {
+  Future<void> _handleAddImage(AddImageEditorEvent event, Emitter emit) async {
     final result = await _filePicker.pickSingleFile(
       allowedExtensions: allowedFileExtensions.unlock,
     );
@@ -159,7 +161,8 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleDragStart(EditorDragStarted event, Emitter emit) async {
+  Future<void> _handleDragStart(
+      DragStartEditorEvent event, Emitter emit) async {
     state.dragPosition.fold(() {
       // no dragPosition is set
       state.draggedElementId.fold(() {
@@ -186,7 +189,8 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleDragUpdate(EditorDragUpdated event, Emitter emit) async {
+  Future<void> _handleDragUpdate(
+      DragUpdateEditorEvent event, Emitter emit) async {
     state.dragPosition.fold(() {
       // no dragPosition
       // do nothing
@@ -213,7 +217,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
-  Future<void> _handleDragEnd(EditorDragEnded event, Emitter emit) async {
+  Future<void> _handleDragEnd(DragEndEditorEvent event, Emitter emit) async {
     state.draggedElementId.fold(
       () {
         // no draggedElementId set, just clear dragPosition
@@ -241,7 +245,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleTapUp(EditorTappedUp event, Emitter emit) async {
+  Future<void> _handleTapUp(TapUpEditorEvent event, Emitter emit) async {
     final elements = state.editor.elementsAtPosition(event.localPosition);
     if (elements.isNotEmpty) {
       emit(state.copyWith(selectedElementId: some(elements.last.id)));
@@ -259,7 +263,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     }
   }
 
-  Future<void> _handleClearEditor(EditorCleared event, Emitter emit) async {
+  Future<void> _handleClearEditor(ClearEditorEvent event, Emitter emit) async {
     emit(state.copyWith(
       editor: state.editor.clear(),
       selectedElementId: none(),
