@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'editor_element_widget.dart';
 
 class EditorWidget extends StatefulWidget {
   final BoxConstraints constraints;
@@ -25,6 +26,8 @@ class _EditorWidgetState extends State<EditorWidget> {
 
   /// whether the scale value widget should be visible or not
   bool _scaleValueVisible = false;
+
+  bool get _editorCentered => _scaleController.value == Matrix4.identity();
 
   @override
   void initState() {
@@ -63,68 +66,55 @@ class _EditorWidgetState extends State<EditorWidget> {
         decoration: BoxDecoration(
           border: Border.all(
             color: toc.colorScheme.onBackground,
-            width: _scaleController.value != Matrix4.identity() ? 2.0 : 0.0,
+            width: !_editorCentered ? 2.0 : 0.0,
           ),
         ),
         width: widget.constraints.maxWidth,
         height: widget.constraints.maxHeight,
-        child: _editorElementsStack(context),
+        child: _editorComponents(context),
       ),
     );
   }
 
-  Stack _editorElementsStack(BuildContext context) {
+  Stack _editorComponents(BuildContext context) {
     return Stack(
       children: [
-        ..._mapElements(context),
+        ..._editorElementsWidgets(context),
         _gestureDetector(context),
         if (_scaleValueVisible) _scaleValueWidget(context),
-        if (_scaleController.value != Matrix4.identity())
-          _resetZoomButton(context)
+        if (!_editorCentered) _resetZoomButton(context)
       ],
     );
   }
 
-  Iterable<Widget> _mapElements(BuildContext context) {
+  Iterable<Widget> _editorElementsWidgets(BuildContext context) {
     final EditorState state = context.read<EditorBloc>().state;
     return state.editor.elements
         .sorted((a, b) => a.showOrder.compareTo(b.showOrder))
         .map(
       (element) {
-        // create widget based on element type
-        Widget stackChild = element.elementType.map(
-          image: (imageElement) => Image.file(
-            File(imageElement.path),
-            width: element.rect.width,
-            height: element.rect.height,
-            fit: BoxFit.fill,
-          ),
-          text: (textElement) {
-            return Text(textElement.value);
-          },
-        );
-
-        // decorate element if selected
-        stackChild = state.selectedElementId.fold(
+        // check if this element is selected
+        bool isSelected = state.selectedElementId.fold(
           () {
             // there is no selected element
-            return stackChild;
+            return false;
           },
           (selectedId) {
             // there is selected element
             if (element.id == selectedId) {
               // this element is selected
-              return Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red, width: 1.0),
-                ),
-                child: stackChild,
-              );
+              return true;
             } else {
               // this element is not selected
-              return stackChild;
+              return false;
             }
           },
+        );
+
+        // create widget based on element type
+        Widget stackChild = EditorElementWidget(
+          element: element,
+          isSelected: isSelected,
         );
 
         // wrap with Positioned
@@ -202,6 +192,7 @@ class _EditorWidgetState extends State<EditorWidget> {
     );
   }
 
+  /// Calls [setState] to show the zoom scale value widget.
   void _showScale() {
     setState(
       () {
