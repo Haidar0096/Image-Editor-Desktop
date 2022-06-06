@@ -33,5 +33,13 @@
   "showOrder": "مستوى الظهور",
   "size": "الحجم",
   "chooseAnElementToSeeItsProperties": "اخنر عنصرا لتر خصائصه.",
-  "resetSize": "اعادة الحجم"
+  "resetSize": "اعادة الحجم",
+  "editText": "تعدبل النص",
+  "makeLarger": "تكبير",
+  "makeSmaller": "تصغير",
+  "fontSize": "حجم الخط",
+  "changeColor": "تغيير اللون",
+  "generatedTextAppearsHere": "النص المتولد سيظهر هنا.",
+  "textJustification": "Text Justification",
+  "love": "❤ هذا التطبيق مهدى الى روحي و قلبي، أحبك أمي ❤"
 }

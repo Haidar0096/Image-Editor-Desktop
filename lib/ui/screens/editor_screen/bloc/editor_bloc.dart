@@ -1,10 +1,11 @@
-import 'dart:ui';
+import 'dart:io';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+import 'package:photo_editor/extensions/string_extension.dart';
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
@@ -12,6 +13,9 @@ import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:photo_editor/services/history/history.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/material.dart' as material;
+import 'dart:ui';
 
 part 'editor_event.dart';
 
@@ -60,19 +64,43 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     _logger.i('created editor bloc with state $state');
 
     // register event handlers
-    on<AddStaticTextEditorEvent>((event, emit) async {
-      // TODO: add static text
-    }, transformer: droppable());
+    on<AddStaticTextEditorEvent>(
+      _handleAddStaticText,
+      transformer: droppable(),
+    );
 
-    on<AddVariableTextEditorEvent>((event, emit) async {
-      // TODO: add variable text
-    }, transformer: droppable());
+    on<TextElementTextChangedEditorEvent>(
+      _handleTextChangedEvent,
+      transformer: droppable(),
+    );
+
+    on<TextElementTextStyleChangedEditorEvent>(
+      _handleTextStyleChangedEvent,
+      transformer: droppable(),
+    );
+
+    on<AddVariableTextEditorEvent>(
+      _handleAddVariableText,
+      transformer: droppable(),
+    );
+
+    on<VariableTextElementTextStyleChangedEditorEvent>(
+      _handleVariableTextStyleChangedEvent,
+      transformer: droppable(),
+    );
+
+    on<VariableTextElementFileChangedEvent>(
+      _handleVariableTextFileChangedEvent,
+      transformer: droppable(),
+    );
 
     on<AddImageEditorEvent>(_handleAddImage, transformer: droppable());
 
     on<UndoEditorEvent>(_handleUndo, transformer: droppable());
 
     on<RedoEditorEvent>(_handleRedo, transformer: droppable());
+
+    on<DragEditorEvent>(_handleDrag, transformer: droppable());
 
     on<DragStartEditorEvent>(_handleDragStart, transformer: droppable());
 
@@ -86,6 +114,21 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
     on<RemoveElementEditorEvent>(_handleRemoveElement,
         transformer: droppable());
+
+    on<MakeElementLargerEditorEvent>(
+      _handleMakeElementLarger,
+      transformer: droppable(),
+    );
+
+    on<MakeElementSmallerEditorEvent>(
+      _handleMakeElementSmaller,
+      transformer: droppable(),
+    );
+
+    on<BringToFrontEditorEvent>(
+      _handleBringToFront,
+      transformer: droppable(),
+    );
 
     // save the initial state of the editor
     _saveState(state);
@@ -133,6 +176,237 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     });
   }
 
+  Future<void> _handleAddStaticText(
+      AddStaticTextEditorEvent event, Emitter emit) async {
+    // TODO: add tests ( and test that it saves the state)
+
+    // get the approximate size of the default text that will be displayed
+    final Size size = AppLocalizations.of(event.context)!.typeText.textSize(
+          textStyle: const material.TextStyle(fontSize: 30),
+          textDirection: material.Directionality.of(event.context),
+        );
+
+    emit(
+      state.copyWith(
+        editor: state.editor.addElement(
+          Element(
+            id: _elementIdGenerator.generate(),
+            rect: Rect.fromLTWH(0.0, 0.0, size.width + 0.1 * size.width,
+                size.height + 0.1 * size.height),
+            elementType: ElementType.text(
+              value: AppLocalizations.of(event.context)!.typeText,
+              textStyle: const material.TextStyle(
+                fontSize: 30,
+                color: material.Colors.black,
+              ),
+            ),
+            showOrder: optionOf(
+              state.editor.elementsSortedByShowOrder.lastOrNull,
+            ).fold(() => 1, (e) => e.showOrder + 1),
+          ),
+        ),
+      ),
+    );
+
+    // save the state after adding the text
+    _saveState(state);
+  }
+
+  Future<void> _handleAddVariableText(
+      AddVariableTextEditorEvent event, Emitter emit) async {
+    // TODO: add tests ( and test that it saves the state)
+
+    // get the approximate size of the default text that will be displayed
+    final Size size =
+        AppLocalizations.of(event.context)!.generatedTextAppearsHere.textSize(
+              textStyle: const material.TextStyle(fontSize: 30),
+              textDirection: material.Directionality.of(event.context),
+            );
+
+    emit(
+      state.copyWith(
+        editor: state.editor.addElement(
+          Element(
+            id: _elementIdGenerator.generate(),
+            rect: Rect.fromLTWH(0.0, 0.0, size.width + 0.1 * size.width,
+                size.height + 0.1 * size.height),
+            elementType: ElementType.variableText(
+              placeHolderText:
+                  AppLocalizations.of(event.context)!.generatedTextAppearsHere,
+              sourceFilePath: '',
+              textStyle: const material.TextStyle(
+                fontSize: 30,
+                color: material.Colors.black,
+              ),
+            ),
+            showOrder: optionOf(
+              state.editor.elementsSortedByShowOrder.lastOrNull,
+            ).fold(() => 1, (e) => e.showOrder + 1),
+          ),
+        ),
+      ),
+    );
+
+    // save the state after adding the text
+    _saveState(state);
+  }
+
+  Future<void> _handleVariableTextStyleChangedEvent(
+      VariableTextElementTextStyleChangedEditorEvent event,
+      Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  elementType:
+                      (selectedElement.elementType as VariableTextElementType)
+                          .copyWith(
+                    textStyle: event.updatedTextStyle,
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
+  }
+
+  Future<void> _handleVariableTextFileChangedEvent(
+      VariableTextElementFileChangedEvent event, Emitter emit) async {
+    await state.selectedElementId.fold(
+      () {
+        // no selected element set, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+      (selectedElementId) async {
+        File file =
+            (await _filePicker.pickSingleFile(allowedExtensions: ['txt']))
+                .fold(() => File(''), id);
+        return state.editor.elementById(selectedElementId).fold(
+          () {
+            // no selected element set, invalid state
+            _logger.e(EditorStateError.simultaneousDragStart);
+            throw const EditorStateError(
+                EditorStateError.simultaneousDragStart);
+          },
+          (selectedElement) {
+            emit(
+              state.copyWith(
+                editor: state.editor.updateElement(
+                  selectedElement.copyWith(
+                    elementType:
+                        (selectedElement.elementType as VariableTextElementType)
+                            .copyWith(
+                      sourceFilePath: file.path,
+                      placeHolderText: file.path.isNotEmpty
+                          ? file.path.split(Platform.pathSeparator).last
+                          : AppLocalizations.of(event.context)!
+                              .generatedTextAppearsHere,
+                    ),
+                  ),
+                ),
+              ),
+            );
+            // save the state
+            _saveState(state);
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _handleTextChangedEvent(
+      TextElementTextChangedEditorEvent event, Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          // final TextElementType currentTextElementType =
+          //     selectedElement.elementType as TextElementType;
+          //
+          // // get the new size of the element
+          // final ui.Size updatedSize = event.updatedText.textSize(
+          //   textStyle: currentTextElementType.textStyle,
+          //   textDirection: material.Directionality.of(event.context),
+          // );
+
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  elementType: ElementType.text(
+                      value: event.updatedText,
+                      textStyle:
+                          (selectedElement.elementType as TextElementType)
+                              .textStyle),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
+  }
+
+  Future<void> _handleTextStyleChangedEvent(
+      TextElementTextStyleChangedEditorEvent event, Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  elementType:
+                      (selectedElement.elementType as TextElementType).copyWith(
+                    textStyle: event.updatedTextStyle,
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
+  }
+
   Future<void> _handleAddImage(AddImageEditorEvent event, Emitter emit) async {
     final result = await _filePicker.pickSingleFile(
       allowedExtensions: allowedFileExtensions.unlock,
@@ -161,6 +435,20 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         // save the state after adding the image
         _saveState(state);
       },
+    );
+  }
+
+  Future<void> _handleDrag(DragEditorEvent event, Emitter emit) async {
+    emit(
+      state.copyWith(
+        editor: state.editor.translateElement(
+          event.elementId,
+          Offset(
+            event.delta.dx,
+            event.delta.dy,
+          ),
+        ),
+      ),
     );
   }
 
@@ -291,5 +579,96 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
     // save the state after removing
     _saveState(state);
+  }
+
+  Future<void> _handleMakeElementLarger(
+      MakeElementLargerEditorEvent event, Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  rect: selectedElement.rect.inflate(10.0),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
+  }
+
+  Future<void> _handleMakeElementSmaller(
+      MakeElementSmallerEditorEvent event, Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  rect: selectedElement.rect.deflate(10.0),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
+  }
+
+  Future<void> _handleBringToFront(
+      BringToFrontEditorEvent event, Emitter emit) async {
+    state.selectedElementId
+        .flatMap(
+      (selectedElementId) => state.editor.elementById(selectedElementId).map(
+        (selectedElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                selectedElement.copyWith(
+                  showOrder:
+                      state.editor.elementsSortedByShowOrder.last.showOrder + 1,
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    )
+        .getOrElse(
+      () {
+        // no selected element set or selected element is not in the editor, invalid state
+        _logger.e(EditorStateError.simultaneousDragStart);
+        throw const EditorStateError(EditorStateError.simultaneousDragStart);
+      },
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AboutScreen extends StatelessWidget {
   static const String routeName = '/about-screen';
@@ -31,6 +32,14 @@ class AboutScreen extends StatelessWidget {
                     AppLocalizations.of(context)!.pressAnywhereToGoBack,
                     style: toc.textTheme.bodySmall!.copyWith(
                       color: toc.colorScheme.onBackground,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  Text(
+                    AppLocalizations.of(context)!.love,
+                    style: GoogleFonts.amiri().copyWith(
+                      color: toc.colorScheme.onBackground,
+                      fontSize: 40
                     ),
                   ),
                 ],

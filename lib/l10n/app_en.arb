@@ -33,5 +33,13 @@
   "showOrder": "Show Order",
   "size": "Size",
   "chooseAnElementToSeeItsProperties": "Choose an element to see its properties.",
-  "resetSize": "Reset Size"
+  "resetSize": "Reset Size",
+  "editText": "Edit Text",
+  "makeLarger": "Make Larger",
+  "makeSmaller": "Make Smaller",
+  "fontSize": "Font Size",
+  "changeColor": "Change Color",
+  "generatedTextAppearsHere": "Generated text appears here.",
+  "textJustification": "Text Justification",
+  "love": "❤ This app is dedicated for my love, Love you Mom ❤"
 }

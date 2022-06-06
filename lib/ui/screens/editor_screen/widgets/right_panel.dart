@@ -118,6 +118,11 @@ class RightPanel extends StatelessWidget {
           );
         },
         text: (textElement) => Container(),
+        variableText: (textElement) => _property(
+          context,
+          AppLocalizations.of(context)!.fileName,
+          textElement.sourceFilePath,
+        ),
       ),
     );
   }

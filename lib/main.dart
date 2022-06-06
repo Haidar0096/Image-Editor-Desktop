@@ -12,10 +12,14 @@ import 'package:photo_editor/ui/common/animations/route_transitions.dart'
     as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/screenshot_cubit.dart';
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/editor_screen.dart';
 import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
 import 'package:window_size/window_size.dart' as window_size;
+
+import 'dependency_injection/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,13 +44,21 @@ class PhotoEditorApp extends StatelessWidget {
         child: Builder(
           builder: (context) =>
               BlocBuilder<LocalizationCubit, LocalizationState>(
-            builder: (context, state) => MaterialApp(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-              locale: state.locale,
-              theme: styles.themeData,
-              onGenerateRoute: _onGenerateRoute,
+            builder: (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                    create: (context) => serviceLocator.get<EditorBloc>()),
+                BlocProvider(
+                    create: (context) => serviceLocator.get<ScreenshotCubit>())
+              ],
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                supportedLocales: AppLocalizations.supportedLocales,
+                locale: state.locale,
+                theme: styles.themeData,
+                onGenerateRoute: _onGenerateRoute,
+              ),
             ),
           ),
         ),

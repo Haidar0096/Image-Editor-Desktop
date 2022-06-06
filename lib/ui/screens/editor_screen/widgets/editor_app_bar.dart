@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/ui/common/widgets/custom_popup_menu.dart';
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/screenshot_cubit.dart';
 import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -106,14 +107,20 @@ class EditorAppBar extends StatelessWidget {
           iconData: Icons.text_fields_outlined,
           message: AppLocalizations.of(context)!.addStaticText,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddStaticTextEditorEvent());
+            context.read<EditorBloc>().add(
+                  AddStaticTextEditorEvent(
+                    context: context,
+                  ),
+                );
           },
         ),
         _lowerRowAction(
           iconData: Icons.functions,
           message: AppLocalizations.of(context)!.addVariableText,
           onPressed: () {
-            context.read<EditorBloc>().add(const AddVariableTextEditorEvent());
+            context.read<EditorBloc>().add(
+                  AddVariableTextEditorEvent(context: context),
+                );
           },
         ),
         _lowerRowAction(
@@ -147,15 +154,26 @@ class EditorAppBar extends StatelessWidget {
           text: AppLocalizations.of(context)!.save,
           onTap: () {
             // todo save editor as image
+            if (!context.read<ScreenshotCubit>().state.isProcessing) {
+              context.read<ScreenshotCubit>().captureWidget(
+                    context: context,
+                    elements: context
+                        .read<EditorBloc>()
+                        .state
+                        .editor
+                        .elements
+                        .toList(),
+                  );
+            }
           },
         ),
-        _buildMenuButton(
-          context: context,
-          text: AppLocalizations.of(context)!.generate,
-          onTap: () {
-            // todo generate images
-          },
-        ),
+        // _buildMenuButton(
+        //   context: context,
+        //   text: AppLocalizations.of(context)!.generate,
+        //   onTap: () {
+        //     // todo generate images
+        //   },
+        // ),
       ],
     );
   }

@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'editor_element_widget.dart';
+import 'editor_element_widget_delegate.dart';
 
 class EditorWidget extends StatefulWidget {
   final BoxConstraints constraints;
@@ -27,6 +27,7 @@ class _EditorWidgetState extends State<EditorWidget> {
   /// whether the scale value widget should be visible or not
   bool _scaleValueVisible = false;
 
+  /// Whether the editor widget is centered as it was when it was created.
   bool get _editorCentered => _scaleController.value == Matrix4.identity();
 
   @override
@@ -76,46 +77,46 @@ class _EditorWidgetState extends State<EditorWidget> {
     );
   }
 
-  Stack _editorComponents(BuildContext context) {
-    return Stack(
-      children: [
-        ..._editorElementsWidgets(context),
-        _gestureDetector(context),
-        if (_scaleValueVisible) _scaleValueWidget(context),
-        if (!_editorCentered) _resetZoomButton(context)
-      ],
+  Widget _editorComponents(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapUp: (details) {
+        context.read<EditorBloc>().add(TapUpEditorEvent(details.localPosition));
+      },
+      onPanStart: (details) {
+        context
+            .read<EditorBloc>()
+            .add(DragStartEditorEvent(details.localPosition));
+      },
+      onPanUpdate: (details) {
+        context
+            .read<EditorBloc>()
+            .add(DragUpdateEditorEvent(details.localPosition));
+      },
+      onPanEnd: (details) {
+        context.read<EditorBloc>().add(const DragEndEditorEvent());
+      },
+      child: Stack(
+        children: [
+          ..._editorElementsWidgets(context),
+          if (_scaleValueVisible) _scaleValueWidget(context),
+          if (!_editorCentered) _resetZoomButton(context)
+        ],
+      ),
     );
   }
 
   Iterable<Widget> _editorElementsWidgets(BuildContext context) {
-    final EditorState state = context.read<EditorBloc>().state;
-    return state.editor.elements
+    return context
+        .read<EditorBloc>()
+        .state
+        .editor
+        .elements
         .sorted((a, b) => a.showOrder.compareTo(b.showOrder))
         .map(
       (element) {
-        // check if this element is selected
-        bool isSelected = state.selectedElementId.fold(
-          () {
-            // there is no selected element
-            return false;
-          },
-          (selectedId) {
-            // there is selected element
-            if (element.id == selectedId) {
-              // this element is selected
-              return true;
-            } else {
-              // this element is not selected
-              return false;
-            }
-          },
-        );
-
         // create widget based on element type
-        Widget stackChild = EditorElementWidget(
-          element: element,
-          isSelected: isSelected,
-        );
+        Widget stackChild = EditorElementWidgetDelegate(element: element);
 
         // wrap with Positioned
         stackChild = Positioned.fromRect(
@@ -125,31 +126,6 @@ class _EditorWidgetState extends State<EditorWidget> {
 
         return stackChild;
       },
-    );
-  }
-
-  Positioned _gestureDetector(BuildContext context) {
-    return Positioned.fill(
-      child: GestureDetector(
-        onTapUp: (details) {
-          context
-              .read<EditorBloc>()
-              .add(TapUpEditorEvent(details.localPosition));
-        },
-        onPanStart: (details) {
-          context
-              .read<EditorBloc>()
-              .add(DragStartEditorEvent(details.localPosition));
-        },
-        onPanUpdate: (details) {
-          context
-              .read<EditorBloc>()
-              .add(DragUpdateEditorEvent(details.localPosition));
-        },
-        onPanEnd: (details) {
-          context.read<EditorBloc>().add(const DragEndEditorEvent());
-        },
-      ),
     );
   }
 

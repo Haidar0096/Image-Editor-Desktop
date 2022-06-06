@@ -1,4 +1,6 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart' as material;
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,7 +35,7 @@ class Element with _$Element {
   const factory Element({
     required ElementId id,
     required ElementType elementType,
-    required Rect rect,
+    required ui.Rect rect,
     required int showOrder,
   }) = _Element;
 }
@@ -44,5 +46,12 @@ class ElementType with _$ElementType {
 
   const factory ElementType.text({
     required String value,
+    material.TextStyle? textStyle,
   }) = TextElementType;
+
+  const factory ElementType.variableText({
+    required String placeHolderText,
+    material.TextStyle? textStyle,
+    required String sourceFilePath,
+  }) = VariableTextElementType;
 }
