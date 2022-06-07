@@ -18,7 +18,7 @@ class EditorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final toc = Theme.of(context);
 
-    const leftPanelFlex = 5;
+    const leftPanelFlex = 8;
     const rightPanelFlex = 10;
     const editorWidgetFlex = 100 - leftPanelFlex - rightPanelFlex;
 
@@ -30,50 +30,59 @@ class EditorScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: toc.colorScheme.background,
-          body: Column(
+          body: Stack(
             children: [
-              const Expanded(
-                flex: appBarFlex,
-                child: EditorAppBar(),
-              ),
-              Expanded(
-                flex: bodyFlex,
-                child: Row(
-                  children: [
-                    const Expanded(
-                      flex: leftPanelFlex,
-                      child: LeftPanel(),
-                    ),
-                    Expanded(
-                      flex: editorWidgetFlex,
-                      child: context
-                          .read<ScreenshotCubit>()
-                          .state
-                          .isProcessing
-                          ? const Center(child: CircularProgressIndicator())
-                          : BlocBuilder<EditorBloc, EditorState>(
-                        builder: (context, state) {
-                          return LayoutBuilder(
-                            builder: (context, constraints) {
-                              return EditorWidget(
-                                constraints: constraints,
+              Column(
+                children: [
+                  const Expanded(
+                    flex: appBarFlex,
+                    child: EditorAppBar(),
+                  ),
+                  Expanded(
+                    flex: bodyFlex,
+                    child: Row(
+                      children: [
+                        const Expanded(
+                          flex: leftPanelFlex,
+                          child: LeftPanel(),
+                        ),
+                        Expanded(
+                          flex: editorWidgetFlex,
+                          child: BlocBuilder<EditorBloc, EditorState>(
+                            builder: (context, state) {
+                              return LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return EditorWidget(
+                                    constraints: constraints,
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
+                          ),
+                        ),
+                        const Expanded(
+                          flex: rightPanelFlex,
+                          child: RightPanel(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Expanded(
+                    flex: navBarFlex,
+                    child: EditorNavBar(),
+                  ),
+                ],
+              ),
+              if (state.isProcessing)
+                Positioned.fill(
+                  child: AbsorbPointer(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: toc.colorScheme.onBackground,
                       ),
                     ),
-                    const Expanded(
-                      flex: rightPanelFlex,
-                      child: RightPanel(),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              const Expanded(
-                flex: navBarFlex,
-                child: EditorNavBar(),
-              ),
             ],
           ),
         );

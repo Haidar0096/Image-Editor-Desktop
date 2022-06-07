@@ -152,10 +152,10 @@ class EditorAppBar extends StatelessWidget {
         _buildMenuButton(
           context: context,
           text: AppLocalizations.of(context)!.save,
-          onTap: () {
+          onTap: () async {
             // todo save editor as image
             if (!context.read<ScreenshotCubit>().state.isProcessing) {
-              context.read<ScreenshotCubit>().captureWidget(
+              await context.read<ScreenshotCubit>().captureWidget(
                     context: context,
                     elements: context
                         .read<EditorBloc>()

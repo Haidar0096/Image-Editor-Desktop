@@ -31,7 +31,7 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
     emit(state.copyWith(isProcessing: true));
 
     // choose storage location
-    (await _filePicker.pickPath()).fold(() {
+    await (await _filePicker.pickPath()).fold(() {
       // no path was chosen
     }, (dir) async {
       // a path was chosen
@@ -72,7 +72,7 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
           // (all indexes in files are treated as parallel)
           for (int i = 0; i < filesData.values.first.length; i++) {
             final File file = File(
-                '${dir.path}${Platform.pathSeparator}editor_${i}_${DateTime.now().hour}_${DateTime.now().minute}_${DateTime.now().second}.png');
+                '${dir.path}${Platform.pathSeparator}${i}_editor_${DateTime.now().hour}_${DateTime.now().minute}_${DateTime.now().second}.png');
             // substitute the variable texts with their corresponding values
             List<editor.Element> currentSubstitutedElements = elements.map(
               (element) {
