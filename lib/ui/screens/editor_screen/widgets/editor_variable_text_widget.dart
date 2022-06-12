@@ -13,6 +13,7 @@ class EditorVariableTextWidget extends StatelessWidget {
     return Text(
       elementType.placeHolderText,
       style: elementType.textStyle,
+      textAlign: TextAlign.center,
     );
   }
 }
