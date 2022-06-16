@@ -6,8 +6,9 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:collection/collection.dart';
 
 extension EditorExtension on Editor {
-  /// Adds an element to the editor. Returns the same editor if the id
-  /// of the added element already exists in the editor.
+  /// Adds an element to the editor and returns a new editor with that element added.
+  ///
+  /// Returns the same editor if the id of the added element already exists in the editor.
   Editor addElement(Element element) {
     if (elements.any((e) => e.id == element.id)) {
       return this;
@@ -15,7 +16,9 @@ extension EditorExtension on Editor {
     return copyWith(elements: elements.add(element));
   }
 
-  /// Updates the element in the editor which has the provided element's id.
+  /// Updates the element in the editor which has the provided element's id and returns the new
+  /// updated editor.
+  ///
   /// If no such element exists, then the element will be added to the editor.
   Editor updateElement(Element updated) {
     return copyWith(
@@ -23,12 +26,15 @@ extension EditorExtension on Editor {
     );
   }
 
-  /// Removes an element from the editor. Returns the same editor if the id does not exist.
+  /// Removes an element from the editor and returns the new updated editor.
+  ///
+  /// Returns the same editor if the id does not exist.
   Editor removeElement(ElementId id) {
     return copyWith(elements: elements.removeWhere((e) => e.id == id));
   }
 
-  /// Translates the given element's rect by the given offset.
+  /// Translates the given element's rect by the given offset and returns the new updated editor.
+  ///
   /// Returns the same editor if the id of the element was not found.
   Editor translateElement(ElementId id, Offset delta) {
     return optionOf(elements.where((e) => e.id == id).firstOrNull).fold(
@@ -38,12 +44,12 @@ extension EditorExtension on Editor {
     );
   }
 
-  /// Removes all the elements from the editor.
+  /// Removes all the elements from the editor and returns the new updated editor.
   Editor clear() {
     return copyWith(elements: elements.clear());
   }
 
-  /// Returns an option of the element with the given id
+  /// Returns [some] with the element with the given id if it exists, or [none] otherwise.
   Option<Element> elementById(ElementId id) =>
       optionOf(elements.where((element) => element.id == id).firstOrNull);
 

@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:uuid/uuid.dart';
 
+/// A generator of unique IDs for elements of the editor.
 abstract class ElementIdGenerator {
   ElementId generate();
 }
