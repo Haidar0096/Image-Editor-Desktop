@@ -2,13 +2,13 @@ import 'dart:io' as io;
 
 import 'package:dartz/dartz.dart';
 import 'package:file_picker/file_picker.dart' as api;
-import 'package:injectable/injectable.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 
 /// The default implementation of [FilePicker]. It uses the file_picker package for the implementation.
-@Injectable(as: FilePicker)
-class FilePickerImpl implements FilePicker {
-  final api.FilePicker _filePicker = api.FilePicker.platform;
+class FilePickerDefaultImpl implements FilePicker {
+  final api.FilePicker apiFilePicker;
+
+  FilePickerDefaultImpl({required this.apiFilePicker});
 
   @override
   Future<Option<io.File>> pickSingleFile({
@@ -16,7 +16,7 @@ class FilePickerImpl implements FilePicker {
     String? dialogTitle,
     List<String>? allowedExtensions,
   }) async {
-    final api.FilePickerResult? pickerResult = await _filePicker.pickFiles(
+    final api.FilePickerResult? pickerResult = await apiFilePicker.pickFiles(
       allowedExtensions: allowedExtensions,
       type: allowedExtensions == null ? api.FileType.any : api.FileType.custom,
       allowMultiple: false,
@@ -32,7 +32,7 @@ class FilePickerImpl implements FilePicker {
     String? dialogTitle,
     String? initialDirectory,
   }) async {
-    final String? directoryString = await _filePicker.getDirectoryPath(
+    final String? directoryString = await apiFilePicker.getDirectoryPath(
       dialogTitle: dialogTitle,
       initialDirectory: initialDirectory,
     );

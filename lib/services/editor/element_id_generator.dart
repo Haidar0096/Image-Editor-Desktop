@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 
 /// A generator of unique IDs for elements of the editor.
 abstract class ElementIdGenerator {
+  /// Generates a unique [ElementId].
   ElementId generate();
 }
 

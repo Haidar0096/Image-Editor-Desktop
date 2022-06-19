@@ -1,5 +1,6 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 
+/// Holds the supported languages.
 class Language {
   final String languageCode;
 
@@ -8,5 +9,6 @@ class Language {
   static const Language ar = Language._('ar');
   static const Language en = Language._('en');
 
-  static get languages => IList(const [Language.en, Language.ar]);
+  static IList<Language> get languages =>
+      IList(const [Language.en, Language.ar]);
 }

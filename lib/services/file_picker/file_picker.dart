@@ -1,9 +1,15 @@
 import 'dart:io' as io;
 
 import 'package:dartz/dartz.dart';
+import 'package:photo_editor/services/file_picker/file_picker_impl.dart';
+import 'package:file_picker/file_picker.dart' as api;
 
 /// A class that can be used to choose files from the file system.
 abstract class FilePicker {
+  /// Creates a file picker that can be used to pick files or directories from the filesystem.
+  factory FilePicker() =>
+      FilePickerDefaultImpl(apiFilePicker: api.FilePicker.platform);
+
   /// Picks a single file from the file system.
   ///
   /// - [allowedExtensions]: the allowed extensions that can be chosen from.

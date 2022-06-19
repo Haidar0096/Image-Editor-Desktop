@@ -1,11 +1,11 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'dart:ui';
 
-import 'languages.dart';
+import 'language.dart';
 
 part 'localization_state.dart';
 
-///Tracks and sets the locale of the app
+///Manages the locale of the app.
 class LocalizationCubit extends HydratedCubit<LocalizationState> {
   LocalizationCubit()
       : super(

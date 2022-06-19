@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:dartz/dartz.dart' hide ISet, IList;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
@@ -36,7 +36,7 @@ extension EditorExtension on Editor {
   /// Translates the given element's rect by the given offset and returns the new updated editor.
   ///
   /// Returns the same editor if the id of the element was not found.
-  Editor translateElement(ElementId id, Offset delta) {
+  Editor translateElement(ElementId id, ui.Offset delta) {
     return optionOf(elements.where((e) => e.id == id).firstOrNull).fold(
       () => this,
       (element) => updateElement(
@@ -60,7 +60,7 @@ extension EditorExtension on Editor {
 
   /// Returns a list of the elements present at a given position sorted by their show order,
   /// or an empty list if the editor is empty.
-  IList<Element> elementsAtPosition(Offset position) => elements
+  IList<Element> elementsAtPosition(ui.Offset position) => elements
       .where((element) {
         return element.rect.contains(position);
       })

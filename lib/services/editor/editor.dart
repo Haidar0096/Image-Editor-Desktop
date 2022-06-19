@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' as material;
+import 'package:flutter/widgets.dart' as widgets;
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -49,7 +49,7 @@ class Element with _$Element {
     required ElementProperties properties,
 
     /// The rectangle in which the element is contained.
-    required material.Rect rect,
+    required widgets.Rect rect,
 
     /// The order this element should be shown amongst other elements in the editor.
     required int showOrder,
@@ -71,7 +71,7 @@ class ElementProperties with _$ElementProperties {
     required String text,
 
     /// The style of the text.
-    material.TextStyle? textStyle,
+    widgets.TextStyle? textStyle,
   }) = StaticTextProperties;
 
   /// Properties of a text that will be generated from a source file.
@@ -80,7 +80,7 @@ class ElementProperties with _$ElementProperties {
     required String placeHolderText,
 
     /// The style of the text.
-    material.TextStyle? textStyle,
+    widgets.TextStyle? textStyle,
 
     /// The path of the file containing the text to be generated.
     required String sourceFilePath,
