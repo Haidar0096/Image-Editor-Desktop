@@ -87,6 +87,9 @@ dependencies:
   # For picking colors
   flutter_colorpicker: ^1.0.3
 
+  # For useful functions on collections
+  collection: ^1.16.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,10 +1,9 @@
 import 'dart:collection';
 
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:injectable/injectable.dart';
-
-import 'package:photo_editor/extensions/list_extension.dart';
 
 /// A timeline of values of a variable of type [T].
 ///
