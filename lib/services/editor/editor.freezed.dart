@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'editor.dart';
@@ -11,21 +12,7 @@ part of 'editor.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EditorTearOff {
-  const _$EditorTearOff();
-
-  _Editor call({required ISet<Element> elements}) {
-    return _Editor(
-      elements: elements,
-    );
-  }
-}
-
-/// @nodoc
-const $Editor = _$EditorTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Editor {
@@ -65,27 +52,27 @@ class _$EditorCopyWithImpl<$Res> implements $EditorCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
-  factory _$EditorCopyWith(_Editor value, $Res Function(_Editor) then) =
-      __$EditorCopyWithImpl<$Res>;
+abstract class _$$_EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
+  factory _$$_EditorCopyWith(_$_Editor value, $Res Function(_$_Editor) then) =
+      __$$_EditorCopyWithImpl<$Res>;
   @override
   $Res call({ISet<Element> elements});
 }
 
 /// @nodoc
-class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
-    implements _$EditorCopyWith<$Res> {
-  __$EditorCopyWithImpl(_Editor _value, $Res Function(_Editor) _then)
-      : super(_value, (v) => _then(v as _Editor));
+class __$$_EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
+    implements _$$_EditorCopyWith<$Res> {
+  __$$_EditorCopyWithImpl(_$_Editor _value, $Res Function(_$_Editor) _then)
+      : super(_value, (v) => _then(v as _$_Editor));
 
   @override
-  _Editor get _value => super._value as _Editor;
+  _$_Editor get _value => super._value as _$_Editor;
 
   @override
   $Res call({
     Object? elements = freezed,
   }) {
-    return _then(_Editor(
+    return _then(_$_Editor(
       elements: elements == freezed
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
@@ -99,9 +86,8 @@ class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
 class _$_Editor implements _Editor {
   const _$_Editor({required this.elements});
 
-  @override
-
   /// The elements in the editor.
+  @override
   final ISet<Element> elements;
 
   @override
@@ -113,7 +99,7 @@ class _$_Editor implements _Editor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Editor &&
+            other is _$_Editor &&
             const DeepCollectionEquality().equals(other.elements, elements));
   }
 
@@ -123,42 +109,22 @@ class _$_Editor implements _Editor {
 
   @JsonKey(ignore: true)
   @override
-  _$EditorCopyWith<_Editor> get copyWith =>
-      __$EditorCopyWithImpl<_Editor>(this, _$identity);
+  _$$_EditorCopyWith<_$_Editor> get copyWith =>
+      __$$_EditorCopyWithImpl<_$_Editor>(this, _$identity);
 }
 
 abstract class _Editor implements Editor {
-  const factory _Editor({required ISet<Element> elements}) = _$_Editor;
+  const factory _Editor({required final ISet<Element> elements}) = _$_Editor;
 
   @override
 
   /// The elements in the editor.
-  ISet<Element> get elements;
+  ISet<Element> get elements => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EditorCopyWith<_Editor> get copyWith => throw _privateConstructorUsedError;
+  _$$_EditorCopyWith<_$_Editor> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ElementTearOff {
-  const _$ElementTearOff();
-
-  _Element call(
-      {required String id,
-      required ElementProperties properties,
-      required widgets.Rect rect,
-      required int showOrder}) {
-    return _Element(
-      id: id,
-      properties: properties,
-      rect: rect,
-      showOrder: showOrder,
-    );
-  }
-}
-
-/// @nodoc
-const $Element = _$ElementTearOff();
 
 /// @nodoc
 mixin _$Element {
@@ -235,9 +201,10 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
-  factory _$ElementCopyWith(_Element value, $Res Function(_Element) then) =
-      __$ElementCopyWithImpl<$Res>;
+abstract class _$$_ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
+  factory _$$_ElementCopyWith(
+          _$_Element value, $Res Function(_$_Element) then) =
+      __$$_ElementCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -250,13 +217,13 @@ abstract class _$ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
-    implements _$ElementCopyWith<$Res> {
-  __$ElementCopyWithImpl(_Element _value, $Res Function(_Element) _then)
-      : super(_value, (v) => _then(v as _Element));
+class __$$_ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
+    implements _$$_ElementCopyWith<$Res> {
+  __$$_ElementCopyWithImpl(_$_Element _value, $Res Function(_$_Element) _then)
+      : super(_value, (v) => _then(v as _$_Element));
 
   @override
-  _Element get _value => super._value as _Element;
+  _$_Element get _value => super._value as _$_Element;
 
   @override
   $Res call({
@@ -265,7 +232,7 @@ class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
     Object? rect = freezed,
     Object? showOrder = freezed,
   }) {
-    return _then(_Element(
+    return _then(_$_Element(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -295,21 +262,20 @@ class _$_Element implements _Element {
       required this.rect,
       required this.showOrder});
 
-  @override
-
   /// The unique id of the element.
-  final String id;
   @override
+  final String id;
 
   /// The properties of the element.
-  final ElementProperties properties;
   @override
+  final ElementProperties properties;
 
   /// The rectangle in which the element is contained.
-  final widgets.Rect rect;
   @override
+  final widgets.Rect rect;
 
   /// The order this element should be shown amongst other elements in the editor.
+  @override
   final int showOrder;
 
   @override
@@ -321,7 +287,7 @@ class _$_Element implements _Element {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Element &&
+            other is _$_Element &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.properties, properties) &&
@@ -339,71 +305,38 @@ class _$_Element implements _Element {
 
   @JsonKey(ignore: true)
   @override
-  _$ElementCopyWith<_Element> get copyWith =>
-      __$ElementCopyWithImpl<_Element>(this, _$identity);
+  _$$_ElementCopyWith<_$_Element> get copyWith =>
+      __$$_ElementCopyWithImpl<_$_Element>(this, _$identity);
 }
 
 abstract class _Element implements Element {
   const factory _Element(
-      {required String id,
-      required ElementProperties properties,
-      required widgets.Rect rect,
-      required int showOrder}) = _$_Element;
+      {required final String id,
+      required final ElementProperties properties,
+      required final widgets.Rect rect,
+      required final int showOrder}) = _$_Element;
 
   @override
 
   /// The unique id of the element.
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
 
   /// The properties of the element.
-  ElementProperties get properties;
+  ElementProperties get properties => throw _privateConstructorUsedError;
   @override
 
   /// The rectangle in which the element is contained.
-  widgets.Rect get rect;
+  widgets.Rect get rect => throw _privateConstructorUsedError;
   @override
 
   /// The order this element should be shown amongst other elements in the editor.
-  int get showOrder;
+  int get showOrder => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ElementCopyWith<_Element> get copyWith =>
+  _$$_ElementCopyWith<_$_Element> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ElementPropertiesTearOff {
-  const _$ElementPropertiesTearOff();
-
-  FileImageProperties fileImageProperties({required String sourceFilePath}) {
-    return FileImageProperties(
-      sourceFilePath: sourceFilePath,
-    );
-  }
-
-  StaticTextProperties staticTextProperties(
-      {required String text, widgets.TextStyle? textStyle}) {
-    return StaticTextProperties(
-      text: text,
-      textStyle: textStyle,
-    );
-  }
-
-  VariableTextProperties variableTextProperties(
-      {required String placeHolderText,
-      widgets.TextStyle? textStyle,
-      required String sourceFilePath}) {
-    return VariableTextProperties(
-      placeHolderText: placeHolderText,
-      textStyle: textStyle,
-      sourceFilePath: sourceFilePath,
-    );
-  }
-}
-
-/// @nodoc
-const $ElementProperties = _$ElementPropertiesTearOff();
 
 /// @nodoc
 mixin _$ElementProperties {
@@ -481,29 +414,29 @@ class _$ElementPropertiesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $FileImagePropertiesCopyWith<$Res> {
-  factory $FileImagePropertiesCopyWith(
-          FileImageProperties value, $Res Function(FileImageProperties) then) =
-      _$FileImagePropertiesCopyWithImpl<$Res>;
+abstract class _$$FileImagePropertiesCopyWith<$Res> {
+  factory _$$FileImagePropertiesCopyWith(_$FileImageProperties value,
+          $Res Function(_$FileImageProperties) then) =
+      __$$FileImagePropertiesCopyWithImpl<$Res>;
   $Res call({String sourceFilePath});
 }
 
 /// @nodoc
-class _$FileImagePropertiesCopyWithImpl<$Res>
+class __$$FileImagePropertiesCopyWithImpl<$Res>
     extends _$ElementPropertiesCopyWithImpl<$Res>
-    implements $FileImagePropertiesCopyWith<$Res> {
-  _$FileImagePropertiesCopyWithImpl(
-      FileImageProperties _value, $Res Function(FileImageProperties) _then)
-      : super(_value, (v) => _then(v as FileImageProperties));
+    implements _$$FileImagePropertiesCopyWith<$Res> {
+  __$$FileImagePropertiesCopyWithImpl(
+      _$FileImageProperties _value, $Res Function(_$FileImageProperties) _then)
+      : super(_value, (v) => _then(v as _$FileImageProperties));
 
   @override
-  FileImageProperties get _value => super._value as FileImageProperties;
+  _$FileImageProperties get _value => super._value as _$FileImageProperties;
 
   @override
   $Res call({
     Object? sourceFilePath = freezed,
   }) {
-    return _then(FileImageProperties(
+    return _then(_$FileImageProperties(
       sourceFilePath: sourceFilePath == freezed
           ? _value.sourceFilePath
           : sourceFilePath // ignore: cast_nullable_to_non_nullable
@@ -517,9 +450,8 @@ class _$FileImagePropertiesCopyWithImpl<$Res>
 class _$FileImageProperties implements FileImageProperties {
   const _$FileImageProperties({required this.sourceFilePath});
 
-  @override
-
   /// The path of the file containing this image.
+  @override
   final String sourceFilePath;
 
   @override
@@ -531,7 +463,7 @@ class _$FileImageProperties implements FileImageProperties {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FileImageProperties &&
+            other is _$FileImageProperties &&
             const DeepCollectionEquality()
                 .equals(other.sourceFilePath, sourceFilePath));
   }
@@ -542,8 +474,9 @@ class _$FileImageProperties implements FileImageProperties {
 
   @JsonKey(ignore: true)
   @override
-  $FileImagePropertiesCopyWith<FileImageProperties> get copyWith =>
-      _$FileImagePropertiesCopyWithImpl<FileImageProperties>(this, _$identity);
+  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith =>
+      __$$FileImagePropertiesCopyWithImpl<_$FileImageProperties>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -625,41 +558,41 @@ class _$FileImageProperties implements FileImageProperties {
 }
 
 abstract class FileImageProperties implements ElementProperties {
-  const factory FileImageProperties({required String sourceFilePath}) =
+  const factory FileImageProperties({required final String sourceFilePath}) =
       _$FileImageProperties;
 
   /// The path of the file containing this image.
-  String get sourceFilePath;
+  String get sourceFilePath => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FileImagePropertiesCopyWith<FileImageProperties> get copyWith =>
+  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StaticTextPropertiesCopyWith<$Res> {
-  factory $StaticTextPropertiesCopyWith(StaticTextProperties value,
-          $Res Function(StaticTextProperties) then) =
-      _$StaticTextPropertiesCopyWithImpl<$Res>;
+abstract class _$$StaticTextPropertiesCopyWith<$Res> {
+  factory _$$StaticTextPropertiesCopyWith(_$StaticTextProperties value,
+          $Res Function(_$StaticTextProperties) then) =
+      __$$StaticTextPropertiesCopyWithImpl<$Res>;
   $Res call({String text, widgets.TextStyle? textStyle});
 }
 
 /// @nodoc
-class _$StaticTextPropertiesCopyWithImpl<$Res>
+class __$$StaticTextPropertiesCopyWithImpl<$Res>
     extends _$ElementPropertiesCopyWithImpl<$Res>
-    implements $StaticTextPropertiesCopyWith<$Res> {
-  _$StaticTextPropertiesCopyWithImpl(
-      StaticTextProperties _value, $Res Function(StaticTextProperties) _then)
-      : super(_value, (v) => _then(v as StaticTextProperties));
+    implements _$$StaticTextPropertiesCopyWith<$Res> {
+  __$$StaticTextPropertiesCopyWithImpl(_$StaticTextProperties _value,
+      $Res Function(_$StaticTextProperties) _then)
+      : super(_value, (v) => _then(v as _$StaticTextProperties));
 
   @override
-  StaticTextProperties get _value => super._value as StaticTextProperties;
+  _$StaticTextProperties get _value => super._value as _$StaticTextProperties;
 
   @override
   $Res call({
     Object? text = freezed,
     Object? textStyle = freezed,
   }) {
-    return _then(StaticTextProperties(
+    return _then(_$StaticTextProperties(
       text: text == freezed
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -677,13 +610,12 @@ class _$StaticTextPropertiesCopyWithImpl<$Res>
 class _$StaticTextProperties implements StaticTextProperties {
   const _$StaticTextProperties({required this.text, this.textStyle});
 
-  @override
-
   /// The value of the text.
-  final String text;
   @override
+  final String text;
 
   /// The style of the text.
+  @override
   final widgets.TextStyle? textStyle;
 
   @override
@@ -695,7 +627,7 @@ class _$StaticTextProperties implements StaticTextProperties {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is StaticTextProperties &&
+            other is _$StaticTextProperties &&
             const DeepCollectionEquality().equals(other.text, text) &&
             const DeepCollectionEquality().equals(other.textStyle, textStyle));
   }
@@ -708,8 +640,8 @@ class _$StaticTextProperties implements StaticTextProperties {
 
   @JsonKey(ignore: true)
   @override
-  $StaticTextPropertiesCopyWith<StaticTextProperties> get copyWith =>
-      _$StaticTextPropertiesCopyWithImpl<StaticTextProperties>(
+  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith =>
+      __$$StaticTextPropertiesCopyWithImpl<_$StaticTextProperties>(
           this, _$identity);
 
   @override
@@ -793,24 +725,24 @@ class _$StaticTextProperties implements StaticTextProperties {
 
 abstract class StaticTextProperties implements ElementProperties {
   const factory StaticTextProperties(
-      {required String text,
-      widgets.TextStyle? textStyle}) = _$StaticTextProperties;
+      {required final String text,
+      final widgets.TextStyle? textStyle}) = _$StaticTextProperties;
 
   /// The value of the text.
-  String get text;
+  String get text => throw _privateConstructorUsedError;
 
   /// The style of the text.
-  widgets.TextStyle? get textStyle;
+  widgets.TextStyle? get textStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StaticTextPropertiesCopyWith<StaticTextProperties> get copyWith =>
+  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VariableTextPropertiesCopyWith<$Res> {
-  factory $VariableTextPropertiesCopyWith(VariableTextProperties value,
-          $Res Function(VariableTextProperties) then) =
-      _$VariableTextPropertiesCopyWithImpl<$Res>;
+abstract class _$$VariableTextPropertiesCopyWith<$Res> {
+  factory _$$VariableTextPropertiesCopyWith(_$VariableTextProperties value,
+          $Res Function(_$VariableTextProperties) then) =
+      __$$VariableTextPropertiesCopyWithImpl<$Res>;
   $Res call(
       {String placeHolderText,
       widgets.TextStyle? textStyle,
@@ -818,15 +750,16 @@ abstract class $VariableTextPropertiesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VariableTextPropertiesCopyWithImpl<$Res>
+class __$$VariableTextPropertiesCopyWithImpl<$Res>
     extends _$ElementPropertiesCopyWithImpl<$Res>
-    implements $VariableTextPropertiesCopyWith<$Res> {
-  _$VariableTextPropertiesCopyWithImpl(VariableTextProperties _value,
-      $Res Function(VariableTextProperties) _then)
-      : super(_value, (v) => _then(v as VariableTextProperties));
+    implements _$$VariableTextPropertiesCopyWith<$Res> {
+  __$$VariableTextPropertiesCopyWithImpl(_$VariableTextProperties _value,
+      $Res Function(_$VariableTextProperties) _then)
+      : super(_value, (v) => _then(v as _$VariableTextProperties));
 
   @override
-  VariableTextProperties get _value => super._value as VariableTextProperties;
+  _$VariableTextProperties get _value =>
+      super._value as _$VariableTextProperties;
 
   @override
   $Res call({
@@ -834,7 +767,7 @@ class _$VariableTextPropertiesCopyWithImpl<$Res>
     Object? textStyle = freezed,
     Object? sourceFilePath = freezed,
   }) {
-    return _then(VariableTextProperties(
+    return _then(_$VariableTextProperties(
       placeHolderText: placeHolderText == freezed
           ? _value.placeHolderText
           : placeHolderText // ignore: cast_nullable_to_non_nullable
@@ -859,17 +792,16 @@ class _$VariableTextProperties implements VariableTextProperties {
       this.textStyle,
       required this.sourceFilePath});
 
-  @override
-
   /// The text to show in the editing phase.
-  final String placeHolderText;
   @override
+  final String placeHolderText;
 
   /// The style of the text.
-  final widgets.TextStyle? textStyle;
   @override
+  final widgets.TextStyle? textStyle;
 
   /// The path of the file containing the text to be generated.
+  @override
   final String sourceFilePath;
 
   @override
@@ -881,7 +813,7 @@ class _$VariableTextProperties implements VariableTextProperties {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VariableTextProperties &&
+            other is _$VariableTextProperties &&
             const DeepCollectionEquality()
                 .equals(other.placeHolderText, placeHolderText) &&
             const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
@@ -898,8 +830,8 @@ class _$VariableTextProperties implements VariableTextProperties {
 
   @JsonKey(ignore: true)
   @override
-  $VariableTextPropertiesCopyWith<VariableTextProperties> get copyWith =>
-      _$VariableTextPropertiesCopyWithImpl<VariableTextProperties>(
+  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith =>
+      __$$VariableTextPropertiesCopyWithImpl<_$VariableTextProperties>(
           this, _$identity);
 
   @override
@@ -984,19 +916,19 @@ class _$VariableTextProperties implements VariableTextProperties {
 
 abstract class VariableTextProperties implements ElementProperties {
   const factory VariableTextProperties(
-      {required String placeHolderText,
-      widgets.TextStyle? textStyle,
-      required String sourceFilePath}) = _$VariableTextProperties;
+      {required final String placeHolderText,
+      final widgets.TextStyle? textStyle,
+      required final String sourceFilePath}) = _$VariableTextProperties;
 
   /// The text to show in the editing phase.
-  String get placeHolderText;
+  String get placeHolderText => throw _privateConstructorUsedError;
 
   /// The style of the text.
-  widgets.TextStyle? get textStyle;
+  widgets.TextStyle? get textStyle => throw _privateConstructorUsedError;
 
   /// The path of the file containing the text to be generated.
-  String get sourceFilePath;
+  String get sourceFilePath => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VariableTextPropertiesCopyWith<VariableTextProperties> get copyWith =>
+  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith =>
       throw _privateConstructorUsedError;
 }

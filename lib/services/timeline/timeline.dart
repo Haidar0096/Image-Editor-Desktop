@@ -1,6 +1,10 @@
+import 'dart:collection';
+
 import 'package:dartz/dartz.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+
+import 'package:photo_editor/extensions/list_extension.dart';
 
 /// A timeline of values of a variable of type [T].
 ///
@@ -11,7 +15,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 /// If there is no next (resp. previous) element available (i.e. the current index in the timeline list is at
 /// the end (resp. beginning)), then the same current element at the end (resp. beginning) of the list will be
 /// returned.
+@injectable
 abstract class Timeline<T> {
+  @factoryMethod
   factory Timeline({int? maxSize}) =>
       TimelineDefaultImpl(maxSize: maxSize ?? 30);
 
