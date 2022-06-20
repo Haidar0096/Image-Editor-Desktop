@@ -1,14 +1,13 @@
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-
 /// Holds the supported languages.
-class Language {
-  final String languageCode;
+enum Language { english, arabic }
 
-  const Language._(this.languageCode);
-
-  static const Language ar = Language._('ar');
-  static const Language en = Language._('en');
-
-  static IList<Language> get languages =>
-      IList(const [Language.en, Language.ar]);
+extension LanguageExtension on Language {
+  String get languageCode {
+    switch (this) {
+      case Language.english:
+        return 'en';
+      case Language.arabic:
+        return 'ar';
+    }
+  }
 }
