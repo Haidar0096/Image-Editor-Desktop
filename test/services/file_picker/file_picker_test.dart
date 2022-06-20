@@ -9,12 +9,13 @@ import 'package:photo_editor/services/file_picker/file_picker_impl.dart';
 
 import 'file_picker_test.mocks.dart';
 
-@GenerateMocks([api.FilePicker])
+@GenerateMocks([],
+    customMocks: [MockSpec<api.FilePicker>(as: #MockApiFilePicker)])
 void main() {
   group('pickSingleFile', () {
     test('Should return the correct result when a file is picked,', () async {
       // set up the mocks
-      final MockFilePicker mockApiFilePicker = MockFilePicker();
+      final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
       when(
         mockApiFilePicker.pickFiles(
@@ -61,7 +62,7 @@ void main() {
     test('Should return the correct result when a file is not picked,',
         () async {
       // set up the mocks
-      final MockFilePicker mockApiFilePicker = MockFilePicker();
+      final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
       when(
         mockApiFilePicker.pickFiles(
@@ -99,7 +100,7 @@ void main() {
   group('pickPath', () {
     test('Should return the correct result when a path is picked,', () async {
       // set up the mocks
-      final MockFilePicker mockApiFilePicker = MockFilePicker();
+      final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
       when(
         mockApiFilePicker.getDirectoryPath(
@@ -127,7 +128,7 @@ void main() {
     test('Should return the correct result when a path is not picked,',
         () async {
       // set up the mocks
-      final MockFilePicker mockApiFilePicker = MockFilePicker();
+      final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
       when(
         mockApiFilePicker.getDirectoryPath(

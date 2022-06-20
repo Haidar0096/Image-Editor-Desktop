@@ -21,8 +21,8 @@ import 'package:mockito/mockito.dart' as _i1;
 /// A class which mocks [FilePicker].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFilePicker extends _i1.Mock implements _i2.FilePicker {
-  MockFilePicker() {
+class MockApiFilePicker extends _i1.Mock implements _i2.FilePicker {
+  MockApiFilePicker() {
     _i1.throwOnMissingStub(this);
   }
 
