@@ -2,7 +2,7 @@ import 'package:flutter/painting.dart';
 
 extension StringExtension on String {
   /// Returns an approximate size this text will have once placed in a Text widget with the provided properties.
-  /// The [minWidth] and [maxWidth] properties are needed to provide more accurate results.
+  /// The [minWidth] and [maxWidth] properties of the text to be displayed are needed to provide more accurate results.
   Size textSize({
     required TextDirection textDirection,
     required double textScaleFactor,
