@@ -23,8 +23,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final registerModule = _$RegisterModule();
-  gh.factory<_i3.ElementIdGenerator>(() => _i3.ElementIdGeneratorImpl());
-  gh.factory<_i4.FilePicker>(() => registerModule.filePicker);
+  gh.factory<_i3.ElementIdGenerator>(() => _i3.ElementIdGenerator());
+  gh.factory<_i4.FilePicker>(() => _i4.FilePicker());
   gh.factory<_i5.History<_i6.Editor>>(() => registerModule.editorHistory);
   gh.factory<_i7.Logger>(() => registerModule.logger);
   gh.factory<_i8.ScreenshotService>(() => _i8.ScreenshotServiceImpl());

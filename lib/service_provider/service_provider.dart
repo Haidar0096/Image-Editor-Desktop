@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:photo_editor/service_provider/service_provider.config.dart';
 import 'package:photo_editor/services/editor/editor.dart';
-import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/history/history.dart';
 
 final serviceProvider = GetIt.instance;
@@ -20,6 +19,4 @@ abstract class RegisterModule {
   Logger get logger => Logger();
 
   History<Editor> get editorHistory => History<Editor>(maxSize: 10);
-
-  FilePicker get filePicker => FilePicker();
 }
