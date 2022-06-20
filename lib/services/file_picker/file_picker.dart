@@ -1,12 +1,15 @@
 import 'dart:io' as io;
 
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:photo_editor/services/file_picker/file_picker_impl.dart';
 import 'package:file_picker/file_picker.dart' as api;
 
 /// A class that can be used to choose files from the file system.
+@injectable
 abstract class FilePicker {
   /// Creates a file picker that can be used to pick files or directories from the filesystem.
+  @factoryMethod
   factory FilePicker() =>
       FilePickerDefaultImpl(apiFilePicker: api.FilePicker.platform);
 
