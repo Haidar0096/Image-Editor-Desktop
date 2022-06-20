@@ -37,27 +37,54 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
+  # For choosing files from the file system
   file_picker: ^4.5.1
+
+  # For generating classes with copyWith and other useful features
   freezed_annotation: ^1.1.0
+
+  # For fp thingies
   dartz: ^0.10.1
+
+  # For dependency injection
   injectable: ^1.5.3
   get_it: ^7.2.0
+
+  # For state management
   flutter_bloc: ^8.0.1
   bloc_concurrency: ^0.2.0
   hydrated_bloc: ^8.1.0
-  flutter_hooks: ^0.18.3
+  bloc_test: ^9.0.3
+
+  # For generating ids
   uuid: ^3.0.6
+
+  # For logging
   logger: ^1.1.0
+
+  # For taking screenshots of widgets
   screenshot: ^1.2.3
+
+  # For controlling the app's window size
   window_size:
     git:
       url: https://github.com/google/flutter-desktop-embedding.git
       path: plugins/window_size
+
+  # For providing paths in the file system
   path_provider: ^2.0.9
+
+  # For fast immutable collections
   fast_immutable_collections: ^7.2.1
+
+  # For useful extensions for streams
   rxdart: ^0.27.3
-  bloc_test: ^9.0.3
+
+  # For free fonts
   google_fonts: ^3.0.1
+
+  # For picking colors
   flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
@@ -68,6 +95,7 @@ dev_dependencies:
   injectable_generator: ^1.5.2
   test: ^1.19.5
   mockito: ^5.1.0
+  mocktail: ^0.3.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -10,7 +10,8 @@ class LocalizationCubit extends HydratedCubit<LocalizationState> {
   LocalizationCubit()
       : super(
           LocalizationState(
-            locale: Locale.fromSubtags(languageCode: Language.english.languageCode),
+            locale:
+                Locale.fromSubtags(languageCode: Language.english.languageCode),
           ),
         );
 
