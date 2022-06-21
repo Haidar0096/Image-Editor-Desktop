@@ -33,7 +33,7 @@ void main() {
         int s = seed; // shorthand named variable for 'seed'
         String s1 = '0${s}0${s}0${s}0$s';
         String s2 = '0${s}0$s';
-        String s3 = '4${s}0${s}';
+        String s3 = '4${s}0$s';
         String s4 = '8${s}0$s';
         String s5 = '0${s}0${s}0${s}0${s}0${s}0$s';
         expect(generator.generate(), '$s1-$s2-$s3-$s4-$s5');
