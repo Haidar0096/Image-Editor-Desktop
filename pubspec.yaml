@@ -63,9 +63,6 @@ dependencies:
   # For logging
   logger: ^1.1.0
 
-  # For taking screenshots of widgets
-  screenshot: ^1.2.3
-
   # For controlling the app's window size
   window_size:
     git:
