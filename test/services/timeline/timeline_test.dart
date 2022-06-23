@@ -21,6 +21,10 @@ void main() {
       Timeline<int> t = Timeline(maxSize: 3);
       expect(t.maxSize, 3);
     });
+    test('Should have the correct default maxSize',(){
+      Timeline<int> t = Timeline();
+      expect(t.maxSize, 30);
+    });
   });
   group('length', () {
     test('Should return the length of the timeline correctly.', () {
