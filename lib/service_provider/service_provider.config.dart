@@ -25,7 +25,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i3.ElementIdGenerator>(() => _i3.ElementIdGenerator());
   gh.factory<_i4.FilePicker>(() => _i4.FilePicker());
   gh.factory<_i5.Logger>(() => registerModule.logger);
-  gh.factory<_i6.ScreenshotService>(() => _i6.ScreenshotServiceImpl());
+  gh.factory<_i6.ScreenshotService>(() => _i6.ScreenshotService());
   gh.factory<_i7.Timeline<dynamic>>(
       () => _i7.Timeline<dynamic>(maxSize: get<int>()));
   gh.factory<_i8.EditorBloc>(() => _i8.EditorBloc(get<_i4.FilePicker>(),
