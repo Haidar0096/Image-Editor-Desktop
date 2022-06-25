@@ -38,8 +38,7 @@ class EditorNavBar extends StatelessWidget {
                   child: Text(
                     state.dragPosition.fold(
                       () => '(0.0, 0.0)',
-                      (pos) =>
-                          '(${pos.dx.toStringAsFixed(1)},${pos.dy.toStringAsFixed(1)})',
+                      (pos) => '(${pos.dx.toStringAsFixed(1)},${pos.dy.toStringAsFixed(1)})',
                     ),
                     style: toc.textTheme.bodyMedium,
                     textAlign: TextAlign.center,

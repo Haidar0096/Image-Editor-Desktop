@@ -12,12 +12,8 @@ class ScreenshotServiceDefaultImpl implements ScreenshotService {
   Future<Uint8List> captureWidget({
     widgets.BuildContext? context,
     required widgets.Widget widget,
-  }) async {
-    return await _captureFromWidget(
-      widget,
-      context: context,
-    );
-  }
+  }) async =>
+      await _captureFromWidget(widget, context: context);
 
   /// [context] parameter is used to Inherit App Theme and MediaQuery data.
   Future<Uint8List> _captureFromWidget(
@@ -45,13 +41,11 @@ class ScreenshotServiceDefaultImpl implements ScreenshotService {
     Size logicalSize = ui.window.physicalSize / ui.window.devicePixelRatio;
     Size imageSize = ui.window.physicalSize;
 
-    assert(logicalSize.aspectRatio.toPrecision(5) ==
-        imageSize.aspectRatio.toPrecision(5));
+    assert(logicalSize.aspectRatio.toPrecision(5) == imageSize.aspectRatio.toPrecision(5));
 
     final RenderView renderView = RenderView(
       window: ui.window,
-      child: RenderPositionedBox(
-          alignment: Alignment.center, child: repaintBoundary),
+      child: RenderPositionedBox(alignment: Alignment.center, child: repaintBoundary),
       configuration: ViewConfiguration(
         size: logicalSize,
         devicePixelRatio: pixelRatio ?? 1.0,
@@ -71,13 +65,12 @@ class ScreenshotServiceDefaultImpl implements ScreenshotService {
     pipelineOwner.rootNode = renderView;
     renderView.prepareInitialFrame();
 
-    final widgets.RenderObjectToWidgetElement<RenderBox> rootElement =
-        widgets.RenderObjectToWidgetAdapter<RenderBox>(
-            container: repaintBoundary,
-            child: widgets.Directionality(
-              textDirection: TextDirection.ltr,
-              child: child,
-            )).attachToRenderTree(
+    final widgets.RenderObjectToWidgetElement<RenderBox> rootElement = widgets.RenderObjectToWidgetAdapter<RenderBox>(
+        container: repaintBoundary,
+        child: widgets.Directionality(
+          textDirection: TextDirection.ltr,
+          child: child,
+        )).attachToRenderTree(
       buildOwner,
     );
     // Render Widget
@@ -96,8 +89,7 @@ class ScreenshotServiceDefaultImpl implements ScreenshotService {
       // Reset the dirty flag
       isDirty = false;
 
-      image = await repaintBoundary.toImage(
-          pixelRatio: pixelRatio ?? (imageSize.width / logicalSize.width));
+      image = await repaintBoundary.toImage(pixelRatio: pixelRatio ?? (imageSize.width / logicalSize.width));
 
       // This delay should increase with Widget tree Size
       await Future.delayed(delay);
@@ -117,8 +109,7 @@ class ScreenshotServiceDefaultImpl implements ScreenshotService {
       //retry until capture is successful
     } while (isDirty && retryCounter >= 0);
 
-    final ByteData? byteData =
-        await image.toByteData(format: ui.ImageByteFormat.png);
+    final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
 
     return byteData!.buffer.asUint8List();
   }

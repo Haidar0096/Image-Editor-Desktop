@@ -4,8 +4,7 @@ import 'package:photo_editor/extensions/string_extension.dart';
 
 void main() {
   group('textSize', () {
-    testWidgets(
-        'Should return a correct approximate size of the text with a small error.',
+    testWidgets('Should return a correct approximate size of the text with a small error.',
         (WidgetTester tester) async {
       // set up the text and its properties
       const String text = '''

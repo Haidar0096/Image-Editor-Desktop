@@ -37,9 +37,8 @@ class RightPanel extends StatelessWidget {
                     // an element is selected
 
                     // get the selected element
-                    final editor.Element selectedElement = state.editor.elements
-                        .where((element) => element.id == selectedElementId)
-                        .first;
+                    final editor.Element selectedElement =
+                        state.editor.elements.where((element) => element.id == selectedElementId).first;
 
                     return ListView(children: [
                       _fileNameProperty(selectedElement, context),
@@ -63,8 +62,7 @@ class RightPanel extends StatelessWidget {
     );
   }
 
-  Padding _showOrderProperty(
-      BuildContext context, editor.Element selectedElement) {
+  Padding _showOrderProperty(BuildContext context, editor.Element selectedElement) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: _property(
@@ -86,8 +84,7 @@ class RightPanel extends StatelessWidget {
     );
   }
 
-  Padding _positionProperty(
-      BuildContext context, editor.Element selectedElement) {
+  Padding _positionProperty(BuildContext context, editor.Element selectedElement) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: _property(
@@ -105,8 +102,7 @@ class RightPanel extends StatelessWidget {
     );
   }
 
-  Padding _fileNameProperty(
-      editor.Element selectedElement, BuildContext context) {
+  Padding _fileNameProperty(editor.Element selectedElement, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: selectedElement.elementType.map(
@@ -157,8 +153,7 @@ class RightPanel extends StatelessWidget {
       children: [
         Text(
           title,
-          style: toc.textTheme.bodyLarge!
-              .copyWith(color: toc.colorScheme.inversePrimary),
+          style: toc.textTheme.bodyLarge!.copyWith(color: toc.colorScheme.inversePrimary),
           textAlign: TextAlign.center,
         ),
         _divider(context),

@@ -4,8 +4,7 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 class EditorVariableTextWidget extends StatelessWidget {
   final editor.Element element;
 
-  const EditorVariableTextWidget({Key? key, required this.element})
-      : super(key: key);
+  const EditorVariableTextWidget({Key? key, required this.element}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

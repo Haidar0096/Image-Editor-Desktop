@@ -8,8 +8,7 @@ class EditorScreenshotModelWidget extends StatelessWidget {
   final List<editor.Element> elements;
   final ThemeData theme;
 
-  const EditorScreenshotModelWidget({Key? key, required this.elements, required this.theme})
-      : super(key: key);
+  const EditorScreenshotModelWidget({Key? key, required this.elements, required this.theme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +50,7 @@ class EditorScreenshotModelWidget extends StatelessWidget {
 class EditorElementWidgetDelegateModel extends StatelessWidget {
   final editor.Element element;
 
-  const EditorElementWidgetDelegateModel({Key? key, required this.element})
-      : super(key: key);
+  const EditorElementWidgetDelegateModel({Key? key, required this.element}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -42,14 +42,10 @@ class TimelineDefaultImpl<T> implements Timeline<T> {
   }
 
   @override
-  void clear() {
-    _elements.clear();
-  }
+  void clear() => _elements.clear();
 
   @override
-  Option<T> get current {
-    return optionOf(_elements.getOrNull(_currentIndex));
-  }
+  Option<T> get current => optionOf(_elements.getOrNull(_currentIndex));
 
   @override
   Option<T> get next {
@@ -70,9 +66,7 @@ class TimelineDefaultImpl<T> implements Timeline<T> {
   }
 
   @override
-  Option<T> get top {
-    return optionOf(_elements.lastOrNull);
-  }
+  Option<T> get top => optionOf(_elements.lastOrNull);
 
   @override
   void toTheBeginning() {

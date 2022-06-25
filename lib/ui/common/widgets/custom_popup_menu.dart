@@ -47,7 +47,7 @@ const double _kMenuScreenPadding = 8.0;
 abstract class KPopupMenuEntry<T> extends StatefulWidget {
   /// Abstract const constructor. This constructor enables subclasses to provide
   /// const constructors so that they can be used in const expressions.
-  const KPopupMenuEntry({ Key? key }) : super(key: key);
+  const KPopupMenuEntry({Key? key}) : super(key: key);
 
   /// The amount of vertical space occupied by this entry.
   ///
@@ -86,7 +86,7 @@ class KPopupMenuDivider extends KPopupMenuEntry<Never> {
   /// Creates a horizontal divider for a popup menu.
   ///
   /// By default, the divider has a height of 16 logical pixels.
-  const KPopupMenuDivider({ Key? key, this.height = _kMenuDividerHeight }) : super(key: key);
+  const KPopupMenuDivider({Key? key, this.height = _kMenuDividerHeight}) : super(key: key);
 
   /// The height of the divider entry.
   ///
@@ -440,13 +440,13 @@ class KCheckedPopupMenuItem<T> extends KPopupMenuItem<T> {
     double height = kMinInteractiveDimension,
     Widget? child,
   }) : super(
-        key: key,
-        value: value,
-        enabled: enabled,
-        padding: padding,
-        height: height,
-        child: child,
-      );
+          key: key,
+          value: value,
+          enabled: enabled,
+          padding: padding,
+          height: height,
+          child: child,
+        );
 
   /// Whether to display a checkmark next to the menu item.
   ///
@@ -472,7 +472,8 @@ class KCheckedPopupMenuItem<T> extends KPopupMenuItem<T> {
   PopupMenuItemState<T, KCheckedPopupMenuItem<T>> createState() => _CheckedPopupMenuItemState<T>();
 }
 
-class _CheckedPopupMenuItemState<T> extends PopupMenuItemState<T, KCheckedPopupMenuItem<T>> with SingleTickerProviderStateMixin {
+class _CheckedPopupMenuItemState<T> extends PopupMenuItemState<T, KCheckedPopupMenuItem<T>>
+    with SingleTickerProviderStateMixin {
   static const Duration _fadeDuration = Duration(milliseconds: 150);
   late AnimationController _controller;
   Animation<double> get _opacity => _controller.view;
@@ -482,7 +483,7 @@ class _CheckedPopupMenuItemState<T> extends PopupMenuItemState<T, KCheckedPopupM
     super.initState();
     _controller = AnimationController(duration: _fadeDuration, vsync: this)
       ..value = widget.checked ? 1.0 : 0.0
-      ..addListener(() => setState(() { /* animation changed */ }));
+      ..addListener(() => setState(() {/* animation changed */}));
   }
 
   @override
@@ -605,12 +606,12 @@ class _PopupMenu<T> extends StatelessWidget {
 // Positioning of the menu on the screen.
 class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
   _PopupMenuRouteLayout(
-      this.position,
-      this.itemSizes,
-      this.selectedItemIndex,
-      this.textDirection,
-      this.padding,
-      );
+    this.position,
+    this.itemSizes,
+    this.selectedItemIndex,
+    this.textDirection,
+    this.padding,
+  );
 
   // Rectangle of underlying button, relative to the overlay's dimensions.
   final RelativeRect position;
@@ -685,12 +686,12 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
     if (x < _kMenuScreenPadding + padding.left) {
       x = _kMenuScreenPadding + padding.left;
     } else if (x + childSize.width > size.width - _kMenuScreenPadding - padding.right) {
-      x = size.width - childSize.width - _kMenuScreenPadding - padding.right  ;
+      x = size.width - childSize.width - _kMenuScreenPadding - padding.right;
     }
     if (y < _kMenuScreenPadding + padding.top) {
       y = _kMenuScreenPadding + padding.top;
     } else if (y + childSize.height > size.height - _kMenuScreenPadding - padding.bottom) {
-      y = size.height - padding.bottom - _kMenuScreenPadding - childSize.height ;
+      y = size.height - padding.bottom - _kMenuScreenPadding - childSize.height;
     }
 
     return Offset(x, y);
@@ -703,11 +704,11 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
     // way to change length of the items list once the menu has been shown.
     assert(itemSizes.length == oldDelegate.itemSizes.length);
 
-    return position != oldDelegate.position
-        || selectedItemIndex != oldDelegate.selectedItemIndex
-        || textDirection != oldDelegate.textDirection
-        || !listEquals(itemSizes, oldDelegate.itemSizes)
-        || padding != oldDelegate.padding;
+    return position != oldDelegate.position ||
+        selectedItemIndex != oldDelegate.selectedItemIndex ||
+        textDirection != oldDelegate.textDirection ||
+        !listEquals(itemSizes, oldDelegate.itemSizes) ||
+        padding != oldDelegate.padding;
   }
 }
 
@@ -757,7 +758,6 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-
     int? selectedItemIndex;
     if (initialValue != null) {
       for (int index = 0; selectedItemIndex == null && index < items.length; index += 1) {
@@ -980,9 +980,9 @@ class KPopupMenuButton<T> extends StatefulWidget {
     this.shape,
     this.color,
     this.enableFeedback,
-  }) : assert(
-        !(child != null && icon != null),
-        'You can only pass [child] or [icon], not both.',
+  })  : assert(
+          !(child != null && icon != null),
+          'You can only pass [child] or [icon], not both.',
         ),
         super(key: key);
 
@@ -1120,8 +1120,7 @@ class KPopupMenuButtonState<T> extends State<KPopupMenuButton<T>> {
         position: position,
         shape: widget.shape ?? popupMenuTheme.shape,
         color: widget.color ?? popupMenuTheme.color,
-      )
-          .then<void>((T? newValue) {
+      ).then<void>((T? newValue) {
         if (!mounted) {
           return null;
         }
@@ -1146,9 +1145,7 @@ class KPopupMenuButtonState<T> extends State<KPopupMenuButton<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final bool enableFeedback = widget.enableFeedback
-        ?? PopupMenuTheme.of(context).enableFeedback
-        ?? true;
+    final bool enableFeedback = widget.enableFeedback ?? PopupMenuTheme.of(context).enableFeedback ?? true;
 
     assert(debugCheckHasMaterialLocalizations(context));
 
@@ -1159,10 +1156,9 @@ class KPopupMenuButtonState<T> extends State<KPopupMenuButton<T>> {
         enableFeedback: enableFeedback,
         child: widget.child,
       );
-      if(widget.tooltip!=null) {
+      if (widget.tooltip != null) {
         return Tooltip(
-          message: widget.tooltip ??
-              MaterialLocalizations.of(context).showMenuTooltip,
+          message: widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
           child: inkwell,
         );
       }

@@ -21,7 +21,7 @@ void main() {
       Timeline<int> t = Timeline(maxSize: 3);
       expect(t.maxSize, 3);
     });
-    test('Should have the correct default maxSize',(){
+    test('Should have the correct default maxSize', () {
       Timeline<int> t = Timeline();
       expect(t.maxSize, 30);
     });
@@ -262,9 +262,7 @@ void main() {
   });
 
   group('toTheBeginning', () {
-    test(
-        'Should move the position to the first element of the timeline if it exists.',
-        () {
+    test('Should move the position to the first element of the timeline if it exists.', () {
       Timeline<int> t1 = Timeline(maxSize: 3);
       t1.push(1);
       t1.push(2);
@@ -285,9 +283,7 @@ void main() {
   });
 
   group('toTheEnd', () {
-    test(
-        'Should move the position to the last element of the timeline if it exists.',
-        () {
+    test('Should move the position to the last element of the timeline if it exists.', () {
       Timeline<int> t1 = Timeline(maxSize: 3);
       t1.push(1);
       t1.push(2);

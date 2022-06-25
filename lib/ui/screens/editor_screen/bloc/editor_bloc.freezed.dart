@@ -12,127 +12,7 @@ part of 'editor_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EditorEventTearOff {
-  const _$EditorEventTearOff();
-
-  AddImageEditorEvent addImage() {
-    return const AddImageEditorEvent();
-  }
-
-  AddStaticTextEditorEvent addStaticText(
-      {required material.BuildContext context}) {
-    return AddStaticTextEditorEvent(
-      context: context,
-    );
-  }
-
-  AddVariableTextEditorEvent addVariableText(
-      {required material.BuildContext context}) {
-    return AddVariableTextEditorEvent(
-      context: context,
-    );
-  }
-
-  UndoEditorEvent undo() {
-    return const UndoEditorEvent();
-  }
-
-  RedoEditorEvent redo() {
-    return const RedoEditorEvent();
-  }
-
-  DragStartEditorEvent dragStart(material.Offset localPosition) {
-    return DragStartEditorEvent(
-      localPosition,
-    );
-  }
-
-  DragUpdateEditorEvent dragUpdate(material.Offset localPosition) {
-    return DragUpdateEditorEvent(
-      localPosition,
-    );
-  }
-
-  DragEndEditorEvent dragEnd() {
-    return const DragEndEditorEvent();
-  }
-
-  DragEditorEvent drag(
-      {required String elementId, required material.Offset delta}) {
-    return DragEditorEvent(
-      elementId: elementId,
-      delta: delta,
-    );
-  }
-
-  TapUpEditorEvent tapUp(material.Offset localPosition) {
-    return TapUpEditorEvent(
-      localPosition,
-    );
-  }
-
-  ClearEditorEvent clearEditor() {
-    return const ClearEditorEvent();
-  }
-
-  RemoveElementEditorEvent removeElement({required String elementId}) {
-    return RemoveElementEditorEvent(
-      elementId: elementId,
-    );
-  }
-
-  TextElementTextChangedEditorEvent textElementTextChanged(
-      {required material.BuildContext context, required String updatedText}) {
-    return TextElementTextChangedEditorEvent(
-      context: context,
-      updatedText: updatedText,
-    );
-  }
-
-  TextElementTextStyleChangedEditorEvent textElementTextStyleChanged(
-      {required material.BuildContext context,
-      required material.TextStyle updatedTextStyle}) {
-    return TextElementTextStyleChangedEditorEvent(
-      context: context,
-      updatedTextStyle: updatedTextStyle,
-    );
-  }
-
-  MakeElementLargerEditorEvent makeLarger() {
-    return const MakeElementLargerEditorEvent();
-  }
-
-  MakeElementSmallerEditorEvent makeSmaller() {
-    return const MakeElementSmallerEditorEvent();
-  }
-
-  BringToFrontEditorEvent bringToFront() {
-    return const BringToFrontEditorEvent();
-  }
-
-  VariableTextElementTextStyleChangedEditorEvent
-      variableTextElementTextStyleChanged(
-          {required material.BuildContext context,
-          required material.TextStyle updatedTextStyle}) {
-    return VariableTextElementTextStyleChangedEditorEvent(
-      context: context,
-      updatedTextStyle: updatedTextStyle,
-    );
-  }
-
-  VariableTextElementFileChangedEvent variableTextElementFileChangedEvent(
-      {required material.BuildContext context}) {
-    return VariableTextElementFileChangedEvent(
-      context: context,
-    );
-  }
-}
-
-/// @nodoc
-const $EditorEvent = _$EditorEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EditorEvent {
@@ -146,23 +26,19 @@ mixin _$EditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -175,23 +51,17 @@ mixin _$EditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -204,106 +74,87 @@ mixin _$EditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -311,9 +162,7 @@ mixin _$EditorEvent {
 
 /// @nodoc
 abstract class $EditorEventCopyWith<$Res> {
-  factory $EditorEventCopyWith(
-          EditorEvent value, $Res Function(EditorEvent) then) =
-      _$EditorEventCopyWithImpl<$Res>;
+  factory $EditorEventCopyWith(EditorEvent value, $Res Function(EditorEvent) then) = _$EditorEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -326,28 +175,23 @@ class _$EditorEventCopyWithImpl<$Res> implements $EditorEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $AddImageEditorEventCopyWith<$Res> {
-  factory $AddImageEditorEventCopyWith(
-          AddImageEditorEvent value, $Res Function(AddImageEditorEvent) then) =
-      _$AddImageEditorEventCopyWithImpl<$Res>;
+abstract class _$$AddImageCopyWith<$Res> {
+  factory _$$AddImageCopyWith(_$AddImage value, $Res Function(_$AddImage) then) = __$$AddImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AddImageEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $AddImageEditorEventCopyWith<$Res> {
-  _$AddImageEditorEventCopyWithImpl(
-      AddImageEditorEvent _value, $Res Function(AddImageEditorEvent) _then)
-      : super(_value, (v) => _then(v as AddImageEditorEvent));
+class __$$AddImageCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$AddImageCopyWith<$Res> {
+  __$$AddImageCopyWithImpl(_$AddImage _value, $Res Function(_$AddImage) _then)
+      : super(_value, (v) => _then(v as _$AddImage));
 
   @override
-  AddImageEditorEvent get _value => super._value as AddImageEditorEvent;
+  _$AddImage get _value => super._value as _$AddImage;
 }
 
 /// @nodoc
 
-class _$AddImageEditorEvent implements AddImageEditorEvent {
-  const _$AddImageEditorEvent();
+class _$AddImage implements AddImage {
+  const _$AddImage();
 
   @override
   String toString() {
@@ -356,8 +200,7 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddImageEditorEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$AddImage);
   }
 
   @override
@@ -374,23 +217,19 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return addImage();
   }
@@ -406,23 +245,17 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return addImage?.call();
   }
@@ -438,23 +271,17 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -466,30 +293,25 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return addImage(this);
   }
@@ -497,29 +319,25 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return addImage?.call(this);
   }
@@ -527,29 +345,25 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -559,35 +373,31 @@ class _$AddImageEditorEvent implements AddImageEditorEvent {
   }
 }
 
-abstract class AddImageEditorEvent implements EditorEvent {
-  const factory AddImageEditorEvent() = _$AddImageEditorEvent;
+abstract class AddImage implements EditorEvent {
+  const factory AddImage() = _$AddImage;
 }
 
 /// @nodoc
-abstract class $AddStaticTextEditorEventCopyWith<$Res> {
-  factory $AddStaticTextEditorEventCopyWith(AddStaticTextEditorEvent value,
-          $Res Function(AddStaticTextEditorEvent) then) =
-      _$AddStaticTextEditorEventCopyWithImpl<$Res>;
+abstract class _$$AddStaticTextCopyWith<$Res> {
+  factory _$$AddStaticTextCopyWith(_$AddStaticText value, $Res Function(_$AddStaticText) then) =
+      __$$AddStaticTextCopyWithImpl<$Res>;
   $Res call({material.BuildContext context});
 }
 
 /// @nodoc
-class _$AddStaticTextEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $AddStaticTextEditorEventCopyWith<$Res> {
-  _$AddStaticTextEditorEventCopyWithImpl(AddStaticTextEditorEvent _value,
-      $Res Function(AddStaticTextEditorEvent) _then)
-      : super(_value, (v) => _then(v as AddStaticTextEditorEvent));
+class __$$AddStaticTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$AddStaticTextCopyWith<$Res> {
+  __$$AddStaticTextCopyWithImpl(_$AddStaticText _value, $Res Function(_$AddStaticText) _then)
+      : super(_value, (v) => _then(v as _$AddStaticText));
 
   @override
-  AddStaticTextEditorEvent get _value =>
-      super._value as AddStaticTextEditorEvent;
+  _$AddStaticText get _value => super._value as _$AddStaticText;
 
   @override
   $Res call({
     Object? context = freezed,
   }) {
-    return _then(AddStaticTextEditorEvent(
+    return _then(_$AddStaticText(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -598,8 +408,8 @@ class _$AddStaticTextEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
-  const _$AddStaticTextEditorEvent({required this.context});
+class _$AddStaticText implements AddStaticText {
+  const _$AddStaticText({required this.context});
 
   @override
   final material.BuildContext context;
@@ -613,19 +423,17 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AddStaticTextEditorEvent &&
+            other is _$AddStaticText &&
             const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
-  $AddStaticTextEditorEventCopyWith<AddStaticTextEditorEvent> get copyWith =>
-      _$AddStaticTextEditorEventCopyWithImpl<AddStaticTextEditorEvent>(
-          this, _$identity);
+  _$$AddStaticTextCopyWith<_$AddStaticText> get copyWith =>
+      __$$AddStaticTextCopyWithImpl<_$AddStaticText>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -638,23 +446,19 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return addStaticText(context);
   }
@@ -670,23 +474,17 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return addStaticText?.call(context);
   }
@@ -702,23 +500,17 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -730,30 +522,25 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return addStaticText(this);
   }
@@ -761,29 +548,25 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return addStaticText?.call(this);
   }
@@ -791,29 +574,25 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -823,41 +602,35 @@ class _$AddStaticTextEditorEvent implements AddStaticTextEditorEvent {
   }
 }
 
-abstract class AddStaticTextEditorEvent implements EditorEvent {
-  const factory AddStaticTextEditorEvent(
-      {required material.BuildContext context}) = _$AddStaticTextEditorEvent;
+abstract class AddStaticText implements EditorEvent {
+  const factory AddStaticText({required final material.BuildContext context}) = _$AddStaticText;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AddStaticTextEditorEventCopyWith<AddStaticTextEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddStaticTextCopyWith<_$AddStaticText> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddVariableTextEditorEventCopyWith<$Res> {
-  factory $AddVariableTextEditorEventCopyWith(AddVariableTextEditorEvent value,
-          $Res Function(AddVariableTextEditorEvent) then) =
-      _$AddVariableTextEditorEventCopyWithImpl<$Res>;
+abstract class _$$AddVariableTextCopyWith<$Res> {
+  factory _$$AddVariableTextCopyWith(_$AddVariableText value, $Res Function(_$AddVariableText) then) =
+      __$$AddVariableTextCopyWithImpl<$Res>;
   $Res call({material.BuildContext context});
 }
 
 /// @nodoc
-class _$AddVariableTextEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $AddVariableTextEditorEventCopyWith<$Res> {
-  _$AddVariableTextEditorEventCopyWithImpl(AddVariableTextEditorEvent _value,
-      $Res Function(AddVariableTextEditorEvent) _then)
-      : super(_value, (v) => _then(v as AddVariableTextEditorEvent));
+class __$$AddVariableTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$AddVariableTextCopyWith<$Res> {
+  __$$AddVariableTextCopyWithImpl(_$AddVariableText _value, $Res Function(_$AddVariableText) _then)
+      : super(_value, (v) => _then(v as _$AddVariableText));
 
   @override
-  AddVariableTextEditorEvent get _value =>
-      super._value as AddVariableTextEditorEvent;
+  _$AddVariableText get _value => super._value as _$AddVariableText;
 
   @override
   $Res call({
     Object? context = freezed,
   }) {
-    return _then(AddVariableTextEditorEvent(
+    return _then(_$AddVariableText(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -868,8 +641,8 @@ class _$AddVariableTextEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
-  const _$AddVariableTextEditorEvent({required this.context});
+class _$AddVariableText implements AddVariableText {
+  const _$AddVariableText({required this.context});
 
   @override
   final material.BuildContext context;
@@ -883,20 +656,17 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AddVariableTextEditorEvent &&
+            other is _$AddVariableText &&
             const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
-  $AddVariableTextEditorEventCopyWith<AddVariableTextEditorEvent>
-      get copyWith =>
-          _$AddVariableTextEditorEventCopyWithImpl<AddVariableTextEditorEvent>(
-              this, _$identity);
+  _$$AddVariableTextCopyWith<_$AddVariableText> get copyWith =>
+      __$$AddVariableTextCopyWithImpl<_$AddVariableText>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -909,23 +679,19 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return addVariableText(context);
   }
@@ -941,23 +707,17 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return addVariableText?.call(context);
   }
@@ -973,23 +733,17 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -1001,30 +755,25 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return addVariableText(this);
   }
@@ -1032,29 +781,25 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return addVariableText?.call(this);
   }
@@ -1062,29 +807,25 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -1094,39 +835,31 @@ class _$AddVariableTextEditorEvent implements AddVariableTextEditorEvent {
   }
 }
 
-abstract class AddVariableTextEditorEvent implements EditorEvent {
-  const factory AddVariableTextEditorEvent(
-      {required material.BuildContext context}) = _$AddVariableTextEditorEvent;
+abstract class AddVariableText implements EditorEvent {
+  const factory AddVariableText({required final material.BuildContext context}) = _$AddVariableText;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AddVariableTextEditorEventCopyWith<AddVariableTextEditorEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$AddVariableTextCopyWith<_$AddVariableText> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UndoEditorEventCopyWith<$Res> {
-  factory $UndoEditorEventCopyWith(
-          UndoEditorEvent value, $Res Function(UndoEditorEvent) then) =
-      _$UndoEditorEventCopyWithImpl<$Res>;
+abstract class _$$UndoCopyWith<$Res> {
+  factory _$$UndoCopyWith(_$Undo value, $Res Function(_$Undo) then) = __$$UndoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UndoEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $UndoEditorEventCopyWith<$Res> {
-  _$UndoEditorEventCopyWithImpl(
-      UndoEditorEvent _value, $Res Function(UndoEditorEvent) _then)
-      : super(_value, (v) => _then(v as UndoEditorEvent));
+class __$$UndoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$UndoCopyWith<$Res> {
+  __$$UndoCopyWithImpl(_$Undo _value, $Res Function(_$Undo) _then) : super(_value, (v) => _then(v as _$Undo));
 
   @override
-  UndoEditorEvent get _value => super._value as UndoEditorEvent;
+  _$Undo get _value => super._value as _$Undo;
 }
 
 /// @nodoc
 
-class _$UndoEditorEvent implements UndoEditorEvent {
-  const _$UndoEditorEvent();
+class _$Undo implements Undo {
+  const _$Undo();
 
   @override
   String toString() {
@@ -1135,8 +868,7 @@ class _$UndoEditorEvent implements UndoEditorEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UndoEditorEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Undo);
   }
 
   @override
@@ -1153,23 +885,19 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return undo();
   }
@@ -1185,23 +913,17 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return undo?.call();
   }
@@ -1217,23 +939,17 @@ class _$UndoEditorEvent implements UndoEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -1245,30 +961,25 @@ class _$UndoEditorEvent implements UndoEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return undo(this);
   }
@@ -1276,29 +987,25 @@ class _$UndoEditorEvent implements UndoEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return undo?.call(this);
   }
@@ -1306,29 +1013,25 @@ class _$UndoEditorEvent implements UndoEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -1338,33 +1041,27 @@ class _$UndoEditorEvent implements UndoEditorEvent {
   }
 }
 
-abstract class UndoEditorEvent implements EditorEvent {
-  const factory UndoEditorEvent() = _$UndoEditorEvent;
+abstract class Undo implements EditorEvent {
+  const factory Undo() = _$Undo;
 }
 
 /// @nodoc
-abstract class $RedoEditorEventCopyWith<$Res> {
-  factory $RedoEditorEventCopyWith(
-          RedoEditorEvent value, $Res Function(RedoEditorEvent) then) =
-      _$RedoEditorEventCopyWithImpl<$Res>;
+abstract class _$$RedoCopyWith<$Res> {
+  factory _$$RedoCopyWith(_$Redo value, $Res Function(_$Redo) then) = __$$RedoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RedoEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $RedoEditorEventCopyWith<$Res> {
-  _$RedoEditorEventCopyWithImpl(
-      RedoEditorEvent _value, $Res Function(RedoEditorEvent) _then)
-      : super(_value, (v) => _then(v as RedoEditorEvent));
+class __$$RedoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$RedoCopyWith<$Res> {
+  __$$RedoCopyWithImpl(_$Redo _value, $Res Function(_$Redo) _then) : super(_value, (v) => _then(v as _$Redo));
 
   @override
-  RedoEditorEvent get _value => super._value as RedoEditorEvent;
+  _$Redo get _value => super._value as _$Redo;
 }
 
 /// @nodoc
 
-class _$RedoEditorEvent implements RedoEditorEvent {
-  const _$RedoEditorEvent();
+class _$Redo implements Redo {
+  const _$Redo();
 
   @override
   String toString() {
@@ -1373,8 +1070,7 @@ class _$RedoEditorEvent implements RedoEditorEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RedoEditorEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Redo);
   }
 
   @override
@@ -1391,23 +1087,19 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return redo();
   }
@@ -1423,23 +1115,17 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return redo?.call();
   }
@@ -1455,23 +1141,17 @@ class _$RedoEditorEvent implements RedoEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -1483,30 +1163,25 @@ class _$RedoEditorEvent implements RedoEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return redo(this);
   }
@@ -1514,29 +1189,25 @@ class _$RedoEditorEvent implements RedoEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return redo?.call(this);
   }
@@ -1544,29 +1215,25 @@ class _$RedoEditorEvent implements RedoEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -1576,34 +1243,29 @@ class _$RedoEditorEvent implements RedoEditorEvent {
   }
 }
 
-abstract class RedoEditorEvent implements EditorEvent {
-  const factory RedoEditorEvent() = _$RedoEditorEvent;
+abstract class Redo implements EditorEvent {
+  const factory Redo() = _$Redo;
 }
 
 /// @nodoc
-abstract class $DragStartEditorEventCopyWith<$Res> {
-  factory $DragStartEditorEventCopyWith(DragStartEditorEvent value,
-          $Res Function(DragStartEditorEvent) then) =
-      _$DragStartEditorEventCopyWithImpl<$Res>;
+abstract class _$$DragStartCopyWith<$Res> {
+  factory _$$DragStartCopyWith(_$DragStart value, $Res Function(_$DragStart) then) = __$$DragStartCopyWithImpl<$Res>;
   $Res call({material.Offset localPosition});
 }
 
 /// @nodoc
-class _$DragStartEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $DragStartEditorEventCopyWith<$Res> {
-  _$DragStartEditorEventCopyWithImpl(
-      DragStartEditorEvent _value, $Res Function(DragStartEditorEvent) _then)
-      : super(_value, (v) => _then(v as DragStartEditorEvent));
+class __$$DragStartCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$DragStartCopyWith<$Res> {
+  __$$DragStartCopyWithImpl(_$DragStart _value, $Res Function(_$DragStart) _then)
+      : super(_value, (v) => _then(v as _$DragStart));
 
   @override
-  DragStartEditorEvent get _value => super._value as DragStartEditorEvent;
+  _$DragStart get _value => super._value as _$DragStart;
 
   @override
   $Res call({
     Object? localPosition = freezed,
   }) {
-    return _then(DragStartEditorEvent(
+    return _then(_$DragStart(
       localPosition == freezed
           ? _value.localPosition
           : localPosition // ignore: cast_nullable_to_non_nullable
@@ -1614,12 +1276,11 @@ class _$DragStartEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DragStartEditorEvent implements DragStartEditorEvent {
-  const _$DragStartEditorEvent(this.localPosition);
+class _$DragStart implements DragStart {
+  const _$DragStart(this.localPosition);
 
+  /// The local position in the editor widget where the drag started.
   @override
-
-  /// The local position in the widget where the drag started.
   final material.Offset localPosition;
 
   @override
@@ -1631,20 +1292,16 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DragStartEditorEvent &&
-            const DeepCollectionEquality()
-                .equals(other.localPosition, localPosition));
+            other is _$DragStart &&
+            const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(localPosition));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
   @override
-  $DragStartEditorEventCopyWith<DragStartEditorEvent> get copyWith =>
-      _$DragStartEditorEventCopyWithImpl<DragStartEditorEvent>(
-          this, _$identity);
+  _$$DragStartCopyWith<_$DragStart> get copyWith => __$$DragStartCopyWithImpl<_$DragStart>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1657,23 +1314,19 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return dragStart(localPosition);
   }
@@ -1689,23 +1342,17 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return dragStart?.call(localPosition);
   }
@@ -1721,23 +1368,17 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragStart != null) {
@@ -1749,30 +1390,25 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return dragStart(this);
   }
@@ -1780,29 +1416,25 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return dragStart?.call(this);
   }
@@ -1810,29 +1442,25 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragStart != null) {
@@ -1842,41 +1470,35 @@ class _$DragStartEditorEvent implements DragStartEditorEvent {
   }
 }
 
-abstract class DragStartEditorEvent implements EditorEvent {
-  const factory DragStartEditorEvent(material.Offset localPosition) =
-      _$DragStartEditorEvent;
+abstract class DragStart implements EditorEvent {
+  const factory DragStart(final material.Offset localPosition) = _$DragStart;
 
-  /// The local position in the widget where the drag started.
-  material.Offset get localPosition;
+  /// The local position in the editor widget where the drag started.
+  material.Offset get localPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DragStartEditorEventCopyWith<DragStartEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DragStartCopyWith<_$DragStart> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DragUpdateEditorEventCopyWith<$Res> {
-  factory $DragUpdateEditorEventCopyWith(DragUpdateEditorEvent value,
-          $Res Function(DragUpdateEditorEvent) then) =
-      _$DragUpdateEditorEventCopyWithImpl<$Res>;
+abstract class _$$DragUpdateCopyWith<$Res> {
+  factory _$$DragUpdateCopyWith(_$DragUpdate value, $Res Function(_$DragUpdate) then) =
+      __$$DragUpdateCopyWithImpl<$Res>;
   $Res call({material.Offset localPosition});
 }
 
 /// @nodoc
-class _$DragUpdateEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $DragUpdateEditorEventCopyWith<$Res> {
-  _$DragUpdateEditorEventCopyWithImpl(
-      DragUpdateEditorEvent _value, $Res Function(DragUpdateEditorEvent) _then)
-      : super(_value, (v) => _then(v as DragUpdateEditorEvent));
+class __$$DragUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$DragUpdateCopyWith<$Res> {
+  __$$DragUpdateCopyWithImpl(_$DragUpdate _value, $Res Function(_$DragUpdate) _then)
+      : super(_value, (v) => _then(v as _$DragUpdate));
 
   @override
-  DragUpdateEditorEvent get _value => super._value as DragUpdateEditorEvent;
+  _$DragUpdate get _value => super._value as _$DragUpdate;
 
   @override
   $Res call({
     Object? localPosition = freezed,
   }) {
-    return _then(DragUpdateEditorEvent(
+    return _then(_$DragUpdate(
       localPosition == freezed
           ? _value.localPosition
           : localPosition // ignore: cast_nullable_to_non_nullable
@@ -1887,12 +1509,11 @@ class _$DragUpdateEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
-  const _$DragUpdateEditorEvent(this.localPosition);
+class _$DragUpdate implements DragUpdate {
+  const _$DragUpdate(this.localPosition);
 
+  /// The local position in the editor widget where the drag update has happened.
   @override
-
-  /// The local position in the widget where the drag update has happened.
   final material.Offset localPosition;
 
   @override
@@ -1904,20 +1525,16 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DragUpdateEditorEvent &&
-            const DeepCollectionEquality()
-                .equals(other.localPosition, localPosition));
+            other is _$DragUpdate &&
+            const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(localPosition));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
   @override
-  $DragUpdateEditorEventCopyWith<DragUpdateEditorEvent> get copyWith =>
-      _$DragUpdateEditorEventCopyWithImpl<DragUpdateEditorEvent>(
-          this, _$identity);
+  _$$DragUpdateCopyWith<_$DragUpdate> get copyWith => __$$DragUpdateCopyWithImpl<_$DragUpdate>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1930,23 +1547,19 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return dragUpdate(localPosition);
   }
@@ -1962,23 +1575,17 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return dragUpdate?.call(localPosition);
   }
@@ -1994,23 +1601,17 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragUpdate != null) {
@@ -2022,30 +1623,25 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return dragUpdate(this);
   }
@@ -2053,29 +1649,25 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return dragUpdate?.call(this);
   }
@@ -2083,29 +1675,25 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragUpdate != null) {
@@ -2115,40 +1703,33 @@ class _$DragUpdateEditorEvent implements DragUpdateEditorEvent {
   }
 }
 
-abstract class DragUpdateEditorEvent implements EditorEvent {
-  const factory DragUpdateEditorEvent(material.Offset localPosition) =
-      _$DragUpdateEditorEvent;
+abstract class DragUpdate implements EditorEvent {
+  const factory DragUpdate(final material.Offset localPosition) = _$DragUpdate;
 
-  /// The local position in the widget where the drag update has happened.
-  material.Offset get localPosition;
+  /// The local position in the editor widget where the drag update has happened.
+  material.Offset get localPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DragUpdateEditorEventCopyWith<DragUpdateEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DragUpdateCopyWith<_$DragUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DragEndEditorEventCopyWith<$Res> {
-  factory $DragEndEditorEventCopyWith(
-          DragEndEditorEvent value, $Res Function(DragEndEditorEvent) then) =
-      _$DragEndEditorEventCopyWithImpl<$Res>;
+abstract class _$$DragEndCopyWith<$Res> {
+  factory _$$DragEndCopyWith(_$DragEnd value, $Res Function(_$DragEnd) then) = __$$DragEndCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DragEndEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $DragEndEditorEventCopyWith<$Res> {
-  _$DragEndEditorEventCopyWithImpl(
-      DragEndEditorEvent _value, $Res Function(DragEndEditorEvent) _then)
-      : super(_value, (v) => _then(v as DragEndEditorEvent));
+class __$$DragEndCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$DragEndCopyWith<$Res> {
+  __$$DragEndCopyWithImpl(_$DragEnd _value, $Res Function(_$DragEnd) _then)
+      : super(_value, (v) => _then(v as _$DragEnd));
 
   @override
-  DragEndEditorEvent get _value => super._value as DragEndEditorEvent;
+  _$DragEnd get _value => super._value as _$DragEnd;
 }
 
 /// @nodoc
 
-class _$DragEndEditorEvent implements DragEndEditorEvent {
-  const _$DragEndEditorEvent();
+class _$DragEnd implements DragEnd {
+  const _$DragEnd();
 
   @override
   String toString() {
@@ -2157,8 +1738,7 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DragEndEditorEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$DragEnd);
   }
 
   @override
@@ -2175,23 +1755,19 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return dragEnd();
   }
@@ -2207,23 +1783,17 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return dragEnd?.call();
   }
@@ -2239,23 +1809,17 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragEnd != null) {
@@ -2267,30 +1831,25 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return dragEnd(this);
   }
@@ -2298,29 +1857,25 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return dragEnd?.call(this);
   }
@@ -2328,29 +1883,25 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (dragEnd != null) {
@@ -2360,35 +1911,32 @@ class _$DragEndEditorEvent implements DragEndEditorEvent {
   }
 }
 
-abstract class DragEndEditorEvent implements EditorEvent {
-  const factory DragEndEditorEvent() = _$DragEndEditorEvent;
+abstract class DragEnd implements EditorEvent {
+  const factory DragEnd() = _$DragEnd;
 }
 
 /// @nodoc
-abstract class $DragEditorEventCopyWith<$Res> {
-  factory $DragEditorEventCopyWith(
-          DragEditorEvent value, $Res Function(DragEditorEvent) then) =
-      _$DragEditorEventCopyWithImpl<$Res>;
+abstract class _$$ElementDragCopyWith<$Res> {
+  factory _$$ElementDragCopyWith(_$ElementDrag value, $Res Function(_$ElementDrag) then) =
+      __$$ElementDragCopyWithImpl<$Res>;
   $Res call({String elementId, material.Offset delta});
 }
 
 /// @nodoc
-class _$DragEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $DragEditorEventCopyWith<$Res> {
-  _$DragEditorEventCopyWithImpl(
-      DragEditorEvent _value, $Res Function(DragEditorEvent) _then)
-      : super(_value, (v) => _then(v as DragEditorEvent));
+class __$$ElementDragCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$ElementDragCopyWith<$Res> {
+  __$$ElementDragCopyWithImpl(_$ElementDrag _value, $Res Function(_$ElementDrag) _then)
+      : super(_value, (v) => _then(v as _$ElementDrag));
 
   @override
-  DragEditorEvent get _value => super._value as DragEditorEvent;
+  _$ElementDrag get _value => super._value as _$ElementDrag;
 
   @override
   $Res call({
     Object? elementId = freezed,
     Object? delta = freezed,
   }) {
-    return _then(DragEditorEvent(
+    return _then(_$ElementDrag(
       elementId: elementId == freezed
           ? _value.elementId
           : elementId // ignore: cast_nullable_to_non_nullable
@@ -2403,8 +1951,8 @@ class _$DragEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DragEditorEvent implements DragEditorEvent {
-  const _$DragEditorEvent({required this.elementId, required this.delta});
+class _$ElementDrag implements ElementDrag {
+  const _$ElementDrag({required this.elementId, required this.delta});
 
   @override
   final String elementId;
@@ -2413,28 +1961,25 @@ class _$DragEditorEvent implements DragEditorEvent {
 
   @override
   String toString() {
-    return 'EditorEvent.drag(elementId: $elementId, delta: $delta)';
+    return 'EditorEvent.elementDrag(elementId: $elementId, delta: $delta)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DragEditorEvent &&
+            other is _$ElementDrag &&
             const DeepCollectionEquality().equals(other.elementId, elementId) &&
             const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(elementId),
-      const DeepCollectionEquality().hash(delta));
+      runtimeType, const DeepCollectionEquality().hash(elementId), const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
-  $DragEditorEventCopyWith<DragEditorEvent> get copyWith =>
-      _$DragEditorEventCopyWithImpl<DragEditorEvent>(this, _$identity);
+  _$$ElementDragCopyWith<_$ElementDrag> get copyWith => __$$ElementDragCopyWithImpl<_$ElementDrag>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2447,25 +1992,21 @@ class _$DragEditorEvent implements DragEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return drag(elementId, delta);
+    return elementDrag(elementId, delta);
   }
 
   @override
@@ -2479,25 +2020,19 @@ class _$DragEditorEvent implements DragEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return drag?.call(elementId, delta);
+    return elementDrag?.call(elementId, delta);
   }
 
   @override
@@ -2511,27 +2046,21 @@ class _$DragEditorEvent implements DragEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (drag != null) {
-      return drag(elementId, delta);
+    if (elementDrag != null) {
+      return elementDrag(elementId, delta);
     }
     return orElse();
   }
@@ -2539,135 +2068,113 @@ class _$DragEditorEvent implements DragEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return drag(this);
+    return elementDrag(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return drag?.call(this);
+    return elementDrag?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (drag != null) {
-      return drag(this);
+    if (elementDrag != null) {
+      return elementDrag(this);
     }
     return orElse();
   }
 }
 
-abstract class DragEditorEvent implements EditorEvent {
-  const factory DragEditorEvent(
-      {required String elementId,
-      required material.Offset delta}) = _$DragEditorEvent;
+abstract class ElementDrag implements EditorEvent {
+  const factory ElementDrag({required final String elementId, required final material.Offset delta}) = _$ElementDrag;
 
-  String get elementId;
-  material.Offset get delta;
+  String get elementId => throw _privateConstructorUsedError;
+  material.Offset get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DragEditorEventCopyWith<DragEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ElementDragCopyWith<_$ElementDrag> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TapUpEditorEventCopyWith<$Res> {
-  factory $TapUpEditorEventCopyWith(
-          TapUpEditorEvent value, $Res Function(TapUpEditorEvent) then) =
-      _$TapUpEditorEventCopyWithImpl<$Res>;
+abstract class _$$TapUpCopyWith<$Res> {
+  factory _$$TapUpCopyWith(_$TapUp value, $Res Function(_$TapUp) then) = __$$TapUpCopyWithImpl<$Res>;
   $Res call({material.Offset localPosition});
 }
 
 /// @nodoc
-class _$TapUpEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $TapUpEditorEventCopyWith<$Res> {
-  _$TapUpEditorEventCopyWithImpl(
-      TapUpEditorEvent _value, $Res Function(TapUpEditorEvent) _then)
-      : super(_value, (v) => _then(v as TapUpEditorEvent));
+class __$$TapUpCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$TapUpCopyWith<$Res> {
+  __$$TapUpCopyWithImpl(_$TapUp _value, $Res Function(_$TapUp) _then) : super(_value, (v) => _then(v as _$TapUp));
 
   @override
-  TapUpEditorEvent get _value => super._value as TapUpEditorEvent;
+  _$TapUp get _value => super._value as _$TapUp;
 
   @override
   $Res call({
     Object? localPosition = freezed,
   }) {
-    return _then(TapUpEditorEvent(
+    return _then(_$TapUp(
       localPosition == freezed
           ? _value.localPosition
           : localPosition // ignore: cast_nullable_to_non_nullable
@@ -2678,12 +2185,11 @@ class _$TapUpEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TapUpEditorEvent implements TapUpEditorEvent {
-  const _$TapUpEditorEvent(this.localPosition);
-
-  @override
+class _$TapUp implements TapUp {
+  const _$TapUp(this.localPosition);
 
   /// The local position where the tap happened.
+  @override
   final material.Offset localPosition;
 
   @override
@@ -2695,19 +2201,16 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TapUpEditorEvent &&
-            const DeepCollectionEquality()
-                .equals(other.localPosition, localPosition));
+            other is _$TapUp &&
+            const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(localPosition));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
   @override
-  $TapUpEditorEventCopyWith<TapUpEditorEvent> get copyWith =>
-      _$TapUpEditorEventCopyWithImpl<TapUpEditorEvent>(this, _$identity);
+  _$$TapUpCopyWith<_$TapUp> get copyWith => __$$TapUpCopyWithImpl<_$TapUp>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2720,23 +2223,19 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return tapUp(localPosition);
   }
@@ -2752,23 +2251,17 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return tapUp?.call(localPosition);
   }
@@ -2784,23 +2277,17 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (tapUp != null) {
@@ -2812,30 +2299,25 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return tapUp(this);
   }
@@ -2843,29 +2325,25 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return tapUp?.call(this);
   }
@@ -2873,29 +2351,25 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (tapUp != null) {
@@ -2905,40 +2379,35 @@ class _$TapUpEditorEvent implements TapUpEditorEvent {
   }
 }
 
-abstract class TapUpEditorEvent implements EditorEvent {
-  const factory TapUpEditorEvent(material.Offset localPosition) =
-      _$TapUpEditorEvent;
+abstract class TapUp implements EditorEvent {
+  const factory TapUp(final material.Offset localPosition) = _$TapUp;
 
   /// The local position where the tap happened.
-  material.Offset get localPosition;
+  material.Offset get localPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TapUpEditorEventCopyWith<TapUpEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TapUpCopyWith<_$TapUp> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClearEditorEventCopyWith<$Res> {
-  factory $ClearEditorEventCopyWith(
-          ClearEditorEvent value, $Res Function(ClearEditorEvent) then) =
-      _$ClearEditorEventCopyWithImpl<$Res>;
+abstract class _$$ClearEditorCopyWith<$Res> {
+  factory _$$ClearEditorCopyWith(_$ClearEditor value, $Res Function(_$ClearEditor) then) =
+      __$$ClearEditorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ClearEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $ClearEditorEventCopyWith<$Res> {
-  _$ClearEditorEventCopyWithImpl(
-      ClearEditorEvent _value, $Res Function(ClearEditorEvent) _then)
-      : super(_value, (v) => _then(v as ClearEditorEvent));
+class __$$ClearEditorCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$ClearEditorCopyWith<$Res> {
+  __$$ClearEditorCopyWithImpl(_$ClearEditor _value, $Res Function(_$ClearEditor) _then)
+      : super(_value, (v) => _then(v as _$ClearEditor));
 
   @override
-  ClearEditorEvent get _value => super._value as ClearEditorEvent;
+  _$ClearEditor get _value => super._value as _$ClearEditor;
 }
 
 /// @nodoc
 
-class _$ClearEditorEvent implements ClearEditorEvent {
-  const _$ClearEditorEvent();
+class _$ClearEditor implements ClearEditor {
+  const _$ClearEditor();
 
   @override
   String toString() {
@@ -2947,8 +2416,7 @@ class _$ClearEditorEvent implements ClearEditorEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ClearEditorEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ClearEditor);
   }
 
   @override
@@ -2965,23 +2433,19 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
     return clearEditor();
   }
@@ -2997,23 +2461,17 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
     return clearEditor?.call();
   }
@@ -3029,23 +2487,17 @@ class _$ClearEditorEvent implements ClearEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -3057,30 +2509,25 @@ class _$ClearEditorEvent implements ClearEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
     return clearEditor(this);
   }
@@ -3088,29 +2535,25 @@ class _$ClearEditorEvent implements ClearEditorEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
     return clearEditor?.call(this);
   }
@@ -3118,29 +2561,25 @@ class _$ClearEditorEvent implements ClearEditorEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -3150,75 +2589,43 @@ class _$ClearEditorEvent implements ClearEditorEvent {
   }
 }
 
-abstract class ClearEditorEvent implements EditorEvent {
-  const factory ClearEditorEvent() = _$ClearEditorEvent;
+abstract class ClearEditor implements EditorEvent {
+  const factory ClearEditor() = _$ClearEditor;
 }
 
 /// @nodoc
-abstract class $RemoveElementEditorEventCopyWith<$Res> {
-  factory $RemoveElementEditorEventCopyWith(RemoveElementEditorEvent value,
-          $Res Function(RemoveElementEditorEvent) then) =
-      _$RemoveElementEditorEventCopyWithImpl<$Res>;
-  $Res call({String elementId});
+abstract class _$$RemoveSelectedElementCopyWith<$Res> {
+  factory _$$RemoveSelectedElementCopyWith(_$RemoveSelectedElement value, $Res Function(_$RemoveSelectedElement) then) =
+      __$$RemoveSelectedElementCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RemoveElementEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $RemoveElementEditorEventCopyWith<$Res> {
-  _$RemoveElementEditorEventCopyWithImpl(RemoveElementEditorEvent _value,
-      $Res Function(RemoveElementEditorEvent) _then)
-      : super(_value, (v) => _then(v as RemoveElementEditorEvent));
+class __$$RemoveSelectedElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$RemoveSelectedElementCopyWith<$Res> {
+  __$$RemoveSelectedElementCopyWithImpl(_$RemoveSelectedElement _value, $Res Function(_$RemoveSelectedElement) _then)
+      : super(_value, (v) => _then(v as _$RemoveSelectedElement));
 
   @override
-  RemoveElementEditorEvent get _value =>
-      super._value as RemoveElementEditorEvent;
-
-  @override
-  $Res call({
-    Object? elementId = freezed,
-  }) {
-    return _then(RemoveElementEditorEvent(
-      elementId: elementId == freezed
-          ? _value.elementId
-          : elementId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  _$RemoveSelectedElement get _value => super._value as _$RemoveSelectedElement;
 }
 
 /// @nodoc
 
-class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
-  const _$RemoveElementEditorEvent({required this.elementId});
-
-  @override
-
-  /// The id of the element to be removed
-  final String elementId;
+class _$RemoveSelectedElement implements RemoveSelectedElement {
+  const _$RemoveSelectedElement();
 
   @override
   String toString() {
-    return 'EditorEvent.removeElement(elementId: $elementId)';
+    return 'EditorEvent.removeSelectedElement()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is RemoveElementEditorEvent &&
-            const DeepCollectionEquality().equals(other.elementId, elementId));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$RemoveSelectedElement);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(elementId));
-
-  @JsonKey(ignore: true)
-  @override
-  $RemoveElementEditorEventCopyWith<RemoveElementEditorEvent> get copyWith =>
-      _$RemoveElementEditorEventCopyWithImpl<RemoveElementEditorEvent>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -3231,25 +2638,21 @@ class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return removeElement(elementId);
+    return removeSelectedElement();
   }
 
   @override
@@ -3263,25 +2666,19 @@ class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return removeElement?.call(elementId);
+    return removeSelectedElement?.call();
   }
 
   @override
@@ -3295,27 +2692,21 @@ class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (removeElement != null) {
-      return removeElement(elementId);
+    if (removeSelectedElement != null) {
+      return removeSelectedElement();
     }
     return orElse();
   }
@@ -3323,138 +2714,112 @@ class _$RemoveElementEditorEvent implements RemoveElementEditorEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return removeElement(this);
+    return removeSelectedElement(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return removeElement?.call(this);
+    return removeSelectedElement?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (removeElement != null) {
-      return removeElement(this);
+    if (removeSelectedElement != null) {
+      return removeSelectedElement(this);
     }
     return orElse();
   }
 }
 
-abstract class RemoveElementEditorEvent implements EditorEvent {
-  const factory RemoveElementEditorEvent({required String elementId}) =
-      _$RemoveElementEditorEvent;
-
-  /// The id of the element to be removed
-  String get elementId;
-  @JsonKey(ignore: true)
-  $RemoveElementEditorEventCopyWith<RemoveElementEditorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class RemoveSelectedElement implements EditorEvent {
+  const factory RemoveSelectedElement() = _$RemoveSelectedElement;
 }
 
 /// @nodoc
-abstract class $TextElementTextChangedEditorEventCopyWith<$Res> {
-  factory $TextElementTextChangedEditorEventCopyWith(
-          TextElementTextChangedEditorEvent value,
-          $Res Function(TextElementTextChangedEditorEvent) then) =
-      _$TextElementTextChangedEditorEventCopyWithImpl<$Res>;
+abstract class _$$StaticTextChangedCopyWith<$Res> {
+  factory _$$StaticTextChangedCopyWith(_$StaticTextChanged value, $Res Function(_$StaticTextChanged) then) =
+      __$$StaticTextChangedCopyWithImpl<$Res>;
   $Res call({material.BuildContext context, String updatedText});
 }
 
 /// @nodoc
-class _$TextElementTextChangedEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $TextElementTextChangedEditorEventCopyWith<$Res> {
-  _$TextElementTextChangedEditorEventCopyWithImpl(
-      TextElementTextChangedEditorEvent _value,
-      $Res Function(TextElementTextChangedEditorEvent) _then)
-      : super(_value, (v) => _then(v as TextElementTextChangedEditorEvent));
+class __$$StaticTextChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$StaticTextChangedCopyWith<$Res> {
+  __$$StaticTextChangedCopyWithImpl(_$StaticTextChanged _value, $Res Function(_$StaticTextChanged) _then)
+      : super(_value, (v) => _then(v as _$StaticTextChanged));
 
   @override
-  TextElementTextChangedEditorEvent get _value =>
-      super._value as TextElementTextChangedEditorEvent;
+  _$StaticTextChanged get _value => super._value as _$StaticTextChanged;
 
   @override
   $Res call({
     Object? context = freezed,
     Object? updatedText = freezed,
   }) {
-    return _then(TextElementTextChangedEditorEvent(
+    return _then(_$StaticTextChanged(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -3469,44 +2834,38 @@ class _$TextElementTextChangedEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TextElementTextChangedEditorEvent
-    implements TextElementTextChangedEditorEvent {
-  const _$TextElementTextChangedEditorEvent(
-      {required this.context, required this.updatedText});
+class _$StaticTextChanged implements StaticTextChanged {
+  const _$StaticTextChanged({required this.context, required this.updatedText});
 
   @override
   final material.BuildContext context;
-  @override
 
-  /// The new value of the text in the element.
+  /// The new value of the text.
+  @override
   final String updatedText;
 
   @override
   String toString() {
-    return 'EditorEvent.textElementTextChanged(context: $context, updatedText: $updatedText)';
+    return 'EditorEvent.staticTextChanged(context: $context, updatedText: $updatedText)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TextElementTextChangedEditorEvent &&
+            other is _$StaticTextChanged &&
             const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality()
-                .equals(other.updatedText, updatedText));
+            const DeepCollectionEquality().equals(other.updatedText, updatedText));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(updatedText));
+      runtimeType, const DeepCollectionEquality().hash(context), const DeepCollectionEquality().hash(updatedText));
 
   @JsonKey(ignore: true)
   @override
-  $TextElementTextChangedEditorEventCopyWith<TextElementTextChangedEditorEvent>
-      get copyWith => _$TextElementTextChangedEditorEventCopyWithImpl<
-          TextElementTextChangedEditorEvent>(this, _$identity);
+  _$$StaticTextChangedCopyWith<_$StaticTextChanged> get copyWith =>
+      __$$StaticTextChangedCopyWithImpl<_$StaticTextChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3519,25 +2878,21 @@ class _$TextElementTextChangedEditorEvent
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return textElementTextChanged(context, updatedText);
+    return staticTextChanged(context, updatedText);
   }
 
   @override
@@ -3551,25 +2906,19 @@ class _$TextElementTextChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return textElementTextChanged?.call(context, updatedText);
+    return staticTextChanged?.call(context, updatedText);
   }
 
   @override
@@ -3583,27 +2932,21 @@ class _$TextElementTextChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (textElementTextChanged != null) {
-      return textElementTextChanged(context, updatedText);
+    if (staticTextChanged != null) {
+      return staticTextChanged(context, updatedText);
     }
     return orElse();
   }
@@ -3611,143 +2954,121 @@ class _$TextElementTextChangedEditorEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return textElementTextChanged(this);
+    return staticTextChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return textElementTextChanged?.call(this);
+    return staticTextChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (textElementTextChanged != null) {
-      return textElementTextChanged(this);
+    if (staticTextChanged != null) {
+      return staticTextChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class TextElementTextChangedEditorEvent implements EditorEvent {
-  const factory TextElementTextChangedEditorEvent(
-      {required material.BuildContext context,
-      required String updatedText}) = _$TextElementTextChangedEditorEvent;
+abstract class StaticTextChanged implements EditorEvent {
+  const factory StaticTextChanged({required final material.BuildContext context, required final String updatedText}) =
+      _$StaticTextChanged;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
 
-  /// The new value of the text in the element.
-  String get updatedText;
+  /// The new value of the text.
+  String get updatedText => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TextElementTextChangedEditorEventCopyWith<TextElementTextChangedEditorEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StaticTextChangedCopyWith<_$StaticTextChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TextElementTextStyleChangedEditorEventCopyWith<$Res> {
-  factory $TextElementTextStyleChangedEditorEventCopyWith(
-          TextElementTextStyleChangedEditorEvent value,
-          $Res Function(TextElementTextStyleChangedEditorEvent) then) =
-      _$TextElementTextStyleChangedEditorEventCopyWithImpl<$Res>;
-  $Res call(
-      {material.BuildContext context, material.TextStyle updatedTextStyle});
+abstract class _$$StaticTextStyleChangedCopyWith<$Res> {
+  factory _$$StaticTextStyleChangedCopyWith(
+          _$StaticTextStyleChanged value, $Res Function(_$StaticTextStyleChanged) then) =
+      __$$StaticTextStyleChangedCopyWithImpl<$Res>;
+  $Res call({material.BuildContext context, material.TextStyle updatedTextStyle});
 }
 
 /// @nodoc
-class _$TextElementTextStyleChangedEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $TextElementTextStyleChangedEditorEventCopyWith<$Res> {
-  _$TextElementTextStyleChangedEditorEventCopyWithImpl(
-      TextElementTextStyleChangedEditorEvent _value,
-      $Res Function(TextElementTextStyleChangedEditorEvent) _then)
-      : super(
-            _value, (v) => _then(v as TextElementTextStyleChangedEditorEvent));
+class __$$StaticTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$StaticTextStyleChangedCopyWith<$Res> {
+  __$$StaticTextStyleChangedCopyWithImpl(_$StaticTextStyleChanged _value, $Res Function(_$StaticTextStyleChanged) _then)
+      : super(_value, (v) => _then(v as _$StaticTextStyleChanged));
 
   @override
-  TextElementTextStyleChangedEditorEvent get _value =>
-      super._value as TextElementTextStyleChangedEditorEvent;
+  _$StaticTextStyleChanged get _value => super._value as _$StaticTextStyleChanged;
 
   @override
   $Res call({
     Object? context = freezed,
     Object? updatedTextStyle = freezed,
   }) {
-    return _then(TextElementTextStyleChangedEditorEvent(
+    return _then(_$StaticTextStyleChanged(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -3762,45 +3083,38 @@ class _$TextElementTextStyleChangedEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TextElementTextStyleChangedEditorEvent
-    implements TextElementTextStyleChangedEditorEvent {
-  const _$TextElementTextStyleChangedEditorEvent(
-      {required this.context, required this.updatedTextStyle});
+class _$StaticTextStyleChanged implements StaticTextStyleChanged {
+  const _$StaticTextStyleChanged({required this.context, required this.updatedTextStyle});
 
   @override
   final material.BuildContext context;
-  @override
 
-  /// The new value of the text in the element.
+  /// The new value of the text style in the element.
+  @override
   final material.TextStyle updatedTextStyle;
 
   @override
   String toString() {
-    return 'EditorEvent.textElementTextStyleChanged(context: $context, updatedTextStyle: $updatedTextStyle)';
+    return 'EditorEvent.staticTextStyleChanged(context: $context, updatedTextStyle: $updatedTextStyle)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TextElementTextStyleChangedEditorEvent &&
+            other is _$StaticTextStyleChanged &&
             const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextStyle, updatedTextStyle));
+            const DeepCollectionEquality().equals(other.updatedTextStyle, updatedTextStyle));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(updatedTextStyle));
+      runtimeType, const DeepCollectionEquality().hash(context), const DeepCollectionEquality().hash(updatedTextStyle));
 
   @JsonKey(ignore: true)
   @override
-  $TextElementTextStyleChangedEditorEventCopyWith<
-          TextElementTextStyleChangedEditorEvent>
-      get copyWith => _$TextElementTextStyleChangedEditorEventCopyWithImpl<
-          TextElementTextStyleChangedEditorEvent>(this, _$identity);
+  _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith =>
+      __$$StaticTextStyleChangedCopyWithImpl<_$StaticTextStyleChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3813,25 +3127,21 @@ class _$TextElementTextStyleChangedEditorEvent
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return textElementTextStyleChanged(context, updatedTextStyle);
+    return staticTextStyleChanged(context, updatedTextStyle);
   }
 
   @override
@@ -3845,25 +3155,19 @@ class _$TextElementTextStyleChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return textElementTextStyleChanged?.call(context, updatedTextStyle);
+    return staticTextStyleChanged?.call(context, updatedTextStyle);
   }
 
   @override
@@ -3877,27 +3181,21 @@ class _$TextElementTextStyleChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (textElementTextStyleChanged != null) {
-      return textElementTextStyleChanged(context, updatedTextStyle);
+    if (staticTextStyleChanged != null) {
+      return staticTextStyleChanged(context, updatedTextStyle);
     }
     return orElse();
   }
@@ -3905,868 +3203,123 @@ class _$TextElementTextStyleChangedEditorEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return textElementTextStyleChanged(this);
+    return staticTextStyleChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return textElementTextStyleChanged?.call(this);
+    return staticTextStyleChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (textElementTextStyleChanged != null) {
-      return textElementTextStyleChanged(this);
+    if (staticTextStyleChanged != null) {
+      return staticTextStyleChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class TextElementTextStyleChangedEditorEvent implements EditorEvent {
-  const factory TextElementTextStyleChangedEditorEvent(
-          {required material.BuildContext context,
-          required material.TextStyle updatedTextStyle}) =
-      _$TextElementTextStyleChangedEditorEvent;
+abstract class StaticTextStyleChanged implements EditorEvent {
+  const factory StaticTextStyleChanged(
+      {required final material.BuildContext context,
+      required final material.TextStyle updatedTextStyle}) = _$StaticTextStyleChanged;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
 
-  /// The new value of the text in the element.
-  material.TextStyle get updatedTextStyle;
+  /// The new value of the text style in the element.
+  material.TextStyle get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TextElementTextStyleChangedEditorEventCopyWith<
-          TextElementTextStyleChangedEditorEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MakeElementLargerEditorEventCopyWith<$Res> {
-  factory $MakeElementLargerEditorEventCopyWith(
-          MakeElementLargerEditorEvent value,
-          $Res Function(MakeElementLargerEditorEvent) then) =
-      _$MakeElementLargerEditorEventCopyWithImpl<$Res>;
+abstract class _$$VariableTextStyleChangedCopyWith<$Res> {
+  factory _$$VariableTextStyleChangedCopyWith(
+          _$VariableTextStyleChanged value, $Res Function(_$VariableTextStyleChanged) then) =
+      __$$VariableTextStyleChangedCopyWithImpl<$Res>;
+  $Res call({material.BuildContext context, material.TextStyle updatedTextStyle});
 }
 
 /// @nodoc
-class _$MakeElementLargerEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $MakeElementLargerEditorEventCopyWith<$Res> {
-  _$MakeElementLargerEditorEventCopyWithImpl(
-      MakeElementLargerEditorEvent _value,
-      $Res Function(MakeElementLargerEditorEvent) _then)
-      : super(_value, (v) => _then(v as MakeElementLargerEditorEvent));
+class __$$VariableTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$VariableTextStyleChangedCopyWith<$Res> {
+  __$$VariableTextStyleChangedCopyWithImpl(
+      _$VariableTextStyleChanged _value, $Res Function(_$VariableTextStyleChanged) _then)
+      : super(_value, (v) => _then(v as _$VariableTextStyleChanged));
 
   @override
-  MakeElementLargerEditorEvent get _value =>
-      super._value as MakeElementLargerEditorEvent;
-}
-
-/// @nodoc
-
-class _$MakeElementLargerEditorEvent implements MakeElementLargerEditorEvent {
-  const _$MakeElementLargerEditorEvent();
-
-  @override
-  String toString() {
-    return 'EditorEvent.makeLarger()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is MakeElementLargerEditorEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() addImage,
-    required TResult Function(material.BuildContext context) addStaticText,
-    required TResult Function(material.BuildContext context) addVariableText,
-    required TResult Function() undo,
-    required TResult Function() redo,
-    required TResult Function(material.Offset localPosition) dragStart,
-    required TResult Function(material.Offset localPosition) dragUpdate,
-    required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
-    required TResult Function(material.Offset localPosition) tapUp,
-    required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeLarger();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeLarger?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (makeLarger != null) {
-      return makeLarger();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeLarger(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeLarger?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (makeLarger != null) {
-      return makeLarger(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MakeElementLargerEditorEvent implements EditorEvent {
-  const factory MakeElementLargerEditorEvent() = _$MakeElementLargerEditorEvent;
-}
-
-/// @nodoc
-abstract class $MakeElementSmallerEditorEventCopyWith<$Res> {
-  factory $MakeElementSmallerEditorEventCopyWith(
-          MakeElementSmallerEditorEvent value,
-          $Res Function(MakeElementSmallerEditorEvent) then) =
-      _$MakeElementSmallerEditorEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$MakeElementSmallerEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $MakeElementSmallerEditorEventCopyWith<$Res> {
-  _$MakeElementSmallerEditorEventCopyWithImpl(
-      MakeElementSmallerEditorEvent _value,
-      $Res Function(MakeElementSmallerEditorEvent) _then)
-      : super(_value, (v) => _then(v as MakeElementSmallerEditorEvent));
-
-  @override
-  MakeElementSmallerEditorEvent get _value =>
-      super._value as MakeElementSmallerEditorEvent;
-}
-
-/// @nodoc
-
-class _$MakeElementSmallerEditorEvent implements MakeElementSmallerEditorEvent {
-  const _$MakeElementSmallerEditorEvent();
-
-  @override
-  String toString() {
-    return 'EditorEvent.makeSmaller()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is MakeElementSmallerEditorEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() addImage,
-    required TResult Function(material.BuildContext context) addStaticText,
-    required TResult Function(material.BuildContext context) addVariableText,
-    required TResult Function() undo,
-    required TResult Function() redo,
-    required TResult Function(material.Offset localPosition) dragStart,
-    required TResult Function(material.Offset localPosition) dragUpdate,
-    required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
-    required TResult Function(material.Offset localPosition) tapUp,
-    required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeSmaller();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeSmaller?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (makeSmaller != null) {
-      return makeSmaller();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeSmaller(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return makeSmaller?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (makeSmaller != null) {
-      return makeSmaller(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MakeElementSmallerEditorEvent implements EditorEvent {
-  const factory MakeElementSmallerEditorEvent() =
-      _$MakeElementSmallerEditorEvent;
-}
-
-/// @nodoc
-abstract class $BringToFrontEditorEventCopyWith<$Res> {
-  factory $BringToFrontEditorEventCopyWith(BringToFrontEditorEvent value,
-          $Res Function(BringToFrontEditorEvent) then) =
-      _$BringToFrontEditorEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$BringToFrontEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $BringToFrontEditorEventCopyWith<$Res> {
-  _$BringToFrontEditorEventCopyWithImpl(BringToFrontEditorEvent _value,
-      $Res Function(BringToFrontEditorEvent) _then)
-      : super(_value, (v) => _then(v as BringToFrontEditorEvent));
-
-  @override
-  BringToFrontEditorEvent get _value => super._value as BringToFrontEditorEvent;
-}
-
-/// @nodoc
-
-class _$BringToFrontEditorEvent implements BringToFrontEditorEvent {
-  const _$BringToFrontEditorEvent();
-
-  @override
-  String toString() {
-    return 'EditorEvent.bringToFront()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is BringToFrontEditorEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() addImage,
-    required TResult Function(material.BuildContext context) addStaticText,
-    required TResult Function(material.BuildContext context) addVariableText,
-    required TResult Function() undo,
-    required TResult Function() redo,
-    required TResult Function(material.Offset localPosition) dragStart,
-    required TResult Function(material.Offset localPosition) dragUpdate,
-    required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
-    required TResult Function(material.Offset localPosition) tapUp,
-    required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
-  }) {
-    return bringToFront();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return bringToFront?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addImage,
-    TResult Function(material.BuildContext context)? addStaticText,
-    TResult Function(material.BuildContext context)? addVariableText,
-    TResult Function()? undo,
-    TResult Function()? redo,
-    TResult Function(material.Offset localPosition)? dragStart,
-    TResult Function(material.Offset localPosition)? dragUpdate,
-    TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
-    TResult Function(material.Offset localPosition)? tapUp,
-    TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (bringToFront != null) {
-      return bringToFront();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
-  }) {
-    return bringToFront(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-  }) {
-    return bringToFront?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
-    required TResult orElse(),
-  }) {
-    if (bringToFront != null) {
-      return bringToFront(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BringToFrontEditorEvent implements EditorEvent {
-  const factory BringToFrontEditorEvent() = _$BringToFrontEditorEvent;
-}
-
-/// @nodoc
-abstract class $VariableTextElementTextStyleChangedEditorEventCopyWith<$Res> {
-  factory $VariableTextElementTextStyleChangedEditorEventCopyWith(
-          VariableTextElementTextStyleChangedEditorEvent value,
-          $Res Function(VariableTextElementTextStyleChangedEditorEvent) then) =
-      _$VariableTextElementTextStyleChangedEditorEventCopyWithImpl<$Res>;
-  $Res call(
-      {material.BuildContext context, material.TextStyle updatedTextStyle});
-}
-
-/// @nodoc
-class _$VariableTextElementTextStyleChangedEditorEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $VariableTextElementTextStyleChangedEditorEventCopyWith<$Res> {
-  _$VariableTextElementTextStyleChangedEditorEventCopyWithImpl(
-      VariableTextElementTextStyleChangedEditorEvent _value,
-      $Res Function(VariableTextElementTextStyleChangedEditorEvent) _then)
-      : super(_value,
-            (v) => _then(v as VariableTextElementTextStyleChangedEditorEvent));
-
-  @override
-  VariableTextElementTextStyleChangedEditorEvent get _value =>
-      super._value as VariableTextElementTextStyleChangedEditorEvent;
+  _$VariableTextStyleChanged get _value => super._value as _$VariableTextStyleChanged;
 
   @override
   $Res call({
     Object? context = freezed,
     Object? updatedTextStyle = freezed,
   }) {
-    return _then(VariableTextElementTextStyleChangedEditorEvent(
+    return _then(_$VariableTextStyleChanged(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -4781,46 +3334,38 @@ class _$VariableTextElementTextStyleChangedEditorEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VariableTextElementTextStyleChangedEditorEvent
-    implements VariableTextElementTextStyleChangedEditorEvent {
-  const _$VariableTextElementTextStyleChangedEditorEvent(
-      {required this.context, required this.updatedTextStyle});
+class _$VariableTextStyleChanged implements VariableTextStyleChanged {
+  const _$VariableTextStyleChanged({required this.context, required this.updatedTextStyle});
 
   @override
   final material.BuildContext context;
-  @override
 
-  /// The new value of the text in the element.
+  /// The new value of the text style in the element.
+  @override
   final material.TextStyle updatedTextStyle;
 
   @override
   String toString() {
-    return 'EditorEvent.variableTextElementTextStyleChanged(context: $context, updatedTextStyle: $updatedTextStyle)';
+    return 'EditorEvent.variableTextStyleChanged(context: $context, updatedTextStyle: $updatedTextStyle)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VariableTextElementTextStyleChangedEditorEvent &&
+            other is _$VariableTextStyleChanged &&
             const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextStyle, updatedTextStyle));
+            const DeepCollectionEquality().equals(other.updatedTextStyle, updatedTextStyle));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(updatedTextStyle));
+      runtimeType, const DeepCollectionEquality().hash(context), const DeepCollectionEquality().hash(updatedTextStyle));
 
   @JsonKey(ignore: true)
   @override
-  $VariableTextElementTextStyleChangedEditorEventCopyWith<
-          VariableTextElementTextStyleChangedEditorEvent>
-      get copyWith =>
-          _$VariableTextElementTextStyleChangedEditorEventCopyWithImpl<
-              VariableTextElementTextStyleChangedEditorEvent>(this, _$identity);
+  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith =>
+      __$$VariableTextStyleChangedCopyWithImpl<_$VariableTextStyleChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4833,25 +3378,21 @@ class _$VariableTextElementTextStyleChangedEditorEvent
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return variableTextElementTextStyleChanged(context, updatedTextStyle);
+    return variableTextStyleChanged(context, updatedTextStyle);
   }
 
   @override
@@ -4865,25 +3406,19 @@ class _$VariableTextElementTextStyleChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return variableTextElementTextStyleChanged?.call(context, updatedTextStyle);
+    return variableTextStyleChanged?.call(context, updatedTextStyle);
   }
 
   @override
@@ -4897,27 +3432,21 @@ class _$VariableTextElementTextStyleChangedEditorEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (variableTextElementTextStyleChanged != null) {
-      return variableTextElementTextStyleChanged(context, updatedTextStyle);
+    if (variableTextStyleChanged != null) {
+      return variableTextStyleChanged(context, updatedTextStyle);
     }
     return orElse();
   }
@@ -4925,143 +3454,122 @@ class _$VariableTextElementTextStyleChangedEditorEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return variableTextElementTextStyleChanged(this);
+    return variableTextStyleChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return variableTextElementTextStyleChanged?.call(this);
+    return variableTextStyleChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (variableTextElementTextStyleChanged != null) {
-      return variableTextElementTextStyleChanged(this);
+    if (variableTextStyleChanged != null) {
+      return variableTextStyleChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class VariableTextElementTextStyleChangedEditorEvent
-    implements EditorEvent {
-  const factory VariableTextElementTextStyleChangedEditorEvent(
-          {required material.BuildContext context,
-          required material.TextStyle updatedTextStyle}) =
-      _$VariableTextElementTextStyleChangedEditorEvent;
+abstract class VariableTextStyleChanged implements EditorEvent {
+  const factory VariableTextStyleChanged(
+      {required final material.BuildContext context,
+      required final material.TextStyle updatedTextStyle}) = _$VariableTextStyleChanged;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
 
-  /// The new value of the text in the element.
-  material.TextStyle get updatedTextStyle;
+  /// The new value of the text style in the element.
+  material.TextStyle get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VariableTextElementTextStyleChangedEditorEventCopyWith<
-          VariableTextElementTextStyleChangedEditorEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VariableTextElementFileChangedEventCopyWith<$Res> {
-  factory $VariableTextElementFileChangedEventCopyWith(
-          VariableTextElementFileChangedEvent value,
-          $Res Function(VariableTextElementFileChangedEvent) then) =
-      _$VariableTextElementFileChangedEventCopyWithImpl<$Res>;
+abstract class _$$VariableTextFileChangedCopyWith<$Res> {
+  factory _$$VariableTextFileChangedCopyWith(
+          _$VariableTextFileChanged value, $Res Function(_$VariableTextFileChanged) then) =
+      __$$VariableTextFileChangedCopyWithImpl<$Res>;
   $Res call({material.BuildContext context});
 }
 
 /// @nodoc
-class _$VariableTextElementFileChangedEventCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
-    implements $VariableTextElementFileChangedEventCopyWith<$Res> {
-  _$VariableTextElementFileChangedEventCopyWithImpl(
-      VariableTextElementFileChangedEvent _value,
-      $Res Function(VariableTextElementFileChangedEvent) _then)
-      : super(_value, (v) => _then(v as VariableTextElementFileChangedEvent));
+class __$$VariableTextFileChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$VariableTextFileChangedCopyWith<$Res> {
+  __$$VariableTextFileChangedCopyWithImpl(
+      _$VariableTextFileChanged _value, $Res Function(_$VariableTextFileChanged) _then)
+      : super(_value, (v) => _then(v as _$VariableTextFileChanged));
 
   @override
-  VariableTextElementFileChangedEvent get _value =>
-      super._value as VariableTextElementFileChangedEvent;
+  _$VariableTextFileChanged get _value => super._value as _$VariableTextFileChanged;
 
   @override
   $Res call({
     Object? context = freezed,
   }) {
-    return _then(VariableTextElementFileChangedEvent(
+    return _then(_$VariableTextFileChanged(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -5072,36 +3580,32 @@ class _$VariableTextElementFileChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VariableTextElementFileChangedEvent
-    implements VariableTextElementFileChangedEvent {
-  const _$VariableTextElementFileChangedEvent({required this.context});
+class _$VariableTextFileChanged implements VariableTextFileChanged {
+  const _$VariableTextFileChanged({required this.context});
 
   @override
   final material.BuildContext context;
 
   @override
   String toString() {
-    return 'EditorEvent.variableTextElementFileChangedEvent(context: $context)';
+    return 'EditorEvent.variableTextFileChanged(context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VariableTextElementFileChangedEvent &&
+            other is _$VariableTextFileChanged &&
             const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
-  $VariableTextElementFileChangedEventCopyWith<
-          VariableTextElementFileChangedEvent>
-      get copyWith => _$VariableTextElementFileChangedEventCopyWithImpl<
-          VariableTextElementFileChangedEvent>(this, _$identity);
+  _$$VariableTextFileChangedCopyWith<_$VariableTextFileChanged> get copyWith =>
+      __$$VariableTextFileChangedCopyWithImpl<_$VariableTextFileChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5114,25 +3618,21 @@ class _$VariableTextElementFileChangedEvent
     required TResult Function(material.Offset localPosition) dragStart,
     required TResult Function(material.Offset localPosition) dragUpdate,
     required TResult Function() dragEnd,
-    required TResult Function(String elementId, material.Offset delta) drag,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
     required TResult Function(material.Offset localPosition) tapUp,
     required TResult Function() clearEditor,
-    required TResult Function(String elementId) removeElement,
-    required TResult Function(material.BuildContext context, String updatedText)
-        textElementTextChanged,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        textElementTextStyleChanged,
-    required TResult Function() makeLarger,
-    required TResult Function() makeSmaller,
-    required TResult Function() bringToFront,
-    required TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)
-        variableTextElementTextStyleChanged,
-    required TResult Function(material.BuildContext context)
-        variableTextElementFileChangedEvent,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
   }) {
-    return variableTextElementFileChangedEvent(context);
+    return variableTextFileChanged(context);
   }
 
   @override
@@ -5146,25 +3646,19 @@ class _$VariableTextElementFileChangedEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
   }) {
-    return variableTextElementFileChangedEvent?.call(context);
+    return variableTextFileChanged?.call(context);
   }
 
   @override
@@ -5178,27 +3672,21 @@ class _$VariableTextElementFileChangedEvent
     TResult Function(material.Offset localPosition)? dragStart,
     TResult Function(material.Offset localPosition)? dragUpdate,
     TResult Function()? dragEnd,
-    TResult Function(String elementId, material.Offset delta)? drag,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
     TResult Function(material.Offset localPosition)? tapUp,
     TResult Function()? clearEditor,
-    TResult Function(String elementId)? removeElement,
-    TResult Function(material.BuildContext context, String updatedText)?
-        textElementTextChanged,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        textElementTextStyleChanged,
-    TResult Function()? makeLarger,
-    TResult Function()? makeSmaller,
-    TResult Function()? bringToFront,
-    TResult Function(
-            material.BuildContext context, material.TextStyle updatedTextStyle)?
-        variableTextElementTextStyleChanged,
-    TResult Function(material.BuildContext context)?
-        variableTextElementFileChangedEvent,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (variableTextElementFileChangedEvent != null) {
-      return variableTextElementFileChangedEvent(context);
+    if (variableTextFileChanged != null) {
+      return variableTextFileChanged(context);
     }
     return orElse();
   }
@@ -5206,131 +3694,711 @@ class _$VariableTextElementFileChangedEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AddImageEditorEvent value) addImage,
-    required TResult Function(AddStaticTextEditorEvent value) addStaticText,
-    required TResult Function(AddVariableTextEditorEvent value) addVariableText,
-    required TResult Function(UndoEditorEvent value) undo,
-    required TResult Function(RedoEditorEvent value) redo,
-    required TResult Function(DragStartEditorEvent value) dragStart,
-    required TResult Function(DragUpdateEditorEvent value) dragUpdate,
-    required TResult Function(DragEndEditorEvent value) dragEnd,
-    required TResult Function(DragEditorEvent value) drag,
-    required TResult Function(TapUpEditorEvent value) tapUp,
-    required TResult Function(ClearEditorEvent value) clearEditor,
-    required TResult Function(RemoveElementEditorEvent value) removeElement,
-    required TResult Function(TextElementTextChangedEditorEvent value)
-        textElementTextChanged,
-    required TResult Function(TextElementTextStyleChangedEditorEvent value)
-        textElementTextStyleChanged,
-    required TResult Function(MakeElementLargerEditorEvent value) makeLarger,
-    required TResult Function(MakeElementSmallerEditorEvent value) makeSmaller,
-    required TResult Function(BringToFrontEditorEvent value) bringToFront,
-    required TResult Function(
-            VariableTextElementTextStyleChangedEditorEvent value)
-        variableTextElementTextStyleChanged,
-    required TResult Function(VariableTextElementFileChangedEvent value)
-        variableTextElementFileChangedEvent,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
   }) {
-    return variableTextElementFileChangedEvent(this);
+    return variableTextFileChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
   }) {
-    return variableTextElementFileChangedEvent?.call(this);
+    return variableTextFileChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AddImageEditorEvent value)? addImage,
-    TResult Function(AddStaticTextEditorEvent value)? addStaticText,
-    TResult Function(AddVariableTextEditorEvent value)? addVariableText,
-    TResult Function(UndoEditorEvent value)? undo,
-    TResult Function(RedoEditorEvent value)? redo,
-    TResult Function(DragStartEditorEvent value)? dragStart,
-    TResult Function(DragUpdateEditorEvent value)? dragUpdate,
-    TResult Function(DragEndEditorEvent value)? dragEnd,
-    TResult Function(DragEditorEvent value)? drag,
-    TResult Function(TapUpEditorEvent value)? tapUp,
-    TResult Function(ClearEditorEvent value)? clearEditor,
-    TResult Function(RemoveElementEditorEvent value)? removeElement,
-    TResult Function(TextElementTextChangedEditorEvent value)?
-        textElementTextChanged,
-    TResult Function(TextElementTextStyleChangedEditorEvent value)?
-        textElementTextStyleChanged,
-    TResult Function(MakeElementLargerEditorEvent value)? makeLarger,
-    TResult Function(MakeElementSmallerEditorEvent value)? makeSmaller,
-    TResult Function(BringToFrontEditorEvent value)? bringToFront,
-    TResult Function(VariableTextElementTextStyleChangedEditorEvent value)?
-        variableTextElementTextStyleChanged,
-    TResult Function(VariableTextElementFileChangedEvent value)?
-        variableTextElementFileChangedEvent,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     required TResult orElse(),
   }) {
-    if (variableTextElementFileChangedEvent != null) {
-      return variableTextElementFileChangedEvent(this);
+    if (variableTextFileChanged != null) {
+      return variableTextFileChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class VariableTextElementFileChangedEvent implements EditorEvent {
-  const factory VariableTextElementFileChangedEvent(
-          {required material.BuildContext context}) =
-      _$VariableTextElementFileChangedEvent;
+abstract class VariableTextFileChanged implements EditorEvent {
+  const factory VariableTextFileChanged({required final material.BuildContext context}) = _$VariableTextFileChanged;
 
-  material.BuildContext get context;
+  material.BuildContext get context => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $VariableTextElementFileChangedEventCopyWith<
-          VariableTextElementFileChangedEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$VariableTextFileChangedCopyWith<_$VariableTextFileChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$EditorStateTearOff {
-  const _$EditorStateTearOff();
+abstract class _$$EnlargeSelectedElementCopyWith<$Res> {
+  factory _$$EnlargeSelectedElementCopyWith(
+          _$EnlargeSelectedElement value, $Res Function(_$EnlargeSelectedElement) then) =
+      __$$EnlargeSelectedElementCopyWithImpl<$Res>;
+}
 
-  _EditorState call(
-      {required Editor editor,
-      required Option<String> draggedElementId,
-      required Option<Offset> dragPosition,
-      required Option<String> selectedElementId}) {
-    return _EditorState(
-      editor: editor,
-      draggedElementId: draggedElementId,
-      dragPosition: dragPosition,
-      selectedElementId: selectedElementId,
-    );
+/// @nodoc
+class __$$EnlargeSelectedElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$EnlargeSelectedElementCopyWith<$Res> {
+  __$$EnlargeSelectedElementCopyWithImpl(_$EnlargeSelectedElement _value, $Res Function(_$EnlargeSelectedElement) _then)
+      : super(_value, (v) => _then(v as _$EnlargeSelectedElement));
+
+  @override
+  _$EnlargeSelectedElement get _value => super._value as _$EnlargeSelectedElement;
+}
+
+/// @nodoc
+
+class _$EnlargeSelectedElement implements EnlargeSelectedElement {
+  const _$EnlargeSelectedElement();
+
+  @override
+  String toString() {
+    return 'EditorEvent.enlargeSelectedElement()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$EnlargeSelectedElement);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addImage,
+    required TResult Function(material.BuildContext context) addStaticText,
+    required TResult Function(material.BuildContext context) addVariableText,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(material.Offset localPosition) dragStart,
+    required TResult Function(material.Offset localPosition) dragUpdate,
+    required TResult Function() dragEnd,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
+    required TResult Function(material.Offset localPosition) tapUp,
+    required TResult Function() clearEditor,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
+  }) {
+    return enlargeSelectedElement();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+  }) {
+    return enlargeSelectedElement?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (enlargeSelectedElement != null) {
+      return enlargeSelectedElement();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
+  }) {
+    return enlargeSelectedElement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+  }) {
+    return enlargeSelectedElement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (enlargeSelectedElement != null) {
+      return enlargeSelectedElement(this);
+    }
+    return orElse();
   }
 }
 
+abstract class EnlargeSelectedElement implements EditorEvent {
+  const factory EnlargeSelectedElement() = _$EnlargeSelectedElement;
+}
+
 /// @nodoc
-const $EditorState = _$EditorStateTearOff();
+abstract class _$$ReduceSelectedElementCopyWith<$Res> {
+  factory _$$ReduceSelectedElementCopyWith(_$ReduceSelectedElement value, $Res Function(_$ReduceSelectedElement) then) =
+      __$$ReduceSelectedElementCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ReduceSelectedElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$ReduceSelectedElementCopyWith<$Res> {
+  __$$ReduceSelectedElementCopyWithImpl(_$ReduceSelectedElement _value, $Res Function(_$ReduceSelectedElement) _then)
+      : super(_value, (v) => _then(v as _$ReduceSelectedElement));
+
+  @override
+  _$ReduceSelectedElement get _value => super._value as _$ReduceSelectedElement;
+}
+
+/// @nodoc
+
+class _$ReduceSelectedElement implements ReduceSelectedElement {
+  const _$ReduceSelectedElement();
+
+  @override
+  String toString() {
+    return 'EditorEvent.reduceSelectedElement()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ReduceSelectedElement);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addImage,
+    required TResult Function(material.BuildContext context) addStaticText,
+    required TResult Function(material.BuildContext context) addVariableText,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(material.Offset localPosition) dragStart,
+    required TResult Function(material.Offset localPosition) dragUpdate,
+    required TResult Function() dragEnd,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
+    required TResult Function(material.Offset localPosition) tapUp,
+    required TResult Function() clearEditor,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
+  }) {
+    return reduceSelectedElement();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+  }) {
+    return reduceSelectedElement?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (reduceSelectedElement != null) {
+      return reduceSelectedElement();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
+  }) {
+    return reduceSelectedElement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+  }) {
+    return reduceSelectedElement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (reduceSelectedElement != null) {
+      return reduceSelectedElement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReduceSelectedElement implements EditorEvent {
+  const factory ReduceSelectedElement() = _$ReduceSelectedElement;
+}
+
+/// @nodoc
+abstract class _$$BringSelectedElementToFrontCopyWith<$Res> {
+  factory _$$BringSelectedElementToFrontCopyWith(
+          _$BringSelectedElementToFront value, $Res Function(_$BringSelectedElementToFront) then) =
+      __$$BringSelectedElementToFrontCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BringSelectedElementToFrontCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$BringSelectedElementToFrontCopyWith<$Res> {
+  __$$BringSelectedElementToFrontCopyWithImpl(
+      _$BringSelectedElementToFront _value, $Res Function(_$BringSelectedElementToFront) _then)
+      : super(_value, (v) => _then(v as _$BringSelectedElementToFront));
+
+  @override
+  _$BringSelectedElementToFront get _value => super._value as _$BringSelectedElementToFront;
+}
+
+/// @nodoc
+
+class _$BringSelectedElementToFront implements BringSelectedElementToFront {
+  const _$BringSelectedElementToFront();
+
+  @override
+  String toString() {
+    return 'EditorEvent.bringSelectedElementToFront()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$BringSelectedElementToFront);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() addImage,
+    required TResult Function(material.BuildContext context) addStaticText,
+    required TResult Function(material.BuildContext context) addVariableText,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(material.Offset localPosition) dragStart,
+    required TResult Function(material.Offset localPosition) dragUpdate,
+    required TResult Function() dragEnd,
+    required TResult Function(String elementId, material.Offset delta) elementDrag,
+    required TResult Function(material.Offset localPosition) tapUp,
+    required TResult Function() clearEditor,
+    required TResult Function() removeSelectedElement,
+    required TResult Function(material.BuildContext context, String updatedText) staticTextChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        staticTextStyleChanged,
+    required TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)
+        variableTextStyleChanged,
+    required TResult Function(material.BuildContext context) variableTextFileChanged,
+    required TResult Function() enlargeSelectedElement,
+    required TResult Function() reduceSelectedElement,
+    required TResult Function() bringSelectedElementToFront,
+  }) {
+    return bringSelectedElementToFront();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+  }) {
+    return bringSelectedElementToFront?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? addImage,
+    TResult Function(material.BuildContext context)? addStaticText,
+    TResult Function(material.BuildContext context)? addVariableText,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(material.Offset localPosition)? dragStart,
+    TResult Function(material.Offset localPosition)? dragUpdate,
+    TResult Function()? dragEnd,
+    TResult Function(String elementId, material.Offset delta)? elementDrag,
+    TResult Function(material.Offset localPosition)? tapUp,
+    TResult Function()? clearEditor,
+    TResult Function()? removeSelectedElement,
+    TResult Function(material.BuildContext context, String updatedText)? staticTextChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.BuildContext context, material.TextStyle updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.BuildContext context)? variableTextFileChanged,
+    TResult Function()? enlargeSelectedElement,
+    TResult Function()? reduceSelectedElement,
+    TResult Function()? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (bringSelectedElementToFront != null) {
+      return bringSelectedElementToFront();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(DragStart value) dragStart,
+    required TResult Function(DragUpdate value) dragUpdate,
+    required TResult Function(DragEnd value) dragEnd,
+    required TResult Function(ElementDrag value) elementDrag,
+    required TResult Function(TapUp value) tapUp,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(EnlargeSelectedElement value) enlargeSelectedElement,
+    required TResult Function(ReduceSelectedElement value) reduceSelectedElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
+  }) {
+    return bringSelectedElementToFront(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+  }) {
+    return bringSelectedElementToFront?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddImage value)? addImage,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(DragStart value)? dragStart,
+    TResult Function(DragUpdate value)? dragUpdate,
+    TResult Function(DragEnd value)? dragEnd,
+    TResult Function(ElementDrag value)? elementDrag,
+    TResult Function(TapUp value)? tapUp,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(EnlargeSelectedElement value)? enlargeSelectedElement,
+    TResult Function(ReduceSelectedElement value)? reduceSelectedElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    required TResult orElse(),
+  }) {
+    if (bringSelectedElementToFront != null) {
+      return bringSelectedElementToFront(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BringSelectedElementToFront implements EditorEvent {
+  const factory BringSelectedElementToFront() = _$BringSelectedElementToFront;
+}
 
 /// @nodoc
 mixin _$EditorState {
@@ -5340,20 +4408,14 @@ mixin _$EditorState {
   Option<String> get selectedElementId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EditorStateCopyWith<EditorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditorStateCopyWith<EditorState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditorStateCopyWith<$Res> {
-  factory $EditorStateCopyWith(
-          EditorState value, $Res Function(EditorState) then) =
-      _$EditorStateCopyWithImpl<$Res>;
+  factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) then) = _$EditorStateCopyWithImpl<$Res>;
   $Res call(
-      {Editor editor,
-      Option<String> draggedElementId,
-      Option<Offset> dragPosition,
-      Option<String> selectedElementId});
+      {Editor editor, Option<String> draggedElementId, Option<Offset> dragPosition, Option<String> selectedElementId});
 
   $EditorCopyWith<$Res> get editor;
 }
@@ -5402,31 +4464,25 @@ class _$EditorStateCopyWithImpl<$Res> implements $EditorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EditorStateCopyWith<$Res>
-    implements $EditorStateCopyWith<$Res> {
-  factory _$EditorStateCopyWith(
-          _EditorState value, $Res Function(_EditorState) then) =
-      __$EditorStateCopyWithImpl<$Res>;
+abstract class _$$_EditorStateCopyWith<$Res> implements $EditorStateCopyWith<$Res> {
+  factory _$$_EditorStateCopyWith(_$_EditorState value, $Res Function(_$_EditorState) then) =
+      __$$_EditorStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Editor editor,
-      Option<String> draggedElementId,
-      Option<Offset> dragPosition,
-      Option<String> selectedElementId});
+      {Editor editor, Option<String> draggedElementId, Option<Offset> dragPosition, Option<String> selectedElementId});
 
   @override
   $EditorCopyWith<$Res> get editor;
 }
 
 /// @nodoc
-class __$EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
-    implements _$EditorStateCopyWith<$Res> {
-  __$EditorStateCopyWithImpl(
-      _EditorState _value, $Res Function(_EditorState) _then)
-      : super(_value, (v) => _then(v as _EditorState));
+class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
+    implements _$$_EditorStateCopyWith<$Res> {
+  __$$_EditorStateCopyWithImpl(_$_EditorState _value, $Res Function(_$_EditorState) _then)
+      : super(_value, (v) => _then(v as _$_EditorState));
 
   @override
-  _EditorState get _value => super._value as _EditorState;
+  _$_EditorState get _value => super._value as _$_EditorState;
 
   @override
   $Res call({
@@ -5435,7 +4491,7 @@ class __$EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
     Object? dragPosition = freezed,
     Object? selectedElementId = freezed,
   }) {
-    return _then(_EditorState(
+    return _then(_$_EditorState(
       editor: editor == freezed
           ? _value.editor
           : editor // ignore: cast_nullable_to_non_nullable
@@ -5484,14 +4540,11 @@ class _$_EditorState extends _EditorState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EditorState &&
+            other is _$_EditorState &&
             const DeepCollectionEquality().equals(other.editor, editor) &&
-            const DeepCollectionEquality()
-                .equals(other.draggedElementId, draggedElementId) &&
-            const DeepCollectionEquality()
-                .equals(other.dragPosition, dragPosition) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedElementId, selectedElementId));
+            const DeepCollectionEquality().equals(other.draggedElementId, draggedElementId) &&
+            const DeepCollectionEquality().equals(other.dragPosition, dragPosition) &&
+            const DeepCollectionEquality().equals(other.selectedElementId, selectedElementId));
   }
 
   @override
@@ -5504,66 +4557,48 @@ class _$_EditorState extends _EditorState {
 
   @JsonKey(ignore: true)
   @override
-  _$EditorStateCopyWith<_EditorState> get copyWith =>
-      __$EditorStateCopyWithImpl<_EditorState>(this, _$identity);
+  _$$_EditorStateCopyWith<_$_EditorState> get copyWith =>
+      __$$_EditorStateCopyWithImpl<_$_EditorState>(this, _$identity);
 }
 
 abstract class _EditorState extends EditorState {
   const factory _EditorState(
-      {required Editor editor,
-      required Option<String> draggedElementId,
-      required Option<Offset> dragPosition,
-      required Option<String> selectedElementId}) = _$_EditorState;
+      {required final Editor editor,
+      required final Option<String> draggedElementId,
+      required final Option<Offset> dragPosition,
+      required final Option<String> selectedElementId}) = _$_EditorState;
   const _EditorState._() : super._();
 
   @override
-  Editor get editor;
+  Editor get editor => throw _privateConstructorUsedError;
   @override
-  Option<String> get draggedElementId;
+  Option<String> get draggedElementId => throw _privateConstructorUsedError;
   @override
-  Option<Offset> get dragPosition;
+  Option<Offset> get dragPosition => throw _privateConstructorUsedError;
   @override
-  Option<String> get selectedElementId;
+  Option<String> get selectedElementId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EditorStateCopyWith<_EditorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_EditorStateCopyWith<_$_EditorState> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$EditorStateErrorTearOff {
-  const _$EditorStateErrorTearOff();
-
-  _EditorStateError call(String message) {
-    return _EditorStateError(
-      message,
-    );
-  }
-}
-
-/// @nodoc
-const $EditorStateError = _$EditorStateErrorTearOff();
 
 /// @nodoc
 mixin _$EditorStateError {
   String get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EditorStateErrorCopyWith<EditorStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditorStateErrorCopyWith<EditorStateError> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditorStateErrorCopyWith<$Res> {
-  factory $EditorStateErrorCopyWith(
-          EditorStateError value, $Res Function(EditorStateError) then) =
+  factory $EditorStateErrorCopyWith(EditorStateError value, $Res Function(EditorStateError) then) =
       _$EditorStateErrorCopyWithImpl<$Res>;
   $Res call({String message});
 }
 
 /// @nodoc
-class _$EditorStateErrorCopyWithImpl<$Res>
-    implements $EditorStateErrorCopyWith<$Res> {
+class _$EditorStateErrorCopyWithImpl<$Res> implements $EditorStateErrorCopyWith<$Res> {
   _$EditorStateErrorCopyWithImpl(this._value, this._then);
 
   final EditorStateError _value;
@@ -5584,31 +4619,27 @@ class _$EditorStateErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EditorStateErrorCopyWith<$Res>
-    implements $EditorStateErrorCopyWith<$Res> {
-  factory _$EditorStateErrorCopyWith(
-          _EditorStateError value, $Res Function(_EditorStateError) then) =
-      __$EditorStateErrorCopyWithImpl<$Res>;
+abstract class _$$_EditorStateErrorCopyWith<$Res> implements $EditorStateErrorCopyWith<$Res> {
+  factory _$$_EditorStateErrorCopyWith(_$_EditorStateError value, $Res Function(_$_EditorStateError) then) =
+      __$$_EditorStateErrorCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class __$EditorStateErrorCopyWithImpl<$Res>
-    extends _$EditorStateErrorCopyWithImpl<$Res>
-    implements _$EditorStateErrorCopyWith<$Res> {
-  __$EditorStateErrorCopyWithImpl(
-      _EditorStateError _value, $Res Function(_EditorStateError) _then)
-      : super(_value, (v) => _then(v as _EditorStateError));
+class __$$_EditorStateErrorCopyWithImpl<$Res> extends _$EditorStateErrorCopyWithImpl<$Res>
+    implements _$$_EditorStateErrorCopyWith<$Res> {
+  __$$_EditorStateErrorCopyWithImpl(_$_EditorStateError _value, $Res Function(_$_EditorStateError) _then)
+      : super(_value, (v) => _then(v as _$_EditorStateError));
 
   @override
-  _EditorStateError get _value => super._value as _EditorStateError;
+  _$_EditorStateError get _value => super._value as _$_EditorStateError;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_EditorStateError(
+    return _then(_$_EditorStateError(
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -5634,28 +4665,26 @@ class _$_EditorStateError extends _EditorStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EditorStateError &&
+            other is _$_EditorStateError &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
-  _$EditorStateErrorCopyWith<_EditorStateError> get copyWith =>
-      __$EditorStateErrorCopyWithImpl<_EditorStateError>(this, _$identity);
+  _$$_EditorStateErrorCopyWith<_$_EditorStateError> get copyWith =>
+      __$$_EditorStateErrorCopyWithImpl<_$_EditorStateError>(this, _$identity);
 }
 
 abstract class _EditorStateError extends EditorStateError {
-  const factory _EditorStateError(String message) = _$_EditorStateError;
+  const factory _EditorStateError(final String message) = _$_EditorStateError;
   const _EditorStateError._() : super._();
 
   @override
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EditorStateErrorCopyWith<_EditorStateError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_EditorStateErrorCopyWith<_$_EditorStateError> get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,7 +19,5 @@ class ElementIdGeneratorDefaultImpl implements ElementIdGenerator {
   ElementIdGeneratorDefaultImpl(this._uuid);
 
   @override
-  ElementId generate() {
-    return _uuid.v4();
-  }
+  ElementId generate() => _uuid.v4();
 }

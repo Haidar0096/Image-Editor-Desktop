@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 /// Any route created using this method will be faded in when transitioned into.
-Route fadeInRoute(
-        {required Widget child, RouteSettings? settings, Duration? duration}) =>
-    PageRouteBuilder(
+Route fadeInRoute({required Widget child, RouteSettings? settings, Duration? duration}) => PageRouteBuilder(
       transitionDuration: duration ?? const Duration(milliseconds: 300),
       reverseTransitionDuration: duration ?? const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) => child,
-      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-          FadeTransition(
+      transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
         opacity: animation.drive(Tween(begin: 0.0, end: 1.0)),
         child: child,
       ),

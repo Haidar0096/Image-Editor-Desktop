@@ -77,8 +77,7 @@ class EditorAppBar extends StatelessWidget {
                 AppLocalizations.of(context)!.about,
                 style: toc.textTheme.bodyMedium,
               ),
-              onTap: () =>
-                  Navigator.of(context).pushNamed(AboutScreen.routeName),
+              onTap: () => Navigator.of(context).pushNamed(AboutScreen.routeName),
             ),
           ),
         ),
@@ -157,12 +156,7 @@ class EditorAppBar extends StatelessWidget {
             if (!context.read<ScreenshotCubit>().state.isProcessing) {
               await context.read<ScreenshotCubit>().captureWidget(
                     context: context,
-                    elements: context
-                        .read<EditorBloc>()
-                        .state
-                        .editor
-                        .elements
-                        .toList(),
+                    elements: context.read<EditorBloc>().state.editor.elements.toList(),
                   );
             }
           },

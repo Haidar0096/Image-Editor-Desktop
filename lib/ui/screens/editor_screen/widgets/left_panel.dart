@@ -32,19 +32,16 @@ class LeftPanel extends StatelessWidget {
                   return null;
                 },
                 (selectedElement) {
-                  bool isTextElement =
-                      selectedElement.elementType is editor.TextElementType;
+                  bool isTextElement = selectedElement.elementType is editor.TextElementType;
 
-                  bool isVariableTextElement = selectedElement.elementType
-                      is editor.VariableTextElementType;
+                  bool isVariableTextElement = selectedElement.elementType is editor.VariableTextElementType;
 
                   return Column(
                     children: [
                       _action(
                         context: context,
                         icon: Icons.delete_forever_rounded,
-                        toolTipMessage:
-                            AppLocalizations.of(context)!.removeElement,
+                        toolTipMessage: AppLocalizations.of(context)!.removeElement,
                         onPressed: () {
                           context.read<EditorBloc>().add(
                                 RemoveElementEditorEvent(
@@ -56,20 +53,16 @@ class LeftPanel extends StatelessWidget {
                       _action(
                         context: context,
                         icon: Icons.flip_to_front,
-                        toolTipMessage:
-                            AppLocalizations.of(context)!.bringToFront,
+                        toolTipMessage: AppLocalizations.of(context)!.bringToFront,
                         onPressed: () {
-                          context
-                              .read<EditorBloc>()
-                              .add(const BringToFrontEditorEvent());
+                          context.read<EditorBloc>().add(const BringToFrontEditorEvent());
                         },
                       ),
                       if (isTextElement || isVariableTextElement)
                         _action(
                           context: context,
                           icon: Icons.edit,
-                          toolTipMessage:
-                              AppLocalizations.of(context)!.editText,
+                          toolTipMessage: AppLocalizations.of(context)!.editText,
                           onPressed: () async {
                             if (isTextElement) {
                               await showDialog(
@@ -80,9 +73,7 @@ class LeftPanel extends StatelessWidget {
                                 ),
                               );
                             } else if (isVariableTextElement) {
-                              context.read<EditorBloc>().add(
-                                  VariableTextElementFileChangedEvent(
-                                      context: context));
+                              context.read<EditorBloc>().add(VariableTextElementFileChangedEvent(context: context));
                             }
                           },
                         ),
@@ -90,27 +81,21 @@ class LeftPanel extends StatelessWidget {
                         _action(
                           context: context,
                           icon: Icons.color_lens,
-                          toolTipMessage:
-                              AppLocalizations.of(context)!.changeColor,
+                          toolTipMessage: AppLocalizations.of(context)!.changeColor,
                           onPressed: () {
                             late final TextStyle? currentTextStyle;
                             if (isTextElement) {
-                              currentTextStyle = (selectedElement.elementType
-                                      as editor.TextElementType)
-                                  .textStyle;
+                              currentTextStyle = (selectedElement.elementType as editor.TextElementType).textStyle;
                             } else if (isVariableTextElement) {
-                              currentTextStyle = (selectedElement.elementType
-                                      as editor.VariableTextElementType)
-                                  .textStyle;
+                              currentTextStyle =
+                                  (selectedElement.elementType as editor.VariableTextElementType).textStyle;
                             }
-                            _showColorPicker(context, toc, currentTextStyle,
-                                (color) {
+                            _showColorPicker(context, toc, currentTextStyle, (color) {
                               if (isTextElement) {
                                 context.read<EditorBloc>().add(
                                       TextElementTextStyleChangedEditorEvent(
                                         context: context,
-                                        updatedTextStyle:
-                                            currentTextStyle!.copyWith(
+                                        updatedTextStyle: currentTextStyle!.copyWith(
                                           color: color,
                                         ),
                                       ),
@@ -119,8 +104,7 @@ class LeftPanel extends StatelessWidget {
                                 context.read<EditorBloc>().add(
                                       VariableTextElementTextStyleChangedEditorEvent(
                                         context: context,
-                                        updatedTextStyle:
-                                            currentTextStyle!.copyWith(
+                                        updatedTextStyle: currentTextStyle!.copyWith(
                                           color: color,
                                         ),
                                       ),
@@ -132,8 +116,7 @@ class LeftPanel extends StatelessWidget {
                       _action(
                         context: context,
                         icon: Icons.add,
-                        toolTipMessage:
-                            AppLocalizations.of(context)!.makeLarger,
+                        toolTipMessage: AppLocalizations.of(context)!.makeLarger,
                         onPressed: () async {
                           context.read<EditorBloc>().add(
                                 const MakeElementLargerEditorEvent(),
@@ -143,8 +126,7 @@ class LeftPanel extends StatelessWidget {
                       _action(
                         context: context,
                         icon: Icons.remove,
-                        toolTipMessage:
-                            AppLocalizations.of(context)!.makeSmaller,
+                        toolTipMessage: AppLocalizations.of(context)!.makeSmaller,
                         onPressed: () async {
                           context.read<EditorBloc>().add(
                                 const MakeElementSmallerEditorEvent(),
@@ -155,8 +137,7 @@ class LeftPanel extends StatelessWidget {
                         _action(
                           context: context,
                           icon: Icons.font_download,
-                          toolTipMessage:
-                              AppLocalizations.of(context)!.makeSmaller,
+                          toolTipMessage: AppLocalizations.of(context)!.makeSmaller,
                           onPressed: () async {
                             await showDialog(
                               context: context,
@@ -166,26 +147,16 @@ class LeftPanel extends StatelessWidget {
                                     context,
                                     (updatedTextStyle) {
                                       final currentTextStyle =
-                                          (selectedElement.elementType
-                                                  as editor.TextElementType)
-                                              .textStyle;
+                                          (selectedElement.elementType as editor.TextElementType).textStyle;
                                       context.read<EditorBloc>().add(
-                                            EditorEvent
-                                                .textElementTextStyleChanged(
+                                            EditorEvent.textElementTextStyleChanged(
                                               context: context,
-                                              updatedTextStyle:
-                                                  currentTextStyle!.copyWith(
-                                                fontFamily:
-                                                    updatedTextStyle.fontFamily,
-                                                fontStyle:
-                                                    updatedTextStyle.fontStyle,
-                                                fontFamilyFallback:
-                                                    updatedTextStyle
-                                                        .fontFamilyFallback,
-                                                fontFeatures: updatedTextStyle
-                                                    .fontFeatures,
-                                                fontWeight:
-                                                    updatedTextStyle.fontWeight,
+                                              updatedTextStyle: currentTextStyle!.copyWith(
+                                                fontFamily: updatedTextStyle.fontFamily,
+                                                fontStyle: updatedTextStyle.fontStyle,
+                                                fontFamilyFallback: updatedTextStyle.fontFamilyFallback,
+                                                fontFeatures: updatedTextStyle.fontFeatures,
+                                                fontWeight: updatedTextStyle.fontWeight,
                                               ),
                                             ),
                                           );
@@ -195,27 +166,17 @@ class LeftPanel extends StatelessWidget {
                                   return _fontsDialog(
                                     context,
                                     (updatedTextStyle) {
-                                      final currentTextStyle = (selectedElement
-                                                  .elementType
-                                              as editor.VariableTextElementType)
-                                          .textStyle;
+                                      final currentTextStyle =
+                                          (selectedElement.elementType as editor.VariableTextElementType).textStyle;
                                       context.read<EditorBloc>().add(
-                                            EditorEvent
-                                                .variableTextElementTextStyleChanged(
+                                            EditorEvent.variableTextElementTextStyleChanged(
                                               context: context,
-                                              updatedTextStyle:
-                                                  currentTextStyle!.copyWith(
-                                                fontFamily:
-                                                    updatedTextStyle.fontFamily,
-                                                fontStyle:
-                                                    updatedTextStyle.fontStyle,
-                                                fontFamilyFallback:
-                                                    updatedTextStyle
-                                                        .fontFamilyFallback,
-                                                fontFeatures: updatedTextStyle
-                                                    .fontFeatures,
-                                                fontWeight:
-                                                    updatedTextStyle.fontWeight,
+                                              updatedTextStyle: currentTextStyle!.copyWith(
+                                                fontFamily: updatedTextStyle.fontFamily,
+                                                fontStyle: updatedTextStyle.fontStyle,
+                                                fontFamilyFallback: updatedTextStyle.fontFamilyFallback,
+                                                fontFeatures: updatedTextStyle.fontFeatures,
+                                                fontWeight: updatedTextStyle.fontWeight,
                                               ),
                                             ),
                                           );
@@ -229,65 +190,47 @@ class LeftPanel extends StatelessWidget {
                           },
                         ),
                       if (isTextElement || isVariableTextElement)
-                        _changeFontSizeAction(
-                            context, selectedElement, toc, Icons.add, () {
+                        _changeFontSizeAction(context, selectedElement, toc, Icons.add, () {
                           if (isTextElement) {
-                            final currentTextStyle = (selectedElement
-                                    .elementType as editor.TextElementType)
-                                .textStyle;
+                            final currentTextStyle = (selectedElement.elementType as editor.TextElementType).textStyle;
                             context.read<EditorBloc>().add(
                                   TextElementTextStyleChangedEditorEvent(
                                     context: context,
-                                    updatedTextStyle: currentTextStyle!
-                                        .copyWith(
-                                            fontSize:
-                                                currentTextStyle.fontSize! + 3),
+                                    updatedTextStyle:
+                                        currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 3),
                                   ),
                                 );
                           } else if (isVariableTextElement) {
                             final currentTextStyle =
-                                (selectedElement.elementType
-                                        as editor.VariableTextElementType)
-                                    .textStyle;
+                                (selectedElement.elementType as editor.VariableTextElementType).textStyle;
                             context.read<EditorBloc>().add(
                                   VariableTextElementTextStyleChangedEditorEvent(
                                     context: context,
-                                    updatedTextStyle: currentTextStyle!
-                                        .copyWith(
-                                            fontSize:
-                                                currentTextStyle.fontSize! + 3),
+                                    updatedTextStyle:
+                                        currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 3),
                                   ),
                                 );
                           }
                         }),
                       if (isTextElement || isVariableTextElement)
-                        _changeFontSizeAction(
-                            context, selectedElement, toc, Icons.remove, () {
+                        _changeFontSizeAction(context, selectedElement, toc, Icons.remove, () {
                           if (isTextElement) {
-                            final currentTextStyle = (selectedElement
-                                    .elementType as editor.TextElementType)
-                                .textStyle;
+                            final currentTextStyle = (selectedElement.elementType as editor.TextElementType).textStyle;
                             context.read<EditorBloc>().add(
                                   TextElementTextStyleChangedEditorEvent(
                                     context: context,
-                                    updatedTextStyle: currentTextStyle!
-                                        .copyWith(
-                                            fontSize:
-                                                currentTextStyle.fontSize! - 3),
+                                    updatedTextStyle:
+                                        currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! - 3),
                                   ),
                                 );
                           } else if (isVariableTextElement) {
                             final currentTextStyle =
-                                (selectedElement.elementType
-                                        as editor.VariableTextElementType)
-                                    .textStyle;
+                                (selectedElement.elementType as editor.VariableTextElementType).textStyle;
                             context.read<EditorBloc>().add(
                                   VariableTextElementTextStyleChangedEditorEvent(
                                     context: context,
-                                    updatedTextStyle: currentTextStyle!
-                                        .copyWith(
-                                            fontSize:
-                                                currentTextStyle.fontSize! - 3),
+                                    updatedTextStyle:
+                                        currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! - 3),
                                   ),
                                 );
                           }
@@ -303,8 +246,8 @@ class LeftPanel extends StatelessWidget {
     );
   }
 
-  Future<dynamic> _showColorPicker(BuildContext context, ThemeData toc,
-      TextStyle? currentTextStyle, void Function(Color) onColorChanged) {
+  Future<dynamic> _showColorPicker(
+      BuildContext context, ThemeData toc, TextStyle? currentTextStyle, void Function(Color) onColorChanged) {
     return showDialog(
       context: context,
       builder: (_) {
@@ -326,11 +269,7 @@ class LeftPanel extends StatelessWidget {
   }
 
   Padding _changeFontSizeAction(
-      BuildContext context,
-      editor.Element selectedElement,
-      ThemeData toc,
-      IconData icon,
-      void Function() onTap) {
+      BuildContext context, editor.Element selectedElement, ThemeData toc, IconData icon, void Function() onTap) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Tooltip(
@@ -408,8 +347,7 @@ class EditTextDialog extends StatefulWidget {
   final editor.Element element;
   final EditorBloc bloc;
 
-  const EditTextDialog({Key? key, required this.element, required this.bloc})
-      : super(key: key);
+  const EditTextDialog({Key? key, required this.element, required this.bloc}) : super(key: key);
 
   @override
   State<EditTextDialog> createState() => _EditTextDialogState();
@@ -421,8 +359,7 @@ class _EditTextDialogState extends State<EditTextDialog> {
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController(
-        text: (widget.element.elementType as editor.TextElementType).value);
+    _textEditingController = TextEditingController(text: (widget.element.elementType as editor.TextElementType).value);
   }
 
   @override
@@ -441,8 +378,7 @@ class _EditTextDialogState extends State<EditTextDialog> {
           child: TextField(
             textDirection: Directionality.of(context),
             controller: _textEditingController,
-            style: (widget.element.elementType as editor.TextElementType)
-                .textStyle,
+            style: (widget.element.elementType as editor.TextElementType).textStyle,
             onChanged: (_) {
               widget.bloc.add(
                 TextElementTextChangedEditorEvent(

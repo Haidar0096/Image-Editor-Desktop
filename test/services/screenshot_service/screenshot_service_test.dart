@@ -6,8 +6,7 @@ part 'screenshot_service_test_constants.dart'; // contains the bytes of the capt
 
 void main() {
   group('captureWidget', () {
-    testWidgets('Should return the correct Uint8List when successful.',
-        (WidgetTester tester) async {
+    testWidgets('Should return the correct Uint8List when successful.', (WidgetTester tester) async {
       TestWidgetsFlutterBinding.ensureInitialized();
 
       await tester.pumpWidget(appWidget);
@@ -17,8 +16,8 @@ void main() {
       ScreenshotService screenshotService = ScreenshotService();
 
       // capture the widget and get the actual result Uint8List
-      final List<int>? actualResult = await tester.runAsync<List<int>?>(
-          () async => (await screenshotService.captureWidget(
+      final List<int>? actualResult =
+          await tester.runAsync<List<int>?>(() async => (await screenshotService.captureWidget(
                 widget: appWidget,
                 context: tester.element(find.byType(Text)),
               ))

@@ -11,9 +11,7 @@ class LocalizationState {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LocalizationState &&
-          runtimeType == other.runtimeType &&
-          locale == other.locale;
+      other is LocalizationState && runtimeType == other.runtimeType && locale == other.locale;
 
   @override
   int get hashCode => locale.hashCode;

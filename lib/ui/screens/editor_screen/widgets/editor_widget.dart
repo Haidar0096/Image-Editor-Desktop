@@ -84,14 +84,10 @@ class _EditorWidgetState extends State<EditorWidget> {
         context.read<EditorBloc>().add(TapUpEditorEvent(details.localPosition));
       },
       onPanStart: (details) {
-        context
-            .read<EditorBloc>()
-            .add(DragStartEditorEvent(details.localPosition));
+        context.read<EditorBloc>().add(DragStartEditorEvent(details.localPosition));
       },
       onPanUpdate: (details) {
-        context
-            .read<EditorBloc>()
-            .add(DragUpdateEditorEvent(details.localPosition));
+        context.read<EditorBloc>().add(DragUpdateEditorEvent(details.localPosition));
       },
       onPanEnd: (details) {
         context.read<EditorBloc>().add(const DragEndEditorEvent());
@@ -107,13 +103,7 @@ class _EditorWidgetState extends State<EditorWidget> {
   }
 
   Iterable<Widget> _editorElementsWidgets(BuildContext context) {
-    return context
-        .read<EditorBloc>()
-        .state
-        .editor
-        .elements
-        .sorted((a, b) => a.showOrder.compareTo(b.showOrder))
-        .map(
+    return context.read<EditorBloc>().state.editor.elements.sorted((a, b) => a.showOrder.compareTo(b.showOrder)).map(
       (element) {
         // create widget based on element type
         Widget stackChild = EditorElementWidgetDelegate(element: element);

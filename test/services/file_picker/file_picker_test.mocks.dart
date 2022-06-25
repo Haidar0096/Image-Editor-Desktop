@@ -39,35 +39,29 @@ class MockApiFilePicker extends _i1.Mock implements _i2.FilePicker {
           bool? withReadStream = false,
           bool? lockParentWindow = false}) =>
       (super.noSuchMethod(
-              Invocation.method(#pickFiles, [], {
-                #dialogTitle: dialogTitle,
-                #initialDirectory: initialDirectory,
-                #type: type,
-                #allowedExtensions: allowedExtensions,
-                #onFileLoading: onFileLoading,
-                #allowCompression: allowCompression,
-                #allowMultiple: allowMultiple,
-                #withData: withData,
-                #withReadStream: withReadStream,
-                #lockParentWindow: lockParentWindow
-              }),
-              returnValue: Future<_i4.FilePickerResult?>.value())
-          as _i3.Future<_i4.FilePickerResult?>);
+          Invocation.method(#pickFiles, [], {
+            #dialogTitle: dialogTitle,
+            #initialDirectory: initialDirectory,
+            #type: type,
+            #allowedExtensions: allowedExtensions,
+            #onFileLoading: onFileLoading,
+            #allowCompression: allowCompression,
+            #allowMultiple: allowMultiple,
+            #withData: withData,
+            #withReadStream: withReadStream,
+            #lockParentWindow: lockParentWindow
+          }),
+          returnValue: Future<_i4.FilePickerResult?>.value()) as _i3.Future<_i4.FilePickerResult?>);
   @override
   _i3.Future<bool?> clearTemporaryFiles() =>
-      (super.noSuchMethod(Invocation.method(#clearTemporaryFiles, []),
-          returnValue: Future<bool?>.value()) as _i3.Future<bool?>);
+      (super.noSuchMethod(Invocation.method(#clearTemporaryFiles, []), returnValue: Future<bool?>.value())
+          as _i3.Future<bool?>);
   @override
   _i3.Future<String?> getDirectoryPath(
-          {String? dialogTitle,
-          bool? lockParentWindow = false,
-          String? initialDirectory}) =>
+          {String? dialogTitle, bool? lockParentWindow = false, String? initialDirectory}) =>
       (super.noSuchMethod(
-          Invocation.method(#getDirectoryPath, [], {
-            #dialogTitle: dialogTitle,
-            #lockParentWindow: lockParentWindow,
-            #initialDirectory: initialDirectory
-          }),
+          Invocation.method(#getDirectoryPath, [],
+              {#dialogTitle: dialogTitle, #lockParentWindow: lockParentWindow, #initialDirectory: initialDirectory}),
           returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
   _i3.Future<String?> saveFile(

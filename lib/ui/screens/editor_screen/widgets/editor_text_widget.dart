@@ -8,8 +8,7 @@ class EditorTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final editor.TextElementType textElementType =
-        element.elementType as editor.TextElementType;
+    final editor.TextElementType textElementType = element.elementType as editor.TextElementType;
     return Text(
       textElementType.value,
       style: textElementType.textStyle,

@@ -22,12 +22,9 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
 
   final Logger _logger;
 
-  ScreenshotCubit(this._filePicker, this._screenshotService, this._logger)
-      : super(ScreenshotState.initial());
+  ScreenshotCubit(this._filePicker, this._screenshotService, this._logger) : super(ScreenshotState.initial());
 
-  Future<void> captureWidget(
-      {required List<editor.Element> elements,
-      required BuildContext context}) async {
+  Future<void> captureWidget({required List<editor.Element> elements, required BuildContext context}) async {
     emit(state.copyWith(isProcessing: true));
 
     // choose storage location
@@ -62,10 +59,8 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
           Map<String, List<String>> filesData = {};
 
           for (int i = 0; i < variableTextElementTypes.length; i++) {
-            final elementType =
-                variableTextElementTypes[i] as editor.VariableTextElementType;
-            filesData[elementType.sourceFilePath] =
-                File(elementType.sourceFilePath).readAsLinesSync();
+            final elementType = variableTextElementTypes[i] as editor.VariableTextElementType;
+            filesData[elementType.sourceFilePath] = File(elementType.sourceFilePath).readAsLinesSync();
           }
 
           // take a screenshot for each line in the files
@@ -77,14 +72,10 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
             List<editor.Element> currentSubstitutedElements = elements.map(
               (element) {
                 if (element.elementType is editor.VariableTextElementType) {
-                  final variableTextElementType =
-                      element.elementType as editor.VariableTextElementType;
+                  final variableTextElementType = element.elementType as editor.VariableTextElementType;
                   return element.copyWith(
-                    elementType:
-                        (element.elementType as editor.VariableTextElementType)
-                            .copyWith(
-                      placeHolderText:
-                          filesData[variableTextElementType.sourceFilePath]![i],
+                    elementType: (element.elementType as editor.VariableTextElementType).copyWith(
+                      placeHolderText: filesData[variableTextElementType.sourceFilePath]![i],
                     ),
                   );
                 } else {

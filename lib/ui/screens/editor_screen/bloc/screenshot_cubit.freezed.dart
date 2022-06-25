@@ -12,23 +12,7 @@ part of 'screenshot_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ScreenshotStateTearOff {
-  const _$ScreenshotStateTearOff();
-
-  _ScreenshotState call(
-      {required bool isProcessing, required Widget editorWidget}) {
-    return _ScreenshotState(
-      isProcessing: isProcessing,
-      editorWidget: editorWidget,
-    );
-  }
-}
-
-/// @nodoc
-const $ScreenshotState = _$ScreenshotStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ScreenshotState {
@@ -36,21 +20,18 @@ mixin _$ScreenshotState {
   Widget get editorWidget => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ScreenshotStateCopyWith<ScreenshotState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ScreenshotStateCopyWith<ScreenshotState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ScreenshotStateCopyWith<$Res> {
-  factory $ScreenshotStateCopyWith(
-          ScreenshotState value, $Res Function(ScreenshotState) then) =
+  factory $ScreenshotStateCopyWith(ScreenshotState value, $Res Function(ScreenshotState) then) =
       _$ScreenshotStateCopyWithImpl<$Res>;
   $Res call({bool isProcessing, Widget editorWidget});
 }
 
 /// @nodoc
-class _$ScreenshotStateCopyWithImpl<$Res>
-    implements $ScreenshotStateCopyWith<$Res> {
+class _$ScreenshotStateCopyWithImpl<$Res> implements $ScreenshotStateCopyWith<$Res> {
   _$ScreenshotStateCopyWithImpl(this._value, this._then);
 
   final ScreenshotState _value;
@@ -76,32 +57,28 @@ class _$ScreenshotStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ScreenshotStateCopyWith<$Res>
-    implements $ScreenshotStateCopyWith<$Res> {
-  factory _$ScreenshotStateCopyWith(
-          _ScreenshotState value, $Res Function(_ScreenshotState) then) =
-      __$ScreenshotStateCopyWithImpl<$Res>;
+abstract class _$$_ScreenshotStateCopyWith<$Res> implements $ScreenshotStateCopyWith<$Res> {
+  factory _$$_ScreenshotStateCopyWith(_$_ScreenshotState value, $Res Function(_$_ScreenshotState) then) =
+      __$$_ScreenshotStateCopyWithImpl<$Res>;
   @override
   $Res call({bool isProcessing, Widget editorWidget});
 }
 
 /// @nodoc
-class __$ScreenshotStateCopyWithImpl<$Res>
-    extends _$ScreenshotStateCopyWithImpl<$Res>
-    implements _$ScreenshotStateCopyWith<$Res> {
-  __$ScreenshotStateCopyWithImpl(
-      _ScreenshotState _value, $Res Function(_ScreenshotState) _then)
-      : super(_value, (v) => _then(v as _ScreenshotState));
+class __$$_ScreenshotStateCopyWithImpl<$Res> extends _$ScreenshotStateCopyWithImpl<$Res>
+    implements _$$_ScreenshotStateCopyWith<$Res> {
+  __$$_ScreenshotStateCopyWithImpl(_$_ScreenshotState _value, $Res Function(_$_ScreenshotState) _then)
+      : super(_value, (v) => _then(v as _$_ScreenshotState));
 
   @override
-  _ScreenshotState get _value => super._value as _ScreenshotState;
+  _$_ScreenshotState get _value => super._value as _$_ScreenshotState;
 
   @override
   $Res call({
     Object? isProcessing = freezed,
     Object? editorWidget = freezed,
   }) {
-    return _then(_ScreenshotState(
+    return _then(_$_ScreenshotState(
       isProcessing: isProcessing == freezed
           ? _value.isProcessing
           : isProcessing // ignore: cast_nullable_to_non_nullable
@@ -117,9 +94,7 @@ class __$ScreenshotStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ScreenshotState extends _ScreenshotState {
-  const _$_ScreenshotState(
-      {required this.isProcessing, required this.editorWidget})
-      : super._();
+  const _$_ScreenshotState({required this.isProcessing, required this.editorWidget}) : super._();
 
   @override
   final bool isProcessing;
@@ -135,37 +110,31 @@ class _$_ScreenshotState extends _ScreenshotState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ScreenshotState &&
-            const DeepCollectionEquality()
-                .equals(other.isProcessing, isProcessing) &&
-            const DeepCollectionEquality()
-                .equals(other.editorWidget, editorWidget));
+            other is _$_ScreenshotState &&
+            const DeepCollectionEquality().equals(other.isProcessing, isProcessing) &&
+            const DeepCollectionEquality().equals(other.editorWidget, editorWidget));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isProcessing),
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(isProcessing),
       const DeepCollectionEquality().hash(editorWidget));
 
   @JsonKey(ignore: true)
   @override
-  _$ScreenshotStateCopyWith<_ScreenshotState> get copyWith =>
-      __$ScreenshotStateCopyWithImpl<_ScreenshotState>(this, _$identity);
+  _$$_ScreenshotStateCopyWith<_$_ScreenshotState> get copyWith =>
+      __$$_ScreenshotStateCopyWithImpl<_$_ScreenshotState>(this, _$identity);
 }
 
 abstract class _ScreenshotState extends ScreenshotState {
-  const factory _ScreenshotState(
-      {required bool isProcessing,
-      required Widget editorWidget}) = _$_ScreenshotState;
+  const factory _ScreenshotState({required final bool isProcessing, required final Widget editorWidget}) =
+      _$_ScreenshotState;
   const _ScreenshotState._() : super._();
 
   @override
-  bool get isProcessing;
+  bool get isProcessing => throw _privateConstructorUsedError;
   @override
-  Widget get editorWidget;
+  Widget get editorWidget => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ScreenshotStateCopyWith<_ScreenshotState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ScreenshotStateCopyWith<_$_ScreenshotState> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 import 'package:photo_editor/services/timeline/timeline_impl.dart';
 
 /// A timeline of values of a variable of type [T].
@@ -12,11 +11,8 @@ import 'package:photo_editor/services/timeline/timeline_impl.dart';
 /// If there is no next (resp. previous) element available (i.e. the current index in the timeline list is at
 /// the end (resp. beginning)), then the same current element at the end (resp. beginning) of the list will be
 /// returned.
-@injectable
 abstract class Timeline<T> {
-  @factoryMethod
-  factory Timeline({int? maxSize}) =>
-      TimelineDefaultImpl(maxSize: maxSize ?? 30);
+  factory Timeline({int? maxSize}) => TimelineDefaultImpl<T>(maxSize: maxSize ?? 30);
 
   /// Returns an [UnmodifiableListView] of elements saved in the timeline, element at index 0 being the oldest.
   UnmodifiableListView<T> get elements;
