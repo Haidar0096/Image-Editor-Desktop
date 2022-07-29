@@ -26,9 +26,9 @@ void main() {
     Element variableText = Element(
       id: '3',
       showOrder: 3,
-      properties: const VariableTextProperties(
+      properties: VariableTextProperties(
         placeHolderText: 'Generated Text',
-        sourceFilePath: 'text.txt',
+        sourceFilePath: some('text.txt'),
       ),
       rect: Offset.zero & const Size(100, 100),
     );
@@ -218,7 +218,7 @@ void main() {
   });
 
   group('elementsSortedByShowOrder', () {
-    test('Should return the elements sorted by id for non empty editor', () {
+    test('Should return the elements sorted by id (ascending) for non empty editor', () {
       // image element
       Element image = Element(
         id: '1',
@@ -238,9 +238,9 @@ void main() {
       Element variableText = Element(
         id: '3',
         showOrder: 3,
-        properties: const VariableTextProperties(
+        properties: VariableTextProperties(
           placeHolderText: 'Generated Text',
-          sourceFilePath: 'text.txt',
+          sourceFilePath: some('text.txt'),
         ),
         rect: Offset.zero & const Size(100, 100),
       );
@@ -248,6 +248,46 @@ void main() {
       expect(
         Editor.fromSet({image, staticText, variableText}).elementsSortedByShowOrder,
         IList([image, staticText, variableText]),
+      );
+    });
+    test('Should return an empty list for empty editor', () {
+      expect(
+        Editor.empty().elementsSortedByShowOrder,
+        IList(),
+      );
+    });
+  });
+  group('elementsSortedByShowOrderDescending', () {
+    test('Should return the elements sorted by id (descending) for non empty editor', () {
+      // image element
+      Element image = Element(
+        id: '1',
+        showOrder: 1,
+        properties: const FileImageProperties(sourceFilePath: 'image.jpeg'),
+        rect: Offset.zero & const Size(100, 100),
+      );
+
+      // static text element
+      Element staticText = Element(
+        id: '2',
+        showOrder: 2,
+        properties: const StaticTextProperties(text: 'Hello'),
+        rect: Offset.zero & const Size(100, 100),
+      );
+
+      Element variableText = Element(
+        id: '3',
+        showOrder: 3,
+        properties: VariableTextProperties(
+          placeHolderText: 'Generated Text',
+          sourceFilePath: some('text.txt'),
+        ),
+        rect: Offset.zero & const Size(100, 100),
+      );
+
+      expect(
+        Editor.fromSet({image, staticText, variableText}).elementsSortedByShowOrderDescending,
+        IList([variableText, staticText, image]),
       );
     });
     test('Should return an empty list for empty editor', () {
@@ -277,9 +317,9 @@ void main() {
     Element variableText = Element(
       id: '3',
       showOrder: 3,
-      properties: const VariableTextProperties(
+      properties: VariableTextProperties(
         placeHolderText: 'Generated Text',
-        sourceFilePath: 'text.txt',
+        sourceFilePath: some('text.txt'),
       ),
       rect: const Offset(150, 150) & const Size(200, 200),
     );

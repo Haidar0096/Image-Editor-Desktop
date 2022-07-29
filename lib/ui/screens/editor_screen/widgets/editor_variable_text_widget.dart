@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
 
 class EditorVariableTextWidget extends StatelessWidget {
-  final editor.Element element;
+  final editor.VariableTextProperties properties;
 
-  const EditorVariableTextWidget({Key? key, required this.element}) : super(key: key);
+  const EditorVariableTextWidget({Key? key, required this.properties}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final elementType = element.elementType as editor.VariableTextElementType;
     return Text(
-      elementType.placeHolderText,
-      style: elementType.textStyle,
-      textAlign: TextAlign.center,
+      properties.placeHolderText,
+      style: properties.textStyle,
     );
   }
 }

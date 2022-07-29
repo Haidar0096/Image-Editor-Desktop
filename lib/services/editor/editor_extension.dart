@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 
-import 'package:dartz/dartz.dart' hide ISet, IList;
+import 'package:dartz/dartz.dart' show optionOf, Option;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:collection/collection.dart';
@@ -43,9 +43,14 @@ extension EditorExtension on Editor {
   /// Returns [some] with the element with the given id if it exists, or [none] otherwise.
   Option<Element> elementById(ElementId id) => optionOf(elements.where((element) => element.id == id).firstOrNull);
 
-  /// Returns the elements sorted by their show order, or an empty list if the editor
+  /// Returns the elements sorted by their show order (ascending), or an empty list if the editor
   /// is empty.
   IList<Element> get elementsSortedByShowOrder => elements.sorted((a, b) => a.showOrder.compareTo(b.showOrder)).lock;
+
+  /// Returns the elements sorted by their show order (descending), or an empty list if the editor
+  /// is empty.
+  IList<Element> get elementsSortedByShowOrderDescending =>
+      elements.sorted((a, b) => b.showOrder.compareTo(a.showOrder)).lock;
 
   /// Returns a list of the elements present at a given position sorted by their show order,
   /// or an empty list if the editor is empty.

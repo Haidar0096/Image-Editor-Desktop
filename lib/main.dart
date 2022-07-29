@@ -5,16 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:photo_editor/localization/language.dart';
 import 'package:photo_editor/localization/localization_cubit.dart';
 import 'package:photo_editor/service_provider/service_provider.dart';
-import 'package:photo_editor/ui/common/animations/route_transitions.dart' as route_transitions;
+import 'package:photo_editor/ui/common/routes/route_transitions.dart' as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/screenshot_cubit.dart';
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/editor_screen.dart';
-import 'package:photo_editor/ui/screens/settings_screen/settings_screen.dart';
 import 'package:window_size/window_size.dart' as window_size;
 
 void main() async {
@@ -28,8 +27,9 @@ void main() async {
     window_size.setWindowMinSize(const Size(1000, 700));
   }
 
-  // load saved settings as language
+  // load language settings
   final storage = await HydratedStorage.build(storageDirectory: await getApplicationSupportDirectory());
+
   HydratedBlocOverrides.runZoned(
     () => runApp(const PhotoEditorApp()),
     storage: storage,
@@ -43,7 +43,7 @@ class PhotoEditorApp extends StatelessWidget {
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => serviceProvider.get<EditorBloc>()),
-          BlocProvider(create: (context) => serviceProvider.get<ScreenshotCubit>()),
+          // BlocProvider(create: (context) => serviceProvider.get<ScreenshotCubit>()), // TODO: uncomment later
           BlocProvider(create: (context) => LocalizationCubit()),
         ],
         child: Builder(
@@ -52,7 +52,7 @@ class PhotoEditorApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
-              locale: localizationState.locale,
+              locale: Locale.fromSubtags(languageCode: localizationState.language.languageCode),
               theme: styles.themeData,
               onGenerateRoute: _onGenerateRoute,
             ),
@@ -66,11 +66,6 @@ class PhotoEditorApp extends StatelessWidget {
       case EditorScreen.routeName:
         return route_transitions.fadeInRoute(
           child: const EditorScreen(),
-          settings: routeSettings,
-        );
-      case SettingsScreen.routeName:
-        return route_transitions.fadeInRoute(
-          child: const SettingsScreen(),
           settings: routeSettings,
         );
       case AboutScreen.routeName:

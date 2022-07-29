@@ -12,4 +12,11 @@ get themeData => ThemeData(
       textTheme: Typography.whiteRedwoodCity,
       elevatedButtonTheme: ElevatedButtonThemeData(style: _defaultButtonStyle),
       textButtonTheme: TextButtonThemeData(style: _defaultButtonStyle),
+      tooltipTheme: TooltipThemeData(
+        waitDuration: const Duration(milliseconds: 500),
+        textStyle: Typography.whiteRedwoodCity.titleMedium,
+      ),
     );
+
+const BorderRadius kBorderRadius = BorderRadius.all(Radius.circular(10));
+const Duration kDialogTransitionDuration = Duration(milliseconds: 300);

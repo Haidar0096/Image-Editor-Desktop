@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart' show Option;
 import 'package:flutter/widgets.dart' as widgets;
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
@@ -80,6 +81,6 @@ class ElementProperties with _$ElementProperties {
     widgets.TextStyle? textStyle,
 
     /// The path of the file containing the text to be generated.
-    required String sourceFilePath,
+    required Option<String> sourceFilePath,
   }) = VariableTextProperties;
 }

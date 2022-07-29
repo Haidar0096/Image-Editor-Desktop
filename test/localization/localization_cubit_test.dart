@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:photo_editor/localization/language.dart';
 import 'package:photo_editor/localization/localization_cubit.dart';
@@ -13,11 +11,7 @@ void main() {
       mockHydratedStorage(() {
         expect(
           LocalizationCubit().state,
-          LocalizationState(
-            locale: Locale.fromSubtags(
-              languageCode: Language.english.languageCode,
-            ),
-          ),
+          const LocalizationState(language: Language.english),
         );
       });
     });
@@ -35,13 +29,7 @@ void main() {
       },
       build: () => localizationCubit,
       act: (cubit) => cubit.setLanguage(Language.arabic),
-      expect: () => [
-        LocalizationState(
-          locale: Locale.fromSubtags(
-            languageCode: Language.arabic.languageCode,
-          ),
-        )
-      ],
+      expect: () => [const LocalizationState(language: Language.arabic)],
     );
   });
   group('toJson/fromJson', () {

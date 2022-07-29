@@ -319,7 +319,7 @@ mixin _$ElementProperties {
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
     required TResult Function(String text, widgets.TextStyle? textStyle) staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)
         variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
@@ -327,7 +327,7 @@ mixin _$ElementProperties {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
@@ -335,7 +335,7 @@ mixin _$ElementProperties {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) =>
@@ -443,7 +443,7 @@ class _$FileImageProperties implements FileImageProperties {
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
     required TResult Function(String text, widgets.TextStyle? textStyle) staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)
         variableTextProperties,
   }) {
     return fileImageProperties(sourceFilePath);
@@ -454,7 +454,7 @@ class _$FileImageProperties implements FileImageProperties {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
     return fileImageProperties?.call(sourceFilePath);
@@ -465,7 +465,7 @@ class _$FileImageProperties implements FileImageProperties {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
@@ -594,7 +594,7 @@ class _$StaticTextProperties implements StaticTextProperties {
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
     required TResult Function(String text, widgets.TextStyle? textStyle) staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)
         variableTextProperties,
   }) {
     return staticTextProperties(text, textStyle);
@@ -605,7 +605,7 @@ class _$StaticTextProperties implements StaticTextProperties {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
     return staticTextProperties?.call(text, textStyle);
@@ -616,7 +616,7 @@ class _$StaticTextProperties implements StaticTextProperties {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
@@ -679,7 +679,7 @@ abstract class _$$VariableTextPropertiesCopyWith<$Res> {
   factory _$$VariableTextPropertiesCopyWith(
           _$VariableTextProperties value, $Res Function(_$VariableTextProperties) then) =
       __$$VariableTextPropertiesCopyWithImpl<$Res>;
-  $Res call({String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath});
+  $Res call({String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath});
 }
 
 /// @nodoc
@@ -709,7 +709,7 @@ class __$$VariableTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCo
       sourceFilePath: sourceFilePath == freezed
           ? _value.sourceFilePath
           : sourceFilePath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Option<String>,
     ));
   }
 }
@@ -729,7 +729,7 @@ class _$VariableTextProperties implements VariableTextProperties {
 
   /// The path of the file containing the text to be generated.
   @override
-  final String sourceFilePath;
+  final Option<String> sourceFilePath;
 
   @override
   String toString() {
@@ -760,7 +760,7 @@ class _$VariableTextProperties implements VariableTextProperties {
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
     required TResult Function(String text, widgets.TextStyle? textStyle) staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)
         variableTextProperties,
   }) {
     return variableTextProperties(placeHolderText, textStyle, sourceFilePath);
@@ -771,7 +771,7 @@ class _$VariableTextProperties implements VariableTextProperties {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
     return variableTextProperties?.call(placeHolderText, textStyle, sourceFilePath);
@@ -782,7 +782,7 @@ class _$VariableTextProperties implements VariableTextProperties {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
     TResult Function(String text, widgets.TextStyle? textStyle)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, String sourceFilePath)?
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
@@ -831,7 +831,7 @@ abstract class VariableTextProperties implements ElementProperties {
   const factory VariableTextProperties(
       {required final String placeHolderText,
       final widgets.TextStyle? textStyle,
-      required final String sourceFilePath}) = _$VariableTextProperties;
+      required final Option<String> sourceFilePath}) = _$VariableTextProperties;
 
   /// The text to show in the editing phase.
   String get placeHolderText => throw _privateConstructorUsedError;
@@ -840,7 +840,7 @@ abstract class VariableTextProperties implements ElementProperties {
   widgets.TextStyle? get textStyle => throw _privateConstructorUsedError;
 
   /// The path of the file containing the text to be generated.
-  String get sourceFilePath => throw _privateConstructorUsedError;
+  Option<String> get sourceFilePath => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith => throw _privateConstructorUsedError;
 }
