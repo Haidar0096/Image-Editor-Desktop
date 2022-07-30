@@ -1945,7 +1945,7 @@ void main() {
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
       expect: () {
-        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 10, 250));
+        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 30, 250));
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -1967,7 +1967,7 @@ void main() {
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomCenter, Offset(0, -245))),
       expect: () {
-        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 250, 10));
+        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 250, 30));
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
