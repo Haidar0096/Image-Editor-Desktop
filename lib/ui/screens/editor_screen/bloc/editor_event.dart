@@ -63,31 +63,61 @@ class EditorEvent with _$EditorEvent {
   const factory EditorEvent.addImage() = AddImage;
 
   /// Fires when a drag starts on the editor canvas.
-  const factory EditorEvent.dragStart(
+  const factory EditorEvent.canvasDragStart(
     /// The local position in the editor widget where the drag started.
     ui.Offset localPosition,
-  ) = DragStart;
+  ) = CanvasDragStart;
 
   /// Fires when an ongoing drag on the editor canvas is updated.
-  const factory EditorEvent.dragUpdate(
+  const factory EditorEvent.canvasDragUpdate(
     /// The delta of the drag (i.e. the amount of the drag).
     ui.Offset delta,
-  ) = DragUpdate;
+  ) = CanvasDragUpdate;
 
   /// Fires when an ongoing drag on the editor canvas has ended.
-  const factory EditorEvent.dragEnd() = DragEnd;
+  const factory EditorEvent.canvasDragEnd() = CanvasDragEnd;
+
+  /// Fires when a an element drag starts.
+  const factory EditorEvent.elementDragStart(
+    /// The id of the element being dragged.
+    ElementId draggedElementId,
+
+    /// The local position in the editor widget where the drag started.
+    ui.Offset localPosition,
+  ) = ElementDragStart;
+
+  /// Fires when an ongoing drag on an element is updated.
+  const factory EditorEvent.elementDragUpdate(
+    /// The delta of the drag (i.e. the amount of the drag).
+    ui.Offset delta,
+  ) = ElementDragUpdate;
+
+  /// Fires when an ongoing drag on an element has ended.
+  const factory EditorEvent.elementDragEnd() = ElementDragEnd;
 
   /// Fires when a tap occurs on the editor canvas.
-  const factory EditorEvent.tap(
-    /// The local position in the editor widget where the tap has happened.
-    ui.Offset localPosition,
-  ) = Tap;
+  const factory EditorEvent.canvasTap() = CanvasTap;
+
+  /// Fires when a tap occurs on an element.
+  const factory EditorEvent.elementTap(
+    /// The id of the element that has been tapped.
+    ElementId elementId,
+  ) = ElementTap;
 
   /// Fires when remove element button is tapped.
   const factory EditorEvent.removeSelectedElement() = RemoveSelectedElement;
 
+  /// Fires when the selected element should be unselected.
+  const factory EditorEvent.deselectElement() = DeselectElement;
+
   /// fires when selected element should be brought to the front.
   const factory EditorEvent.bringSelectedElementToFront() = BringSelectedElementToFront;
+
+  /// fires when selected element resizing is updated.
+  const factory EditorEvent.resizeUpdate(ResizeDirection resizeDirection, ui.Offset delta) = ResizeUpdate;
+
+  /// fires when selected element resizing ends.
+  const factory EditorEvent.resizeEnd() = ResizeEnd;
 
   /// Fires when clear editor button is tapped.
   const factory EditorEvent.clearEditor() = ClearEditor;

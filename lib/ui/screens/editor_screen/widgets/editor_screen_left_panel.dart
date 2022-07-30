@@ -106,6 +106,21 @@ class EditorScreenLeftPanel extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Tooltip(
+              message: AppLocalizations.of(context)!.deselect,
+              child: InkWell(
+                child: Icon(
+                  Icons.deselect,
+                  color: toc.colorScheme.onPrimary,
+                ),
+                onTap: () {
+                  context.read<EditorBloc>().add(const EditorEvent.deselectElement());
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Tooltip(
               message: AppLocalizations.of(context)!.clearEditor,
               child: InkWell(
                 child: Icon(

@@ -15,13 +15,12 @@ import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/timeline/timeline.dart';
+import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'editor_event.dart';
 
 part 'editor_state.dart';
-
-part 'editor_state_error.dart';
 
 part 'editor_bloc.freezed.dart';
 
@@ -110,23 +109,43 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
-    on<DragStart>(
-      _handleDragStart,
+    on<CanvasDragStart>(
+      _handleCanvasDragStart,
       transformer: droppable(),
     );
 
-    on<DragUpdate>(
-      _handleDragUpdate,
+    on<CanvasDragUpdate>(
+      _handleCanvasDragUpdate,
       transformer: droppable(),
     );
 
-    on<DragEnd>(
-      _handleDragEnd,
+    on<CanvasDragEnd>(
+      _handleCanvasDragEnd,
       transformer: droppable(),
     );
 
-    on<Tap>(
-      _handleTap,
+    on<CanvasTap>(
+      _handleCanvasTap,
+      transformer: droppable(),
+    );
+
+    on<ElementDragStart>(
+      _handleElementDragStart,
+      transformer: droppable(),
+    );
+
+    on<ElementDragUpdate>(
+      _handleElementDragUpdate,
+      transformer: droppable(),
+    );
+
+    on<ElementDragEnd>(
+      _handleElementDragEnd,
+      transformer: droppable(),
+    );
+
+    on<ElementTap>(
+      _handleElementTap,
       transformer: droppable(),
     );
 
@@ -135,8 +154,23 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
+    on<DeselectElement>(
+      _handleDeselectElement,
+      transformer: droppable(),
+    );
+
     on<BringSelectedElementToFront>(
       _handleBringSelectedElementToFront,
+      transformer: droppable(),
+    );
+
+    on<ResizeUpdate>(
+      _handleResizeUpdate,
+      transformer: droppable(),
+    );
+
+    on<ResizeEnd>(
+      _handleResizeEnd,
       transformer: droppable(),
     );
 
@@ -229,73 +263,42 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleStaticTextChanged(StaticTextChanged event, Emitter emit) async {
-    state.selectedElementId.fold(
-      () {
-        // there is no selected element, invalid state
-        _logger.e(EditorStateError.noSelectedElement);
-        throw const EditorStateError(EditorStateError.noSelectedElement);
-      },
-      (selectedElementId) {
-        // there is selected element, find it in the editor and update it
-        state.editor.elementById(selectedElementId).fold(
-          () {
-            // selected element does not exist, invalid state
-            _logger.e(EditorStateError.selectedElementDoesNotExist);
-            throw const EditorStateError(EditorStateError.selectedElementDoesNotExist);
-          },
-          (selectedElement) {
-            // selected element exists, update the text
-            emit(
-              state.copyWith(
-                editor: state.editor.updateElement(
-                  selectedElement.copyWith(
-                    properties: (selectedElement.properties as StaticTextProperties).copyWith(text: event.updatedText),
-                  ),
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as StaticTextProperties).copyWith(text: event.updatedText),
                 ),
               ),
-            );
-
-            // save the state after editing
-            _saveState(state);
-          },
-        );
-      },
+            ),
+          );
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
     );
   }
 
   Future<void> _handleStaticTextStyleChanged(StaticTextStyleChanged event, Emitter emit) async {
-    state.selectedElementId.fold(
-      () {
-        // there is no selected element, invalid state
-        _logger.e(EditorStateError.noSelectedElement);
-        throw const EditorStateError(EditorStateError.noSelectedElement);
-      },
-      (selectedElementId) {
-        // there is selected element, find it in the editor and update it
-        state.editor.elementById(selectedElementId).fold(
-          () {
-            // selected element does not exist, invalid state
-            _logger.e(EditorStateError.selectedElementDoesNotExist);
-            throw const EditorStateError(EditorStateError.selectedElementDoesNotExist);
-          },
-          (selectedElement) {
-            // selected element exists, update the text style
-            emit(
-              state.copyWith(
-                editor: state.editor.updateElement(
-                  selectedElement.copyWith(
-                    properties: (selectedElement.properties as StaticTextProperties)
-                        .copyWith(textStyle: event.updatedTextStyle),
-                  ),
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as StaticTextProperties).copyWith(textStyle: event.updatedTextStyle),
                 ),
               ),
-            );
-
-            // save the state after editing
-            _saveState(state);
-          },
-        );
-      },
+            ),
+          );
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
     );
   }
 
@@ -332,97 +335,61 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleVariableTextFileChanged(VariableTextFileChanged event, Emitter emit) async {
-    await state.selectedElementId.fold(
-      () {
-        // there is no selected element, invalid state
-        _logger.e(EditorStateError.noSelectedElement);
-        throw const EditorStateError(EditorStateError.noSelectedElement);
-      },
-      (selectedElementId) async {
-        // there is selected element, find it in the editor
-        state.editor.elementById(selectedElementId).fold(
-          () {
-            // selected element does not exist, invalid state
-            _logger.e(EditorStateError.selectedElementDoesNotExist);
-            throw const EditorStateError(EditorStateError.selectedElementDoesNotExist);
-          },
-          (selectedElement) async {
-            // selected element exists, pick a file path
-            Option<io.File> fileOption =
-                (await _filePicker.pickSingleFile(allowedExtensions: allowedTextFilesExtensions.unlock)).fold(
-              () {
-                // no file was selected
-                return none();
-              },
-              (file) {
-                // a file was selected
-                return some(file);
-              },
-            );
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) async {
+          Option<io.File> fileOption =
+              (await _filePicker.pickSingleFile(allowedExtensions: allowedTextFilesExtensions.unlock)).fold(
+            () {
+              // no file was selected
+              return none();
+            },
+            (file) {
+              // a file was selected
+              return some(file);
+            },
+          );
 
-            fileOption.fold(
-              () {
-                // no file was selected
-                // do nothing
-              },
-              (file) async {
-                // a file was selected, update the text properties
-                emit(
-                  state.copyWith(
-                    editor: state.editor.updateElement(
-                      selectedElement.copyWith(
-                        properties: (selectedElement.properties as VariableTextProperties).copyWith(
-                          sourceFilePath: some(file.path),
-                          placeHolderText: file.path.split(io.Platform.pathSeparator).last,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-
-                // save the state
-                _saveState(state);
-              },
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Future<void> _handleVariableTextStyleChanged(VariableTextStyleChanged event, Emitter emit) async {
-    state.selectedElementId.fold(
-      () {
-        // there is no selected element, invalid state
-        _logger.e(EditorStateError.noSelectedElement);
-        throw const EditorStateError(EditorStateError.noSelectedElement);
-      },
-      (selectedElementId) {
-        // there is selected element, find it in the editor and update it
-        state.editor.elementById(selectedElementId).fold(
-          () {
-            // selected element does not exist, invalid state
-            _logger.e(EditorStateError.selectedElementDoesNotExist);
-            throw const EditorStateError(EditorStateError.selectedElementDoesNotExist);
-          },
-          (selectedElement) {
-            // selected element exists, update the text style
+          fileOption.map((file) {
             emit(
               state.copyWith(
                 editor: state.editor.updateElement(
-                  selectedElement.copyWith(
-                    properties: (selectedElement.properties as VariableTextProperties)
-                        .copyWith(textStyle: event.updatedTextStyle),
+                  el.copyWith(
+                    properties: (el.properties as VariableTextProperties).copyWith(
+                      sourceFilePath: some(file.path),
+                      placeHolderText: file.path.split(io.Platform.pathSeparator).last,
+                    ),
                   ),
                 ),
               ),
             );
 
-            // save the state after editing
+            // save the state
             _saveState(state);
-          },
-        );
-      },
+          });
+        },
+      ),
+    );
+  }
+
+  Future<void> _handleVariableTextStyleChanged(VariableTextStyleChanged event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as VariableTextProperties).copyWith(textStyle: event.updatedTextStyle),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
     );
   }
 
@@ -457,134 +424,55 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleDragStart(DragStart event, Emitter emit) async {
-    state.dragPosition.fold(
-      () {
-        // there is no dragPosition set
-        state.draggedElementId.fold(
-          () {
-            // there is no draggedElementId set
-            // check if there is an element at the dragPosition
-            // and in that case get the element with largest show order
-            final Element? element = state.editor
-                .elementsAtPosition(event.localPosition)
-                .sort((a, b) => b.showOrder.compareTo(a.showOrder))
-                .firstOrNull;
-            if (element == null) {
-              // there is no element at the dragPosition
-              emit(state.copyWith(dragPosition: some(event.localPosition)));
-            } else {
-              // there is an element at the dragPosition
-              emit(
-                state.copyWith(
-                  dragPosition: some(event.localPosition),
-                  draggedElementId: some(element.id),
-                ),
-              );
-            }
-          },
-          (draggedElementId) {
-            // there is a draggedElementId set, invalid state
-            _logger.e(EditorStateError.simultaneousDragStart);
-            throw const EditorStateError(EditorStateError.simultaneousDragStart);
-          },
-        );
-      },
-      (dragPosition) {
-        // there is a dragPosition set already, invalid state
-        _logger.e(EditorStateError.simultaneousDragStart);
-        throw const EditorStateError(EditorStateError.simultaneousDragStart);
-      },
+  Future<void> _handleCanvasDragStart(CanvasDragStart event, Emitter emit) async {
+    emit(state.copyWith(dragPosition: some(event.localPosition)));
+  }
+
+  Future<void> _handleCanvasDragUpdate(CanvasDragUpdate event, Emitter emit) async {
+    ui.Offset? dragPosition = state.dragPosition.fold(() => null, (p) => p);
+    ui.Offset updatedDragPosition = dragPosition!.translate(event.delta.dx, event.delta.dy);
+    emit(state.copyWith(dragPosition: some(updatedDragPosition)));
+  }
+
+  Future<void> _handleCanvasDragEnd(CanvasDragEnd event, Emitter emit) async {
+    emit(state.copyWith(dragPosition: none()));
+  }
+
+  Future<void> _handleCanvasTap(CanvasTap event, Emitter emit) async {
+    emit(state.copyWith(selectedElementId: none()));
+  }
+
+  Future<void> _handleElementDragStart(ElementDragStart event, Emitter emit) async {
+    emit(state.copyWith(draggedElementId: some(event.draggedElementId), dragPosition: some(event.localPosition)));
+  }
+
+  Future<void> _handleElementDragUpdate(ElementDragUpdate event, Emitter emit) async {
+    ElementId? draggedElementId = state.draggedElementId.fold(() => null, (el) => el);
+    ui.Offset? dragPosition = state.dragPosition.fold(() => null, (p) => p);
+    ui.Offset updatedDragPosition = dragPosition!.translate(event.delta.dx, event.delta.dy);
+    emit(
+      state.copyWith(
+        editor: state.editor.translateElement(draggedElementId!, event.delta),
+        dragPosition: some(updatedDragPosition),
+      ),
     );
   }
 
-  Future<void> _handleDragUpdate(DragUpdate event, Emitter emit) async {
-    state.dragPosition.fold(
-      () {
-        // there is no dragPosition, invalid state
-        _logger.e(EditorStateError.noDragPosition);
-        throw const EditorStateError(EditorStateError.noDragPosition);
-      },
-      (dragPosition) {
-        // there is a dragPosition
-        ui.Offset updatedDragPosition = dragPosition.translate(event.delta.dx, event.delta.dy);
-        state.draggedElementId.fold(
-          () {
-            // there is no dragged element, just update dragPosition
-            emit(state.copyWith(dragPosition: some(updatedDragPosition)));
-          },
-          (draggedElementId) {
-            // there is a dragged element, update it and the dragPosition
-            emit(
-              state.copyWith(
-                dragPosition: some(updatedDragPosition),
-                editor: state.editor.translateElement(draggedElementId, event.delta),
-              ),
-            );
-          },
-        );
-      },
-    );
+  Future<void> _handleElementDragEnd(ElementDragEnd event, Emitter emit) async {
+    emit(state.copyWith(draggedElementId: none(), dragPosition: none()));
+    _saveState(state);
   }
 
-  Future<void> _handleDragEnd(DragEnd event, Emitter emit) async {
-    state.dragPosition.fold(
-      () {
-        // there is no drag position, invalid state
-        _logger.e(EditorStateError.noDragPosition);
-        throw const EditorStateError(EditorStateError.noDragPosition);
-      },
-      (dragPosition) {
-        // there is a drag position
-        state.draggedElementId.fold(
-          () {
-            // there is no dragged element, just clear dragPosition
-            emit(state.copyWith(dragPosition: none()));
-          },
-          (draggedElementId) {
-            // there is dragged element, clear both dragPosition and draggedElementId
-            emit(state.copyWith(dragPosition: none(), draggedElementId: none()));
-          },
-        );
-        _saveState(state);
-      },
-    );
-  }
-
-  Future<void> _handleTap(Tap event, Emitter emit) async {
-    // find the element at tap position with largest show order, if it exists
-    final Element? element = state.editor
-        .elementsAtPosition(event.localPosition)
-        .sort((a, b) => b.showOrder.compareTo(a.showOrder))
-        .firstOrNull;
-
-    if (element == null) {
-      // there is no element at the tap position
-      // check if there is a selected element an deselect it
-      state.selectedElementId.fold(
-        () {
-          // there is no selected element, do nothing
-        },
-        (selectedElementId) {
-          emit(state.copyWith(selectedElementId: none()));
-        },
-      );
-    } else {
-      // there is an element at the tap position, select it
-      emit(state.copyWith(selectedElementId: some(element.id)));
-    }
+  Future<void> _handleElementTap(ElementTap event, Emitter emit) async {
+    emit(state.copyWith(selectedElementId: some(event.elementId)));
   }
 
   Future<void> _handleRemoveSelectedElement(RemoveSelectedElement event, Emitter emit) async {
-    state.selectedElementId.fold(
-      () {
-        // there is no selectedElementId, do nothing
-      },
-      (selectedElementId) {
-        // there is a selectedElementId, remove it and clear drag and selection states
+    state.selectedElementId.map(
+      (id) {
         emit(
           state.copyWith(
-            editor: state.editor.removeElement(selectedElementId),
+            editor: state.editor.removeElement(id),
             selectedElementId: none(),
             draggedElementId: none(),
             dragPosition: none(),
@@ -597,35 +485,85 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     );
   }
 
-  Future<void> _handleBringSelectedElementToFront(BringSelectedElementToFront event, Emitter emit) async {
-    state.selectedElementId.fold(
-      () {
-        // there is no selectedElementId, do nothing
-      },
-      (selectedElementId) {
-        // there is a selectedElementId, find it and bring it to front
-        state.editor.elementById(selectedElementId).fold(
-          () {
-            // selected element does not exist, invalid state
-            _logger.e(EditorStateError.selectedElementDoesNotExist);
-            throw const EditorStateError(EditorStateError.selectedElementDoesNotExist);
-          },
-          (selectedElement) {
-            // selected element exists, bring it to front
-            emit(
-              state.copyWith(
-                editor: state.editor.updateElement(
-                  selectedElement.copyWith(showOrder: state.editor.elementsSortedByShowOrder.last.showOrder + 1),
-                ),
-              ),
-            );
+  Future<void> _handleDeselectElement(DeselectElement event, Emitter emit) async {
+    emit(state.copyWith(selectedElementId: none()));
+  }
 
-            // save the state
-            _saveState(state);
-          },
-        );
-      },
+  Future<void> _handleBringSelectedElementToFront(BringSelectedElementToFront event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(showOrder: state.editor.elementsSortedByShowOrder.last.showOrder + 1),
+              ),
+            ),
+          );
+
+          // save the state
+          _saveState(state);
+        },
+      ),
     );
+  }
+
+  Future<void> _handleResizeUpdate(ResizeUpdate event, Emitter emit) async {
+    final ElementId selectedElementId = state.selectedElementId.toNullable()!;
+    final Element el = state.editor.elementById(selectedElementId).toNullable()!;
+    late Element updatedElement;
+    const double minSideSize = 10.0;
+    switch (event.resizeDirection) {
+      case ResizeDirection.topLeft:
+        updatedElement = el.copyWith(
+            rect: ui.Rect.fromPoints(el.rect.bottomRight, el.rect.topLeft.translate(event.delta.dx, event.delta.dy)));
+        break;
+      case ResizeDirection.topCenter:
+        updatedElement =
+            el.copyWith(rect: ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(0, event.delta.dy)));
+        break;
+      case ResizeDirection.topRight:
+        updatedElement = el.copyWith(
+            rect: ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(event.delta.dx, event.delta.dy)));
+        break;
+      case ResizeDirection.centerRight:
+        updatedElement = el.copyWith(
+            rect: ui.Rect.fromLTWH(el.rect.left, el.rect.top, el.rect.width + event.delta.dx, el.rect.height));
+        break;
+      case ResizeDirection.bottomRight:
+        updatedElement = el.copyWith(
+            rect: ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(event.delta.dx, event.delta.dy)));
+        break;
+      case ResizeDirection.bottomCenter:
+        updatedElement =
+            el.copyWith(rect: ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(0, event.delta.dy)));
+        break;
+      case ResizeDirection.bottomLeft:
+        updatedElement = el.copyWith(
+            rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, event.delta.dy), el.rect.topRight));
+        break;
+      case ResizeDirection.centerLeft:
+        updatedElement =
+            el.copyWith(rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, 0), el.rect.topRight));
+        break;
+    }
+    if (updatedElement.rect.size.width < minSideSize) {
+      updatedElement = updatedElement.copyWith(
+        rect: ui.Rect.fromLTWH(
+            updatedElement.rect.left, updatedElement.rect.top, minSideSize, updatedElement.rect.height),
+      );
+    }
+    if (updatedElement.rect.size.height < minSideSize) {
+      updatedElement = updatedElement.copyWith(
+        rect:
+            ui.Rect.fromLTWH(updatedElement.rect.left, updatedElement.rect.top, updatedElement.rect.width, minSideSize),
+      );
+    }
+    emit(state.copyWith(editor: state.editor.updateElement(updatedElement)));
+  }
+
+  Future<void> _handleResizeEnd(ResizeEnd event, Emitter emit) async {
+    _saveState(state);
   }
 
   Future<void> _handleClearEditor(ClearEditor event, Emitter emit) async {

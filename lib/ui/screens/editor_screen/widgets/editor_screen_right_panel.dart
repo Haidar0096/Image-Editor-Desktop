@@ -10,6 +10,7 @@ class EditorScreenRightPanel extends StatelessWidget {
     final ThemeData toc = Theme.of(context);
     return BlocBuilder<EditorBloc, EditorState>(
       builder: (context, editorState) {
+        // TODO: Add options to style the variable and static text, change the source file of variable text.
         return Container(color: toc.colorScheme.primary);
       },
     );
