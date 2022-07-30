@@ -512,7 +512,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     final ElementId selectedElementId = state.selectedElementId.toNullable()!;
     final Element el = state.editor.elementById(selectedElementId).toNullable()!;
     late Element updatedElement;
-    const double minSideSize = 10.0;
+    const double minSideSize = 30.0;
     switch (event.resizeDirection) {
       case ResizeDirection.topLeft:
         updatedElement = el.copyWith(

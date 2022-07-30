@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
@@ -29,38 +30,52 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   /// Whether the editor widget is centered as it was when it was created.
   bool get _editorCentered => _scaleController.value == Matrix4.identity();
 
+  late void Function(RawKeyEvent) _deleteKeyListener;
+
   @override
   void initState() {
     super.initState();
     _scaleValue = 1;
     _scaleController = TransformationController();
+
+    _deleteKeyListener = (RawKeyEvent event) {
+      if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.delete) {
+        BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
+      }
+    };
+    RawKeyboard.instance.addListener(_deleteKeyListener);
   }
 
   @override
   void dispose() {
     _scaleController.dispose();
+
+    RawKeyboard.instance.removeListener(_deleteKeyListener);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData toc = Theme.of(context);
-    return InteractiveViewer(
-      transformationController: _scaleController,
-      onInteractionEnd: (details) => _showScale(),
-      boundaryMargin: const EdgeInsets.all(double.infinity),
-      minScale: 0.5,
-      maxScale: 5.0,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: toc.colorScheme.onBackground,
-            width: !_editorCentered ? 3.0 : 0.0,
+    return Container(
+      color: toc.colorScheme.tertiary,
+      child: InteractiveViewer(
+        transformationController: _scaleController,
+        onInteractionEnd: (details) => _showScale(),
+        boundaryMargin: const EdgeInsets.all(double.infinity),
+        minScale: 0.5,
+        maxScale: 10.0,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: toc.colorScheme.onBackground,
+              width: !_editorCentered ? 3.0 : 0.0,
+            ),
           ),
+          width: double.infinity,
+          height: double.infinity,
+          child: _editorComponents(context),
         ),
-        width: double.infinity,
-        height: double.infinity,
-        child: _editorComponents(context),
       ),
     );
   }
