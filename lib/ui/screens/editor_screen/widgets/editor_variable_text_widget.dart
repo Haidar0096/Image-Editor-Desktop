@@ -11,6 +11,7 @@ class EditorVariableTextWidget extends StatelessWidget {
     return Text(
       properties.placeHolderText,
       style: properties.textStyle,
+      textAlign: properties.textAlign,
     );
   }
 }

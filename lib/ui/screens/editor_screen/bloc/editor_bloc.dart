@@ -89,6 +89,11 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
+    on<StaticTextAlignChanged>(
+      _handleStaticTextAlignChanged,
+      transformer: droppable(),
+    );
+
     on<AddVariableText>(
       _handleAddVariableText,
       transformer: droppable(),
@@ -101,6 +106,11 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
     on<VariableTextStyleChanged>(
       _handleVariableTextStyleChanged,
+      transformer: droppable(),
+    );
+
+    on<VariableTextAlignChanged>(
+      _handleVariableTextAlignChanged,
       transformer: droppable(),
     );
 
@@ -171,6 +181,16 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
     on<ResizeEnd>(
       _handleResizeEnd,
+      transformer: droppable(),
+    );
+
+    on<SelectedElementSizeChanged>(
+      _handleSelectedElementSizeChanged,
+      transformer: droppable(),
+    );
+
+    on<SelectedElementPositionChanged>(
+      _handleSelectedElementPositionChanged,
       transformer: droppable(),
     );
 
@@ -302,6 +322,26 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     );
   }
 
+  Future<void> _handleStaticTextAlignChanged(StaticTextAlignChanged event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as StaticTextProperties).copyWith(textAlign: event.updatedTextAlign),
+                ),
+              ),
+            ),
+          );
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    );
+  }
+
   Future<void> _handleAddVariableText(AddVariableText event, Emitter emit) async {
     // get the approximate size of the default text that will be displayed
     final ui.Size size = event.initialText.textSize(
@@ -381,6 +421,27 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
               editor: state.editor.updateElement(
                 el.copyWith(
                   properties: (el.properties as VariableTextProperties).copyWith(textStyle: event.updatedTextStyle),
+                ),
+              ),
+            ),
+          );
+
+          // save the state after editing
+          _saveState(state);
+        },
+      ),
+    );
+  }
+
+  Future<void> _handleVariableTextAlignChanged(VariableTextAlignChanged event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as VariableTextProperties).copyWith(textAlign: event.updatedTextAlign),
                 ),
               ),
             ),
@@ -512,7 +573,6 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     final ElementId selectedElementId = state.selectedElementId.toNullable()!;
     final Element el = state.editor.elementById(selectedElementId).toNullable()!;
     late Element updatedElement;
-    const double minSideSize = 30.0;
     // update the element's rect accordingly depending on the resize direction:
     switch (event.resizeDirection) {
       case ResizeDirection.topLeft:
@@ -549,16 +609,16 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         break;
     }
     // prevent the rect from becoming smaller than the minimum allowed size:
-    if (updatedElement.rect.size.width < minSideSize) {
+    if (updatedElement.rect.size.width < minElementSideSize) {
       updatedElement = updatedElement.copyWith(
         rect: ui.Rect.fromLTWH(
-            updatedElement.rect.left, updatedElement.rect.top, minSideSize, updatedElement.rect.height),
+            updatedElement.rect.left, updatedElement.rect.top, minElementSideSize, updatedElement.rect.height),
       );
     }
-    if (updatedElement.rect.size.height < minSideSize) {
+    if (updatedElement.rect.size.height < minElementSideSize) {
       updatedElement = updatedElement.copyWith(
-        rect:
-            ui.Rect.fromLTWH(updatedElement.rect.left, updatedElement.rect.top, updatedElement.rect.width, minSideSize),
+        rect: ui.Rect.fromLTWH(
+            updatedElement.rect.left, updatedElement.rect.top, updatedElement.rect.width, minElementSideSize),
       );
     }
     emit(state.copyWith(editor: state.editor.updateElement(updatedElement)));
@@ -566,6 +626,61 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
   Future<void> _handleResizeEnd(ResizeEnd event, Emitter emit) async {
     _saveState(state);
+  }
+
+  Future<void> _handleSelectedElementSizeChanged(SelectedElementSizeChanged event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          ui.Size updatedSize = event.updatedSize;
+          if (event.updatedSize.width < minElementSideSize) {
+            updatedSize = ui.Size(el.rect.size.width, updatedSize.height);
+          }
+          if (event.updatedSize.height < minElementSideSize) {
+            updatedSize = ui.Size(updatedSize.width, el.rect.size.height);
+          }
+
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  rect: ui.Rect.fromCenter(
+                    center: el.rect.center,
+                    width: updatedSize.width,
+                    height: updatedSize.height,
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          // save the state
+          _saveState(state);
+        },
+      ),
+    );
+  }
+
+  Future<void> _handleSelectedElementPositionChanged(SelectedElementPositionChanged event, Emitter emit) async {
+    state.selectedElementId.map(
+      (id) => state.editor.elementById(id).map(
+        (el) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  rect: ui.Rect.fromLTWH(
+                      event.updatedPosition.dx, event.updatedPosition.dy, el.rect.width, el.rect.height),
+                ),
+              ),
+            ),
+          );
+
+          // save the state
+          _saveState(state);
+        },
+      ),
+    );
   }
 
   Future<void> _handleClearEditor(ClearEditor event, Emitter emit) async {

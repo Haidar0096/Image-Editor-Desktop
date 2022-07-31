@@ -6,15 +6,34 @@ typedef OnResizeEnd = void Function(DragEndDetails details);
 
 /// A widget that places manipulating balls on top of its child. Each ball can be configured with a custom handler.
 class ManipulatingBallsWidget extends StatelessWidget {
+  /// Called when the user starts dragging the ball.
   final OnResizeStart? onResizeStart;
+
+  /// Called when the resize on the center-right direction is updated.
   final OnResizeUpdate? onResizeCenterRight;
+
+  /// Called when the resize on the center-left direction is updated.
   final OnResizeUpdate? onResizeCenterLeft;
+
+  /// Called when the resize on the top-center direction is updated.
   final OnResizeUpdate? onResizeTopCenter;
+
+  /// Called when the resize on the bottom-center direction is updated.
   final OnResizeUpdate? onResizeBottomCenter;
+
+  /// Called when the resize on the top-left direction is updated.
   final OnResizeUpdate? onResizeTopLeft;
+
+  /// Called when the resize on the top-right direction is updated.
   final OnResizeUpdate? onResizeTopRight;
+
+  /// Called when the resize on the bottom-left direction is updated.
   final OnResizeUpdate? onResizeBottomLeft;
+
+  /// Called when the resize on the bottom-right direction is updated.
   final OnResizeUpdate? onResizeBottomRight;
+
+  /// Called when the user stops dragging the ball.
   final OnResizeEnd? onResizeEnd;
 
   /// The diameter of the manipulating ball.
@@ -167,7 +186,7 @@ class ManipulatingBall extends StatelessWidget {
         onPanStart: onDragStart,
         onPanUpdate: onDragUpdate,
         onPanEnd: onDragEnd,
-        child: Container(decoration: BoxDecoration(color: Colors.blue.withOpacity(0.5), shape: BoxShape.circle)),
+        child: Container(decoration: BoxDecoration(color: Colors.blue.withOpacity(0.7), shape: BoxShape.circle)),
       ),
     );
   }

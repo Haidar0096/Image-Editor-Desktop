@@ -9,21 +9,26 @@ class EditorElementDelegateWidget extends StatelessWidget {
   /// The editor element to render.
   final editor.Element element;
 
+  /// Whether this element is selected.
+  final bool isSelected;
+
   const EditorElementDelegateWidget({
     Key? key,
 
     /// The editor element to render.
     required this.element,
+
+    /// Whether this element is selected.
+    required this.isSelected,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return element.properties.map(
-      fileImageProperties: (fileImageProperties) => EditorImageWidget(
-        properties: fileImageProperties,
-        size: element.rect.size,
-      ),
-      staticTextProperties: (staticTextProperties) => EditorStaticTextWidget(properties: staticTextProperties),
+      fileImageProperties: (fileImageProperties) =>
+          EditorImageWidget(properties: fileImageProperties, size: element.rect.size),
+      staticTextProperties: (staticTextProperties) =>
+          EditorStaticTextWidget(properties: staticTextProperties, isSelected: isSelected),
       variableTextProperties: (variableTextProperties) => EditorVariableTextWidget(properties: variableTextProperties),
     );
   }

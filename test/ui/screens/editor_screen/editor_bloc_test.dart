@@ -626,6 +626,79 @@ void main() {
     );
   });
 
+  group('staticTextAlignChanged', () {
+    // define elements used in tests
+    const Element staticText = Element(
+      rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
+      properties: ElementProperties.staticTextProperties(
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
+      showOrder: 1,
+      id: '1',
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should emit correct state when static text align changes.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({staticText}),
+        selectedElementId: some(staticText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+            {
+              staticText.copyWith(
+                properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end),
+              )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save state after changing static text align.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({staticText}),
+        selectedElementId: some(staticText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end));
+        bloc.add(const EditorEvent.undo());
+        bloc.add(const EditorEvent.redo());
+      },
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+            {
+              staticText.copyWith(
+                  properties:
+                      (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end))
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        return [
+          expectedState,
+          EditorState.initial(),
+          expectedState.copyWith(selectedElementId: none()),
+        ];
+      },
+    );
+  });
+
   group('AddVariableText', () {
     // note that if we use the same params in the actual app when we call the method that calculates the size of the text
     // before rendering, then we will get a different rect than that in variableText object, that's bcz there is some
@@ -989,6 +1062,84 @@ void main() {
                       .copyWith(color: material.Colors.yellow),
                 ),
               )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(variableText.id),
+        );
+        return [
+          expectedState,
+          EditorState.initial(),
+          expectedState.copyWith(selectedElementId: none()),
+        ];
+      },
+    );
+  });
+
+  group('variableTextAlignChanged', () {
+    // define elements used in tests
+    Element variableText = Element(
+      rect: const Rect.fromLTRB(0.0, 0.0, 924.0, 33.0),
+      properties: ElementProperties.variableTextProperties(
+        sourceFilePath: none(),
+        placeHolderText: 'Generated text appears here.',
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
+      ),
+      showOrder: 1,
+      id: '1',
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should emit correct state when variable text align changes.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({variableText}),
+        selectedElementId: some(variableText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+            {
+              variableText.copyWith(
+                  properties:
+                      (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end)),
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(variableText.id),
+        );
+        return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save state after changing variable text align.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({variableText}),
+        selectedElementId: some(variableText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        bloc.add(const EditorEvent.variableTextAlignChanged(
+          updatedTextAlign: material.TextAlign.end,
+        ));
+        bloc.add(const EditorEvent.undo());
+        bloc.add(const EditorEvent.redo());
+      },
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+            {
+              variableText.copyWith(
+                  properties:
+                      (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end))
             },
           ),
           draggedElementId: none(),
@@ -2058,6 +2209,150 @@ void main() {
             dragPosition: none(),
             selectedElementId: none(),
           ),
+        ];
+      },
+    );
+  });
+  group('selectedElementSizeChanged', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 200, 200),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should emit correct state when fired.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(100, 100))),
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+              {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(image1.id),
+        );
+        return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should not change the size if it is out of the pre-defined bounds.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(10, 10))),
+      expect: () {
+        // final expectedState = EditorState(
+        //   editor: Editor.fromSet(
+        //       {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 200, height: 200))}),
+        //   draggedElementId: none(),
+        //   dragPosition: none(),
+        //   selectedElementId: some(image1.id),
+        // );
+        // the bloc will no emit any states since the state to be emitted is the same as the previous state since the
+        // width and height of image1 did not change and thus the 2 states are equal so no state will be emitted.
+        return [];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save state after changing element size.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        bloc.add(const EditorEvent.selectedElementSizeChanged(Size(100, 100)));
+        bloc.add(const EditorEvent.undo());
+        bloc.add(const EditorEvent.redo());
+      },
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet(
+              {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(image1.id),
+        );
+        return [
+          expectedState,
+          EditorState.initial(),
+          expectedState.copyWith(selectedElementId: none()),
+        ];
+      },
+    );
+  });
+  group('selectedElementPositionChanged', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 200, 200),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should emit correct state when fired.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100))),
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(image1.id),
+        );
+        return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should save state after changing element position.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100)));
+        bloc.add(const EditorEvent.undo());
+        bloc.add(const EditorEvent.redo());
+      },
+      expect: () {
+        final expectedState = EditorState(
+          editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(image1.id),
+        );
+        return [
+          expectedState,
+          EditorState.initial(),
+          expectedState.copyWith(selectedElementId: none()),
         ];
       },
     );

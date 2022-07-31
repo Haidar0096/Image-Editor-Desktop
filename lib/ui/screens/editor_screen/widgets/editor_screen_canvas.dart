@@ -109,8 +109,12 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
               // elements of the editor mapped each to the corresponding widget
               ...editorState.editor.elementsSortedByShowOrder.map(
                 (element) {
+                  // check if this element is selected
+                  bool isSelected =
+                      editorState.selectedElementId.map((elId) => element.id == elId).getOrElse(() => false);
+
                   // each element is mapped to the corresponding widget
-                  Widget child = EditorElementDelegateWidget(element: element);
+                  Widget child = EditorElementDelegateWidget(element: element, isSelected: isSelected);
 
                   // wrap the element with a gesture detector to detect events that occur on it
                   child = GestureDetector(
@@ -132,73 +136,64 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
                     child: child,
                   );
 
-                  // check if this element is selected
-                  editorState.selectedElementId.fold(
-                    () {
-                      // there is no selected element, do nothing
-                    },
-                    (selectedElementId) {
-                      // there is selected element
-                      if (element.id == selectedElementId) {
-                        // decorate the selected element
-                        child = Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.red, width: 5.0),
-                          ),
-                          child: child,
-                        );
+                  if (isSelected) {
+                    // decorate the selected element
+                    child = Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.red, width: 5.0),
+                      ),
+                      child: child,
+                    );
 
-                        // make the selected element resizable
-                        child = ManipulatingBallsWidget(
-                          ballDiameter: element.rect.size.longestSide / 30 + math.log(element.rect.size.longestSide),
-                          onResizeTopLeft: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.topLeft, details.delta));
-                          },
-                          onResizeTopCenter: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.topCenter, details.delta));
-                          },
-                          onResizeTopRight: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.topRight, details.delta));
-                          },
-                          onResizeCenterRight: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.centerRight, details.delta));
-                          },
-                          onResizeBottomRight: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomRight, details.delta));
-                          },
-                          onResizeBottomCenter: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomCenter, details.delta));
-                          },
-                          onResizeBottomLeft: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomLeft, details.delta));
-                          },
-                          onResizeCenterLeft: (details) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.centerLeft, details.delta));
-                          },
-                          onResizeEnd: (details) {
-                            context.read<EditorBloc>().add(const EditorEvent.resizeEnd());
-                          },
-                          child: child,
-                        );
-                      }
-                    },
-                  );
+                    // make the selected element resizable
+                    child = ManipulatingBallsWidget(
+                      ballDiameter: element.rect.size.longestSide / 100 + math.log(element.rect.size.longestSide),
+                      onResizeTopLeft: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.topLeft, details.delta));
+                      },
+                      onResizeTopCenter: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.topCenter, details.delta));
+                      },
+                      onResizeTopRight: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.topRight, details.delta));
+                      },
+                      onResizeCenterRight: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.centerRight, details.delta));
+                      },
+                      onResizeBottomRight: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.bottomRight, details.delta));
+                      },
+                      onResizeBottomCenter: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.bottomCenter, details.delta));
+                      },
+                      onResizeBottomLeft: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.bottomLeft, details.delta));
+                      },
+                      onResizeCenterLeft: (details) {
+                        context
+                            .read<EditorBloc>()
+                            .add(EditorEvent.resizeUpdate(ResizeDirection.centerLeft, details.delta));
+                      },
+                      onResizeEnd: (details) {
+                        context.read<EditorBloc>().add(const EditorEvent.resizeEnd());
+                      },
+                      child: child,
+                    );
+                  }
 
                   // wrap the element with positioned to position it in the stack
                   return Positioned(

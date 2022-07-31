@@ -35,6 +35,12 @@ class EditorEvent with _$EditorEvent {
     required widgets.TextStyle updatedTextStyle,
   }) = StaticTextStyleChanged;
 
+  /// fires when the text align of a selected static text element changes.
+  const factory EditorEvent.staticTextAlignChanged({
+    /// The new value of the text align in the element.
+    required widgets.TextAlign updatedTextAlign,
+  }) = StaticTextAlignChanged;
+
   /// Fires when user wants to add a variable text to the editor.
   const factory EditorEvent.addVariableText({
     /// The initial text of the variable text.
@@ -58,6 +64,12 @@ class EditorEvent with _$EditorEvent {
     /// The new value of the text style in the element.
     required widgets.TextStyle updatedTextStyle,
   }) = VariableTextStyleChanged;
+
+  /// fires when the text align of a selected variable text element changes.
+  const factory EditorEvent.variableTextAlignChanged({
+    /// The new value of the text align in the element.
+    required widgets.TextAlign updatedTextAlign,
+  }) = VariableTextAlignChanged;
 
   /// Fires when user wants to add an image to the editor.
   const factory EditorEvent.addImage() = AddImage;
@@ -118,6 +130,15 @@ class EditorEvent with _$EditorEvent {
 
   /// fires when selected element resizing ends.
   const factory EditorEvent.resizeEnd() = ResizeEnd;
+
+  /// fires when selected element size changes.
+  const factory EditorEvent.selectedElementSizeChanged(ui.Size updatedSize) = SelectedElementSizeChanged;
+
+  /// fires when selected element position changes.
+  const factory EditorEvent.selectedElementPositionChanged(
+    /// The new top-left of the element's rect.
+    ui.Offset updatedPosition,
+  ) = SelectedElementPositionChanged;
 
   /// Fires when clear editor button is tapped.
   const factory EditorEvent.clearEditor() = ClearEditor;

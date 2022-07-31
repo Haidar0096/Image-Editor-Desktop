@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,23 +54,11 @@ class PhotoEditorApp extends StatelessWidget {
               supportedLocales: AppLocalizations.supportedLocales,
               locale: Locale.fromSubtags(languageCode: localizationState.language.languageCode),
               theme: styles.themeData,
-              scrollBehavior: _customMaterialScrollBehavior(),
               onGenerateRoute: _onGenerateRoute,
             ),
           ),
         ),
       );
-
-  ScrollBehavior _customMaterialScrollBehavior() {
-    return const MaterialScrollBehavior().copyWith(
-      dragDevices: {
-        PointerDeviceKind.mouse,
-        PointerDeviceKind.touch,
-        PointerDeviceKind.stylus,
-        PointerDeviceKind.unknown,
-      },
-    );
-  }
 
   Route? _onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {

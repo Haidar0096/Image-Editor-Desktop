@@ -36,6 +36,9 @@ IList<String> get allowedImageFilesExtensions => IList(const ['jpeg', 'png', 'jp
 /// The allowed extensions of text files that the editor can work with.
 IList<String> get allowedTextFilesExtensions => IList(const ['txt']);
 
+/// The minimum side size of an editor's element.
+const double minElementSideSize = 30.0;
+
 /// Represents an element in the editor, which is uniquely identified by its id.
 @freezed
 class Element with _$Element {
@@ -57,6 +60,8 @@ class Element with _$Element {
 /// Represents the specific properties of an element in the editor.
 @freezed
 class ElementProperties with _$ElementProperties {
+  const ElementProperties._();
+
   /// Properties of an image contained in a file.
   const factory ElementProperties.fileImageProperties({
     /// The path of the file containing this image.
@@ -70,6 +75,9 @@ class ElementProperties with _$ElementProperties {
 
     /// The style of the text.
     widgets.TextStyle? textStyle,
+
+    /// The alignment of the text.
+    widgets.TextAlign? textAlign,
   }) = StaticTextProperties;
 
   /// Properties of a text that will be generated from a source file.
@@ -80,7 +88,14 @@ class ElementProperties with _$ElementProperties {
     /// The style of the text.
     widgets.TextStyle? textStyle,
 
+    /// The alignment of the text.
+    widgets.TextAlign? textAlign,
+
     /// The path of the file containing the text to be generated.
     required Option<String> sourceFilePath,
   }) = VariableTextProperties;
+
+  bool get isFileImageProperties => this is FileImageProperties;
+  bool get isStaticTextProperties => this is StaticTextProperties;
+  bool get isVariableTextProperties => this is VariableTextProperties;
 }
