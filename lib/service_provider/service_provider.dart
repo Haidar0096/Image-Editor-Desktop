@@ -17,7 +17,7 @@ void configureDependencies() => $initGetIt(serviceProvider);
 
 @module
 abstract class RegisterModule {
-  Logger get logger => Logger(level: kReleaseMode ? Level.warning : Level.nothing);
+  Logger get logger => Logger(level: kReleaseMode ? Level.warning : Level.debug);
 
   Timeline<Editor> get editorTimeLine => Timeline<Editor>(maxSize: 20);
 }

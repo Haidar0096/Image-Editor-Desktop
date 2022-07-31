@@ -513,6 +513,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     final Element el = state.editor.elementById(selectedElementId).toNullable()!;
     late Element updatedElement;
     const double minSideSize = 30.0;
+    // update the element's rect accordingly depending on the resize direction:
     switch (event.resizeDirection) {
       case ResizeDirection.topLeft:
         updatedElement = el.copyWith(
@@ -547,6 +548,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
             el.copyWith(rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, 0), el.rect.topRight));
         break;
     }
+    // prevent the rect from becoming smaller than the minimum allowed size:
     if (updatedElement.rect.size.width < minSideSize) {
       updatedElement = updatedElement.copyWith(
         rect: ui.Rect.fromLTWH(

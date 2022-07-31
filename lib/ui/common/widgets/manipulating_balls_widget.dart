@@ -45,96 +45,64 @@ class ManipulatingBallsWidgetState extends State<ManipulatingBallsWidget> {
           child: ManipulatingBall(
             ballDiameter: widget.ballDiameter,
             resizeDirection: ResizeDirection.topLeft,
-            onDrag: (delta) {
-              widget.onResizeTopLeft?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeTopLeft?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.topCenter,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeTopCenter?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeTopCenter?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.topRight,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeTopRight?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeTopRight?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.centerRight,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeCenterRight?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeCenterRight?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomRight,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeBottomRight?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeBottomRight?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomCenter,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeBottomCenter?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeBottomCenter?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomLeft,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeBottomLeft?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeBottomLeft?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.centerLeft,
             ballDiameter: widget.ballDiameter,
-            onDrag: (delta) {
-              widget.onResizeCenterLeft?.call(delta);
-            },
-            onDragEnd: () {
-              widget.onResizeEnd?.call();
-            },
+            onDrag: (delta) => widget.onResizeCenterLeft?.call(delta),
+            onDragEnd: () => widget.onResizeEnd?.call(),
           ),
         ),
       ],
