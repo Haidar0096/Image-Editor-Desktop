@@ -151,37 +151,47 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
                         // make the selected element resizable
                         child = ManipulatingBallsWidget(
                           ballDiameter: element.rect.size.longestSide / 30 + math.log(element.rect.size.longestSide),
-                          onResizeCenterRight: (delta) {
+                          onResizeTopLeft: (details) {
                             context
                                 .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.centerRight, delta));
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.topLeft, details.delta));
                           },
-                          onResizeCenterLeft: (delta) {
-                            context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.centerLeft, delta));
-                          },
-                          onResizeTopCenter: (delta) {
-                            context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topCenter, delta));
-                          },
-                          onResizeBottomCenter: (delta) {
+                          onResizeTopCenter: (details) {
                             context
                                 .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomCenter, delta));
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.topCenter, details.delta));
                           },
-                          onResizeTopLeft: (delta) {
-                            context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topLeft, delta));
-                          },
-                          onResizeTopRight: (delta) {
-                            context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topRight, delta));
-                          },
-                          onResizeBottomLeft: (delta) {
-                            context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.bottomLeft, delta));
-                          },
-                          onResizeBottomRight: (delta) {
+                          onResizeTopRight: (details) {
                             context
                                 .read<EditorBloc>()
-                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomRight, delta));
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.topRight, details.delta));
                           },
-                          onResizeEnd: () {
+                          onResizeCenterRight: (details) {
+                            context
+                                .read<EditorBloc>()
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.centerRight, details.delta));
+                          },
+                          onResizeBottomRight: (details) {
+                            context
+                                .read<EditorBloc>()
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomRight, details.delta));
+                          },
+                          onResizeBottomCenter: (details) {
+                            context
+                                .read<EditorBloc>()
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomCenter, details.delta));
+                          },
+                          onResizeBottomLeft: (details) {
+                            context
+                                .read<EditorBloc>()
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.bottomLeft, details.delta));
+                          },
+                          onResizeCenterLeft: (details) {
+                            context
+                                .read<EditorBloc>()
+                                .add(EditorEvent.resizeUpdate(ResizeDirection.centerLeft, details.delta));
+                          },
+                          onResizeEnd: (details) {
                             context.read<EditorBloc>().add(const EditorEvent.resizeEnd());
                           },
                           child: child,
@@ -203,7 +213,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
               // widget that displays the current scale of the canvas
               if (_scaleValueVisible) _scaleValueWidget(context),
               // button to restore canvas zoom to 1.0
-              if (!_editorCentered) _resetZoomButton(context)
+              if (!_editorCentered) _resetZoomButton(context),
             ],
           ),
         );

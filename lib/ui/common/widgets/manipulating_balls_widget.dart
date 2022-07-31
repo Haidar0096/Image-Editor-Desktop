@@ -1,108 +1,122 @@
 import 'package:flutter/material.dart';
 
+typedef OnResizeStart = void Function(DragStartDetails details);
+typedef OnResizeUpdate = void Function(DragUpdateDetails details);
+typedef OnResizeEnd = void Function(DragEndDetails details);
+
 /// A widget that places manipulating balls on top of its child. Each ball can be configured with a custom handler.
-class ManipulatingBallsWidget extends StatefulWidget {
-  final void Function(Offset delta)? onResizeCenterRight;
-  final void Function(Offset delta)? onResizeCenterLeft;
-  final void Function(Offset delta)? onResizeTopCenter;
-  final void Function(Offset delta)? onResizeBottomCenter;
-  final void Function(Offset delta)? onResizeTopLeft;
-  final void Function(Offset delta)? onResizeTopRight;
-  final void Function(Offset delta)? onResizeBottomLeft;
-  final void Function(Offset delta)? onResizeBottomRight;
-  final void Function()? onResizeEnd;
+class ManipulatingBallsWidget extends StatelessWidget {
+  final OnResizeStart? onResizeStart;
+  final OnResizeUpdate? onResizeCenterRight;
+  final OnResizeUpdate? onResizeCenterLeft;
+  final OnResizeUpdate? onResizeTopCenter;
+  final OnResizeUpdate? onResizeBottomCenter;
+  final OnResizeUpdate? onResizeTopLeft;
+  final OnResizeUpdate? onResizeTopRight;
+  final OnResizeUpdate? onResizeBottomLeft;
+  final OnResizeUpdate? onResizeBottomRight;
+  final OnResizeEnd? onResizeEnd;
+
+  /// The diameter of the manipulating ball.
   final double ballDiameter;
+
+  /// The child widget around which the balls will appear.
   final Widget child;
 
   const ManipulatingBallsWidget({
     Key? key,
     required this.child,
-    this.ballDiameter = 40.0,
-    this.onResizeCenterRight,
-    this.onResizeCenterLeft,
-    this.onResizeTopCenter,
-    this.onResizeBottomCenter,
+    this.onResizeStart,
     this.onResizeTopLeft,
+    this.onResizeTopCenter,
     this.onResizeTopRight,
-    this.onResizeBottomLeft,
+    this.onResizeCenterRight,
     this.onResizeBottomRight,
+    this.onResizeBottomCenter,
+    this.onResizeBottomLeft,
+    this.onResizeCenterLeft,
     this.onResizeEnd,
-  }) : super(key: key);
+    this.ballDiameter = 40.0,
+  })  : assert(ballDiameter >= 0, 'ballDiameter must be greater than or equal to 0.'),
+        super(key: key);
 
-  @override
-  ManipulatingBallsWidgetState createState() => ManipulatingBallsWidgetState();
-}
-
-class ManipulatingBallsWidgetState extends State<ManipulatingBallsWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         Positioned.fill(
-          child: widget.child,
+          child: child,
         ),
         Positioned.fill(
           child: ManipulatingBall(
-            ballDiameter: widget.ballDiameter,
+            ballDiameter: ballDiameter,
             resizeDirection: ResizeDirection.topLeft,
-            onDrag: (delta) => widget.onResizeTopLeft?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeTopLeft,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.topCenter,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeTopCenter?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeTopCenter,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.topRight,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeTopRight?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeTopRight,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.centerRight,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeCenterRight?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeCenterRight,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomRight,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeBottomRight?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeBottomRight,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomCenter,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeBottomCenter?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeBottomCenter,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.bottomLeft,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeBottomLeft?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeBottomLeft,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
         Positioned(
           child: ManipulatingBall(
             resizeDirection: ResizeDirection.centerLeft,
-            ballDiameter: widget.ballDiameter,
-            onDrag: (delta) => widget.onResizeCenterLeft?.call(delta),
-            onDragEnd: () => widget.onResizeEnd?.call(),
+            ballDiameter: ballDiameter,
+            onDragStart: onResizeStart,
+            onDragUpdate: onResizeCenterLeft,
+            onDragEnd: (details) => onResizeEnd,
           ),
         ),
       ],
@@ -111,19 +125,35 @@ class ManipulatingBallsWidgetState extends State<ManipulatingBallsWidget> {
 }
 
 class ManipulatingBall extends StatelessWidget {
+  /// The diameter of the ball.
   final double ballDiameter;
+
+  /// The direction of resizing of this ball.
   final ResizeDirection resizeDirection;
+
+  /// This method will be invoked when the user starts dragging the ball.
+  ///
+  /// See [GestureDetector] for more information about this method.
+  final void Function(DragStartDetails details)? onDragStart;
+
+  /// This method will be invoked when the user drags the ball.
+  ///
+  /// See [GestureDetector] for more information about this method.
+  final void Function(DragUpdateDetails delta)? onDragUpdate;
+
+  /// This method will be invoked when the user stops dragging the ball.
+  ///
+  /// See [GestureDetector] for more information about this method.
+  final void Function(DragEndDetails details)? onDragEnd;
 
   const ManipulatingBall({
     Key? key,
     required this.ballDiameter,
     required this.resizeDirection,
-    required this.onDrag,
+    required this.onDragStart,
+    required this.onDragUpdate,
     this.onDragEnd,
   }) : super(key: key);
-
-  final void Function(Offset delta)? onDrag;
-  final void Function()? onDragEnd;
 
   @override
   Widget build(BuildContext context) {
@@ -133,8 +163,10 @@ class ManipulatingBall extends StatelessWidget {
         resizeDirection: resizeDirection,
       ),
       child: GestureDetector(
-        onPanUpdate: (details) => onDrag?.call(details.delta),
-        onPanEnd: (details) => onDragEnd?.call(),
+        behavior: HitTestBehavior.opaque,
+        onPanStart: onDragStart,
+        onPanUpdate: onDragUpdate,
+        onPanEnd: onDragEnd,
         child: Container(decoration: BoxDecoration(color: Colors.blue.withOpacity(0.5), shape: BoxShape.circle)),
       ),
     );
@@ -182,6 +214,7 @@ class _ManipulatingBallDelegate extends SingleChildLayoutDelegate {
   }
 }
 
+/// Represents a resize direction of a manipulating ball.
 enum ResizeDirection {
   topCenter,
   bottomCenter,
