@@ -2367,7 +2367,10 @@ void main() {
         dragPosition: none(),
         draggedElementId: none(),
       ),
-      act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(10, 10))),
+      act: (bloc) {
+        bloc.add(const EditorEvent.selectedElementSizeChanged(Size(10, 10)));
+        bloc.add(const EditorEvent.selectedElementSizeChanged(Size(-10, -10)));
+      },
       expect: () => [],
     );
 
