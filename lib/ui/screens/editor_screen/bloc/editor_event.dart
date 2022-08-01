@@ -32,13 +32,13 @@ class EditorEvent with _$EditorEvent {
   /// fires when the text style of a selected static text element changes.
   const factory EditorEvent.staticTextStyleChanged({
     /// The new value of the text style in the element.
-    required widgets.TextStyle updatedTextStyle,
+    widgets.TextStyle? updatedTextStyle,
   }) = StaticTextStyleChanged;
 
   /// fires when the text align of a selected static text element changes.
   const factory EditorEvent.staticTextAlignChanged({
     /// The new value of the text align in the element.
-    required widgets.TextAlign updatedTextAlign,
+    widgets.TextAlign? updatedTextAlign,
   }) = StaticTextAlignChanged;
 
   /// Fires when user wants to add a variable text to the editor.
@@ -62,13 +62,13 @@ class EditorEvent with _$EditorEvent {
   /// fires when the text style of a selected variable text element changes.
   const factory EditorEvent.variableTextStyleChanged({
     /// The new value of the text style in the element.
-    required widgets.TextStyle updatedTextStyle,
+    widgets.TextStyle? updatedTextStyle,
   }) = VariableTextStyleChanged;
 
   /// fires when the text align of a selected variable text element changes.
   const factory EditorEvent.variableTextAlignChanged({
     /// The new value of the text align in the element.
-    required widgets.TextAlign updatedTextAlign,
+    widgets.TextAlign? updatedTextAlign,
   }) = VariableTextAlignChanged;
 
   /// Fires when user wants to add an image to the editor.

@@ -19,45 +19,51 @@ class EditorScreenRightPanel extends StatelessWidget {
         // TODO: then add option to save the currently edited widget locally or online
         // TODO: remove the widgets below in favor of the widgets mentioned above
 
-        final el = editorState.selectedElementId
-            .flatMap((id) => editorState.editor.elementById(id).map((el) => el))
-            .toNullable();
         return Container(
           color: toc.colorScheme.primary,
-          child: ListView(
-            children: [
-              if (el != null) ...[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
-                ),
-                Divider(color: toc.colorScheme.onSecondary),
-                _xPositionText(el, toc, editorState, context),
-                Divider(color: toc.colorScheme.onSecondary),
-                _yPositionText(el, toc, editorState, context),
-                Divider(color: toc.colorScheme.onSecondary),
-                _elementWidthText(el, toc, editorState, context),
-                Divider(color: toc.colorScheme.onSecondary),
-                _elementHeightText(el, toc, editorState, context),
-                Divider(color: toc.colorScheme.onSecondary),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
-                ),
-                Divider(color: toc.colorScheme.onSecondary),
-              ]
-            ],
-          ),
+          child: editorState.selectedElementId
+              .flatMap<Widget>(
+                (id) => editorState.editor.elementById(id).map(
+                      (el) => ListView(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
+                          ),
+                          Divider(color: toc.colorScheme.onSecondary),
+                          _xPositionText(el, toc, editorState, context),
+                          Divider(color: toc.colorScheme.onSecondary),
+                          _yPositionText(el, toc, editorState, context),
+                          Divider(color: toc.colorScheme.onSecondary),
+                          _elementWidthText(el, toc, editorState, context),
+                          Divider(color: toc.colorScheme.onSecondary),
+                          _elementHeightText(el, toc, editorState, context),
+                          Divider(color: toc.colorScheme.onSecondary),
+                          // if selected element is text element:
+                          if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
+                            _elementSizeText(el, toc, editorState, context),
+                            Divider(color: toc.colorScheme.onSecondary),
+                          ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
+                          ),
+                          Divider(color: toc.colorScheme.onSecondary),
+                        ],
+                      ),
+                    ),
+              )
+              .getOrElse(() => Container()),
         );
       },
     );
   }
 
   Widget _createDoubleStateText({
+    required BuildContext context,
     required String initialText,
     required String Function()? onGainFocus,
     required String Function(String)? onLoseFocus,
-    required BuildContext context,
   }) {
     final ThemeData toc = Theme.of(context);
     return DoubleStateText(
@@ -80,67 +86,49 @@ class EditorScreenRightPanel extends StatelessWidget {
   }
 
   Widget _xPositionText(Element el, ThemeData toc, EditorState editorState, BuildContext context) {
+    late final Offset currentOffset;
+    editorState.selectedElementId
+        .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
+
     return _createDoubleStateText(
       context: context,
       initialText: 'x: ${el.rect.topLeft.dx.toStringAsFixed(2)}',
-      onGainFocus: () {
-        late final Offset currentOffset;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
-        return currentOffset.dx.toStringAsFixed(2);
-      },
+      onGainFocus: () => currentOffset.dx.toStringAsFixed(2),
       onLoseFocus: (updatedValue) {
-        late final Offset currentOffset;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
-        double? updatedX = double.tryParse(updatedValue);
-        if (updatedX == null || !updatedX.isFinite) {
-          updatedX = currentOffset.dx;
-        }
+        double? updatedX = double.tryParse(updatedValue) ?? currentOffset.dx;
         context.read<EditorBloc>().add(EditorEvent.selectedElementPositionChanged(Offset(updatedX, currentOffset.dy)));
-        return 'x: ${updatedX.toStringAsFixed(2)}';
+        return 'x: ${el.rect.topLeft.dx.toStringAsFixed(2)}';
       },
     );
   }
 
   Widget _yPositionText(Element el, ThemeData toc, EditorState editorState, BuildContext context) {
+    late final Offset currentOffset;
+    editorState.selectedElementId
+        .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
+
     return _createDoubleStateText(
       context: context,
       initialText: 'y: ${el.rect.topLeft.dy.toStringAsFixed(2)}',
-      onGainFocus: () {
-        late final Offset currentOffset;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
-        return currentOffset.dy.toStringAsFixed(2);
-      },
+      onGainFocus: () => currentOffset.dy.toStringAsFixed(2),
       onLoseFocus: (updatedValue) {
-        late final Offset currentOffset;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentOffset = el.rect.topLeft));
-        double? updatedY = double.tryParse(updatedValue);
-        if (updatedY == null || !updatedY.isFinite) {
-          updatedY = currentOffset.dy;
-        }
+        double? updatedY = double.tryParse(updatedValue) ?? currentOffset.dy;
         context.read<EditorBloc>().add(EditorEvent.selectedElementPositionChanged(Offset(currentOffset.dx, updatedY)));
-        return 'y: ${updatedY.toStringAsFixed(2)}';
+        return 'y: ${el.rect.topLeft.dy.toStringAsFixed(2)}';
       },
     );
   }
 
   Widget _elementWidthText(Element el, ThemeData toc, EditorState editorState, BuildContext context) {
+    late final Size currentSize;
+    editorState.selectedElementId
+        .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
+
     return _createDoubleStateText(
       context: context,
       initialText: 'w: ${el.rect.size.width.toStringAsFixed(2)}',
-      onGainFocus: () {
-        late final Size currentSize;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
-        return currentSize.width.toStringAsFixed(2);
-      },
+      onGainFocus: () => currentSize.width.toStringAsFixed(2),
       onLoseFocus: (updatedValue) {
-        late final Size currentSize;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
         double updatedWidth = double.tryParse(updatedValue) ?? -1;
 
         context.read<EditorBloc>().add(EditorEvent.selectedElementSizeChanged(Size(updatedWidth, currentSize.height)));
@@ -150,23 +138,51 @@ class EditorScreenRightPanel extends StatelessWidget {
   }
 
   Widget _elementHeightText(Element el, ThemeData toc, EditorState editorState, BuildContext context) {
+    late final Size currentSize;
+    editorState.selectedElementId
+        .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
     return _createDoubleStateText(
       context: context,
       initialText: 'h: ${el.rect.size.height.toStringAsFixed(2)}',
-      onGainFocus: () {
-        late final Size currentSize;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
-        return currentSize.height.toStringAsFixed(2);
-      },
+      onGainFocus: () => currentSize.height.toStringAsFixed(2),
       onLoseFocus: (updatedValue) {
-        late final Size currentSize;
-        editorState.selectedElementId
-            .map((id) => editorState.editor.elementById(id).map((el) => currentSize = el.rect.size));
         double updatedHeight = double.tryParse(updatedValue) ?? -1;
 
         context.read<EditorBloc>().add(EditorEvent.selectedElementSizeChanged(Size(currentSize.width, updatedHeight)));
         return 'h: ${el.rect.height.toStringAsFixed(2)}';
+      },
+    );
+  }
+
+  Widget _elementSizeText(Element el, ThemeData toc, EditorState editorState, BuildContext context) {
+    // check if the selected element is text, and get its relevant properties to be used by the button handlers:
+    TextStyle? currentStyle;
+
+    if (el.properties.isStaticTextProperties) {
+      currentStyle = (el.properties as StaticTextProperties).textStyle;
+    } else if (el.properties.isVariableTextProperties) {
+      currentStyle = (el.properties as VariableTextProperties).textStyle;
+    }
+
+    return _createDoubleStateText(
+      context: context,
+      initialText: 'Font: ${currentStyle?.fontSize?.toStringAsFixed(2)}',
+      onGainFocus: () => '${currentStyle?.fontSize?.toStringAsFixed(2)}',
+      onLoseFocus: (updatedValue) {
+        double? updatedFontSize = double.tryParse(updatedValue);
+
+        if (updatedFontSize == null || !updatedFontSize.isFinite) {
+          updatedFontSize = currentStyle?.fontSize;
+        }
+
+        TextStyle? updatedTextStyle = currentStyle?.copyWith(fontSize: updatedFontSize);
+
+        if (el.properties.isStaticTextProperties) {
+          context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
+        } else if (el.properties.isVariableTextProperties) {
+          context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
+        }
+        return 'Font: ${currentStyle?.fontSize?.toStringAsFixed(2)}';
       },
     );
   }

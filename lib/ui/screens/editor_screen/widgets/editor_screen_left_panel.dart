@@ -13,210 +13,196 @@ class EditorScreenLeftPanel extends StatelessWidget {
     final ThemeData toc = Theme.of(context);
     final MediaQueryData moc = MediaQuery.of(context);
     return BlocBuilder<EditorBloc, EditorState>(
-      builder: (context, editorState) {
-        // check if the selected element is text, and get its text style
-        TextStyle? selectedElementTextStyle;
-        TextAlign? selectedElementTextAlign;
-        bool isSelectedElementStaticText = false;
-        bool isSelectedElementVariableText = false;
-        editorState.selectedElementId.flatMap((elId) => editorState.editor.elementById(elId).map((el) {
-              if (el.properties.isStaticTextProperties) {
-                selectedElementTextStyle = (el.properties as StaticTextProperties).textStyle;
-                selectedElementTextAlign = (el.properties as StaticTextProperties).textAlign;
-                isSelectedElementStaticText = true;
-              } else if (el.properties.isVariableTextProperties) {
-                selectedElementTextStyle = (el.properties as VariableTextProperties).textStyle;
-                selectedElementTextAlign = (el.properties as VariableTextProperties).textAlign;
-                isSelectedElementVariableText = true;
-              }
-            }));
+      builder: (context, editorState) => Container(
+        color: toc.colorScheme.primary,
+        child: ListView(
+          children: [
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.addImage,
+              icon: Icons.add_a_photo,
+              onTap: () => context.read<EditorBloc>().add(const EditorEvent.addImage()),
+            ),
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.addStaticText,
+              icon: Icons.text_fields_outlined,
+              onTap: () => context.read<EditorBloc>().add(
+                    EditorEvent.addStaticText(
+                      initialText: AppLocalizations.of(context)!.typeText,
+                      textDirection: Directionality.of(context),
+                      minWidth: 0.0,
+                      maxWidth: moc.size.width,
+                    ),
+                  ),
+            ),
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.addVariableText,
+              icon: Icons.functions_outlined,
+              onTap: () => context.read<EditorBloc>().add(
+                    EditorEvent.addVariableText(
+                      initialText: AppLocalizations.of(context)!.generatedTextAppearsHere,
+                      textDirection: Directionality.of(context),
+                      minWidth: 0.0,
+                      maxWidth: moc.size.width,
+                    ),
+                  ),
+            ),
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.undo,
+              icon: Icons.undo,
+              onTap: () => context.read<EditorBloc>().add(const EditorEvent.undo()),
+            ),
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.redo,
+              icon: Icons.redo,
+              onTap: () => context.read<EditorBloc>().add(const EditorEvent.redo()),
+            ),
+            _createLeftPanelAction(
+              context: context,
+              tooltipMessage: AppLocalizations.of(context)!.clearEditor,
+              icon: Icons.clear,
+              onTap: () => context.read<EditorBloc>().add(const EditorEvent.clearEditor()),
+            ),
+            // if there is selected element:
+            ...editorState.selectedElementId
+                .flatMap(
+                  (elId) => editorState.editor.elementById(elId).map(
+                        (el) => [
+                          _createLeftPanelAction(
+                            context: context,
+                            tooltipMessage: AppLocalizations.of(context)!.bringToFront,
+                            icon: Icons.flip_to_front,
+                            onTap: () =>
+                                context.read<EditorBloc>().add(const EditorEvent.bringSelectedElementToFront()),
+                          ),
+                          _createLeftPanelAction(
+                            context: context,
+                            tooltipMessage: AppLocalizations.of(context)!.removeElement,
+                            icon: Icons.delete,
+                            onTap: () => context.read<EditorBloc>().add(const EditorEvent.removeSelectedElement()),
+                          ),
+                          _createLeftPanelAction(
+                            context: context,
+                            tooltipMessage: AppLocalizations.of(context)!.deselect,
+                            icon: Icons.deselect,
+                            onTap: () => context.read<EditorBloc>().add(const EditorEvent.deselectElement()),
+                          ),
+                          // if selected element is text element:
+                          if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
+                            _createLeftPanelAction(
+                              context: context,
+                              tooltipMessage: AppLocalizations.of(context)!.textJustification,
+                              icon: Icons.format_align_justify,
+                              onTap: () {
+                                late final TextAlign? selectedElementTextAlign;
+                                if (el.properties.isStaticTextProperties) {
+                                  selectedElementTextAlign = (el.properties as StaticTextProperties).textAlign;
+                                } else if (el.properties.isVariableTextProperties) {
+                                  selectedElementTextAlign = (el.properties as VariableTextProperties).textAlign;
+                                }
 
-        return Container(
-          color: toc.colorScheme.primary,
-          child: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.addImage,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.add_a_photo,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.addImage());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.addStaticText,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.text_fields_outlined,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(
-                            EditorEvent.addStaticText(
-                              initialText: AppLocalizations.of(context)!.typeText,
-                              textDirection: Directionality.of(context),
-                              minWidth: 0.0,
-                              maxWidth: moc.size.width,
+                                List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
+                                int nextIndex =
+                                    (values.indexOf(selectedElementTextAlign ?? values[0]) + 1) % values.length;
+                                TextAlign? updatedTextAlign = values[nextIndex];
+                                if (el.properties.isStaticTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
+                                } else if (el.properties.isVariableTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
+                                }
+                              },
                             ),
-                          );
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.addVariableText,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.functions_outlined,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(
-                            EditorEvent.addVariableText(
-                              initialText: AppLocalizations.of(context)!.generatedTextAppearsHere,
-                              textDirection: Directionality.of(context),
-                              minWidth: 0.0,
-                              maxWidth: moc.size.width,
+                            _createLeftPanelAction(
+                              context: context,
+                              tooltipMessage: AppLocalizations.of(context)!.makeTextLarger,
+                              icon: Icons.text_increase_rounded,
+                              onTap: () {
+                                late final TextStyle? selectedElementTextStyle;
+                                if (el.properties.isStaticTextProperties) {
+                                  selectedElementTextStyle = (el.properties as StaticTextProperties).textStyle;
+                                } else if (el.properties.isVariableTextProperties) {
+                                  selectedElementTextStyle = (el.properties as VariableTextProperties).textStyle;
+                                }
+
+                                TextStyle? updatedTextStyle = selectedElementTextStyle?.copyWith(
+                                    fontSize: selectedElementTextStyle.fontSize! + 1);
+
+                                if (el.properties.isStaticTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
+                                } else if (el.properties.isVariableTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
+                                }
+                              },
                             ),
-                          );
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.bringToFront,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.flip_to_front,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.bringSelectedElementToFront());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.removeElement,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.delete_forever,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.removeSelectedElement());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.deselect,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.deselect,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.deselectElement());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.clearEditor,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.clear,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.clearEditor());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.undo,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.undo,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.undo());
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tooltip(
-                  message: AppLocalizations.of(context)!.redo,
-                  child: InkWell(
-                    child: Icon(
-                      Icons.redo,
-                      color: toc.colorScheme.onPrimary,
-                    ),
-                    onTap: () {
-                      context.read<EditorBloc>().add(const EditorEvent.redo());
-                    },
-                  ),
-                ),
-              ),
-              if (isSelectedElementStaticText || isSelectedElementVariableText)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Tooltip(
-                    message: AppLocalizations.of(context)!.textJustification,
-                    child: InkWell(
-                      child: Icon(
-                        Icons.format_align_justify,
-                        color: toc.colorScheme.onPrimary,
+                            _createLeftPanelAction(
+                              context: context,
+                              tooltipMessage: AppLocalizations.of(context)!.makeTextSmaller,
+                              icon: Icons.text_decrease_rounded,
+                              onTap: () {
+                                late final TextStyle? selectedElementTextStyle;
+                                if (el.properties.isStaticTextProperties) {
+                                  selectedElementTextStyle = (el.properties as StaticTextProperties).textStyle;
+                                } else if (el.properties.isVariableTextProperties) {
+                                  selectedElementTextStyle = (el.properties as VariableTextProperties).textStyle;
+                                }
+
+                                TextStyle updatedTextStyle = selectedElementTextStyle!
+                                    .copyWith(fontSize: selectedElementTextStyle.fontSize! - 1);
+
+                                if (el.properties.isStaticTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
+                                } else if (el.properties.isVariableTextProperties) {
+                                  context
+                                      .read<EditorBloc>()
+                                      .add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
+                                }
+                              },
+                            ),
+                          ]
+                        ],
                       ),
-                      onTap: () {
-                        List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
-                        int nextIndex = values.indexOf(selectedElementTextAlign ?? values[0]);
-                        nextIndex += 1;
-                        nextIndex %= values.length;
-                        TextAlign updatedTextAlign = values[nextIndex];
-                        if (isSelectedElementStaticText) {
-                          context
-                              .read<EditorBloc>()
-                              .add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
-                        } else if (isSelectedElementVariableText) {
-                          context
-                              .read<EditorBloc>()
-                              .add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
-                        }
-                      },
-                    ),
-                  ),
-                ),
-            ],
+                )
+                .getOrElse(() => []),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _createLeftPanelAction({
+    required BuildContext context,
+    required String tooltipMessage,
+    required IconData icon,
+    Color? iconColor,
+    required VoidCallback onTap,
+  }) {
+    final ThemeData toc = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Tooltip(
+        message: tooltipMessage,
+        child: InkWell(
+          onTap: onTap,
+          child: Icon(
+            icon,
+            color: iconColor ?? toc.colorScheme.onPrimary,
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

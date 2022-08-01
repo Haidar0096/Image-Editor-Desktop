@@ -306,11 +306,18 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     state.selectedElementId.map(
       (id) => state.editor.elementById(id).map(
         (el) {
+          // make sure the font size is positive or zero
+          material.TextStyle? updatedTextStyle = event.updatedTextStyle;
+          if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
+            updatedTextStyle =
+                event.updatedTextStyle?.copyWith(fontSize: (el.properties as StaticTextProperties).textStyle?.fontSize);
+          }
+
           emit(
             state.copyWith(
               editor: state.editor.updateElement(
                 el.copyWith(
-                  properties: (el.properties as StaticTextProperties).copyWith(textStyle: event.updatedTextStyle),
+                  properties: (el.properties as StaticTextProperties).copyWith(textStyle: updatedTextStyle),
                 ),
               ),
             ),
@@ -416,11 +423,18 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     state.selectedElementId.map(
       (id) => state.editor.elementById(id).map(
         (el) {
+          // make sure the font size is positive or zero
+          material.TextStyle? updatedTextStyle = event.updatedTextStyle;
+          if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
+            updatedTextStyle = event.updatedTextStyle
+                ?.copyWith(fontSize: (el.properties as VariableTextProperties).textStyle?.fontSize);
+          }
+
           emit(
             state.copyWith(
               editor: state.editor.updateElement(
                 el.copyWith(
-                  properties: (el.properties as VariableTextProperties).copyWith(textStyle: event.updatedTextStyle),
+                  properties: (el.properties as VariableTextProperties).copyWith(textStyle: updatedTextStyle),
                 ),
               ),
             ),
@@ -665,12 +679,14 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     state.selectedElementId.map(
       (id) => state.editor.elementById(id).map(
         (el) {
+          double xUpdated = event.updatedPosition.dx.isFinite ? event.updatedPosition.dx : el.rect.topLeft.dx;
+          double yUpdated = event.updatedPosition.dy.isFinite ? event.updatedPosition.dy : el.rect.topLeft.dy;
+
           emit(
             state.copyWith(
               editor: state.editor.updateElement(
                 el.copyWith(
-                  rect: ui.Rect.fromLTWH(
-                      event.updatedPosition.dx, event.updatedPosition.dy, el.rect.width, el.rect.height),
+                  rect: ui.Rect.fromLTWH(xUpdated, yUpdated, el.rect.width, el.rect.height),
                 ),
               ),
             ),

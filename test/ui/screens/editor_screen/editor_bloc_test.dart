@@ -585,6 +585,63 @@ void main() {
     );
 
     blocTest<EditorBloc, EditorState>(
+      'Should validate the fontSize when static text style changes.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({staticText}),
+        selectedElementId: some(staticText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        // Ok
+        bloc.add(EditorEvent.staticTextStyleChanged(
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10)));
+        // Ok
+        bloc.add(EditorEvent.staticTextStyleChanged(
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0)));
+        // Should not change the style, font negative
+        bloc.add(EditorEvent.staticTextStyleChanged(
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: -1)));
+        // Should not change the style, font infinite
+        bloc.add(EditorEvent.staticTextStyleChanged(
+            updatedTextStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
+      },
+      expect: () {
+        final expectedState1 = EditorState(
+          editor: Editor.fromSet(
+            {
+              staticText.copyWith(
+                properties: (staticText.properties as StaticTextProperties).copyWith(
+                  textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10),
+                ),
+              )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        final expectedState2 = EditorState(
+          editor: Editor.fromSet(
+            {
+              staticText.copyWith(
+                properties: (staticText.properties as StaticTextProperties).copyWith(
+                  textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0),
+                ),
+              )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        return [expectedState1, expectedState2];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
       'Should save state after changing static text style.',
       build: () => createEditorBloc(),
       seed: () => EditorState(
@@ -1029,6 +1086,63 @@ void main() {
           selectedElementId: some(variableText.id),
         );
         return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should validate the fontSize when variable text style changes.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({variableText}),
+        selectedElementId: some(variableText.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        // Ok
+        bloc.add(EditorEvent.variableTextStyleChanged(
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10)));
+        // Ok
+        bloc.add(EditorEvent.variableTextStyleChanged(
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0)));
+        // Should not change the style, font negative
+        bloc.add(EditorEvent.variableTextStyleChanged(
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: -1)));
+        // Should not change the style, font infinite
+        bloc.add(EditorEvent.variableTextStyleChanged(
+            updatedTextStyle:
+                (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
+      },
+      expect: () {
+        final expectedState1 = EditorState(
+          editor: Editor.fromSet(
+            {
+              variableText.copyWith(
+                properties: (variableText.properties as VariableTextProperties).copyWith(
+                  textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10),
+                ),
+              )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(variableText.id),
+        );
+        final expectedState2 = EditorState(
+          editor: Editor.fromSet(
+            {
+              variableText.copyWith(
+                properties: (variableText.properties as VariableTextProperties).copyWith(
+                  textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0),
+                ),
+              )
+            },
+          ),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(variableText.id),
+        );
+        return [expectedState1, expectedState2];
       },
     );
 
@@ -2254,18 +2368,7 @@ void main() {
         draggedElementId: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(10, 10))),
-      expect: () {
-        // final expectedState = EditorState(
-        //   editor: Editor.fromSet(
-        //       {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 200, height: 200))}),
-        //   draggedElementId: none(),
-        //   dragPosition: none(),
-        //   selectedElementId: some(image1.id),
-        // );
-        // the bloc will no emit any states since the state to be emitted is the same as the previous state since the
-        // width and height of image1 did not change and thus the 2 states are equal so no state will be emitted.
-        return [];
-      },
+      expect: () => [],
     );
 
     blocTest<EditorBloc, EditorState>(
@@ -2325,6 +2428,35 @@ void main() {
           selectedElementId: some(image1.id),
         );
         return [expectedState];
+      },
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should not change position if it is out of the pre-defined bounds.',
+      build: () => createEditorBloc(),
+      seed: () => EditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElementId: some(image1.id),
+        dragPosition: none(),
+        draggedElementId: none(),
+      ),
+      act: (bloc) {
+        // OK
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(10, 10)));
+        // out of bounds
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(double.infinity, 10)));
+        // out of bounds
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(10, double.infinity)));
+      },
+      expect: () {
+        return [
+          EditorState(
+            editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(10, 10, 200, 200))}),
+            draggedElementId: none(),
+            dragPosition: none(),
+            selectedElementId: some(image1.id),
+          )
+        ];
       },
     );
 

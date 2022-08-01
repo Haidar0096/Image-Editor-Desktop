@@ -23,13 +23,13 @@ mixin _$EditorEvent {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -56,13 +56,13 @@ mixin _$EditorEvent {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -89,13 +89,13 @@ mixin _$EditorEvent {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -265,13 +265,13 @@ class _$Undo implements Undo {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -301,13 +301,13 @@ class _$Undo implements Undo {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -337,13 +337,13 @@ class _$Undo implements Undo {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -519,13 +519,13 @@ class _$Redo implements Redo {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -555,13 +555,13 @@ class _$Redo implements Redo {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -591,13 +591,13 @@ class _$Redo implements Redo {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -837,13 +837,13 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -873,13 +873,13 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -909,13 +909,13 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1137,13 +1137,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -1173,13 +1173,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1209,13 +1209,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1362,7 +1362,7 @@ abstract class _$$StaticTextStyleChangedCopyWith<$Res> {
   factory _$$StaticTextStyleChangedCopyWith(
           _$StaticTextStyleChanged value, $Res Function(_$StaticTextStyleChanged) then) =
       __$$StaticTextStyleChangedCopyWithImpl<$Res>;
-  $Res call({widgets.TextStyle updatedTextStyle});
+  $Res call({widgets.TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
@@ -1382,7 +1382,7 @@ class __$$StaticTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
       updatedTextStyle: updatedTextStyle == freezed
           ? _value.updatedTextStyle
           : updatedTextStyle // ignore: cast_nullable_to_non_nullable
-              as widgets.TextStyle,
+              as widgets.TextStyle?,
     ));
   }
 }
@@ -1390,11 +1390,11 @@ class __$$StaticTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
 /// @nodoc
 
 class _$StaticTextStyleChanged implements StaticTextStyleChanged {
-  const _$StaticTextStyleChanged({required this.updatedTextStyle});
+  const _$StaticTextStyleChanged({this.updatedTextStyle});
 
   /// The new value of the text style in the element.
   @override
-  final widgets.TextStyle updatedTextStyle;
+  final widgets.TextStyle? updatedTextStyle;
 
   @override
   String toString() {
@@ -1425,13 +1425,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -1461,13 +1461,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1497,13 +1497,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1637,10 +1637,10 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
 }
 
 abstract class StaticTextStyleChanged implements EditorEvent {
-  const factory StaticTextStyleChanged({required final widgets.TextStyle updatedTextStyle}) = _$StaticTextStyleChanged;
+  const factory StaticTextStyleChanged({final widgets.TextStyle? updatedTextStyle}) = _$StaticTextStyleChanged;
 
   /// The new value of the text style in the element.
-  widgets.TextStyle get updatedTextStyle => throw _privateConstructorUsedError;
+  widgets.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1650,7 +1650,7 @@ abstract class _$$StaticTextAlignChangedCopyWith<$Res> {
   factory _$$StaticTextAlignChangedCopyWith(
           _$StaticTextAlignChanged value, $Res Function(_$StaticTextAlignChanged) then) =
       __$$StaticTextAlignChangedCopyWithImpl<$Res>;
-  $Res call({ui.TextAlign updatedTextAlign});
+  $Res call({ui.TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
@@ -1670,7 +1670,7 @@ class __$$StaticTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
       updatedTextAlign: updatedTextAlign == freezed
           ? _value.updatedTextAlign
           : updatedTextAlign // ignore: cast_nullable_to_non_nullable
-              as ui.TextAlign,
+              as ui.TextAlign?,
     ));
   }
 }
@@ -1678,11 +1678,11 @@ class __$$StaticTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
 /// @nodoc
 
 class _$StaticTextAlignChanged implements StaticTextAlignChanged {
-  const _$StaticTextAlignChanged({required this.updatedTextAlign});
+  const _$StaticTextAlignChanged({this.updatedTextAlign});
 
   /// The new value of the text align in the element.
   @override
-  final ui.TextAlign updatedTextAlign;
+  final ui.TextAlign? updatedTextAlign;
 
   @override
   String toString() {
@@ -1713,13 +1713,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -1749,13 +1749,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1785,13 +1785,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -1925,10 +1925,10 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
 }
 
 abstract class StaticTextAlignChanged implements EditorEvent {
-  const factory StaticTextAlignChanged({required final ui.TextAlign updatedTextAlign}) = _$StaticTextAlignChanged;
+  const factory StaticTextAlignChanged({final ui.TextAlign? updatedTextAlign}) = _$StaticTextAlignChanged;
 
   /// The new value of the text align in the element.
-  ui.TextAlign get updatedTextAlign => throw _privateConstructorUsedError;
+  ui.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$StaticTextAlignChangedCopyWith<_$StaticTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -2036,13 +2036,13 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -2072,13 +2072,13 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2108,13 +2108,13 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2313,13 +2313,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -2349,13 +2349,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2385,13 +2385,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2533,7 +2533,7 @@ abstract class _$$VariableTextStyleChangedCopyWith<$Res> {
   factory _$$VariableTextStyleChangedCopyWith(
           _$VariableTextStyleChanged value, $Res Function(_$VariableTextStyleChanged) then) =
       __$$VariableTextStyleChangedCopyWithImpl<$Res>;
-  $Res call({widgets.TextStyle updatedTextStyle});
+  $Res call({widgets.TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
@@ -2554,7 +2554,7 @@ class __$$VariableTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
       updatedTextStyle: updatedTextStyle == freezed
           ? _value.updatedTextStyle
           : updatedTextStyle // ignore: cast_nullable_to_non_nullable
-              as widgets.TextStyle,
+              as widgets.TextStyle?,
     ));
   }
 }
@@ -2562,11 +2562,11 @@ class __$$VariableTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
 /// @nodoc
 
 class _$VariableTextStyleChanged implements VariableTextStyleChanged {
-  const _$VariableTextStyleChanged({required this.updatedTextStyle});
+  const _$VariableTextStyleChanged({this.updatedTextStyle});
 
   /// The new value of the text style in the element.
   @override
-  final widgets.TextStyle updatedTextStyle;
+  final widgets.TextStyle? updatedTextStyle;
 
   @override
   String toString() {
@@ -2597,13 +2597,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -2633,13 +2633,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2669,13 +2669,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2809,11 +2809,10 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
 }
 
 abstract class VariableTextStyleChanged implements EditorEvent {
-  const factory VariableTextStyleChanged({required final widgets.TextStyle updatedTextStyle}) =
-      _$VariableTextStyleChanged;
+  const factory VariableTextStyleChanged({final widgets.TextStyle? updatedTextStyle}) = _$VariableTextStyleChanged;
 
   /// The new value of the text style in the element.
-  widgets.TextStyle get updatedTextStyle => throw _privateConstructorUsedError;
+  widgets.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -2823,7 +2822,7 @@ abstract class _$$VariableTextAlignChangedCopyWith<$Res> {
   factory _$$VariableTextAlignChangedCopyWith(
           _$VariableTextAlignChanged value, $Res Function(_$VariableTextAlignChanged) then) =
       __$$VariableTextAlignChangedCopyWithImpl<$Res>;
-  $Res call({ui.TextAlign updatedTextAlign});
+  $Res call({ui.TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
@@ -2844,7 +2843,7 @@ class __$$VariableTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
       updatedTextAlign: updatedTextAlign == freezed
           ? _value.updatedTextAlign
           : updatedTextAlign // ignore: cast_nullable_to_non_nullable
-              as ui.TextAlign,
+              as ui.TextAlign?,
     ));
   }
 }
@@ -2852,11 +2851,11 @@ class __$$VariableTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
 /// @nodoc
 
 class _$VariableTextAlignChanged implements VariableTextAlignChanged {
-  const _$VariableTextAlignChanged({required this.updatedTextAlign});
+  const _$VariableTextAlignChanged({this.updatedTextAlign});
 
   /// The new value of the text align in the element.
   @override
-  final ui.TextAlign updatedTextAlign;
+  final ui.TextAlign? updatedTextAlign;
 
   @override
   String toString() {
@@ -2887,13 +2886,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -2923,13 +2922,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -2959,13 +2958,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3099,10 +3098,10 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
 }
 
 abstract class VariableTextAlignChanged implements EditorEvent {
-  const factory VariableTextAlignChanged({required final ui.TextAlign updatedTextAlign}) = _$VariableTextAlignChanged;
+  const factory VariableTextAlignChanged({final ui.TextAlign? updatedTextAlign}) = _$VariableTextAlignChanged;
 
   /// The new value of the text align in the element.
-  ui.TextAlign get updatedTextAlign => throw _privateConstructorUsedError;
+  ui.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -3147,13 +3146,13 @@ class _$AddImage implements AddImage {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -3183,13 +3182,13 @@ class _$AddImage implements AddImage {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3219,13 +3218,13 @@ class _$AddImage implements AddImage {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3429,13 +3428,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -3465,13 +3464,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3501,13 +3500,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3716,13 +3715,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -3752,13 +3751,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3788,13 +3787,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -3978,13 +3977,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -4014,13 +4013,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4050,13 +4049,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4271,13 +4270,13 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -4307,13 +4306,13 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4343,13 +4342,13 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4561,13 +4560,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -4597,13 +4596,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4633,13 +4632,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4823,13 +4822,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -4859,13 +4858,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -4895,13 +4894,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5078,13 +5077,13 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -5114,13 +5113,13 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5150,13 +5149,13 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5358,13 +5357,13 @@ class _$ElementTap implements ElementTap {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -5394,13 +5393,13 @@ class _$ElementTap implements ElementTap {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5430,13 +5429,13 @@ class _$ElementTap implements ElementTap {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5620,13 +5619,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -5656,13 +5655,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5692,13 +5691,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5877,13 +5876,13 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -5913,13 +5912,13 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -5949,13 +5948,13 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6136,13 +6135,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -6172,13 +6171,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6208,13 +6207,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6426,13 +6425,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -6462,13 +6461,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6498,13 +6497,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6686,13 +6685,13 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -6722,13 +6721,13 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6758,13 +6757,13 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -6969,13 +6968,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -7005,13 +7004,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -7041,13 +7040,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -7258,13 +7257,13 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -7294,13 +7293,13 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -7330,13 +7329,13 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -7521,13 +7520,13 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
     required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(ui.Offset localPosition) canvasDragStart,
     required TResult Function(ui.Offset delta) canvasDragUpdate,
@@ -7557,13 +7556,13 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
@@ -7593,13 +7592,13 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
     TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
     TResult Function(ui.Offset localPosition)? canvasDragStart,
     TResult Function(ui.Offset delta)? canvasDragUpdate,
