@@ -49,6 +49,9 @@ class DoubleStateText extends StatefulWidget {
   /// See [Text] and [TextField] for more information about this parameter.
   final TextAlign? textAlign;
 
+  /// Whether the text is initially selected when this widget becomes a [TextField].
+  final bool initiallySelected;
+
   const DoubleStateText({
     Key? key,
     this.onGainFocus,
@@ -61,6 +64,7 @@ class DoubleStateText extends StatefulWidget {
     this.padding = EdgeInsets.zero,
     this.textStyle,
     this.textAlign,
+    this.initiallySelected = true,
   }) : super(key: key);
 
   @override
@@ -98,6 +102,12 @@ class _DoubleStateTextState extends State<DoubleStateText> {
       if (_focusNode.hasFocus) {
         String? text = widget.onGainFocus?.call();
         _textController.text = text ?? widget.initialText;
+        if (widget.initiallySelected) {
+          _textController.selection = TextSelection(
+            baseOffset: 0,
+            extentOffset: _textController.text.length,
+          );
+        }
       }
       if (!_focusNode.hasFocus) {
         setState(() {

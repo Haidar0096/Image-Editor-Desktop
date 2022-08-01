@@ -514,7 +514,26 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleCanvasTap(CanvasTap event, Emitter emit) async {
-    emit(state.copyWith(selectedElementId: none()));
+    state.selectedElementId.map(
+      (elId) => state.editor.elementById(elId).map(
+            (selectedElement) => selectedElement.properties.maybeWhen(
+              staticTextProperties: (text, _, __) {
+                if (text.isEmpty) {
+                  emit(
+                    state.copyWith(
+                      selectedElementId: none(),
+                      editor: state.editor.removeElement(elId),
+                    ),
+                  );
+                  _saveState(state);
+                } else {
+                  emit(state.copyWith(selectedElementId: none()));
+                }
+              },
+              orElse: () => emit(state.copyWith(selectedElementId: none())),
+            ),
+          ),
+    );
   }
 
   Future<void> _handleElementDragStart(ElementDragStart event, Emitter emit) async {
@@ -561,7 +580,26 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleDeselectElement(DeselectElement event, Emitter emit) async {
-    emit(state.copyWith(selectedElementId: none()));
+    state.selectedElementId.map(
+      (elId) => state.editor.elementById(elId).map(
+            (selectedElement) => selectedElement.properties.maybeWhen(
+              staticTextProperties: (text, _, __) {
+                if (text.isEmpty) {
+                  emit(
+                    state.copyWith(
+                      selectedElementId: none(),
+                      editor: state.editor.removeElement(elId),
+                    ),
+                  );
+                  _saveState(state);
+                } else {
+                  emit(state.copyWith(selectedElementId: none()));
+                }
+              },
+              orElse: () => emit(state.copyWith(selectedElementId: none())),
+            ),
+          ),
+    );
   }
 
   Future<void> _handleBringSelectedElementToFront(BringSelectedElementToFront event, Emitter emit) async {

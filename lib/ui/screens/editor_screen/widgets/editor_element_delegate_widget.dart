@@ -14,11 +14,7 @@ class EditorElementDelegateWidget extends StatelessWidget {
 
   const EditorElementDelegateWidget({
     Key? key,
-
-    /// The editor element to render.
     required this.element,
-
-    /// Whether this element is selected.
     required this.isSelected,
   }) : super(key: key);
 
@@ -27,8 +23,8 @@ class EditorElementDelegateWidget extends StatelessWidget {
     return element.properties.map(
       fileImageProperties: (fileImageProperties) =>
           EditorImageWidget(properties: fileImageProperties, size: element.rect.size),
-      staticTextProperties: (staticTextProperties) =>
-          EditorStaticTextWidget(properties: staticTextProperties, isSelected: isSelected),
+      staticTextProperties: (staticTextProperties) => EditorStaticTextWidget(
+          key: ValueKey(staticTextProperties.text), properties: staticTextProperties, isSelected: isSelected),
       variableTextProperties: (variableTextProperties) => EditorVariableTextWidget(properties: variableTextProperties),
     );
   }

@@ -310,9 +310,10 @@ void main() {
 
     // define elements used in tests
     const Element staticText = Element(
-      rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
+      rect: Rect.fromLTRB(0.0, 0.0, 1353.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here (Double tap to start):',
+          textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 1,
       id: '1',
     );
@@ -1497,24 +1498,69 @@ void main() {
     );
   });
   group('CanvasTap', () {
+    // static text element
+    const Element staticText = Element(
+      rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
+      properties: ElementProperties.staticTextProperties(
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
+      showOrder: 2,
+      id: '2',
+    );
     blocTest<EditorBloc, EditorState>(
       'Should clear the selected element.',
       seed: () => EditorState(
-        editor: Editor.fromSet({}),
+        editor: Editor.fromSet({staticText}),
         draggedElementId: none(),
         dragPosition: none(),
-        selectedElementId: some('1'),
+        selectedElementId: some('2'),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const CanvasTap()),
       expect: () => [
         EditorState(
-          editor: Editor.fromSet({}),
+          editor: Editor.fromSet({staticText}),
           draggedElementId: none(),
           dragPosition: none(),
           selectedElementId: none(),
         ),
       ],
+    );
+    blocTest<EditorBloc, EditorState>(
+      'Should delete the selected element if its an empty text and save the state.',
+      seed: () => EditorState(
+        editor: Editor.fromSet({staticText}),
+        draggedElementId: none(),
+        dragPosition: none(),
+        selectedElementId: some(staticText.id),
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) {
+        bloc.add(const StaticTextChanged(updatedText: 'abc'));
+        bloc.add(const StaticTextChanged(updatedText: ''));
+        bloc.add(const CanvasTap());
+        bloc.add(const Undo());
+        bloc.add(const Redo());
+      },
+      expect: () {
+        final EditorState expectedState1 = EditorState(
+          editor: Editor.fromSet(
+              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        final EditorState expectedState2 = expectedState1.copyWith(
+          editor: Editor.fromSet(
+              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''))}),
+        );
+        return [
+          expectedState1,
+          expectedState2,
+          EditorState.initial(),
+          expectedState2.copyWith(selectedElementId: none()),
+          EditorState.initial(),
+        ];
+      },
     );
   });
 
@@ -1867,6 +1913,14 @@ void main() {
       showOrder: 1,
       id: '1',
     );
+    // static text element
+    const Element staticText = Element(
+      rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
+      properties: ElementProperties.staticTextProperties(
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
+      showOrder: 2,
+      id: '2',
+    );
     blocTest<EditorBloc, EditorState>(
       'Should deselect the selected element.',
       seed: () => EditorState(
@@ -1885,6 +1939,44 @@ void main() {
           selectedElementId: none(),
         ),
       ],
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should delete the selected element if its an empty text and save the state.',
+      seed: () => EditorState(
+        editor: Editor.fromSet({staticText}),
+        draggedElementId: none(),
+        dragPosition: none(),
+        selectedElementId: some(staticText.id),
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) {
+        bloc.add(const StaticTextChanged(updatedText: 'abc'));
+        bloc.add(const StaticTextChanged(updatedText: ''));
+        bloc.add(const DeselectElement());
+        bloc.add(const Undo());
+        bloc.add(const Redo());
+      },
+      expect: () {
+        final EditorState expectedState1 = EditorState(
+          editor: Editor.fromSet(
+              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'))}),
+          draggedElementId: none(),
+          dragPosition: none(),
+          selectedElementId: some(staticText.id),
+        );
+        final EditorState expectedState2 = expectedState1.copyWith(
+          editor: Editor.fromSet(
+              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''))}),
+        );
+        return [
+          expectedState1,
+          expectedState2,
+          EditorState.initial(),
+          expectedState2.copyWith(selectedElementId: none()),
+          EditorState.initial(),
+        ];
+      },
     );
   });
   group('BringSelectedElementToFront', () {

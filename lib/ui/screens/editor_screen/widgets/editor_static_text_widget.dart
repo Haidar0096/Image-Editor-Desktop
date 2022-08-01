@@ -6,8 +6,6 @@ import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 
 class EditorStaticTextWidget extends StatefulWidget {
   final editor.StaticTextProperties properties;
-
-  /// Whether this element is selected.
   final bool isSelected;
 
   const EditorStaticTextWidget({Key? key, required this.properties, required this.isSelected}) : super(key: key);
@@ -19,18 +17,24 @@ class EditorStaticTextWidget extends StatefulWidget {
 class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
   late final TextEditingController _textController;
   late final FocusNode _focusNode;
+  late bool _isEditing;
 
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController(text: widget.properties.text);
     _focusNode = FocusNode();
+    _isEditing = false;
+
+    KeyEventResult Function(FocusNode, KeyEvent)? currentHandler = _focusNode.onKeyEvent;
+
+    // When `Tab` is pressed, advance the cursor and add some spaces.
     _focusNode.onKeyEvent = (node, event) {
       if (event.logicalKey == LogicalKeyboardKey.tab) {
         _insertTabAtCurrentCursorPosition();
         return KeyEventResult.handled;
       }
-      return KeyEventResult.ignored;
+      return currentHandler?.call(node, event) ?? KeyEventResult.ignored;
     };
   }
 
@@ -65,25 +69,35 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.isSelected) {
-      return Text(
-        widget.properties.text,
-        maxLines: null,
-        style: widget.properties.textStyle,
-        textAlign: widget.properties.textAlign ?? TextAlign.start,
-      );
-    } else {
-      return TextField(
-        focusNode: _focusNode,
-        controller: _textController,
-        decoration: null,
-        maxLines: null,
-        onChanged: (text) {
-          context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: text));
+    Widget child;
+    child = TextField(
+      enabled: _isEditing,
+      focusNode: _focusNode,
+      controller: _textController,
+      decoration: null,
+      maxLines: null,
+      onChanged: (text) {
+        context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: text));
+      },
+      style: widget.properties.textStyle,
+      textAlign: widget.properties.textAlign ?? TextAlign.start,
+    );
+
+    if (!_isEditing && widget.isSelected) {
+      child = GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          setState(() {
+            _isEditing = true;
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              _focusNode.requestFocus();
+              _textController.selection = TextSelection(baseOffset: 0, extentOffset: _textController.value.text.length);
+            });
+          });
         },
-        style: widget.properties.textStyle,
-        textAlign: widget.properties.textAlign ?? TextAlign.start,
+        child: child,
       );
     }
+    return child;
   }
 }
