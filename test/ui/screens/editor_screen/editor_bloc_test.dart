@@ -535,6 +535,17 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({staticText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
+        expect: () => [],
+        errors: () => [const InvalidStateError(message: "StaticTextChanged was fired but no element was selected")]);
   });
 
   group('staticTextStyleChanged', () {
@@ -663,6 +674,20 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({staticText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(EditorEvent.staticTextStyleChanged(
+            updatedTextStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "StaticTextStyleChanged was fired but no element was selected")]);
   });
 
   group('staticTextAlignChanged', () {
@@ -736,6 +761,18 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({staticText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "StaticTextAlignChanged was fired but no element was selected")]);
   });
 
   group('AddVariableText', () {
@@ -1024,6 +1061,18 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({variableText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextFileChanged was fired but no element was selected")]);
   });
 
   group('variableTextStyleChanged', () {
@@ -1158,6 +1207,24 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({variableText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(
+              EditorEvent.variableTextStyleChanged(
+                updatedTextStyle: (variableText.properties as VariableTextProperties)
+                    .textStyle!
+                    .copyWith(color: material.Colors.yellow),
+              ),
+            ),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextStyleChanged was fired but no element was selected")]);
   });
 
   group('variableTextAlignChanged', () {
@@ -1236,6 +1303,20 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({variableText}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(
+              updatedTextAlign: material.TextAlign.end,
+            )),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextAlignChanged was fired but no element was selected")]);
   });
 
   group('AddImage', () {
@@ -1443,6 +1524,17 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no dragPosition is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const CanvasDragUpdate(Offset(10.0, 10.0))),
+        expect: () => [],
+        errors: () => [const InvalidStateError(message: "CanvasDragUpdate was fired but no dragPosition was set")]);
   });
   group('CanvasDragEnd', () {
     blocTest<EditorBloc, EditorState>(
@@ -1618,6 +1710,34 @@ void main() {
           ];
         },
       );
+      blocTest<EditorBloc, EditorState>('Should not emit states when no draggedElement is set and should throw.',
+          build: () => createEditorBloc(),
+          seed: () => EditorState(
+                editor: Editor.fromSet({image1}),
+                selectedElement: none(),
+                dragPosition: some(const Offset(125, 125)),
+                draggedElement: none(),
+              ),
+          act: (bloc) => bloc.add(const ElementDragUpdate(Offset(10.0, 10.0))),
+          expect: () => [],
+          errors: () => [
+                const InvalidStateError(
+                    message: "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
+              ]);
+      blocTest<EditorBloc, EditorState>('Should not emit states when no dragPosition is set and should throw.',
+          build: () => createEditorBloc(),
+          seed: () => EditorState(
+                editor: Editor.fromSet({image1}),
+                selectedElement: none(),
+                dragPosition: none(),
+                draggedElement: some(image1),
+              ),
+          act: (bloc) => bloc.add(const ElementDragUpdate(Offset(10.0, 10.0))),
+          expect: () => [],
+          errors: () => [
+                const InvalidStateError(
+                    message: "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
+              ]);
     },
   );
 
@@ -1873,6 +1993,18 @@ void main() {
         ),
       ],
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const RemoveSelectedElement()),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set")]);
   });
 
   group('DeselectElement', () {
@@ -1953,6 +2085,17 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const DeselectElement()),
+        expect: () => [],
+        errors: () => [const InvalidStateError(message: "DeselectElement was fired but no selectedElement was set")]);
   });
   group('BringSelectedElementToFront', () {
     // define elements used in tests
@@ -2072,6 +2215,18 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const BringSelectedElementToFront()),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "BringSelectedElementToFront was fired but no selectedElement was set")]);
   });
   group('ResizeUpdate', () {
     // define elements used in tests
@@ -2310,6 +2465,17 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
+        expect: () => [],
+        errors: () => [const InvalidStateError(message: "ResizeUpdate was fired but no selectedElement was set")]);
   });
   group('ResizeEnd', () {
     // define elements used in tests
@@ -2472,6 +2638,18 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const SelectedElementSizeChanged(Size(100, 100))),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "SelectedElementSizeChanged was fired but no selectedElement was set")]);
   });
   group('selectedElementPositionChanged', () {
     // define elements used in tests
@@ -2563,6 +2741,20 @@ void main() {
         ];
       },
     );
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
+        build: () => createEditorBloc(),
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1}),
+              selectedElement: none(),
+              dragPosition: none(),
+              draggedElement: none(),
+            ),
+        act: (bloc) => bloc.add(const SelectedElementPositionChanged(Offset(100, 100))),
+        expect: () => [],
+        errors: () => [
+              const InvalidStateError(
+                  message: "SelectedElementPositionChanged was fired but no selectedElement was set")
+            ]);
   });
   group('ClearEditorEvent', () {
     // define elements used in tests
