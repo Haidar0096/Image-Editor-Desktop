@@ -14,15 +14,15 @@ class EditorState with _$EditorState {
 
   const factory EditorState({
     required Editor editor,
-    required Option<ElementId> draggedElementId,
+    required Option<Element> draggedElement,
     required Option<ui.Offset> dragPosition,
-    required Option<ElementId> selectedElementId,
+    required Option<Element> selectedElement,
   }) = _EditorState;
 
   factory EditorState.initial() => EditorState(
         editor: Editor.empty(),
-        selectedElementId: none(),
-        draggedElementId: none(),
+        selectedElement: none(),
+        draggedElement: none(),
         dragPosition: none(),
       );
 }

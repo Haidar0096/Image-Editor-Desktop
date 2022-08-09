@@ -13,6 +13,7 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/timeline/timeline.dart';
+import 'package:photo_editor/ui/common/error/invalid_state_error.dart';
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
@@ -89,9 +90,9 @@ void main() {
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         );
         return [
           expectedState,
@@ -141,9 +142,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState.initial(),
         ];
@@ -182,9 +183,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState.initial(),
         ];
@@ -234,16 +235,16 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState.initial(),
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -285,16 +286,16 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState.initial(),
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -378,9 +379,9 @@ void main() {
           [
             EditorState(
               editor: Editor.fromSet({staticText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
           ],
         );
@@ -454,16 +455,16 @@ void main() {
           [
             EditorState(
               editor: Editor.fromSet({staticText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
             EditorState.initial(),
             EditorState(
               editor: Editor.fromSet({staticText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
           ],
         );
@@ -486,22 +487,19 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
       expect: () {
+        final Element updatedStaticText = staticText.copyWith(
+            properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'));
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                  properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'))
-            },
-          ),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedStaticText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText),
         );
         return [expectedState];
       },
@@ -512,9 +510,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World'));
@@ -522,21 +520,18 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
+        final Element updatedStaticText = staticText.copyWith(
+            properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'));
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                  properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'))
-            },
-          ),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedStaticText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -557,29 +552,25 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(EditorEvent.staticTextStyleChanged(
           updatedTextStyle:
               (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
       expect: () {
-        final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                properties: (staticText.properties as StaticTextProperties).copyWith(
-                  textStyle: (staticText.properties as StaticTextProperties)
-                      .textStyle!
-                      .copyWith(color: material.Colors.yellow),
-                ),
-              )
-            },
+        final Element updatedStaticText = staticText.copyWith(
+          properties: (staticText.properties as StaticTextProperties).copyWith(
+            textStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
-          draggedElementId: none(),
+        );
+        final expectedState = EditorState(
+          editor: Editor.fromSet({updatedStaticText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText),
         );
         return [expectedState];
       },
@@ -590,9 +581,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         // Ok
@@ -610,33 +601,27 @@ void main() {
                 (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
       },
       expect: () {
-        final expectedState1 = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                properties: (staticText.properties as StaticTextProperties).copyWith(
-                  textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10),
-                ),
-              )
-            },
+        final Element updatedStaticText1 = staticText.copyWith(
+          properties: (staticText.properties as StaticTextProperties).copyWith(
+            textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10),
           ),
-          draggedElementId: none(),
+        );
+        final Element updatedStaticText2 = staticText.copyWith(
+          properties: (staticText.properties as StaticTextProperties).copyWith(
+            textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0),
+          ),
+        );
+        final expectedState1 = EditorState(
+          editor: Editor.fromSet({updatedStaticText1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText1),
         );
         final expectedState2 = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                properties: (staticText.properties as StaticTextProperties).copyWith(
-                  textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0),
-                ),
-              )
-            },
-          ),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedStaticText2}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText2),
         );
         return [expectedState1, expectedState2];
       },
@@ -647,9 +632,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(EditorEvent.staticTextStyleChanged(
@@ -659,26 +644,22 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
-        final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                properties: (staticText.properties as StaticTextProperties).copyWith(
-                  textStyle: (staticText.properties as StaticTextProperties)
-                      .textStyle!
-                      .copyWith(color: material.Colors.yellow),
-                ),
-              )
-            },
+        final Element updatedStaticText = staticText.copyWith(
+          properties: (staticText.properties as StaticTextProperties).copyWith(
+            textStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
-          draggedElementId: none(),
+        );
+        final expectedState = EditorState(
+          editor: Editor.fromSet({updatedStaticText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -699,9 +680,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
@@ -713,9 +694,9 @@ void main() {
               )
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(staticText),
         );
         return [expectedState];
       },
@@ -726,9 +707,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end));
@@ -744,14 +725,14 @@ void main() {
                       (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end))
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(staticText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -836,9 +817,9 @@ void main() {
           [
             EditorState(
               editor: Editor.fromSet({variableText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
           ],
         );
@@ -912,16 +893,16 @@ void main() {
           [
             EditorState(
               editor: Editor.fromSet({variableText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
             EditorState.initial(),
             EditorState(
               editor: Editor.fromSet({variableText}),
-              draggedElementId: none(),
+              draggedElement: none(),
               dragPosition: none(),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
           ],
         );
@@ -956,9 +937,9 @@ void main() {
       build: () => createEditorBloc(filePicker: mockFilePicker),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
       expect: () {
@@ -973,9 +954,9 @@ void main() {
               )
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(variableText),
         );
         return [expectedState];
       },
@@ -992,9 +973,9 @@ void main() {
       build: () => createEditorBloc(filePicker: mockFilePicker),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
       expect: () => [],
@@ -1011,9 +992,9 @@ void main() {
       build: () => createEditorBloc(filePicker: mockFilePicker),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.variableTextFileChanged());
@@ -1032,14 +1013,14 @@ void main() {
               ),
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(variableText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -1063,28 +1044,25 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(EditorEvent.variableTextStyleChanged(
           updatedTextStyle:
               (variableText.properties as VariableTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
       expect: () {
+        final Element updatedVariableText = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+              textStyle: (variableText.properties as VariableTextProperties)
+                  .textStyle!
+                  .copyWith(color: material.Colors.yellow)),
+        );
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                    textStyle: (variableText.properties as VariableTextProperties)
-                        .textStyle!
-                        .copyWith(color: material.Colors.yellow)),
-              ),
-            },
-          ),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedVariableText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(updatedVariableText),
         );
         return [expectedState];
       },
@@ -1095,9 +1073,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         // Ok
@@ -1115,33 +1093,27 @@ void main() {
                 (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
       },
       expect: () {
-        final expectedState1 = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                  textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10),
-                ),
-              )
-            },
+        final Element updatedVariableText1 = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10),
           ),
-          draggedElementId: none(),
+        );
+        final Element updatedVariableText2 = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0),
+          ),
+        );
+        final expectedState1 = EditorState(
+          editor: Editor.fromSet({updatedVariableText1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(updatedVariableText1),
         );
         final expectedState2 = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                  textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0),
-                ),
-              )
-            },
-          ),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedVariableText2}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(updatedVariableText2),
         );
         return [expectedState1, expectedState2];
       },
@@ -1152,9 +1124,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(
@@ -1167,26 +1139,22 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
-        final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                  textStyle: (variableText.properties as VariableTextProperties)
-                      .textStyle!
-                      .copyWith(color: material.Colors.yellow),
-                ),
-              )
-            },
+        final Element updatedVariableText = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle:
+                (variableText.properties as VariableTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
-          draggedElementId: none(),
+        );
+        final expectedState = EditorState(
+          editor: Editor.fromSet({updatedVariableText}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(updatedVariableText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -1210,9 +1178,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
@@ -1224,9 +1192,9 @@ void main() {
                       (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end)),
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(variableText),
         );
         return [expectedState];
       },
@@ -1237,9 +1205,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({variableText}),
-        selectedElementId: some(variableText.id),
+        selectedElement: some(variableText),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.variableTextAlignChanged(
@@ -1257,14 +1225,14 @@ void main() {
                       (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end))
             },
           ),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(variableText.id),
+          selectedElement: some(variableText),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -1310,9 +1278,9 @@ void main() {
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         );
         return [expectedState];
       },
@@ -1333,9 +1301,9 @@ void main() {
       },
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: some(image1.id),
+        draggedElement: some(image1),
         dragPosition: some(image1.rect.center),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(
         filePicker: mockFilePicker,
@@ -1345,9 +1313,9 @@ void main() {
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1, image2}),
-          draggedElementId: some(image1.id),
+          draggedElement: some(image1),
           dragPosition: some(image1.rect.center),
-          selectedElementId: some(image1.id),
+          selectedElement: some(image1),
         );
         return [expectedState];
       },
@@ -1364,9 +1332,9 @@ void main() {
       },
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: some(image1.id),
+        draggedElement: some(image1),
         dragPosition: some(image1.rect.center),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(
         filePicker: mockFilePicker,
@@ -1405,16 +1373,16 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState.initial(),
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -1426,18 +1394,18 @@ void main() {
       'Should update the drag position when fired.',
       seed: () => EditorState(
         editor: Editor.fromSet({}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: none(),
+        selectedElement: none(),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const CanvasDragStart(Offset(10, 10))),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: some(const Offset(10, 10)),
-          selectedElementId: none(),
+          selectedElement: none(),
         );
         return [expectedState];
       },
@@ -1449,9 +1417,9 @@ void main() {
       'Should update the drag position when fired.',
       seed: () => EditorState(
         editor: Editor.fromSet({}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: none(),
+        selectedElement: none(),
       ),
       build: () => createEditorBloc(),
       act: (bloc) {
@@ -1462,15 +1430,15 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: some(const Offset(125, 125)),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState(
             editor: Editor.fromSet({}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: some(const Offset(135, 135)),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -1481,18 +1449,18 @@ void main() {
       'Should clear the dragPosition when this event is fired.',
       seed: () => EditorState(
         editor: Editor.fromSet({}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: some(const Offset(100, 100)),
-        selectedElementId: none(),
+        selectedElement: none(),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const CanvasDragEnd()),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
       ],
     );
@@ -1510,18 +1478,18 @@ void main() {
       'Should clear the selected element.',
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some('2'),
+        selectedElement: some(staticText),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const CanvasTap()),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({staticText}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
       ],
     );
@@ -1529,9 +1497,9 @@ void main() {
       'Should delete the selected element if its an empty text and save the state.',
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
       ),
       build: () => createEditorBloc(),
       act: (bloc) {
@@ -1542,22 +1510,25 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
+        final Element updatedStaticText1 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
+        final Element updatedStaticText2 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''));
         final EditorState expectedState1 = EditorState(
-          editor: Editor.fromSet(
-              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedStaticText1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText1),
         );
         final EditorState expectedState2 = expectedState1.copyWith(
-          editor: Editor.fromSet(
-              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''))}),
+          editor: Editor.fromSet({updatedStaticText2}),
+          selectedElement: some(updatedStaticText2),
         );
         return [
           expectedState1,
           expectedState2,
           EditorState.initial(),
-          expectedState2.copyWith(selectedElementId: none()),
+          expectedState2.copyWith(selectedElement: none()),
           EditorState.initial(),
         ];
       },
@@ -1578,18 +1549,18 @@ void main() {
       'Should update selected element and drag position when fired.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: none(),
+        selectedElement: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(ElementDragStart(image1.id, image1.rect.center)),
+      act: (bloc) => bloc.add(ElementDragStart(image1, image1.rect.center)),
       expect: () {
         final expectedState = EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: some(image1.id),
+          draggedElement: some(image1),
           dragPosition: some(image1.rect.center),
-          selectedElementId: none(),
+          selectedElement: none(),
         );
         return [expectedState];
       },
@@ -1612,14 +1583,14 @@ void main() {
         'Should update the drag position and the position of the dragged element when fired.',
         seed: () => EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         build: () => createEditorBloc(),
         act: (bloc) {
           // image 2 must be selected as the dragged element
-          bloc.add(ElementDragStart(image1.id, const Offset(125.0, 125.0)));
+          bloc.add(const ElementDragStart(image1, Offset(125.0, 125.0)));
           bloc.add(const ElementDragUpdate(Offset(10.0, 10.0)));
         },
         expect: () {
@@ -1634,15 +1605,15 @@ void main() {
           return [
             EditorState(
               editor: Editor.fromSet({image1}),
-              draggedElementId: some(image1.id),
+              draggedElement: some(image1),
               dragPosition: some(const Offset(125, 125)),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
             EditorState(
               editor: Editor.fromSet({image1Updated}),
-              draggedElementId: some(image1.id),
+              draggedElement: some(image1),
               dragPosition: some(const Offset(135, 135)),
-              selectedElementId: none(),
+              selectedElement: none(),
             ),
           ];
         },
@@ -1667,18 +1638,18 @@ void main() {
       'Should clear the dragPosition and draggedElementId when this event is fired.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: some(image1.id),
+        draggedElement: some(image1),
         dragPosition: some(const Offset(100, 100)),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ElementDragEnd()),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(image1),
         ),
       ],
     );
@@ -1703,7 +1674,7 @@ void main() {
       ),
       act: (bloc) {
         bloc.add(const AddImage());
-        bloc.add(ElementDragStart(image1.id, image1.rect.center));
+        bloc.add(ElementDragStart(image1, image1.rect.center));
         bloc.add(const ElementDragUpdate(Offset(10, 10)));
         bloc.add(const ElementDragEnd());
         bloc.add(const Undo());
@@ -1714,44 +1685,44 @@ void main() {
           // after add event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after start drag event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: some(image1.id),
+            draggedElement: some(image1),
             dragPosition: some(image1.rect.center),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after update drag event
           EditorState(
             editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
-            draggedElementId: some(image1.id),
+            draggedElement: some(image1),
             dragPosition: some(image1.rect.center.translate(10, 10)),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after drag end event
           EditorState(
             editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after undo event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after redo event
           EditorState(
             editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -1771,18 +1742,18 @@ void main() {
       'Should select the tapped element.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: none(),
+        selectedElement: none(),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(ElementTap(image1.id)),
+      act: (bloc) => bloc.add(const ElementTap(image1)),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(image1),
         ),
       ],
     );
@@ -1810,34 +1781,34 @@ void main() {
       'Should remove the selected element and clear selection and drag states if there is a selected element.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1, image2}),
-        draggedElementId: some(image1.id),
+        draggedElement: some(image1),
         dragPosition: some(image1.rect.center),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const RemoveSelectedElement()),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image2}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
       ],
     );
 
-    blocTest<EditorBloc, EditorState>(
-      'Should not emit states when there is no selected element.',
-      seed: () => EditorState(
-        editor: Editor.fromSet({image1, image2}),
-        draggedElementId: some(image1.id),
-        dragPosition: some(image1.rect.center),
-        selectedElementId: none(),
-      ),
-      build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const RemoveSelectedElement()),
-      expect: () => [],
-    );
+    blocTest<EditorBloc, EditorState>('Should not emit states and should throw when there is no selected element.',
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1, image2}),
+              draggedElement: some(image1),
+              dragPosition: some(image1.rect.center),
+              selectedElement: none(),
+            ),
+        build: () => createEditorBloc(),
+        act: (bloc) => bloc.add(const RemoveSelectedElement()),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set")]);
 
     blocTest<EditorBloc, EditorState>(
       'Should save the state after removing an element.',
@@ -1861,7 +1832,7 @@ void main() {
         // add an image element
         bloc.add(const AddImage());
         // tap on the element to select it
-        bloc.add(ElementTap(image1.id));
+        bloc.add(const ElementTap(image1));
         // remove the element
         bloc.add(const RemoveSelectedElement());
         // undo
@@ -1872,33 +1843,33 @@ void main() {
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(image1),
         ),
         EditorState(
           editor: Editor.empty(),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         EditorState(
           editor: Editor.empty(),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
       ],
     );
@@ -1925,18 +1896,18 @@ void main() {
       'Should deselect the selected element.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const DeselectElement()),
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
       ],
     );
@@ -1945,9 +1916,9 @@ void main() {
       'Should delete the selected element if its an empty text and save the state.',
       seed: () => EditorState(
         editor: Editor.fromSet({staticText}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(staticText.id),
+        selectedElement: some(staticText),
       ),
       build: () => createEditorBloc(),
       act: (bloc) {
@@ -1958,22 +1929,26 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
+        final Element updatedStaticText1 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
+        final Element updatedStaticText2 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''));
+
         final EditorState expectedState1 = EditorState(
-          editor: Editor.fromSet(
-              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedStaticText1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(staticText.id),
+          selectedElement: some(updatedStaticText1),
         );
         final EditorState expectedState2 = expectedState1.copyWith(
-          editor: Editor.fromSet(
-              {staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''))}),
+          editor: Editor.fromSet({updatedStaticText2}),
+          selectedElement: some(updatedStaticText2),
         );
         return [
           expectedState1,
           expectedState2,
           EditorState.initial(),
-          expectedState2.copyWith(selectedElementId: none()),
+          expectedState2.copyWith(selectedElement: none()),
           EditorState.initial(),
         ];
       },
@@ -2001,9 +1976,9 @@ void main() {
       'Should bring the selected element to front (make its show order = current largest + 1) when it exists.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1, image2}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const BringSelectedElementToFront()),
@@ -2012,26 +1987,26 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image2, image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1Updated.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
     );
 
-    blocTest<EditorBloc, EditorState>(
-      'Should not emit states when there is no selected element.',
-      seed: () => EditorState(
-        editor: Editor.fromSet({image1, image2}),
-        draggedElementId: none(),
-        dragPosition: none(),
-        selectedElementId: none(),
-      ),
-      build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(const BringSelectedElementToFront()),
-      expect: () => [],
-    );
+    blocTest<EditorBloc, EditorState>('Should not emit states and should throw when there is no selected element.',
+        seed: () => EditorState(
+              editor: Editor.fromSet({image1, image2}),
+              draggedElement: none(),
+              dragPosition: none(),
+              selectedElement: none(),
+            ),
+        build: () => createEditorBloc(),
+        act: (bloc) => bloc.add(const BringSelectedElementToFront()),
+        expect: () => [],
+        errors: () =>
+            [const InvalidStateError(message: "BringSelectedElementToFront was fired but no selectedElement was set")]);
 
     blocTest<EditorBloc, EditorState>(
       'Should save the state after bringing an element to the front.',
@@ -2050,8 +2025,8 @@ void main() {
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
         dragPosition: none(),
-        draggedElementId: none(),
-        selectedElementId: some(image1.id),
+        draggedElement: none(),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(
         filePicker: mockFilePicker,
@@ -2072,27 +2047,27 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1, image2}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1),
           ),
           EditorState(
             editor: Editor.fromSet({image2, image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
           EditorState(
             editor: Editor.fromSet({image1, image2}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           EditorState(
             editor: Editor.fromSet({image2, image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -2111,9 +2086,9 @@ void main() {
       'Should update the element correctly when resized to the top-left direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topLeft, Offset(100, 100))),
@@ -2123,9 +2098,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2134,9 +2109,9 @@ void main() {
       'Should update the element correctly when resized to the top-center direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topCenter, Offset(100, 100))),
@@ -2146,9 +2121,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2157,9 +2132,9 @@ void main() {
       'Should update the element correctly when resized to the top-right direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topRight, Offset(100, 100))),
@@ -2169,9 +2144,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2180,9 +2155,9 @@ void main() {
       'Should update the element correctly when resized to the center-right direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(100, 100))),
@@ -2192,9 +2167,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2203,9 +2178,9 @@ void main() {
       'Should update the element correctly when resized to the bottom-right direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomRight, Offset(100, 100))),
@@ -2215,9 +2190,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2226,9 +2201,9 @@ void main() {
       'Should update the element correctly when resized to the bottom-center direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomCenter, Offset(100, 100))),
@@ -2238,9 +2213,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2249,9 +2224,9 @@ void main() {
       'Should update the element correctly when resized to the bottom-left direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomLeft, Offset(100, 100))),
@@ -2261,9 +2236,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2272,9 +2247,9 @@ void main() {
       'Should update the element correctly when resized to the center-left direction.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerLeft, Offset(100, 100))),
@@ -2284,9 +2259,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2295,9 +2270,9 @@ void main() {
       'Should respect the minimum width when resizing.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
@@ -2306,9 +2281,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2317,9 +2292,9 @@ void main() {
       'Should respect the minimum height when resizing.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: none(),
+        draggedElement: none(),
         dragPosition: none(),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomCenter, Offset(0, -245))),
@@ -2328,9 +2303,9 @@ void main() {
         return [
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
         ];
       },
@@ -2369,7 +2344,7 @@ void main() {
       ),
       act: (bloc) {
         bloc.add(const AddImage());
-        bloc.add(ElementTap(image1.id));
+        bloc.add(const ElementTap(image1));
         bloc.add(const ResizeUpdate(ResizeDirection.topLeft, Offset(10, 10)));
         bloc.add(const ResizeEnd());
         bloc.add(const Undo());
@@ -2382,38 +2357,38 @@ void main() {
           // after add event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after element tap event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1),
           ),
           // after resize event
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(image1Updated),
           ),
           // after resize end event, no state will be emitted since the state doesn't change, it is only saved to the timeline
           // after undo event
           EditorState(
             editor: Editor.fromSet({image1}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
           // after redo event
           EditorState(
             editor: Editor.fromSet({image1Updated}),
-            draggedElementId: none(),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: none(),
+            selectedElement: none(),
           ),
         ];
       },
@@ -2433,18 +2408,19 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(100, 100))),
       expect: () {
+        final Element updatedImage1 =
+            image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100));
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-              {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedImage1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(updatedImage1),
         );
         return [expectedState];
       },
@@ -2455,9 +2431,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.selectedElementSizeChanged(Size(10, 10)));
@@ -2471,9 +2447,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.selectedElementSizeChanged(Size(100, 100)));
@@ -2481,17 +2457,18 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
+        final Element updatedImage1 =
+            image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100));
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-              {image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedImage1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(updatedImage1),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -2510,17 +2487,18 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) => bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100))),
       expect: () {
+        final Element updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
         final expectedState = EditorState(
-          editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedImage1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(updatedImage1),
         );
         return [expectedState];
       },
@@ -2531,9 +2509,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         // OK
@@ -2544,12 +2522,13 @@ void main() {
         bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(10, double.infinity)));
       },
       expect: () {
+        final updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(10, 10, 200, 200));
         return [
           EditorState(
-            editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(10, 10, 200, 200))}),
-            draggedElementId: none(),
+            editor: Editor.fromSet({updatedImage1}),
+            draggedElement: none(),
             dragPosition: none(),
-            selectedElementId: some(image1.id),
+            selectedElement: some(updatedImage1),
           )
         ];
       },
@@ -2560,9 +2539,9 @@ void main() {
       build: () => createEditorBloc(),
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
       act: (bloc) {
         bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100)));
@@ -2570,16 +2549,17 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
+        final Element updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
         final expectedState = EditorState(
-          editor: Editor.fromSet({image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200))}),
-          draggedElementId: none(),
+          editor: Editor.fromSet({updatedImage1}),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: some(image1.id),
+          selectedElement: some(updatedImage1),
         );
         return [
           expectedState,
           EditorState.initial(),
-          expectedState.copyWith(selectedElementId: none()),
+          expectedState.copyWith(selectedElement: none()),
         ];
       },
     );
@@ -2601,9 +2581,9 @@ void main() {
       'Should clear editor and clear drag states if it has elements.',
       seed: () => EditorState(
         editor: Editor.fromSet({image1}),
-        draggedElementId: some(image1.id),
+        draggedElement: some(image1),
         dragPosition: some(image1.rect.center),
-        selectedElementId: some(image1.id),
+        selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
       act: (bloc) => bloc.add(const ClearEditor()),
@@ -2647,16 +2627,16 @@ void main() {
       expect: () => [
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         EditorState.initial(),
         EditorState(
           editor: Editor.fromSet({image1}),
-          draggedElementId: none(),
+          draggedElement: none(),
           dragPosition: none(),
-          selectedElementId: none(),
+          selectedElement: none(),
         ),
         EditorState.initial(),
       ],

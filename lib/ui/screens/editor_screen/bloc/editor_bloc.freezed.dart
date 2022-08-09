@@ -20,32 +20,34 @@ mixin _$EditorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,32 +55,32 @@ mixin _$EditorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,32 +88,32 @@ mixin _$EditorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) =>
@@ -262,32 +264,34 @@ class _$Undo implements Undo {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return undo();
@@ -298,32 +302,32 @@ class _$Undo implements Undo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return undo?.call();
@@ -334,32 +338,32 @@ class _$Undo implements Undo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -516,32 +520,34 @@ class _$Redo implements Redo {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return redo();
@@ -552,32 +558,32 @@ class _$Redo implements Redo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return redo?.call();
@@ -588,32 +594,32 @@ class _$Redo implements Redo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -738,7 +744,7 @@ abstract class Redo implements EditorEvent {
 abstract class _$$AddStaticTextCopyWith<$Res> {
   factory _$$AddStaticTextCopyWith(_$AddStaticText value, $Res Function(_$AddStaticText) then) =
       __$$AddStaticTextCopyWithImpl<$Res>;
-  $Res call({String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth});
+  $Res call({String initialText, material.TextDirection textDirection, double minWidth, double maxWidth});
 }
 
 /// @nodoc
@@ -765,7 +771,7 @@ class __$$AddStaticTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res
       textDirection: textDirection == freezed
           ? _value.textDirection
           : textDirection // ignore: cast_nullable_to_non_nullable
-              as ui.TextDirection,
+              as material.TextDirection,
       minWidth: minWidth == freezed
           ? _value.minWidth
           : minWidth // ignore: cast_nullable_to_non_nullable
@@ -790,7 +796,7 @@ class _$AddStaticText implements AddStaticText {
 
   /// The current text direction of the locale.
   @override
-  final ui.TextDirection textDirection;
+  final material.TextDirection textDirection;
 
   /// The minimum width of the static text.
   @override
@@ -834,32 +840,34 @@ class _$AddStaticText implements AddStaticText {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return addStaticText(initialText, textDirection, minWidth, maxWidth);
@@ -870,32 +878,32 @@ class _$AddStaticText implements AddStaticText {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return addStaticText?.call(initialText, textDirection, minWidth, maxWidth);
@@ -906,32 +914,32 @@ class _$AddStaticText implements AddStaticText {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1051,7 +1059,7 @@ class _$AddStaticText implements AddStaticText {
 abstract class AddStaticText implements EditorEvent {
   const factory AddStaticText(
       {required final String initialText,
-      required final ui.TextDirection textDirection,
+      required final material.TextDirection textDirection,
       required final double minWidth,
       required final double maxWidth}) = _$AddStaticText;
 
@@ -1059,7 +1067,7 @@ abstract class AddStaticText implements EditorEvent {
   String get initialText => throw _privateConstructorUsedError;
 
   /// The current text direction of the locale.
-  ui.TextDirection get textDirection => throw _privateConstructorUsedError;
+  material.TextDirection get textDirection => throw _privateConstructorUsedError;
 
   /// The minimum width of the static text.
   double get minWidth => throw _privateConstructorUsedError;
@@ -1134,32 +1142,34 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextChanged(updatedText);
@@ -1170,32 +1180,32 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextChanged?.call(updatedText);
@@ -1206,32 +1216,32 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1362,7 +1372,7 @@ abstract class _$$StaticTextStyleChangedCopyWith<$Res> {
   factory _$$StaticTextStyleChangedCopyWith(
           _$StaticTextStyleChanged value, $Res Function(_$StaticTextStyleChanged) then) =
       __$$StaticTextStyleChangedCopyWithImpl<$Res>;
-  $Res call({widgets.TextStyle? updatedTextStyle});
+  $Res call({material.TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
@@ -1382,7 +1392,7 @@ class __$$StaticTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
       updatedTextStyle: updatedTextStyle == freezed
           ? _value.updatedTextStyle
           : updatedTextStyle // ignore: cast_nullable_to_non_nullable
-              as widgets.TextStyle?,
+              as material.TextStyle?,
     ));
   }
 }
@@ -1394,7 +1404,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
 
   /// The new value of the text style in the element.
   @override
-  final widgets.TextStyle? updatedTextStyle;
+  final material.TextStyle? updatedTextStyle;
 
   @override
   String toString() {
@@ -1422,32 +1432,34 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextStyleChanged(updatedTextStyle);
@@ -1458,32 +1470,32 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextStyleChanged?.call(updatedTextStyle);
@@ -1494,32 +1506,32 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1637,10 +1649,10 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
 }
 
 abstract class StaticTextStyleChanged implements EditorEvent {
-  const factory StaticTextStyleChanged({final widgets.TextStyle? updatedTextStyle}) = _$StaticTextStyleChanged;
+  const factory StaticTextStyleChanged({final material.TextStyle? updatedTextStyle}) = _$StaticTextStyleChanged;
 
   /// The new value of the text style in the element.
-  widgets.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
+  material.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1650,7 +1662,7 @@ abstract class _$$StaticTextAlignChangedCopyWith<$Res> {
   factory _$$StaticTextAlignChangedCopyWith(
           _$StaticTextAlignChanged value, $Res Function(_$StaticTextAlignChanged) then) =
       __$$StaticTextAlignChangedCopyWithImpl<$Res>;
-  $Res call({ui.TextAlign? updatedTextAlign});
+  $Res call({material.TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
@@ -1670,7 +1682,7 @@ class __$$StaticTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWith
       updatedTextAlign: updatedTextAlign == freezed
           ? _value.updatedTextAlign
           : updatedTextAlign // ignore: cast_nullable_to_non_nullable
-              as ui.TextAlign?,
+              as material.TextAlign?,
     ));
   }
 }
@@ -1682,7 +1694,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
 
   /// The new value of the text align in the element.
   @override
-  final ui.TextAlign? updatedTextAlign;
+  final material.TextAlign? updatedTextAlign;
 
   @override
   String toString() {
@@ -1710,32 +1722,34 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextAlignChanged(updatedTextAlign);
@@ -1746,32 +1760,32 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextAlignChanged?.call(updatedTextAlign);
@@ -1782,32 +1796,32 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1925,10 +1939,10 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
 }
 
 abstract class StaticTextAlignChanged implements EditorEvent {
-  const factory StaticTextAlignChanged({final ui.TextAlign? updatedTextAlign}) = _$StaticTextAlignChanged;
+  const factory StaticTextAlignChanged({final material.TextAlign? updatedTextAlign}) = _$StaticTextAlignChanged;
 
   /// The new value of the text align in the element.
-  ui.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
+  material.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$StaticTextAlignChangedCopyWith<_$StaticTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1937,7 +1951,7 @@ abstract class StaticTextAlignChanged implements EditorEvent {
 abstract class _$$AddVariableTextCopyWith<$Res> {
   factory _$$AddVariableTextCopyWith(_$AddVariableText value, $Res Function(_$AddVariableText) then) =
       __$$AddVariableTextCopyWithImpl<$Res>;
-  $Res call({String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth});
+  $Res call({String initialText, material.TextDirection textDirection, double minWidth, double maxWidth});
 }
 
 /// @nodoc
@@ -1964,7 +1978,7 @@ class __$$AddVariableTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$R
       textDirection: textDirection == freezed
           ? _value.textDirection
           : textDirection // ignore: cast_nullable_to_non_nullable
-              as ui.TextDirection,
+              as material.TextDirection,
       minWidth: minWidth == freezed
           ? _value.minWidth
           : minWidth // ignore: cast_nullable_to_non_nullable
@@ -1989,7 +2003,7 @@ class _$AddVariableText implements AddVariableText {
 
   /// The current text direction.
   @override
-  final ui.TextDirection textDirection;
+  final material.TextDirection textDirection;
 
   /// The minimum width of the variable text placeholder.
   @override
@@ -2033,32 +2047,34 @@ class _$AddVariableText implements AddVariableText {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return addVariableText(initialText, textDirection, minWidth, maxWidth);
@@ -2069,32 +2085,32 @@ class _$AddVariableText implements AddVariableText {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return addVariableText?.call(initialText, textDirection, minWidth, maxWidth);
@@ -2105,32 +2121,32 @@ class _$AddVariableText implements AddVariableText {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2250,7 +2266,7 @@ class _$AddVariableText implements AddVariableText {
 abstract class AddVariableText implements EditorEvent {
   const factory AddVariableText(
       {required final String initialText,
-      required final ui.TextDirection textDirection,
+      required final material.TextDirection textDirection,
       required final double minWidth,
       required final double maxWidth}) = _$AddVariableText;
 
@@ -2258,7 +2274,7 @@ abstract class AddVariableText implements EditorEvent {
   String get initialText => throw _privateConstructorUsedError;
 
   /// The current text direction.
-  ui.TextDirection get textDirection => throw _privateConstructorUsedError;
+  material.TextDirection get textDirection => throw _privateConstructorUsedError;
 
   /// The minimum width of the variable text placeholder.
   double get minWidth => throw _privateConstructorUsedError;
@@ -2310,32 +2326,34 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextFileChanged();
@@ -2346,32 +2364,32 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextFileChanged?.call();
@@ -2382,32 +2400,32 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2533,7 +2551,7 @@ abstract class _$$VariableTextStyleChangedCopyWith<$Res> {
   factory _$$VariableTextStyleChangedCopyWith(
           _$VariableTextStyleChanged value, $Res Function(_$VariableTextStyleChanged) then) =
       __$$VariableTextStyleChangedCopyWithImpl<$Res>;
-  $Res call({widgets.TextStyle? updatedTextStyle});
+  $Res call({material.TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
@@ -2554,7 +2572,7 @@ class __$$VariableTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
       updatedTextStyle: updatedTextStyle == freezed
           ? _value.updatedTextStyle
           : updatedTextStyle // ignore: cast_nullable_to_non_nullable
-              as widgets.TextStyle?,
+              as material.TextStyle?,
     ));
   }
 }
@@ -2566,7 +2584,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
 
   /// The new value of the text style in the element.
   @override
-  final widgets.TextStyle? updatedTextStyle;
+  final material.TextStyle? updatedTextStyle;
 
   @override
   String toString() {
@@ -2594,32 +2612,34 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextStyleChanged(updatedTextStyle);
@@ -2630,32 +2650,32 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextStyleChanged?.call(updatedTextStyle);
@@ -2666,32 +2686,32 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2809,10 +2829,10 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
 }
 
 abstract class VariableTextStyleChanged implements EditorEvent {
-  const factory VariableTextStyleChanged({final widgets.TextStyle? updatedTextStyle}) = _$VariableTextStyleChanged;
+  const factory VariableTextStyleChanged({final material.TextStyle? updatedTextStyle}) = _$VariableTextStyleChanged;
 
   /// The new value of the text style in the element.
-  widgets.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
+  material.TextStyle? get updatedTextStyle => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -2822,7 +2842,7 @@ abstract class _$$VariableTextAlignChangedCopyWith<$Res> {
   factory _$$VariableTextAlignChangedCopyWith(
           _$VariableTextAlignChanged value, $Res Function(_$VariableTextAlignChanged) then) =
       __$$VariableTextAlignChangedCopyWithImpl<$Res>;
-  $Res call({ui.TextAlign? updatedTextAlign});
+  $Res call({material.TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
@@ -2843,7 +2863,7 @@ class __$$VariableTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWi
       updatedTextAlign: updatedTextAlign == freezed
           ? _value.updatedTextAlign
           : updatedTextAlign // ignore: cast_nullable_to_non_nullable
-              as ui.TextAlign?,
+              as material.TextAlign?,
     ));
   }
 }
@@ -2855,7 +2875,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
 
   /// The new value of the text align in the element.
   @override
-  final ui.TextAlign? updatedTextAlign;
+  final material.TextAlign? updatedTextAlign;
 
   @override
   String toString() {
@@ -2883,32 +2903,34 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextAlignChanged(updatedTextAlign);
@@ -2919,32 +2941,32 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextAlignChanged?.call(updatedTextAlign);
@@ -2955,32 +2977,32 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3098,10 +3120,10 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
 }
 
 abstract class VariableTextAlignChanged implements EditorEvent {
-  const factory VariableTextAlignChanged({final ui.TextAlign? updatedTextAlign}) = _$VariableTextAlignChanged;
+  const factory VariableTextAlignChanged({final material.TextAlign? updatedTextAlign}) = _$VariableTextAlignChanged;
 
   /// The new value of the text align in the element.
-  ui.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
+  material.TextAlign? get updatedTextAlign => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
@@ -3143,32 +3165,34 @@ class _$AddImage implements AddImage {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return addImage();
@@ -3179,32 +3203,32 @@ class _$AddImage implements AddImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return addImage?.call();
@@ -3215,32 +3239,32 @@ class _$AddImage implements AddImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3365,7 +3389,7 @@ abstract class AddImage implements EditorEvent {
 abstract class _$$CanvasDragStartCopyWith<$Res> {
   factory _$$CanvasDragStartCopyWith(_$CanvasDragStart value, $Res Function(_$CanvasDragStart) then) =
       __$$CanvasDragStartCopyWithImpl<$Res>;
-  $Res call({ui.Offset localPosition});
+  $Res call({material.Offset localPosition});
 }
 
 /// @nodoc
@@ -3385,7 +3409,7 @@ class __$$CanvasDragStartCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$R
       localPosition == freezed
           ? _value.localPosition
           : localPosition // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
   }
 }
@@ -3397,7 +3421,7 @@ class _$CanvasDragStart implements CanvasDragStart {
 
   /// The local position in the editor widget where the drag started.
   @override
-  final ui.Offset localPosition;
+  final material.Offset localPosition;
 
   @override
   String toString() {
@@ -3425,32 +3449,34 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragStart(localPosition);
@@ -3461,32 +3487,32 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragStart?.call(localPosition);
@@ -3497,32 +3523,32 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3640,10 +3666,10 @@ class _$CanvasDragStart implements CanvasDragStart {
 }
 
 abstract class CanvasDragStart implements EditorEvent {
-  const factory CanvasDragStart(final ui.Offset localPosition) = _$CanvasDragStart;
+  const factory CanvasDragStart(final material.Offset localPosition) = _$CanvasDragStart;
 
   /// The local position in the editor widget where the drag started.
-  ui.Offset get localPosition => throw _privateConstructorUsedError;
+  material.Offset get localPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$CanvasDragStartCopyWith<_$CanvasDragStart> get copyWith => throw _privateConstructorUsedError;
 }
@@ -3652,7 +3678,7 @@ abstract class CanvasDragStart implements EditorEvent {
 abstract class _$$CanvasDragUpdateCopyWith<$Res> {
   factory _$$CanvasDragUpdateCopyWith(_$CanvasDragUpdate value, $Res Function(_$CanvasDragUpdate) then) =
       __$$CanvasDragUpdateCopyWithImpl<$Res>;
-  $Res call({ui.Offset delta});
+  $Res call({material.Offset delta});
 }
 
 /// @nodoc
@@ -3672,7 +3698,7 @@ class __$$CanvasDragUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$
       delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
   }
 }
@@ -3684,7 +3710,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
 
   /// The delta of the drag (i.e. the amount of the drag).
   @override
-  final ui.Offset delta;
+  final material.Offset delta;
 
   @override
   String toString() {
@@ -3712,32 +3738,34 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragUpdate(delta);
@@ -3748,32 +3776,32 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragUpdate?.call(delta);
@@ -3784,32 +3812,32 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3927,10 +3955,10 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
 }
 
 abstract class CanvasDragUpdate implements EditorEvent {
-  const factory CanvasDragUpdate(final ui.Offset delta) = _$CanvasDragUpdate;
+  const factory CanvasDragUpdate(final material.Offset delta) = _$CanvasDragUpdate;
 
   /// The delta of the drag (i.e. the amount of the drag).
-  ui.Offset get delta => throw _privateConstructorUsedError;
+  material.Offset get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$CanvasDragUpdateCopyWith<_$CanvasDragUpdate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -3974,32 +4002,34 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragEnd();
@@ -4010,32 +4040,32 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragEnd?.call();
@@ -4046,32 +4076,32 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -4196,7 +4226,9 @@ abstract class CanvasDragEnd implements EditorEvent {
 abstract class _$$ElementDragStartCopyWith<$Res> {
   factory _$$ElementDragStartCopyWith(_$ElementDragStart value, $Res Function(_$ElementDragStart) then) =
       __$$ElementDragStartCopyWithImpl<$Res>;
-  $Res call({String draggedElementId, ui.Offset localPosition});
+  $Res call({Element draggedElement, material.Offset localPosition});
+
+  $ElementCopyWith<$Res> get draggedElement;
 }
 
 /// @nodoc
@@ -4210,38 +4242,45 @@ class __$$ElementDragStartCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$
 
   @override
   $Res call({
-    Object? draggedElementId = freezed,
+    Object? draggedElement = freezed,
     Object? localPosition = freezed,
   }) {
     return _then(_$ElementDragStart(
-      draggedElementId == freezed
-          ? _value.draggedElementId
-          : draggedElementId // ignore: cast_nullable_to_non_nullable
-              as String,
+      draggedElement == freezed
+          ? _value.draggedElement
+          : draggedElement // ignore: cast_nullable_to_non_nullable
+              as Element,
       localPosition == freezed
           ? _value.localPosition
           : localPosition // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
+  }
+
+  @override
+  $ElementCopyWith<$Res> get draggedElement {
+    return $ElementCopyWith<$Res>(_value.draggedElement, (value) {
+      return _then(_value.copyWith(draggedElement: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ElementDragStart implements ElementDragStart {
-  const _$ElementDragStart(this.draggedElementId, this.localPosition);
+  const _$ElementDragStart(this.draggedElement, this.localPosition);
 
-  /// The id of the element being dragged.
+  /// The element being dragged.
   @override
-  final String draggedElementId;
+  final Element draggedElement;
 
   /// The local position in the editor widget where the drag started.
   @override
-  final ui.Offset localPosition;
+  final material.Offset localPosition;
 
   @override
   String toString() {
-    return 'EditorEvent.elementDragStart(draggedElementId: $draggedElementId, localPosition: $localPosition)';
+    return 'EditorEvent.elementDragStart(draggedElement: $draggedElement, localPosition: $localPosition)';
   }
 
   @override
@@ -4249,12 +4288,12 @@ class _$ElementDragStart implements ElementDragStart {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ElementDragStart &&
-            const DeepCollectionEquality().equals(other.draggedElementId, draggedElementId) &&
+            const DeepCollectionEquality().equals(other.draggedElement, draggedElement) &&
             const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(draggedElementId),
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(draggedElement),
       const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
@@ -4267,35 +4306,37 @@ class _$ElementDragStart implements ElementDragStart {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
-    return elementDragStart(draggedElementId, localPosition);
+    return elementDragStart(draggedElement, localPosition);
   }
 
   @override
@@ -4303,35 +4344,35 @@ class _$ElementDragStart implements ElementDragStart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
-    return elementDragStart?.call(draggedElementId, localPosition);
+    return elementDragStart?.call(draggedElement, localPosition);
   }
 
   @override
@@ -4339,37 +4380,37 @@ class _$ElementDragStart implements ElementDragStart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
     if (elementDragStart != null) {
-      return elementDragStart(draggedElementId, localPosition);
+      return elementDragStart(draggedElement, localPosition);
     }
     return orElse();
   }
@@ -4482,13 +4523,14 @@ class _$ElementDragStart implements ElementDragStart {
 }
 
 abstract class ElementDragStart implements EditorEvent {
-  const factory ElementDragStart(final String draggedElementId, final ui.Offset localPosition) = _$ElementDragStart;
+  const factory ElementDragStart(final Element draggedElement, final material.Offset localPosition) =
+      _$ElementDragStart;
 
-  /// The id of the element being dragged.
-  String get draggedElementId => throw _privateConstructorUsedError;
+  /// The element being dragged.
+  Element get draggedElement => throw _privateConstructorUsedError;
 
   /// The local position in the editor widget where the drag started.
-  ui.Offset get localPosition => throw _privateConstructorUsedError;
+  material.Offset get localPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ElementDragStartCopyWith<_$ElementDragStart> get copyWith => throw _privateConstructorUsedError;
 }
@@ -4497,7 +4539,7 @@ abstract class ElementDragStart implements EditorEvent {
 abstract class _$$ElementDragUpdateCopyWith<$Res> {
   factory _$$ElementDragUpdateCopyWith(_$ElementDragUpdate value, $Res Function(_$ElementDragUpdate) then) =
       __$$ElementDragUpdateCopyWithImpl<$Res>;
-  $Res call({ui.Offset delta});
+  $Res call({material.Offset delta});
 }
 
 /// @nodoc
@@ -4517,7 +4559,7 @@ class __$$ElementDragUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<
       delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
   }
 }
@@ -4529,7 +4571,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
 
   /// The delta of the drag (i.e. the amount of the drag).
   @override
-  final ui.Offset delta;
+  final material.Offset delta;
 
   @override
   String toString() {
@@ -4557,32 +4599,34 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return elementDragUpdate(delta);
@@ -4593,32 +4637,32 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return elementDragUpdate?.call(delta);
@@ -4629,32 +4673,32 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -4772,10 +4816,10 @@ class _$ElementDragUpdate implements ElementDragUpdate {
 }
 
 abstract class ElementDragUpdate implements EditorEvent {
-  const factory ElementDragUpdate(final ui.Offset delta) = _$ElementDragUpdate;
+  const factory ElementDragUpdate(final material.Offset delta) = _$ElementDragUpdate;
 
   /// The delta of the drag (i.e. the amount of the drag).
-  ui.Offset get delta => throw _privateConstructorUsedError;
+  material.Offset get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ElementDragUpdateCopyWith<_$ElementDragUpdate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -4819,32 +4863,34 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return elementDragEnd();
@@ -4855,32 +4901,32 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return elementDragEnd?.call();
@@ -4891,32 +4937,32 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5074,32 +5120,34 @@ class _$CanvasTap implements CanvasTap {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasTap();
@@ -5110,32 +5158,32 @@ class _$CanvasTap implements CanvasTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasTap?.call();
@@ -5146,32 +5194,32 @@ class _$CanvasTap implements CanvasTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5296,7 +5344,9 @@ abstract class CanvasTap implements EditorEvent {
 abstract class _$$ElementTapCopyWith<$Res> {
   factory _$$ElementTapCopyWith(_$ElementTap value, $Res Function(_$ElementTap) then) =
       __$$ElementTapCopyWithImpl<$Res>;
-  $Res call({String elementId});
+  $Res call({Element element});
+
+  $ElementCopyWith<$Res> get element;
 }
 
 /// @nodoc
@@ -5309,29 +5359,36 @@ class __$$ElementTapCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> i
 
   @override
   $Res call({
-    Object? elementId = freezed,
+    Object? element = freezed,
   }) {
     return _then(_$ElementTap(
-      elementId == freezed
-          ? _value.elementId
-          : elementId // ignore: cast_nullable_to_non_nullable
-              as String,
+      element == freezed
+          ? _value.element
+          : element // ignore: cast_nullable_to_non_nullable
+              as Element,
     ));
+  }
+
+  @override
+  $ElementCopyWith<$Res> get element {
+    return $ElementCopyWith<$Res>(_value.element, (value) {
+      return _then(_value.copyWith(element: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ElementTap implements ElementTap {
-  const _$ElementTap(this.elementId);
+  const _$ElementTap(this.element);
 
-  /// The id of the element that has been tapped.
+  /// The element that has been tapped.
   @override
-  final String elementId;
+  final Element element;
 
   @override
   String toString() {
-    return 'EditorEvent.elementTap(elementId: $elementId)';
+    return 'EditorEvent.elementTap(element: $element)';
   }
 
   @override
@@ -5339,11 +5396,11 @@ class _$ElementTap implements ElementTap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ElementTap &&
-            const DeepCollectionEquality().equals(other.elementId, elementId));
+            const DeepCollectionEquality().equals(other.element, element));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(elementId));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(element));
 
   @JsonKey(ignore: true)
   @override
@@ -5354,35 +5411,37 @@ class _$ElementTap implements ElementTap {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
-    return elementTap(elementId);
+    return elementTap(element);
   }
 
   @override
@@ -5390,35 +5449,35 @@ class _$ElementTap implements ElementTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
-    return elementTap?.call(elementId);
+    return elementTap?.call(element);
   }
 
   @override
@@ -5426,37 +5485,37 @@ class _$ElementTap implements ElementTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
     if (elementTap != null) {
-      return elementTap(elementId);
+      return elementTap(element);
     }
     return orElse();
   }
@@ -5569,10 +5628,10 @@ class _$ElementTap implements ElementTap {
 }
 
 abstract class ElementTap implements EditorEvent {
-  const factory ElementTap(final String elementId) = _$ElementTap;
+  const factory ElementTap(final Element element) = _$ElementTap;
 
-  /// The id of the element that has been tapped.
-  String get elementId => throw _privateConstructorUsedError;
+  /// The element that has been tapped.
+  Element get element => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ElementTapCopyWith<_$ElementTap> get copyWith => throw _privateConstructorUsedError;
 }
@@ -5616,32 +5675,34 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return removeSelectedElement();
@@ -5652,32 +5713,32 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return removeSelectedElement?.call();
@@ -5688,32 +5749,32 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5873,32 +5934,34 @@ class _$DeselectElement implements DeselectElement {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return deselectElement();
@@ -5909,32 +5972,32 @@ class _$DeselectElement implements DeselectElement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return deselectElement?.call();
@@ -5945,32 +6008,32 @@ class _$DeselectElement implements DeselectElement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6132,32 +6195,34 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return bringSelectedElementToFront();
@@ -6168,32 +6233,32 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return bringSelectedElementToFront?.call();
@@ -6204,32 +6269,32 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6354,7 +6419,7 @@ abstract class BringSelectedElementToFront implements EditorEvent {
 abstract class _$$ResizeUpdateCopyWith<$Res> {
   factory _$$ResizeUpdateCopyWith(_$ResizeUpdate value, $Res Function(_$ResizeUpdate) then) =
       __$$ResizeUpdateCopyWithImpl<$Res>;
-  $Res call({ResizeDirection resizeDirection, ui.Offset delta});
+  $Res call({ResizeDirection resizeDirection, material.Offset delta});
 }
 
 /// @nodoc
@@ -6379,7 +6444,7 @@ class __$$ResizeUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
       delta == freezed
           ? _value.delta
           : delta // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
   }
 }
@@ -6392,7 +6457,7 @@ class _$ResizeUpdate implements ResizeUpdate {
   @override
   final ResizeDirection resizeDirection;
   @override
-  final ui.Offset delta;
+  final material.Offset delta;
 
   @override
   String toString() {
@@ -6422,32 +6487,34 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return resizeUpdate(resizeDirection, delta);
@@ -6458,32 +6525,32 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return resizeUpdate?.call(resizeDirection, delta);
@@ -6494,32 +6561,32 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6637,10 +6704,10 @@ class _$ResizeUpdate implements ResizeUpdate {
 }
 
 abstract class ResizeUpdate implements EditorEvent {
-  const factory ResizeUpdate(final ResizeDirection resizeDirection, final ui.Offset delta) = _$ResizeUpdate;
+  const factory ResizeUpdate(final ResizeDirection resizeDirection, final material.Offset delta) = _$ResizeUpdate;
 
   ResizeDirection get resizeDirection => throw _privateConstructorUsedError;
-  ui.Offset get delta => throw _privateConstructorUsedError;
+  material.Offset get delta => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$ResizeUpdateCopyWith<_$ResizeUpdate> get copyWith => throw _privateConstructorUsedError;
 }
@@ -6682,32 +6749,34 @@ class _$ResizeEnd implements ResizeEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return resizeEnd();
@@ -6718,32 +6787,32 @@ class _$ResizeEnd implements ResizeEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return resizeEnd?.call();
@@ -6754,32 +6823,32 @@ class _$ResizeEnd implements ResizeEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6905,7 +6974,7 @@ abstract class _$$SelectedElementSizeChangedCopyWith<$Res> {
   factory _$$SelectedElementSizeChangedCopyWith(
           _$SelectedElementSizeChanged value, $Res Function(_$SelectedElementSizeChanged) then) =
       __$$SelectedElementSizeChangedCopyWithImpl<$Res>;
-  $Res call({ui.Size updatedSize});
+  $Res call({material.Size updatedSize});
 }
 
 /// @nodoc
@@ -6926,7 +6995,7 @@ class __$$SelectedElementSizeChangedCopyWithImpl<$Res> extends _$EditorEventCopy
       updatedSize == freezed
           ? _value.updatedSize
           : updatedSize // ignore: cast_nullable_to_non_nullable
-              as ui.Size,
+              as material.Size,
     ));
   }
 }
@@ -6937,7 +7006,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   const _$SelectedElementSizeChanged(this.updatedSize);
 
   @override
-  final ui.Size updatedSize;
+  final material.Size updatedSize;
 
   @override
   String toString() {
@@ -6965,32 +7034,34 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return selectedElementSizeChanged(updatedSize);
@@ -7001,32 +7072,32 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return selectedElementSizeChanged?.call(updatedSize);
@@ -7037,32 +7108,32 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7180,9 +7251,9 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
 }
 
 abstract class SelectedElementSizeChanged implements EditorEvent {
-  const factory SelectedElementSizeChanged(final ui.Size updatedSize) = _$SelectedElementSizeChanged;
+  const factory SelectedElementSizeChanged(final material.Size updatedSize) = _$SelectedElementSizeChanged;
 
-  ui.Size get updatedSize => throw _privateConstructorUsedError;
+  material.Size get updatedSize => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$SelectedElementSizeChangedCopyWith<_$SelectedElementSizeChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -7193,7 +7264,7 @@ abstract class _$$SelectedElementPositionChangedCopyWith<$Res> {
   factory _$$SelectedElementPositionChangedCopyWith(
           _$SelectedElementPositionChanged value, $Res Function(_$SelectedElementPositionChanged) then) =
       __$$SelectedElementPositionChangedCopyWithImpl<$Res>;
-  $Res call({ui.Offset updatedPosition});
+  $Res call({material.Offset updatedPosition});
 }
 
 /// @nodoc
@@ -7214,7 +7285,7 @@ class __$$SelectedElementPositionChangedCopyWithImpl<$Res> extends _$EditorEvent
       updatedPosition == freezed
           ? _value.updatedPosition
           : updatedPosition // ignore: cast_nullable_to_non_nullable
-              as ui.Offset,
+              as material.Offset,
     ));
   }
 }
@@ -7226,7 +7297,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
 
   /// The new top-left of the element's rect.
   @override
-  final ui.Offset updatedPosition;
+  final material.Offset updatedPosition;
 
   @override
   String toString() {
@@ -7254,32 +7325,34 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return selectedElementPositionChanged(updatedPosition);
@@ -7290,32 +7363,32 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return selectedElementPositionChanged?.call(updatedPosition);
@@ -7326,32 +7399,32 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7469,10 +7542,11 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
 }
 
 abstract class SelectedElementPositionChanged implements EditorEvent {
-  const factory SelectedElementPositionChanged(final ui.Offset updatedPosition) = _$SelectedElementPositionChanged;
+  const factory SelectedElementPositionChanged(final material.Offset updatedPosition) =
+      _$SelectedElementPositionChanged;
 
   /// The new top-left of the element's rect.
-  ui.Offset get updatedPosition => throw _privateConstructorUsedError;
+  material.Offset get updatedPosition => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -7517,32 +7591,34 @@ class _$ClearEditor implements ClearEditor {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) staticTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) staticTextAlignChanged,
-    required TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(widgets.TextStyle? updatedTextStyle) variableTextStyleChanged,
-    required TResult Function(ui.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
-    required TResult Function(ui.Offset localPosition) canvasDragStart,
-    required TResult Function(ui.Offset delta) canvasDragUpdate,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(String draggedElementId, ui.Offset localPosition) elementDragStart,
-    required TResult Function(ui.Offset delta) elementDragUpdate,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
-    required TResult Function(String elementId) elementTap,
+    required TResult Function(Element element) elementTap,
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, ui.Offset delta) resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
-    required TResult Function(ui.Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(ui.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function() clearEditor,
   }) {
     return clearEditor();
@@ -7553,32 +7629,32 @@ class _$ClearEditor implements ClearEditor {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
   }) {
     return clearEditor?.call();
@@ -7589,32 +7665,32 @@ class _$ClearEditor implements ClearEditor {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? staticTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, ui.TextDirection textDirection, double minWidth, double maxWidth)?
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
-    TResult Function(widgets.TextStyle? updatedTextStyle)? variableTextStyleChanged,
-    TResult Function(ui.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
     TResult Function()? addImage,
-    TResult Function(ui.Offset localPosition)? canvasDragStart,
-    TResult Function(ui.Offset delta)? canvasDragUpdate,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(String draggedElementId, ui.Offset localPosition)? elementDragStart,
-    TResult Function(ui.Offset delta)? elementDragUpdate,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
-    TResult Function(String elementId)? elementTap,
+    TResult Function(Element element)? elementTap,
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, ui.Offset delta)? resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
-    TResult Function(ui.Size updatedSize)? selectedElementSizeChanged,
-    TResult Function(ui.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7738,9 +7814,9 @@ abstract class ClearEditor implements EditorEvent {
 /// @nodoc
 mixin _$EditorState {
   Editor get editor => throw _privateConstructorUsedError;
-  Option<String> get draggedElementId => throw _privateConstructorUsedError;
+  Option<Element> get draggedElement => throw _privateConstructorUsedError;
   Option<ui.Offset> get dragPosition => throw _privateConstructorUsedError;
-  Option<String> get selectedElementId => throw _privateConstructorUsedError;
+  Option<Element> get selectedElement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EditorStateCopyWith<EditorState> get copyWith => throw _privateConstructorUsedError;
@@ -7750,10 +7826,7 @@ mixin _$EditorState {
 abstract class $EditorStateCopyWith<$Res> {
   factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) then) = _$EditorStateCopyWithImpl<$Res>;
   $Res call(
-      {Editor editor,
-      Option<String> draggedElementId,
-      Option<ui.Offset> dragPosition,
-      Option<String> selectedElementId});
+      {Editor editor, Option<Element> draggedElement, Option<ui.Offset> dragPosition, Option<Element> selectedElement});
 
   $EditorCopyWith<$Res> get editor;
 }
@@ -7769,27 +7842,27 @@ class _$EditorStateCopyWithImpl<$Res> implements $EditorStateCopyWith<$Res> {
   @override
   $Res call({
     Object? editor = freezed,
-    Object? draggedElementId = freezed,
+    Object? draggedElement = freezed,
     Object? dragPosition = freezed,
-    Object? selectedElementId = freezed,
+    Object? selectedElement = freezed,
   }) {
     return _then(_value.copyWith(
       editor: editor == freezed
           ? _value.editor
           : editor // ignore: cast_nullable_to_non_nullable
               as Editor,
-      draggedElementId: draggedElementId == freezed
-          ? _value.draggedElementId
-          : draggedElementId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      draggedElement: draggedElement == freezed
+          ? _value.draggedElement
+          : draggedElement // ignore: cast_nullable_to_non_nullable
+              as Option<Element>,
       dragPosition: dragPosition == freezed
           ? _value.dragPosition
           : dragPosition // ignore: cast_nullable_to_non_nullable
               as Option<ui.Offset>,
-      selectedElementId: selectedElementId == freezed
-          ? _value.selectedElementId
-          : selectedElementId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      selectedElement: selectedElement == freezed
+          ? _value.selectedElement
+          : selectedElement // ignore: cast_nullable_to_non_nullable
+              as Option<Element>,
     ));
   }
 
@@ -7807,10 +7880,7 @@ abstract class _$$_EditorStateCopyWith<$Res> implements $EditorStateCopyWith<$Re
       __$$_EditorStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Editor editor,
-      Option<String> draggedElementId,
-      Option<ui.Offset> dragPosition,
-      Option<String> selectedElementId});
+      {Editor editor, Option<Element> draggedElement, Option<ui.Offset> dragPosition, Option<Element> selectedElement});
 
   @override
   $EditorCopyWith<$Res> get editor;
@@ -7828,27 +7898,27 @@ class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? editor = freezed,
-    Object? draggedElementId = freezed,
+    Object? draggedElement = freezed,
     Object? dragPosition = freezed,
-    Object? selectedElementId = freezed,
+    Object? selectedElement = freezed,
   }) {
     return _then(_$_EditorState(
       editor: editor == freezed
           ? _value.editor
           : editor // ignore: cast_nullable_to_non_nullable
               as Editor,
-      draggedElementId: draggedElementId == freezed
-          ? _value.draggedElementId
-          : draggedElementId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      draggedElement: draggedElement == freezed
+          ? _value.draggedElement
+          : draggedElement // ignore: cast_nullable_to_non_nullable
+              as Option<Element>,
       dragPosition: dragPosition == freezed
           ? _value.dragPosition
           : dragPosition // ignore: cast_nullable_to_non_nullable
               as Option<ui.Offset>,
-      selectedElementId: selectedElementId == freezed
-          ? _value.selectedElementId
-          : selectedElementId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      selectedElement: selectedElement == freezed
+          ? _value.selectedElement
+          : selectedElement // ignore: cast_nullable_to_non_nullable
+              as Option<Element>,
     ));
   }
 }
@@ -7857,24 +7927,21 @@ class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
 
 class _$_EditorState extends _EditorState {
   const _$_EditorState(
-      {required this.editor,
-      required this.draggedElementId,
-      required this.dragPosition,
-      required this.selectedElementId})
+      {required this.editor, required this.draggedElement, required this.dragPosition, required this.selectedElement})
       : super._();
 
   @override
   final Editor editor;
   @override
-  final Option<String> draggedElementId;
+  final Option<Element> draggedElement;
   @override
   final Option<ui.Offset> dragPosition;
   @override
-  final Option<String> selectedElementId;
+  final Option<Element> selectedElement;
 
   @override
   String toString() {
-    return 'EditorState(editor: $editor, draggedElementId: $draggedElementId, dragPosition: $dragPosition, selectedElementId: $selectedElementId)';
+    return 'EditorState(editor: $editor, draggedElement: $draggedElement, dragPosition: $dragPosition, selectedElement: $selectedElement)';
   }
 
   @override
@@ -7883,18 +7950,18 @@ class _$_EditorState extends _EditorState {
         (other.runtimeType == runtimeType &&
             other is _$_EditorState &&
             const DeepCollectionEquality().equals(other.editor, editor) &&
-            const DeepCollectionEquality().equals(other.draggedElementId, draggedElementId) &&
+            const DeepCollectionEquality().equals(other.draggedElement, draggedElement) &&
             const DeepCollectionEquality().equals(other.dragPosition, dragPosition) &&
-            const DeepCollectionEquality().equals(other.selectedElementId, selectedElementId));
+            const DeepCollectionEquality().equals(other.selectedElement, selectedElement));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(editor),
-      const DeepCollectionEquality().hash(draggedElementId),
+      const DeepCollectionEquality().hash(draggedElement),
       const DeepCollectionEquality().hash(dragPosition),
-      const DeepCollectionEquality().hash(selectedElementId));
+      const DeepCollectionEquality().hash(selectedElement));
 
   @JsonKey(ignore: true)
   @override
@@ -7905,19 +7972,19 @@ class _$_EditorState extends _EditorState {
 abstract class _EditorState extends EditorState {
   const factory _EditorState(
       {required final Editor editor,
-      required final Option<String> draggedElementId,
+      required final Option<Element> draggedElement,
       required final Option<ui.Offset> dragPosition,
-      required final Option<String> selectedElementId}) = _$_EditorState;
+      required final Option<Element> selectedElement}) = _$_EditorState;
   const _EditorState._() : super._();
 
   @override
   Editor get editor => throw _privateConstructorUsedError;
   @override
-  Option<String> get draggedElementId => throw _privateConstructorUsedError;
+  Option<Element> get draggedElement => throw _privateConstructorUsedError;
   @override
   Option<ui.Offset> get dragPosition => throw _privateConstructorUsedError;
   @override
-  Option<String> get selectedElementId => throw _privateConstructorUsedError;
+  Option<Element> get selectedElement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_EditorStateCopyWith<_$_EditorState> get copyWith => throw _privateConstructorUsedError;

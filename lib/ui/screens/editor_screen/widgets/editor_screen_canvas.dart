@@ -99,7 +99,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
     return editorState.editor.elementsSortedByShowOrder.map(
       (element) {
         // check if current element is selected
-        bool isSelected = editorState.selectedElementId.map((elId) => element.id == elId).getOrElse(() => false);
+        bool isSelected = editorState.selectedElement.map((el) => element.id == el.id).getOrElse(() => false);
 
         // map each element to its specific widget
         Widget child = EditorElementDelegateWidget(
@@ -119,7 +119,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
         }
 
         // wrap the element with a gesture detector to detect tap and drag events that occur on it
-        child = _elementGestureDetector(context, element.id, child);
+        child = _elementGestureDetector(context, element, child);
 
         // wrap the element with positioned to position it in the stack
         return Positioned(
@@ -167,12 +167,12 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
     );
   }
 
-  GestureDetector _elementGestureDetector(BuildContext context, editor.ElementId id, Widget child) {
+  GestureDetector _elementGestureDetector(BuildContext context, editor.Element el, Widget child) {
     return GestureDetector(
       onPanStart: (details) {
         final Offset localPosition = (_editorCanvasContainerKey.currentContext!.findRenderObject() as RenderBox)
             .globalToLocal(details.globalPosition);
-        context.read<EditorBloc>().add(EditorEvent.elementDragStart(id, localPosition));
+        context.read<EditorBloc>().add(EditorEvent.elementDragStart(el, localPosition));
       },
       onPanUpdate: (details) {
         context.read<EditorBloc>().add(EditorEvent.elementDragUpdate(details.delta));
@@ -181,7 +181,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
         context.read<EditorBloc>().add(const EditorEvent.elementDragEnd());
       },
       onTapUp: (details) {
-        context.read<EditorBloc>().add(EditorEvent.elementTap(id));
+        context.read<EditorBloc>().add(EditorEvent.elementTap(el));
       },
       child: child,
     );

@@ -15,6 +15,7 @@ import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/timeline/timeline.dart';
+import 'package:photo_editor/ui/common/error/invalid_state_error.dart';
 import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -217,39 +218,43 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         },
       );
 
-  Future<void> _handleUndo(Undo event, Emitter emit) async {
-    return _editorTimeline.previous.fold(() {
-      // there is no previous editor available, do nothing
-    }, (Editor previousEditor) {
-      // there is previous editor available, emit it if its editor is different than current editor
-      if (previousEditor != state.editor) {
-        emit(
-          state.copyWith(
-            editor: previousEditor,
-            dragPosition: none(),
-            draggedElementId: none(),
-            selectedElementId: none(),
-          ),
-        );
-      }
-    });
-  }
+  Future<void> _handleUndo(Undo event, Emitter emit) async => _editorTimeline.previous.fold(
+        () {
+          // there is no previous editor available, do nothing
+        },
+        (Editor previousEditor) {
+          // there is previous editor available, emit it if its editor is different than current editor
+          if (previousEditor != state.editor) {
+            emit(
+              state.copyWith(
+                editor: previousEditor,
+                dragPosition: none(),
+                draggedElement: none(),
+                selectedElement: none(),
+              ),
+            );
+          }
+        },
+      );
 
-  Future<void> _handleRedo(Redo event, Emitter emit) async => _editorTimeline.next.fold(() {
-        // there is no next editor available, do nothing
-      }, (Editor nextEditor) {
-        // there is next editor available, emit it if it is different than current editor
-        if (nextEditor != state.editor) {
-          emit(
-            state.copyWith(
-              editor: nextEditor,
-              dragPosition: none(),
-              draggedElementId: none(),
-              selectedElementId: none(),
-            ),
-          );
-        }
-      });
+  Future<void> _handleRedo(Redo event, Emitter emit) async => _editorTimeline.next.fold(
+        () {
+          // there is no next editor available, do nothing
+        },
+        (Editor nextEditor) {
+          // there is next editor available, emit it if it is different than current editor
+          if (nextEditor != state.editor) {
+            emit(
+              state.copyWith(
+                editor: nextEditor,
+                dragPosition: none(),
+                draggedElement: none(),
+                selectedElement: none(),
+              ),
+            );
+          }
+        },
+      );
 
   Future<void> _handleAddStaticText(AddStaticText event, Emitter emit) async {
     // get the approximate size of the default text that will be displayed
@@ -283,69 +288,72 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleStaticTextChanged(StaticTextChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as StaticTextProperties).copyWith(text: event.updatedText),
-                ),
-              ),
-            ),
-          );
-          // save the state after editing
-          _saveState(state);
-        },
-      ),
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "StaticTextChanged was fired but no element was selected");
+      },
+      (el) {
+        final Element updatedElement = el.copyWith(
+          properties: (el.properties as StaticTextProperties).copyWith(text: event.updatedText),
+        );
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
+        );
+        // save the state after editing
+        _saveState(state);
+      },
     );
   }
 
   Future<void> _handleStaticTextStyleChanged(StaticTextStyleChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          // make sure the font size is positive or zero
-          material.TextStyle? updatedTextStyle = event.updatedTextStyle;
-          if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
-            updatedTextStyle =
-                event.updatedTextStyle?.copyWith(fontSize: (el.properties as StaticTextProperties).textStyle?.fontSize);
-          }
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "StaticTextStyleChanged was fired but no element was selected");
+      },
+      (el) {
+        // make sure the font size is positive or zero
+        material.TextStyle? updatedTextStyle = event.updatedTextStyle;
+        if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
+          updatedTextStyle =
+              event.updatedTextStyle?.copyWith(fontSize: (el.properties as StaticTextProperties).textStyle?.fontSize);
+        }
 
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as StaticTextProperties).copyWith(textStyle: updatedTextStyle),
-                ),
-              ),
-            ),
-          );
-          // save the state after editing
-          _saveState(state);
-        },
-      ),
+        final Element updatedElement = el.copyWith(
+          properties: (el.properties as StaticTextProperties).copyWith(textStyle: updatedTextStyle),
+        );
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
+        );
+        // save the state after editing
+        _saveState(state);
+      },
     );
   }
 
   Future<void> _handleStaticTextAlignChanged(StaticTextAlignChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as StaticTextProperties).copyWith(textAlign: event.updatedTextAlign),
-                ),
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "StaticTextAlignChanged was fired but no element was selected");
+      },
+      (el) {
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(
+              el.copyWith(
+                properties: (el.properties as StaticTextProperties).copyWith(textAlign: event.updatedTextAlign),
               ),
             ),
-          );
-          // save the state after editing
-          _saveState(state);
-        },
-      ),
+          ),
+        );
+        // save the state after editing
+        _saveState(state);
+      },
     );
   }
 
@@ -382,89 +390,93 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleVariableTextFileChanged(VariableTextFileChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) async {
-          Option<io.File> fileOption =
-              (await _filePicker.pickSingleFile(allowedExtensions: allowedTextFilesExtensions.unlock)).fold(
-            () {
-              // no file was selected
-              return none();
-            },
-            (file) {
-              // a file was selected
-              return some(file);
-            },
-          );
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "VariableTextFileChanged was fired but no element was selected");
+      },
+      (el) async {
+        Option<io.File> fileOption =
+            (await _filePicker.pickSingleFile(allowedExtensions: allowedTextFilesExtensions.unlock)).fold(
+          () {
+            // no file was selected
+            return none();
+          },
+          (file) {
+            // a file was selected
+            return some(file);
+          },
+        );
 
-          fileOption.map((file) {
-            emit(
-              state.copyWith(
-                editor: state.editor.updateElement(
-                  el.copyWith(
-                    properties: (el.properties as VariableTextProperties).copyWith(
-                      sourceFilePath: some(file.path),
-                      placeHolderText: file.path.split(io.Platform.pathSeparator).last,
-                    ),
+        fileOption.map((file) {
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(
+                el.copyWith(
+                  properties: (el.properties as VariableTextProperties).copyWith(
+                    sourceFilePath: some(file.path),
+                    placeHolderText: file.path.split(io.Platform.pathSeparator).last,
                   ),
                 ),
               ),
-            );
+            ),
+          );
 
-            // save the state
-            _saveState(state);
-          });
-        },
-      ),
+          // save the state
+          _saveState(state);
+        });
+      },
     );
   }
 
   Future<void> _handleVariableTextStyleChanged(VariableTextStyleChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          // make sure the font size is positive or zero
-          material.TextStyle? updatedTextStyle = event.updatedTextStyle;
-          if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
-            updatedTextStyle = event.updatedTextStyle
-                ?.copyWith(fontSize: (el.properties as VariableTextProperties).textStyle?.fontSize);
-          }
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "VariableTextStyleChanged was fired but no element was selected");
+      },
+      (el) {
+        // make sure the font size is positive or zero
+        material.TextStyle? updatedTextStyle = event.updatedTextStyle;
+        if ((event.updatedTextStyle?.fontSize ?? -1) < 0 || !(event.updatedTextStyle?.fontSize ?? -1).isFinite) {
+          updatedTextStyle =
+              event.updatedTextStyle?.copyWith(fontSize: (el.properties as VariableTextProperties).textStyle?.fontSize);
+        }
 
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as VariableTextProperties).copyWith(textStyle: updatedTextStyle),
-                ),
-              ),
-            ),
-          );
+        final Element updatedElement = el.copyWith(
+          properties: (el.properties as VariableTextProperties).copyWith(textStyle: updatedTextStyle),
+        );
 
-          // save the state after editing
-          _saveState(state);
-        },
-      ),
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
+        );
+
+        // save the state after editing
+        _saveState(state);
+      },
     );
   }
 
   Future<void> _handleVariableTextAlignChanged(VariableTextAlignChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as VariableTextProperties).copyWith(textAlign: event.updatedTextAlign),
-                ),
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "VariableTextAlignChanged was fired but no element was selected");
+      },
+      (el) {
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(
+              el.copyWith(
+                properties: (el.properties as VariableTextProperties).copyWith(textAlign: event.updatedTextAlign),
               ),
             ),
-          );
+          ),
+        );
 
-          // save the state after editing
-          _saveState(state);
-        },
-      ),
+        // save the state after editing
+        _saveState(state);
+      },
     );
   }
 
@@ -504,9 +516,15 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleCanvasDragUpdate(CanvasDragUpdate event, Emitter emit) async {
-    ui.Offset? dragPosition = state.dragPosition.fold(() => null, (p) => p);
-    ui.Offset updatedDragPosition = dragPosition!.translate(event.delta.dx, event.delta.dy);
-    emit(state.copyWith(dragPosition: some(updatedDragPosition)));
+    state.dragPosition.fold(
+      () {
+        throw const InvalidStateError(message: "CanvasDragUpdate was fired but no dragPosition was set");
+      },
+      (pos) {
+        ui.Offset updatedDragPosition = pos.translate(event.delta.dx, event.delta.dy);
+        emit(state.copyWith(dragPosition: some(updatedDragPosition)));
+      },
+    );
   }
 
   Future<void> _handleCanvasDragEnd(CanvasDragEnd event, Emitter emit) async {
@@ -514,61 +532,77 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleCanvasTap(CanvasTap event, Emitter emit) async {
-    state.selectedElementId.map(
-      (elId) => state.editor.elementById(elId).map(
-            (selectedElement) => selectedElement.properties.maybeWhen(
-              staticTextProperties: (text, _, __) {
-                if (text.isEmpty) {
-                  emit(
-                    state.copyWith(
-                      selectedElementId: none(),
-                      editor: state.editor.removeElement(elId),
-                    ),
-                  );
-                  _saveState(state);
-                } else {
-                  emit(state.copyWith(selectedElementId: none()));
-                }
-              },
-              orElse: () => emit(state.copyWith(selectedElementId: none())),
-            ),
-          ),
+    state.selectedElement.fold(
+      () {
+        // no selected element, do nothing
+      },
+      (el) {
+        el.properties.maybeWhen(
+          staticTextProperties: (text, _, __) {
+            if (text.isEmpty) {
+              emit(
+                state.copyWith(
+                  selectedElement: none(),
+                  editor: state.editor.removeElement(el.id),
+                ),
+              );
+              _saveState(state);
+            } else {
+              emit(state.copyWith(selectedElement: none()));
+            }
+          },
+          orElse: () => emit(state.copyWith(selectedElement: none())),
+        );
+      },
     );
   }
 
   Future<void> _handleElementDragStart(ElementDragStart event, Emitter emit) async {
-    emit(state.copyWith(draggedElementId: some(event.draggedElementId), dragPosition: some(event.localPosition)));
+    emit(state.copyWith(draggedElement: some(event.draggedElement), dragPosition: some(event.localPosition)));
   }
 
   Future<void> _handleElementDragUpdate(ElementDragUpdate event, Emitter emit) async {
-    ElementId? draggedElementId = state.draggedElementId.fold(() => null, (el) => el);
-    ui.Offset? dragPosition = state.dragPosition.fold(() => null, (p) => p);
-    ui.Offset updatedDragPosition = dragPosition!.translate(event.delta.dx, event.delta.dy);
-    emit(
-      state.copyWith(
-        editor: state.editor.translateElement(draggedElementId!, event.delta),
-        dragPosition: some(updatedDragPosition),
-      ),
+    Option.map2(
+      state.draggedElement,
+      state.dragPosition,
+      (Element el, ui.Offset pos) {
+        ui.Offset updatedDragPosition = pos.translate(event.delta.dx, event.delta.dy);
+        emit(
+          state.copyWith(
+            editor: state.editor.translateElement(el.id, event.delta),
+            dragPosition: some(updatedDragPosition),
+          ),
+        );
+      },
+    ).fold(
+      () {
+        throw const InvalidStateError(
+            message: "ElementDragUpdate was fired but no dragPosition or no draggedElement was set");
+      },
+      (_) {},
     );
   }
 
   Future<void> _handleElementDragEnd(ElementDragEnd event, Emitter emit) async {
-    emit(state.copyWith(draggedElementId: none(), dragPosition: none()));
+    emit(state.copyWith(draggedElement: none(), dragPosition: none()));
     _saveState(state);
   }
 
   Future<void> _handleElementTap(ElementTap event, Emitter emit) async {
-    emit(state.copyWith(selectedElementId: some(event.elementId)));
+    emit(state.copyWith(selectedElement: some(event.element)));
   }
 
   Future<void> _handleRemoveSelectedElement(RemoveSelectedElement event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) {
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set");
+      },
+      (el) {
         emit(
           state.copyWith(
-            editor: state.editor.removeElement(id),
-            selectedElementId: none(),
-            draggedElementId: none(),
+            editor: state.editor.removeElement(el.id),
+            selectedElement: none(),
+            draggedElement: none(),
             dragPosition: none(),
           ),
         );
@@ -580,100 +614,114 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleDeselectElement(DeselectElement event, Emitter emit) async {
-    state.selectedElementId.map(
-      (elId) => state.editor.elementById(elId).map(
-            (selectedElement) => selectedElement.properties.maybeWhen(
-              staticTextProperties: (text, _, __) {
-                if (text.isEmpty) {
-                  emit(
-                    state.copyWith(
-                      selectedElementId: none(),
-                      editor: state.editor.removeElement(elId),
-                    ),
-                  );
-                  _saveState(state);
-                } else {
-                  emit(state.copyWith(selectedElementId: none()));
-                }
-              },
-              orElse: () => emit(state.copyWith(selectedElementId: none())),
-            ),
-          ),
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "DeselectElement was fired but no selectedElement was set");
+      },
+      (el) {
+        el.properties.maybeWhen(
+          staticTextProperties: (text, _, __) {
+            if (text.isEmpty) {
+              emit(
+                state.copyWith(
+                  selectedElement: none(),
+                  editor: state.editor.removeElement(el.id),
+                ),
+              );
+              _saveState(state);
+            } else {
+              emit(state.copyWith(selectedElement: none()));
+            }
+          },
+          orElse: () => emit(state.copyWith(selectedElement: none())),
+        );
+      },
     );
   }
 
   Future<void> _handleBringSelectedElementToFront(BringSelectedElementToFront event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(showOrder: state.editor.elementsSortedByShowOrder.last.showOrder + 1),
-              ),
-            ),
-          );
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "BringSelectedElementToFront was fired but no selectedElement was set");
+      },
+      (el) {
+        final Element updatedElement =
+            el.copyWith(showOrder: state.editor.elementsSortedByShowOrder.last.showOrder + 1);
+        emit(
+          state.copyWith(editor: state.editor.updateElement(updatedElement), selectedElement: some(updatedElement)),
+        );
 
-          // save the state
-          _saveState(state);
-        },
-      ),
+        // save the state
+        _saveState(state);
+      },
     );
   }
 
   Future<void> _handleResizeUpdate(ResizeUpdate event, Emitter emit) async {
-    final ElementId selectedElementId = state.selectedElementId.toNullable()!;
-    final Element el = state.editor.elementById(selectedElementId).toNullable()!;
-    late Element updatedElement;
-    // update the element's rect accordingly depending on the resize direction:
-    switch (event.resizeDirection) {
-      case ResizeDirection.topLeft:
-        updatedElement = el.copyWith(
-            rect: ui.Rect.fromPoints(el.rect.bottomRight, el.rect.topLeft.translate(event.delta.dx, event.delta.dy)));
-        break;
-      case ResizeDirection.topCenter:
-        updatedElement =
-            el.copyWith(rect: ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(0, event.delta.dy)));
-        break;
-      case ResizeDirection.topRight:
-        updatedElement = el.copyWith(
-            rect: ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(event.delta.dx, event.delta.dy)));
-        break;
-      case ResizeDirection.centerRight:
-        updatedElement = el.copyWith(
-            rect: ui.Rect.fromLTWH(el.rect.left, el.rect.top, el.rect.width + event.delta.dx, el.rect.height));
-        break;
-      case ResizeDirection.bottomRight:
-        updatedElement = el.copyWith(
-            rect: ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(event.delta.dx, event.delta.dy)));
-        break;
-      case ResizeDirection.bottomCenter:
-        updatedElement =
-            el.copyWith(rect: ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(0, event.delta.dy)));
-        break;
-      case ResizeDirection.bottomLeft:
-        updatedElement = el.copyWith(
-            rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, event.delta.dy), el.rect.topRight));
-        break;
-      case ResizeDirection.centerLeft:
-        updatedElement =
-            el.copyWith(rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, 0), el.rect.topRight));
-        break;
-    }
-    // prevent the rect from becoming smaller than the minimum allowed size:
-    if (updatedElement.rect.size.width < minElementSideSize) {
-      updatedElement = updatedElement.copyWith(
-        rect: ui.Rect.fromLTWH(
-            updatedElement.rect.left, updatedElement.rect.top, minElementSideSize, updatedElement.rect.height),
-      );
-    }
-    if (updatedElement.rect.size.height < minElementSideSize) {
-      updatedElement = updatedElement.copyWith(
-        rect: ui.Rect.fromLTWH(
-            updatedElement.rect.left, updatedElement.rect.top, updatedElement.rect.width, minElementSideSize),
-      );
-    }
-    emit(state.copyWith(editor: state.editor.updateElement(updatedElement)));
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "ResizeUpdate was fired but no selectedElement was set");
+      },
+      (el) {
+        late Element updatedElement;
+        // update the element's rect accordingly depending on the resize direction:
+        switch (event.resizeDirection) {
+          case ResizeDirection.topLeft:
+            updatedElement = el.copyWith(
+                rect:
+                    ui.Rect.fromPoints(el.rect.bottomRight, el.rect.topLeft.translate(event.delta.dx, event.delta.dy)));
+            break;
+          case ResizeDirection.topCenter:
+            updatedElement = el.copyWith(
+                rect: ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(0, event.delta.dy)));
+            break;
+          case ResizeDirection.topRight:
+            updatedElement = el.copyWith(
+                rect:
+                    ui.Rect.fromPoints(el.rect.bottomLeft, el.rect.topRight.translate(event.delta.dx, event.delta.dy)));
+            break;
+          case ResizeDirection.centerRight:
+            updatedElement = el.copyWith(
+                rect: ui.Rect.fromLTWH(el.rect.left, el.rect.top, el.rect.width + event.delta.dx, el.rect.height));
+            break;
+          case ResizeDirection.bottomRight:
+            updatedElement = el.copyWith(
+                rect:
+                    ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(event.delta.dx, event.delta.dy)));
+            break;
+          case ResizeDirection.bottomCenter:
+            updatedElement = el.copyWith(
+                rect: ui.Rect.fromPoints(el.rect.topLeft, el.rect.bottomRight.translate(0, event.delta.dy)));
+            break;
+          case ResizeDirection.bottomLeft:
+            updatedElement = el.copyWith(
+                rect:
+                    ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, event.delta.dy), el.rect.topRight));
+            break;
+          case ResizeDirection.centerLeft:
+            updatedElement = el.copyWith(
+                rect: ui.Rect.fromPoints(el.rect.bottomLeft.translate(event.delta.dx, 0), el.rect.topRight));
+            break;
+        }
+        // prevent the rect from becoming smaller than the minimum allowed size:
+        if (updatedElement.rect.size.width < minElementSideSize) {
+          updatedElement = updatedElement.copyWith(
+            rect: ui.Rect.fromLTWH(
+                updatedElement.rect.left, updatedElement.rect.top, minElementSideSize, updatedElement.rect.height),
+          );
+        }
+        if (updatedElement.rect.size.height < minElementSideSize) {
+          updatedElement = updatedElement.copyWith(
+            rect: ui.Rect.fromLTWH(
+                updatedElement.rect.left, updatedElement.rect.top, updatedElement.rect.width, minElementSideSize),
+          );
+        }
+        emit(state.copyWith(
+          editor: state.editor.updateElement(updatedElement),
+          selectedElement: some(updatedElement),
+        ));
+      },
+    );
   }
 
   Future<void> _handleResizeEnd(ResizeEnd event, Emitter emit) async {
@@ -681,59 +729,62 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleSelectedElementSizeChanged(SelectedElementSizeChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          ui.Size updatedSize = event.updatedSize;
-          if (event.updatedSize.width < minElementSideSize) {
-            updatedSize = ui.Size(el.rect.size.width, updatedSize.height);
-          }
-          if (event.updatedSize.height < minElementSideSize) {
-            updatedSize = ui.Size(updatedSize.width, el.rect.size.height);
-          }
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "SelectedElementSizeChanged was fired but no selectedElement was set");
+      },
+      (el) {
+        ui.Size updatedSize = event.updatedSize;
+        if (event.updatedSize.width < minElementSideSize) {
+          updatedSize = ui.Size(el.rect.size.width, updatedSize.height);
+        }
+        if (event.updatedSize.height < minElementSideSize) {
+          updatedSize = ui.Size(updatedSize.width, el.rect.size.height);
+        }
 
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  rect: ui.Rect.fromCenter(
-                    center: el.rect.center,
-                    width: updatedSize.width,
-                    height: updatedSize.height,
-                  ),
-                ),
-              ),
-            ),
-          );
+        final Element updatedElement = el.copyWith(
+          rect: ui.Rect.fromCenter(
+            center: el.rect.center,
+            width: updatedSize.width,
+            height: updatedSize.height,
+          ),
+        );
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
+        );
 
-          // save the state
-          _saveState(state);
-        },
-      ),
+        // save the state
+        _saveState(state);
+      },
     );
   }
 
   Future<void> _handleSelectedElementPositionChanged(SelectedElementPositionChanged event, Emitter emit) async {
-    state.selectedElementId.map(
-      (id) => state.editor.elementById(id).map(
-        (el) {
-          double xUpdated = event.updatedPosition.dx.isFinite ? event.updatedPosition.dx : el.rect.topLeft.dx;
-          double yUpdated = event.updatedPosition.dy.isFinite ? event.updatedPosition.dy : el.rect.topLeft.dy;
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(
+            message: "SelectedElementPositionChanged was fired but no selectedElement was set");
+      },
+      (el) {
+        double xUpdated = event.updatedPosition.dx.isFinite ? event.updatedPosition.dx : el.rect.topLeft.dx;
+        double yUpdated = event.updatedPosition.dy.isFinite ? event.updatedPosition.dy : el.rect.topLeft.dy;
 
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  rect: ui.Rect.fromLTWH(xUpdated, yUpdated, el.rect.width, el.rect.height),
-                ),
-              ),
-            ),
-          );
+        final Element updatedElement = el.copyWith(
+          rect: ui.Rect.fromLTWH(xUpdated, yUpdated, el.rect.width, el.rect.height),
+        );
+        emit(
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
+        );
 
-          // save the state
-          _saveState(state);
-        },
-      ),
+        // save the state
+        _saveState(state);
+      },
     );
   }
 
@@ -741,9 +792,9 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     emit(
       state.copyWith(
         editor: state.editor.clear(),
-        selectedElementId: none(),
+        selectedElement: none(),
         dragPosition: none(),
-        draggedElementId: none(),
+        draggedElement: none(),
       ),
     );
 

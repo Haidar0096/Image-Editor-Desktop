@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart' hide Element;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/services/editor/editor.dart';
-import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,37 +18,35 @@ class EditorScreenRightPanel extends StatelessWidget {
       // TODO: remove the widgets below in favor of the widgets mentioned above
       builder: (context, editorState) => Container(
         color: toc.colorScheme.primary,
-        child: editorState.selectedElementId
-            .flatMap<Widget>(
-              (id) => editorState.editor.elementById(id).map(
-                    (el) => ListView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
-                        ),
-                        _divider(context),
-                        _xPositionText(context, el),
-                        _divider(context),
-                        _yPositionText(context, el),
-                        _divider(context),
-                        _elementWidthText(context, el),
-                        _divider(context),
-                        _elementHeightText(context, el),
-                        _divider(context),
-                        // if selected element is text element:
-                        if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
-                          _elementSizeText(context, el),
-                          _divider(context),
-                        ],
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
-                        ),
-                        _divider(context),
-                      ],
-                    ),
+        child: editorState.selectedElement
+            .map<Widget>(
+              (el) => ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
                   ),
+                  _divider(context),
+                  _xPositionText(context, el),
+                  _divider(context),
+                  _yPositionText(context, el),
+                  _divider(context),
+                  _elementWidthText(context, el),
+                  _divider(context),
+                  _elementHeightText(context, el),
+                  _divider(context),
+                  // if selected element is text element:
+                  if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
+                    _elementSizeText(context, el),
+                    _divider(context),
+                  ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
+                  ),
+                  _divider(context),
+                ],
+              ),
             )
             .getOrElse(() => Container()),
       ),

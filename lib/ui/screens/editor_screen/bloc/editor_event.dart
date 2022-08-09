@@ -91,8 +91,8 @@ class EditorEvent with _$EditorEvent {
 
   /// Fires when a an element drag starts.
   const factory EditorEvent.elementDragStart(
-    /// The id of the element being dragged.
-    ElementId draggedElementId,
+    /// The element being dragged.
+    Element draggedElement,
 
     /// The local position in the editor widget where the drag started.
     ui.Offset localPosition,
@@ -112,8 +112,8 @@ class EditorEvent with _$EditorEvent {
 
   /// Fires when a tap occurs on an element.
   const factory EditorEvent.elementTap(
-    /// The id of the element that has been tapped.
-    ElementId elementId,
+    /// The element that has been tapped.
+    Element element,
   ) = ElementTap;
 
   /// Fires when remove element button is tapped.
