@@ -146,7 +146,7 @@ class EditorScreenRightPanel extends StatelessWidget {
 
     return _createDoubleStateText(
       context: context,
-      initialText: 'Font: ${currentStyle?.fontSize?.toStringAsFixed(2)}',
+      initialText: '${AppLocalizations.of(context)!.fontSize}: ${currentStyle?.fontSize?.toStringAsFixed(2)}',
       onGainFocus: () => '${currentStyle?.fontSize?.toStringAsFixed(2)}',
       onLoseFocus: (updatedValue) {
         double? updatedFontSize = double.tryParse(updatedValue);
