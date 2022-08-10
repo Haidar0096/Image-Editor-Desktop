@@ -195,6 +195,11 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
+    on<TextEditingModeChanged>(
+      (event, emit) async => await _handleTextEditingModeChanged(event, emit),
+      transformer: droppable(),
+    );
+
     on<ClearEditor>(
       (event, emit) async => await _handleClearEditor(event, emit),
       transformer: droppable(),
@@ -231,6 +236,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
                 draggedElement: none(),
                 dragPosition: none(),
                 selectedElement: none(),
+                isEditingTextElement: false,
               ),
             );
           }
@@ -250,6 +256,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
                 draggedElement: none(),
                 dragPosition: none(),
                 selectedElement: none(),
+                isEditingTextElement: false,
               ),
             );
           }
@@ -813,6 +820,25 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
         // save the state
         _saveState(state);
+      },
+    );
+  }
+
+  Future<void> _handleTextEditingModeChanged(TextEditingModeChanged event, Emitter emit) async {
+    state.selectedElement.fold(
+      () {
+        throw const InvalidStateError(message: "TextEditingModeChanged was fired but no selectedElement was set");
+      },
+      (el) {
+        if (!el.properties.isStaticTextProperties) {
+          throw const InvalidStateError(
+              message: "TextEditingModeChanged was fired but selected element was not static text element");
+        }
+        emit(
+          state.copyWith(
+            isEditingTextElement: event.isEditingTextElement,
+          ),
+        );
       },
     );
   }

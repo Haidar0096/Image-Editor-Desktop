@@ -140,6 +140,9 @@ class EditorEvent with _$EditorEvent {
     ui.Offset updatedPosition,
   ) = SelectedElementPositionChanged;
 
+  /// Fires when the editing mode of a text element changes.
+  const factory EditorEvent.textEditingModeChanged(bool isEditingTextElement) = TextEditingModeChanged;
+
   /// Fires when clear editor button is tapped.
   const factory EditorEvent.clearEditor() = ClearEditor;
 }

@@ -48,6 +48,7 @@ mixin _$EditorEvent {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +82,7 @@ mixin _$EditorEvent {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +116,7 @@ mixin _$EditorEvent {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) =>
@@ -146,6 +149,7 @@ mixin _$EditorEvent {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -177,6 +181,7 @@ mixin _$EditorEvent {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) =>
       throw _privateConstructorUsedError;
@@ -208,6 +213,7 @@ mixin _$EditorEvent {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) =>
@@ -292,6 +298,7 @@ class _$Undo implements Undo {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return undo();
@@ -328,6 +335,7 @@ class _$Undo implements Undo {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return undo?.call();
@@ -364,6 +372,7 @@ class _$Undo implements Undo {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -402,6 +411,7 @@ class _$Undo implements Undo {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return undo(this);
@@ -436,6 +446,7 @@ class _$Undo implements Undo {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return undo?.call(this);
@@ -470,6 +481,7 @@ class _$Undo implements Undo {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -548,6 +560,7 @@ class _$Redo implements Redo {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return redo();
@@ -584,6 +597,7 @@ class _$Redo implements Redo {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return redo?.call();
@@ -620,6 +634,7 @@ class _$Redo implements Redo {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -658,6 +673,7 @@ class _$Redo implements Redo {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return redo(this);
@@ -692,6 +708,7 @@ class _$Redo implements Redo {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return redo?.call(this);
@@ -726,6 +743,7 @@ class _$Redo implements Redo {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -868,6 +886,7 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return addStaticText(initialText, textDirection, minWidth, maxWidth);
@@ -904,6 +923,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return addStaticText?.call(initialText, textDirection, minWidth, maxWidth);
@@ -940,6 +960,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -978,6 +999,7 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return addStaticText(this);
@@ -1012,6 +1034,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return addStaticText?.call(this);
@@ -1046,6 +1069,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -1170,6 +1194,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextChanged(updatedText);
@@ -1206,6 +1231,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextChanged?.call(updatedText);
@@ -1242,6 +1268,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1280,6 +1307,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return staticTextChanged(this);
@@ -1314,6 +1342,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return staticTextChanged?.call(this);
@@ -1348,6 +1377,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -1460,6 +1490,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextStyleChanged(updatedTextStyle);
@@ -1496,6 +1527,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextStyleChanged?.call(updatedTextStyle);
@@ -1532,6 +1564,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1570,6 +1603,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return staticTextStyleChanged(this);
@@ -1604,6 +1638,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return staticTextStyleChanged?.call(this);
@@ -1638,6 +1673,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -1750,6 +1786,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return staticTextAlignChanged(updatedTextAlign);
@@ -1786,6 +1823,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return staticTextAlignChanged?.call(updatedTextAlign);
@@ -1822,6 +1860,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -1860,6 +1899,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return staticTextAlignChanged(this);
@@ -1894,6 +1934,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return staticTextAlignChanged?.call(this);
@@ -1928,6 +1969,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -2075,6 +2117,7 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return addVariableText(initialText, textDirection, minWidth, maxWidth);
@@ -2111,6 +2154,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return addVariableText?.call(initialText, textDirection, minWidth, maxWidth);
@@ -2147,6 +2191,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2185,6 +2230,7 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return addVariableText(this);
@@ -2219,6 +2265,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return addVariableText?.call(this);
@@ -2253,6 +2300,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -2354,6 +2402,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextFileChanged();
@@ -2390,6 +2439,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextFileChanged?.call();
@@ -2426,6 +2476,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2464,6 +2515,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return variableTextFileChanged(this);
@@ -2498,6 +2550,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return variableTextFileChanged?.call(this);
@@ -2532,6 +2585,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -2640,6 +2694,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextStyleChanged(updatedTextStyle);
@@ -2676,6 +2731,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextStyleChanged?.call(updatedTextStyle);
@@ -2712,6 +2768,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -2750,6 +2807,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return variableTextStyleChanged(this);
@@ -2784,6 +2842,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return variableTextStyleChanged?.call(this);
@@ -2818,6 +2877,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -2931,6 +2991,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return variableTextAlignChanged(updatedTextAlign);
@@ -2967,6 +3028,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return variableTextAlignChanged?.call(updatedTextAlign);
@@ -3003,6 +3065,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3041,6 +3104,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return variableTextAlignChanged(this);
@@ -3075,6 +3139,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return variableTextAlignChanged?.call(this);
@@ -3109,6 +3174,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -3193,6 +3259,7 @@ class _$AddImage implements AddImage {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return addImage();
@@ -3229,6 +3296,7 @@ class _$AddImage implements AddImage {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return addImage?.call();
@@ -3265,6 +3333,7 @@ class _$AddImage implements AddImage {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3303,6 +3372,7 @@ class _$AddImage implements AddImage {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return addImage(this);
@@ -3337,6 +3407,7 @@ class _$AddImage implements AddImage {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return addImage?.call(this);
@@ -3371,6 +3442,7 @@ class _$AddImage implements AddImage {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -3477,6 +3549,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragStart(localPosition);
@@ -3513,6 +3586,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragStart?.call(localPosition);
@@ -3549,6 +3623,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3587,6 +3662,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return canvasDragStart(this);
@@ -3621,6 +3697,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return canvasDragStart?.call(this);
@@ -3655,6 +3732,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -3766,6 +3844,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragUpdate(delta);
@@ -3802,6 +3881,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragUpdate?.call(delta);
@@ -3838,6 +3918,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -3876,6 +3957,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return canvasDragUpdate(this);
@@ -3910,6 +3992,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return canvasDragUpdate?.call(this);
@@ -3944,6 +4027,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -4030,6 +4114,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasDragEnd();
@@ -4066,6 +4151,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasDragEnd?.call();
@@ -4102,6 +4188,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -4140,6 +4227,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return canvasDragEnd(this);
@@ -4174,6 +4262,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return canvasDragEnd?.call(this);
@@ -4208,6 +4297,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -4334,6 +4424,7 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return elementDragStart(draggedElement, localPosition);
@@ -4370,6 +4461,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return elementDragStart?.call(draggedElement, localPosition);
@@ -4406,6 +4498,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -4444,6 +4537,7 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return elementDragStart(this);
@@ -4478,6 +4572,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return elementDragStart?.call(this);
@@ -4512,6 +4607,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -4627,6 +4723,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return elementDragUpdate(delta);
@@ -4663,6 +4760,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return elementDragUpdate?.call(delta);
@@ -4699,6 +4797,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -4737,6 +4836,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return elementDragUpdate(this);
@@ -4771,6 +4871,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return elementDragUpdate?.call(this);
@@ -4805,6 +4906,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -4891,6 +4993,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return elementDragEnd();
@@ -4927,6 +5030,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return elementDragEnd?.call();
@@ -4963,6 +5067,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5001,6 +5106,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return elementDragEnd(this);
@@ -5035,6 +5141,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return elementDragEnd?.call(this);
@@ -5069,6 +5176,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -5148,6 +5256,7 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return canvasTap();
@@ -5184,6 +5293,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return canvasTap?.call();
@@ -5220,6 +5330,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5258,6 +5369,7 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return canvasTap(this);
@@ -5292,6 +5404,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return canvasTap?.call(this);
@@ -5326,6 +5439,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -5439,6 +5553,7 @@ class _$ElementTap implements ElementTap {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return elementTap(element);
@@ -5475,6 +5590,7 @@ class _$ElementTap implements ElementTap {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return elementTap?.call(element);
@@ -5511,6 +5627,7 @@ class _$ElementTap implements ElementTap {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5549,6 +5666,7 @@ class _$ElementTap implements ElementTap {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return elementTap(this);
@@ -5583,6 +5701,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return elementTap?.call(this);
@@ -5617,6 +5736,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -5703,6 +5823,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return removeSelectedElement();
@@ -5739,6 +5860,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return removeSelectedElement?.call();
@@ -5775,6 +5897,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -5813,6 +5936,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return removeSelectedElement(this);
@@ -5847,6 +5971,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return removeSelectedElement?.call(this);
@@ -5881,6 +6006,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -5962,6 +6088,7 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return deselectElement();
@@ -5998,6 +6125,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return deselectElement?.call();
@@ -6034,6 +6162,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6072,6 +6201,7 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return deselectElement(this);
@@ -6106,6 +6236,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return deselectElement?.call(this);
@@ -6140,6 +6271,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -6223,6 +6355,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return bringSelectedElementToFront();
@@ -6259,6 +6392,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return bringSelectedElementToFront?.call();
@@ -6295,6 +6429,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6333,6 +6468,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return bringSelectedElementToFront(this);
@@ -6367,6 +6503,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return bringSelectedElementToFront?.call(this);
@@ -6401,6 +6538,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -6515,6 +6653,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return resizeUpdate(resizeDirection, delta);
@@ -6551,6 +6690,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return resizeUpdate?.call(resizeDirection, delta);
@@ -6587,6 +6727,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6625,6 +6766,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return resizeUpdate(this);
@@ -6659,6 +6801,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return resizeUpdate?.call(this);
@@ -6693,6 +6836,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -6777,6 +6921,7 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return resizeEnd();
@@ -6813,6 +6958,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return resizeEnd?.call();
@@ -6849,6 +6995,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -6887,6 +7034,7 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return resizeEnd(this);
@@ -6921,6 +7069,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return resizeEnd?.call(this);
@@ -6955,6 +7104,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -7062,6 +7212,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return selectedElementSizeChanged(updatedSize);
@@ -7098,6 +7249,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return selectedElementSizeChanged?.call(updatedSize);
@@ -7134,6 +7286,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7172,6 +7325,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return selectedElementSizeChanged(this);
@@ -7206,6 +7360,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return selectedElementSizeChanged?.call(this);
@@ -7240,6 +7395,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -7353,6 +7509,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return selectedElementPositionChanged(updatedPosition);
@@ -7389,6 +7546,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return selectedElementPositionChanged?.call(updatedPosition);
@@ -7425,6 +7583,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7463,6 +7622,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return selectedElementPositionChanged(this);
@@ -7497,6 +7657,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return selectedElementPositionChanged?.call(this);
@@ -7531,6 +7692,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -7550,6 +7712,300 @@ abstract class SelectedElementPositionChanged implements EditorEvent {
   @JsonKey(ignore: true)
   _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TextEditingModeChangedCopyWith<$Res> {
+  factory _$$TextEditingModeChangedCopyWith(
+          _$TextEditingModeChanged value, $Res Function(_$TextEditingModeChanged) then) =
+      __$$TextEditingModeChangedCopyWithImpl<$Res>;
+  $Res call({bool isEditingTextElement});
+}
+
+/// @nodoc
+class __$$TextEditingModeChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$TextEditingModeChangedCopyWith<$Res> {
+  __$$TextEditingModeChangedCopyWithImpl(_$TextEditingModeChanged _value, $Res Function(_$TextEditingModeChanged) _then)
+      : super(_value, (v) => _then(v as _$TextEditingModeChanged));
+
+  @override
+  _$TextEditingModeChanged get _value => super._value as _$TextEditingModeChanged;
+
+  @override
+  $Res call({
+    Object? isEditingTextElement = freezed,
+  }) {
+    return _then(_$TextEditingModeChanged(
+      isEditingTextElement == freezed
+          ? _value.isEditingTextElement
+          : isEditingTextElement // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TextEditingModeChanged implements TextEditingModeChanged {
+  const _$TextEditingModeChanged(this.isEditingTextElement);
+
+  @override
+  final bool isEditingTextElement;
+
+  @override
+  String toString() {
+    return 'EditorEvent.textEditingModeChanged(isEditingTextElement: $isEditingTextElement)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TextEditingModeChanged &&
+            const DeepCollectionEquality().equals(other.isEditingTextElement, isEditingTextElement));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(isEditingTextElement));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$TextEditingModeChangedCopyWith<_$TextEditingModeChanged> get copyWith =>
+      __$$TextEditingModeChangedCopyWithImpl<_$TextEditingModeChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
+        addStaticText,
+    required TResult Function(String updatedText) staticTextChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(
+            String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)
+        addVariableText,
+    required TResult Function() variableTextFileChanged,
+    required TResult Function(material.TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(material.TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function() addImage,
+    required TResult Function(material.Offset localPosition) canvasDragStart,
+    required TResult Function(material.Offset delta) canvasDragUpdate,
+    required TResult Function() canvasDragEnd,
+    required TResult Function(Element draggedElement, material.Offset localPosition) elementDragStart,
+    required TResult Function(material.Offset delta) elementDragUpdate,
+    required TResult Function() elementDragEnd,
+    required TResult Function() canvasTap,
+    required TResult Function(Element element) elementTap,
+    required TResult Function() removeSelectedElement,
+    required TResult Function() deselectElement,
+    required TResult Function() bringSelectedElementToFront,
+    required TResult Function(ResizeDirection resizeDirection, material.Offset delta) resizeUpdate,
+    required TResult Function() resizeEnd,
+    required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
+    required TResult Function() clearEditor,
+  }) {
+    return textEditingModeChanged(isEditingTextElement);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
+        addStaticText,
+    TResult Function(String updatedText)? staticTextChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
+        addVariableText,
+    TResult Function()? variableTextFileChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function()? addImage,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
+    TResult Function()? canvasDragEnd,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
+    TResult Function()? elementDragEnd,
+    TResult Function()? canvasTap,
+    TResult Function(Element element)? elementTap,
+    TResult Function()? removeSelectedElement,
+    TResult Function()? deselectElement,
+    TResult Function()? bringSelectedElementToFront,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
+    TResult Function()? resizeEnd,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
+    TResult Function()? clearEditor,
+  }) {
+    return textEditingModeChanged?.call(isEditingTextElement);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
+        addStaticText,
+    TResult Function(String updatedText)? staticTextChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, material.TextDirection textDirection, double minWidth, double maxWidth)?
+        addVariableText,
+    TResult Function()? variableTextFileChanged,
+    TResult Function(material.TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(material.TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function()? addImage,
+    TResult Function(material.Offset localPosition)? canvasDragStart,
+    TResult Function(material.Offset delta)? canvasDragUpdate,
+    TResult Function()? canvasDragEnd,
+    TResult Function(Element draggedElement, material.Offset localPosition)? elementDragStart,
+    TResult Function(material.Offset delta)? elementDragUpdate,
+    TResult Function()? elementDragEnd,
+    TResult Function()? canvasTap,
+    TResult Function(Element element)? elementTap,
+    TResult Function()? removeSelectedElement,
+    TResult Function()? deselectElement,
+    TResult Function()? bringSelectedElementToFront,
+    TResult Function(ResizeDirection resizeDirection, material.Offset delta)? resizeUpdate,
+    TResult Function()? resizeEnd,
+    TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
+    TResult Function()? clearEditor,
+    required TResult orElse(),
+  }) {
+    if (textEditingModeChanged != null) {
+      return textEditingModeChanged(isEditingTextElement);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(CanvasDragStart value) canvasDragStart,
+    required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
+    required TResult Function(CanvasDragEnd value) canvasDragEnd,
+    required TResult Function(ElementDragStart value) elementDragStart,
+    required TResult Function(ElementDragUpdate value) elementDragUpdate,
+    required TResult Function(ElementDragEnd value) elementDragEnd,
+    required TResult Function(CanvasTap value) canvasTap,
+    required TResult Function(ElementTap value) elementTap,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(DeselectElement value) deselectElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
+    required TResult Function(ResizeUpdate value) resizeUpdate,
+    required TResult Function(ResizeEnd value) resizeEnd,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
+    required TResult Function(ClearEditor value) clearEditor,
+  }) {
+    return textEditingModeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(StaticTextAlignChanged value)? staticTextAlignChanged,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextAlignChanged value)? variableTextAlignChanged,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(CanvasDragStart value)? canvasDragStart,
+    TResult Function(CanvasDragUpdate value)? canvasDragUpdate,
+    TResult Function(CanvasDragEnd value)? canvasDragEnd,
+    TResult Function(ElementDragStart value)? elementDragStart,
+    TResult Function(ElementDragUpdate value)? elementDragUpdate,
+    TResult Function(ElementDragEnd value)? elementDragEnd,
+    TResult Function(CanvasTap value)? canvasTap,
+    TResult Function(ElementTap value)? elementTap,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(DeselectElement value)? deselectElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    TResult Function(ResizeUpdate value)? resizeUpdate,
+    TResult Function(ResizeEnd value)? resizeEnd,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
+    TResult Function(ClearEditor value)? clearEditor,
+  }) {
+    return textEditingModeChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(StaticTextAlignChanged value)? staticTextAlignChanged,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextAlignChanged value)? variableTextAlignChanged,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(CanvasDragStart value)? canvasDragStart,
+    TResult Function(CanvasDragUpdate value)? canvasDragUpdate,
+    TResult Function(CanvasDragEnd value)? canvasDragEnd,
+    TResult Function(ElementDragStart value)? elementDragStart,
+    TResult Function(ElementDragUpdate value)? elementDragUpdate,
+    TResult Function(ElementDragEnd value)? elementDragEnd,
+    TResult Function(CanvasTap value)? canvasTap,
+    TResult Function(ElementTap value)? elementTap,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(DeselectElement value)? deselectElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    TResult Function(ResizeUpdate value)? resizeUpdate,
+    TResult Function(ResizeEnd value)? resizeEnd,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
+    TResult Function(ClearEditor value)? clearEditor,
+    required TResult orElse(),
+  }) {
+    if (textEditingModeChanged != null) {
+      return textEditingModeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TextEditingModeChanged implements EditorEvent {
+  const factory TextEditingModeChanged(final bool isEditingTextElement) = _$TextEditingModeChanged;
+
+  bool get isEditingTextElement => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$TextEditingModeChangedCopyWith<_$TextEditingModeChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -7619,6 +8075,7 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function() resizeEnd,
     required TResult Function(material.Size updatedSize) selectedElementSizeChanged,
     required TResult Function(material.Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
   }) {
     return clearEditor();
@@ -7655,6 +8112,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
   }) {
     return clearEditor?.call();
@@ -7691,6 +8149,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function()? resizeEnd,
     TResult Function(material.Size updatedSize)? selectedElementSizeChanged,
     TResult Function(material.Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
     required TResult orElse(),
   }) {
@@ -7729,6 +8188,7 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(ResizeEnd value) resizeEnd,
     required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
     required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
   }) {
     return clearEditor(this);
@@ -7763,6 +8223,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
   }) {
     return clearEditor?.call(this);
@@ -7797,6 +8258,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ResizeEnd value)? resizeEnd,
     TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
     TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     required TResult orElse(),
   }) {
@@ -7817,6 +8279,7 @@ mixin _$EditorState {
   Option<Element> get draggedElement => throw _privateConstructorUsedError;
   Option<ui.Offset> get dragPosition => throw _privateConstructorUsedError;
   Option<Element> get selectedElement => throw _privateConstructorUsedError;
+  bool get isEditingTextElement => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EditorStateCopyWith<EditorState> get copyWith => throw _privateConstructorUsedError;
@@ -7826,7 +8289,11 @@ mixin _$EditorState {
 abstract class $EditorStateCopyWith<$Res> {
   factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) then) = _$EditorStateCopyWithImpl<$Res>;
   $Res call(
-      {Editor editor, Option<Element> draggedElement, Option<ui.Offset> dragPosition, Option<Element> selectedElement});
+      {Editor editor,
+      Option<Element> draggedElement,
+      Option<ui.Offset> dragPosition,
+      Option<Element> selectedElement,
+      bool isEditingTextElement});
 
   $EditorCopyWith<$Res> get editor;
 }
@@ -7845,6 +8312,7 @@ class _$EditorStateCopyWithImpl<$Res> implements $EditorStateCopyWith<$Res> {
     Object? draggedElement = freezed,
     Object? dragPosition = freezed,
     Object? selectedElement = freezed,
+    Object? isEditingTextElement = freezed,
   }) {
     return _then(_value.copyWith(
       editor: editor == freezed
@@ -7863,6 +8331,10 @@ class _$EditorStateCopyWithImpl<$Res> implements $EditorStateCopyWith<$Res> {
           ? _value.selectedElement
           : selectedElement // ignore: cast_nullable_to_non_nullable
               as Option<Element>,
+      isEditingTextElement: isEditingTextElement == freezed
+          ? _value.isEditingTextElement
+          : isEditingTextElement // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -7880,7 +8352,11 @@ abstract class _$$_EditorStateCopyWith<$Res> implements $EditorStateCopyWith<$Re
       __$$_EditorStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Editor editor, Option<Element> draggedElement, Option<ui.Offset> dragPosition, Option<Element> selectedElement});
+      {Editor editor,
+      Option<Element> draggedElement,
+      Option<ui.Offset> dragPosition,
+      Option<Element> selectedElement,
+      bool isEditingTextElement});
 
   @override
   $EditorCopyWith<$Res> get editor;
@@ -7901,6 +8377,7 @@ class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
     Object? draggedElement = freezed,
     Object? dragPosition = freezed,
     Object? selectedElement = freezed,
+    Object? isEditingTextElement = freezed,
   }) {
     return _then(_$_EditorState(
       editor: editor == freezed
@@ -7919,6 +8396,10 @@ class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
           ? _value.selectedElement
           : selectedElement // ignore: cast_nullable_to_non_nullable
               as Option<Element>,
+      isEditingTextElement: isEditingTextElement == freezed
+          ? _value.isEditingTextElement
+          : isEditingTextElement // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -7927,7 +8408,11 @@ class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
 
 class _$_EditorState extends _EditorState {
   const _$_EditorState(
-      {required this.editor, required this.draggedElement, required this.dragPosition, required this.selectedElement})
+      {required this.editor,
+      required this.draggedElement,
+      required this.dragPosition,
+      required this.selectedElement,
+      required this.isEditingTextElement})
       : super._();
 
   @override
@@ -7938,10 +8423,12 @@ class _$_EditorState extends _EditorState {
   final Option<ui.Offset> dragPosition;
   @override
   final Option<Element> selectedElement;
+  @override
+  final bool isEditingTextElement;
 
   @override
   String toString() {
-    return 'EditorState(editor: $editor, draggedElement: $draggedElement, dragPosition: $dragPosition, selectedElement: $selectedElement)';
+    return 'EditorState(editor: $editor, draggedElement: $draggedElement, dragPosition: $dragPosition, selectedElement: $selectedElement, isEditingTextElement: $isEditingTextElement)';
   }
 
   @override
@@ -7952,7 +8439,8 @@ class _$_EditorState extends _EditorState {
             const DeepCollectionEquality().equals(other.editor, editor) &&
             const DeepCollectionEquality().equals(other.draggedElement, draggedElement) &&
             const DeepCollectionEquality().equals(other.dragPosition, dragPosition) &&
-            const DeepCollectionEquality().equals(other.selectedElement, selectedElement));
+            const DeepCollectionEquality().equals(other.selectedElement, selectedElement) &&
+            const DeepCollectionEquality().equals(other.isEditingTextElement, isEditingTextElement));
   }
 
   @override
@@ -7961,7 +8449,8 @@ class _$_EditorState extends _EditorState {
       const DeepCollectionEquality().hash(editor),
       const DeepCollectionEquality().hash(draggedElement),
       const DeepCollectionEquality().hash(dragPosition),
-      const DeepCollectionEquality().hash(selectedElement));
+      const DeepCollectionEquality().hash(selectedElement),
+      const DeepCollectionEquality().hash(isEditingTextElement));
 
   @JsonKey(ignore: true)
   @override
@@ -7974,7 +8463,8 @@ abstract class _EditorState extends EditorState {
       {required final Editor editor,
       required final Option<Element> draggedElement,
       required final Option<ui.Offset> dragPosition,
-      required final Option<Element> selectedElement}) = _$_EditorState;
+      required final Option<Element> selectedElement,
+      required final bool isEditingTextElement}) = _$_EditorState;
   const _EditorState._() : super._();
 
   @override
@@ -7985,6 +8475,8 @@ abstract class _EditorState extends EditorState {
   Option<ui.Offset> get dragPosition => throw _privateConstructorUsedError;
   @override
   Option<Element> get selectedElement => throw _privateConstructorUsedError;
+  @override
+  bool get isEditingTextElement => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_EditorStateCopyWith<_$_EditorState> get copyWith => throw _privateConstructorUsedError;

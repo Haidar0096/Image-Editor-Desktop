@@ -102,10 +102,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
         bool isSelected = editorState.selectedElement.map((el) => element.id == el.id).getOrElse(() => false);
 
         // map each element to its specific widget
-        Widget child = EditorElementDelegateWidget(
-          element: element,
-          isSelected: isSelected,
-        );
+        Widget child = EditorElementDelegateWidget(element: element);
 
         // Special handling for the selected element (decoration...)
         if (isSelected) {

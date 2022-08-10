@@ -7,8 +7,14 @@ import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 class EditorStaticTextWidget extends StatefulWidget {
   final editor.StaticTextProperties properties;
   final bool isSelected;
+  final bool isEditingText;
 
-  const EditorStaticTextWidget({Key? key, required this.properties, required this.isSelected}) : super(key: key);
+  const EditorStaticTextWidget({
+    Key? key,
+    required this.properties,
+    required this.isSelected,
+    required this.isEditingText,
+  }) : super(key: key);
 
   @override
   State<EditorStaticTextWidget> createState() => _EditorStaticTextWidgetState();
@@ -17,14 +23,12 @@ class EditorStaticTextWidget extends StatefulWidget {
 class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
   late final TextEditingController _textController;
   late final FocusNode _focusNode;
-  late bool _isEditing;
 
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController(text: widget.properties.text);
     _focusNode = FocusNode();
-    _isEditing = false;
 
     KeyEventResult Function(FocusNode, KeyEvent)? currentHandler = _focusNode.onKeyEvent;
 
@@ -36,6 +40,20 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
       }
       return currentHandler?.call(node, event) ?? KeyEventResult.ignored;
     };
+
+    // Check if we are editing the text initially
+    if (widget.isEditingText) {
+      _focusNode.requestFocus();
+    }
+
+    // register callback to change text editing mode on focus lost
+    _focusNode.addListener(_changeTextEditingModeOnFocusLost);
+  }
+
+  void _changeTextEditingModeOnFocusLost() {
+    if (!_focusNode.hasFocus) {
+      context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(false));
+    }
   }
 
   void _insertTabAtCurrentCursorPosition() {
@@ -63,41 +81,47 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
   @override
   void dispose() {
     _textController.dispose();
+    _focusNode.removeListener(_changeTextEditingModeOnFocusLost);
     _focusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-    child = TextField(
-      enabled: _isEditing,
-      focusNode: _focusNode,
-      controller: _textController,
-      decoration: null,
-      maxLines: null,
-      onChanged: (text) {
-        context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: text));
-      },
-      style: widget.properties.textStyle,
-      textAlign: widget.properties.textAlign ?? TextAlign.start,
-    );
+    return BlocBuilder<EditorBloc, EditorState>(
+      builder: (context, editorState) {
+        Widget child;
+        child = TextField(
+          enabled: editorState.isEditingTextElement,
+          focusNode: _focusNode,
+          controller: _textController,
+          decoration: null,
+          maxLines: null,
+          onChanged: (text) {
+            context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: text));
+          },
+          style: widget.properties.textStyle,
+          textAlign: widget.properties.textAlign ?? TextAlign.start,
+        );
 
-    if (!_isEditing && widget.isSelected) {
-      child = GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: () {
-          setState(() {
-            _isEditing = true;
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              _focusNode.requestFocus();
-              _textController.selection = TextSelection(baseOffset: 0, extentOffset: _textController.value.text.length);
-            });
-          });
-        },
-        child: child,
-      );
-    }
-    return child;
+        if (!editorState.isEditingTextElement && widget.isSelected) {
+          child = GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+              setState(() {
+                context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(true));
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  _focusNode.requestFocus();
+                  _textController.selection =
+                      TextSelection(baseOffset: 0, extentOffset: _textController.value.text.length);
+                });
+              });
+            },
+            child: child,
+          );
+        }
+        return child;
+      },
+    );
   }
 }

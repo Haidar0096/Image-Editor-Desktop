@@ -17,6 +17,7 @@ class EditorState with _$EditorState {
     required Option<Element> draggedElement,
     required Option<ui.Offset> dragPosition,
     required Option<Element> selectedElement,
+    required bool isEditingTextElement,
   }) = _EditorState;
 
   factory EditorState.initial() => EditorState(
@@ -24,5 +25,6 @@ class EditorState with _$EditorState {
         selectedElement: none(),
         draggedElement: none(),
         dragPosition: none(),
+        isEditingTextElement: false,
       );
 }
