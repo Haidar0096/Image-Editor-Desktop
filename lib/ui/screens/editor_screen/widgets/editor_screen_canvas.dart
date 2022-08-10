@@ -21,24 +21,30 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   // this key is used to locate the coordinate system of the canvas widget correctly
   final GlobalKey _editorCanvasContainerKey = GlobalKey();
 
-  late void Function(RawKeyEvent) _deleteKeyListener;
+  late void Function(RawKeyEvent) _keyboardKeysListener;
 
   @override
   void initState() {
     super.initState();
 
     // listen to the delete key event to remove the selected element
-    _deleteKeyListener = (RawKeyEvent event) {
+    _keyboardKeysListener = (RawKeyEvent event) {
       if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.delete) {
         BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
       }
+      if(event is RawKeyDownEvent && event.isControlPressed && event.character == 'z'){
+        BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
+      }
+      if(event is RawKeyDownEvent && event.isControlPressed && event.character == 'y'){
+        BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
+      }
     };
-    RawKeyboard.instance.addListener(_deleteKeyListener);
+    RawKeyboard.instance.addListener(_keyboardKeysListener);
   }
 
   @override
   void dispose() {
-    RawKeyboard.instance.removeListener(_deleteKeyListener);
+    RawKeyboard.instance.removeListener(_keyboardKeysListener);
     super.dispose();
   }
 
