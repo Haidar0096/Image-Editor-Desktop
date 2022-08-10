@@ -711,17 +711,14 @@ void main() {
       ),
       act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
+        final Element updatedStaticText = staticText.copyWith(
+          properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end),
+        );
         final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end),
-              )
-            },
-          ),
+          editor: Editor.fromSet({updatedStaticText}),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(staticText),
+          selectedElement: some(updatedStaticText),
         );
         return [expectedState];
       },
@@ -742,17 +739,15 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
+        final Element updatedStaticText = staticText.copyWith(
+            properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = EditorState(
           editor: Editor.fromSet(
-            {
-              staticText.copyWith(
-                  properties:
-                      (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end))
-            },
+            {updatedStaticText},
           ),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(staticText),
+          selectedElement: some(updatedStaticText),
         );
         return [
           expectedState,
@@ -980,20 +975,17 @@ void main() {
       ),
       act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
       expect: () {
-        final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                  sourceFilePath: some('hello.txt'),
-                  placeHolderText: 'hello.txt',
-                ),
-              )
-            },
+        final Element updatedVariableText = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            sourceFilePath: some('hello.txt'),
+            placeHolderText: 'hello.txt',
           ),
+        );
+        final expectedState = EditorState(
+          editor: Editor.fromSet({updatedVariableText}),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(variableText),
+          selectedElement: some(updatedVariableText),
         );
         return [expectedState];
       },
@@ -1039,20 +1031,17 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
-        final expectedState = EditorState(
-          editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                properties: (variableText.properties as VariableTextProperties).copyWith(
-                  sourceFilePath: some('hello.txt'),
-                  placeHolderText: 'hello.txt',
-                ),
-              ),
-            },
+        final Element updatedVariableText = variableText.copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            sourceFilePath: some('hello.txt'),
+            placeHolderText: 'hello.txt',
           ),
+        );
+        final expectedState = EditorState(
+          editor: Editor.fromSet({updatedVariableText}),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(variableText),
+          selectedElement: some(updatedVariableText),
         );
         return [
           expectedState,
@@ -1251,17 +1240,16 @@ void main() {
       ),
       act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
+        final Element updatedVariableText = variableText.copyWith(
+            properties:
+                (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = EditorState(
           editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                  properties:
-                      (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end)),
-            },
+            {updatedVariableText},
           ),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(variableText),
+          selectedElement: some(updatedVariableText),
         );
         return [expectedState];
       },
@@ -1284,17 +1272,16 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
+        final Element updatedVariableText = variableText.copyWith(
+            properties:
+                (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = EditorState(
           editor: Editor.fromSet(
-            {
-              variableText.copyWith(
-                  properties:
-                      (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end))
-            },
+            {updatedVariableText},
           ),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: some(variableText),
+          selectedElement: some(updatedVariableText),
         );
         return [
           expectedState,
@@ -1670,18 +1657,61 @@ void main() {
         showOrder: 1,
         id: '1',
       );
+      const Element image2 = Element(
+        rect: Rect.fromLTWH(300, 300, 250, 250),
+        properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello2.jpeg'),
+        showOrder: 2,
+        id: '2',
+      );
 
       blocTest<EditorBloc, EditorState>(
-        'Should update the drag position and the position of the dragged element when fired.',
+        'Should update the drag position and the dragged element when fired.',
+        seed: () => EditorState(
+          editor: Editor.fromSet({image1, image2}),
+          draggedElement: none(),
+          dragPosition: none(),
+          selectedElement: some(image2),
+        ),
+        build: () => createEditorBloc(),
+        act: (bloc) {
+          bloc.add(const ElementDragStart(image1, Offset(125.0, 125.0)));
+          bloc.add(const ElementDragUpdate(Offset(10.0, 10.0)));
+        },
+        expect: () {
+          final Element image1Updated = image1.copyWith(
+            rect: Rect.fromLTWH(
+              image1.rect.left + 10.0,
+              image1.rect.top + 10.0,
+              image1.rect.width,
+              image1.rect.height,
+            ),
+          );
+          return [
+            EditorState(
+              editor: Editor.fromSet({image1, image2}),
+              draggedElement: some(image1),
+              dragPosition: some(const Offset(125, 125)),
+              selectedElement: some(image2),
+            ),
+            EditorState(
+              editor: Editor.fromSet({image2, image1Updated}),
+              draggedElement: some(image1Updated),
+              dragPosition: some(const Offset(135, 135)),
+              selectedElement: some(image2),
+            ),
+          ];
+        },
+      );
+      blocTest<EditorBloc, EditorState>(
+        'Should update the drag position and the dragged element and the selected element if it exists when fired.',
         seed: () => EditorState(
           editor: Editor.fromSet({image1}),
           draggedElement: none(),
           dragPosition: none(),
-          selectedElement: none(),
+          selectedElement: some(image1),
         ),
         build: () => createEditorBloc(),
         act: (bloc) {
-          // image 2 must be selected as the dragged element
           bloc.add(const ElementDragStart(image1, Offset(125.0, 125.0)));
           bloc.add(const ElementDragUpdate(Offset(10.0, 10.0)));
         },
@@ -1699,13 +1729,13 @@ void main() {
               editor: Editor.fromSet({image1}),
               draggedElement: some(image1),
               dragPosition: some(const Offset(125, 125)),
-              selectedElement: none(),
+              selectedElement: some(image1),
             ),
             EditorState(
               editor: Editor.fromSet({image1Updated}),
-              draggedElement: some(image1),
+              draggedElement: some(image1Updated),
               dragPosition: some(const Offset(135, 135)),
-              selectedElement: none(),
+              selectedElement: some(image1Updated),
             ),
           ];
         },
@@ -1801,6 +1831,7 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
+        final Element image1Updated = image1.copyWith(rect: image1.rect.translate(10, 10));
         return [
           // after add event
           EditorState(
@@ -1818,14 +1849,14 @@ void main() {
           ),
           // after update drag event
           EditorState(
-            editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
-            draggedElement: some(image1),
-            dragPosition: some(image1.rect.center.translate(10, 10)),
+            editor: Editor.fromSet({image1Updated}),
+            draggedElement: some(image1Updated),
+            dragPosition: some(image1Updated.rect.center),
             selectedElement: none(),
           ),
           // after drag end event
           EditorState(
-            editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
+            editor: Editor.fromSet({image1Updated}),
             draggedElement: none(),
             dragPosition: none(),
             selectedElement: none(),
@@ -1839,7 +1870,7 @@ void main() {
           ),
           // after redo event
           EditorState(
-            editor: Editor.fromSet({image1.copyWith(rect: image1.rect.translate(10, 10))}),
+            editor: Editor.fromSet({image1Updated}),
             draggedElement: none(),
             dragPosition: none(),
             selectedElement: none(),

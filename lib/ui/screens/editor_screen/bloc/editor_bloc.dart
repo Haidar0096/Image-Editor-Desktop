@@ -342,13 +342,13 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         throw const InvalidStateError(message: "StaticTextAlignChanged was fired but no element was selected");
       },
       (el) {
+        final Element updatedElement = el.copyWith(
+          properties: (el.properties as StaticTextProperties).copyWith(textAlign: event.updatedTextAlign),
+        );
         emit(
           state.copyWith(
-            editor: state.editor.updateElement(
-              el.copyWith(
-                properties: (el.properties as StaticTextProperties).copyWith(textAlign: event.updatedTextAlign),
-              ),
-            ),
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
           ),
         );
         // save the state after editing
@@ -407,23 +407,29 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
           },
         );
 
-        fileOption.map((file) {
-          emit(
-            state.copyWith(
-              editor: state.editor.updateElement(
-                el.copyWith(
-                  properties: (el.properties as VariableTextProperties).copyWith(
-                    sourceFilePath: some(file.path),
-                    placeHolderText: file.path.split(io.Platform.pathSeparator).last,
-                  ),
-                ),
+        fileOption.fold(
+          () {
+            // no file was selected, do nothing
+          },
+          (file) {
+            // a file was selected, update the element
+            final Element updatedElement = el.copyWith(
+              properties: (el.properties as VariableTextProperties).copyWith(
+                sourceFilePath: some(file.path),
+                placeHolderText: file.path.split(io.Platform.pathSeparator).last,
               ),
-            ),
-          );
+            );
+            emit(
+              state.copyWith(
+                editor: state.editor.updateElement(updatedElement),
+                selectedElement: some(updatedElement),
+              ),
+            );
 
-          // save the state
-          _saveState(state);
-        });
+            // save the state
+            _saveState(state);
+          },
+        );
       },
     );
   }
@@ -464,13 +470,13 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         throw const InvalidStateError(message: "VariableTextAlignChanged was fired but no element was selected");
       },
       (el) {
+        final Element updatedElement = el.copyWith(
+          properties: (el.properties as VariableTextProperties).copyWith(textAlign: event.updatedTextAlign),
+        );
         emit(
           state.copyWith(
-            editor: state.editor.updateElement(
-              el.copyWith(
-                properties: (el.properties as VariableTextProperties).copyWith(textAlign: event.updatedTextAlign),
-              ),
-            ),
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
           ),
         );
 
@@ -567,10 +573,30 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       state.dragPosition,
       (Element el, ui.Offset pos) {
         ui.Offset updatedDragPosition = pos.translate(event.delta.dx, event.delta.dy);
+        final Element updatedElement = el.copyWith(rect: el.rect.translate(event.delta.dx, event.delta.dy));
+        // check also if this element is selected
+        final Option<Element> selectedElement = state.selectedElement.fold(
+          () {
+            // there is no selected element
+            return none();
+          },
+          (currentSelectedElement) {
+            // there is a selected element
+            if (currentSelectedElement.id == el.id) {
+              // this element is the selected element, update the selected element
+              return some(updatedElement);
+            } else {
+              // this element is not the selected element, don't update the selected element
+              return some(currentSelectedElement);
+            }
+          },
+        );
         emit(
           state.copyWith(
-            editor: state.editor.translateElement(el.id, event.delta),
+            editor: state.editor.updateElement(updatedElement),
+            draggedElement: some(updatedElement),
             dragPosition: some(updatedDragPosition),
+            selectedElement: selectedElement,
           ),
         );
       },
@@ -648,7 +674,10 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         final Element updatedElement =
             el.copyWith(showOrder: state.editor.elementsSortedByShowOrder.last.showOrder + 1);
         emit(
-          state.copyWith(editor: state.editor.updateElement(updatedElement), selectedElement: some(updatedElement)),
+          state.copyWith(
+            editor: state.editor.updateElement(updatedElement),
+            selectedElement: some(updatedElement),
+          ),
         );
 
         // save the state
