@@ -66,137 +66,137 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
     // register event handlers:
 
     on<Undo>(
-      _handleUndo,
+      (event, emit) async => await _handleUndo(event, emit),
       transformer: debounceDroppable(const Duration(milliseconds: 1)),
     );
 
     on<Redo>(
-      _handleRedo,
+      (event, emit) async => await _handleRedo(event, emit),
       transformer: debounceDroppable(const Duration(milliseconds: 1)),
     );
 
     on<AddStaticText>(
-      _handleAddStaticText,
+      (event, emit) async => await _handleAddStaticText(event, emit),
       transformer: droppable(),
     );
 
     on<StaticTextChanged>(
-      _handleStaticTextChanged,
+      (event, emit) async => await _handleStaticTextChanged(event, emit),
       transformer: droppable(),
     );
 
     on<StaticTextStyleChanged>(
-      _handleStaticTextStyleChanged,
+      (event, emit) async => await _handleStaticTextStyleChanged(event, emit),
       transformer: droppable(),
     );
 
     on<StaticTextAlignChanged>(
-      _handleStaticTextAlignChanged,
+      (event, emit) async => await _handleStaticTextAlignChanged(event, emit),
       transformer: droppable(),
     );
 
     on<AddVariableText>(
-      _handleAddVariableText,
+      (event, emit) async => await _handleAddVariableText(event, emit),
       transformer: droppable(),
     );
 
     on<VariableTextFileChanged>(
-      _handleVariableTextFileChanged,
+      (event, emit) async => await _handleVariableTextFileChanged(event, emit),
       transformer: droppable(),
     );
 
     on<VariableTextStyleChanged>(
-      _handleVariableTextStyleChanged,
+      (event, emit) async => await _handleVariableTextStyleChanged(event, emit),
       transformer: droppable(),
     );
 
     on<VariableTextAlignChanged>(
-      _handleVariableTextAlignChanged,
+      (event, emit) async => await _handleVariableTextAlignChanged(event, emit),
       transformer: droppable(),
     );
 
     on<AddImage>(
-      _handleAddImage,
+      (event, emit) async => await _handleAddImage(event, emit),
       transformer: droppable(),
     );
 
     on<CanvasDragStart>(
-      _handleCanvasDragStart,
+      (event, emit) async => await _handleCanvasDragStart(event, emit),
       transformer: droppable(),
     );
 
     on<CanvasDragUpdate>(
-      _handleCanvasDragUpdate,
+      (event, emit) async => await _handleCanvasDragUpdate(event, emit),
       transformer: droppable(),
     );
 
     on<CanvasDragEnd>(
-      _handleCanvasDragEnd,
+      (event, emit) async => await _handleCanvasDragEnd(event, emit),
       transformer: droppable(),
     );
 
     on<CanvasTap>(
-      _handleCanvasTap,
+      (event, emit) async => await _handleCanvasTap(event, emit),
       transformer: droppable(),
     );
 
     on<ElementDragStart>(
-      _handleElementDragStart,
+      (event, emit) async => await _handleElementDragStart(event, emit),
       transformer: droppable(),
     );
 
     on<ElementDragUpdate>(
-      _handleElementDragUpdate,
+      (event, emit) async => await _handleElementDragUpdate(event, emit),
       transformer: droppable(),
     );
 
     on<ElementDragEnd>(
-      _handleElementDragEnd,
+      (event, emit) async => await _handleElementDragEnd(event, emit),
       transformer: droppable(),
     );
 
     on<ElementTap>(
-      _handleElementTap,
+      (event, emit) async => await _handleElementTap(event, emit),
       transformer: droppable(),
     );
 
     on<RemoveSelectedElement>(
-      _handleRemoveSelectedElement,
+      (event, emit) async => await _handleRemoveSelectedElement(event, emit),
       transformer: droppable(),
     );
 
     on<DeselectElement>(
-      _handleDeselectElement,
+      (event, emit) async => await _handleDeselectElement(event, emit),
       transformer: droppable(),
     );
 
     on<BringSelectedElementToFront>(
-      _handleBringSelectedElementToFront,
+      (event, emit) async => await _handleBringSelectedElementToFront(event, emit),
       transformer: droppable(),
     );
 
     on<ResizeUpdate>(
-      _handleResizeUpdate,
+      (event, emit) async => await _handleResizeUpdate(event, emit),
       transformer: droppable(),
     );
 
     on<ResizeEnd>(
-      _handleResizeEnd,
+      (event, emit) async => await _handleResizeEnd(event, emit),
       transformer: droppable(),
     );
 
     on<SelectedElementSizeChanged>(
-      _handleSelectedElementSizeChanged,
+      (event, emit) async => await _handleSelectedElementSizeChanged(event, emit),
       transformer: droppable(),
     );
 
     on<SelectedElementPositionChanged>(
-      _handleSelectedElementPositionChanged,
+      (event, emit) async => await _handleSelectedElementPositionChanged(event, emit),
       transformer: droppable(),
     );
 
     on<ClearEditor>(
-      _handleClearEditor,
+      (event, emit) async => await _handleClearEditor(event, emit),
       transformer: droppable(),
     );
 
@@ -226,10 +226,10 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
           // there is previous editor available, emit it if its editor is different than current editor
           if (previousEditor != state.editor) {
             emit(
-              state.copyWith(
+              EditorState(
                 editor: previousEditor,
-                dragPosition: none(),
                 draggedElement: none(),
+                dragPosition: none(),
                 selectedElement: none(),
               ),
             );
@@ -245,10 +245,10 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
           // there is next editor available, emit it if it is different than current editor
           if (nextEditor != state.editor) {
             emit(
-              state.copyWith(
+              EditorState(
                 editor: nextEditor,
-                dragPosition: none(),
                 draggedElement: none(),
+                dragPosition: none(),
                 selectedElement: none(),
               ),
             );
@@ -390,7 +390,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   }
 
   Future<void> _handleVariableTextFileChanged(VariableTextFileChanged event, Emitter emit) async {
-    state.selectedElement.fold(
+    return state.selectedElement.fold<Future<void>>(
       () {
         throw const InvalidStateError(message: "VariableTextFileChanged was fired but no element was selected");
       },

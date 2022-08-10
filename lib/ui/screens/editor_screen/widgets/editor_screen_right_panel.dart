@@ -35,9 +35,14 @@ class EditorScreenRightPanel extends StatelessWidget {
                   _divider(context),
                   _elementHeightText(context, el),
                   _divider(context),
-                  // if selected element is text element:
+                  // if selected element is any text element:
                   if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
                     _elementSizeText(context, el),
+                    _divider(context),
+                  ],
+                  // if selected element is variable text:
+                  if (el.properties.isVariableTextProperties) ...[
+                    _elementSourceFileText(context, el),
                     _divider(context),
                   ],
                   Padding(
@@ -164,6 +169,15 @@ class EditorScreenRightPanel extends StatelessWidget {
         }
         return 'Font: ${currentStyle?.fontSize?.toStringAsFixed(2)}';
       },
+    );
+  }
+
+  Widget _elementSourceFileText(BuildContext context, Element el) {
+    return InkWell(
+      onTap: () {
+        context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged());
+      },
+      child: Text('File: ${(el.properties as VariableTextProperties).placeHolderText}', textAlign: TextAlign.center),
     );
   }
 }

@@ -88,7 +88,15 @@ class EditorScreenLeftPanel extends StatelessWidget {
                       icon: Icons.deselect,
                       onTap: () => context.read<EditorBloc>().add(const EditorEvent.deselectElement()),
                     ),
-                    // if selected element is text element:
+                    // if selected element is variable text:
+                    if (el.properties.isVariableTextProperties)
+                      _createLeftPanelAction(
+                        context: context,
+                        tooltipMessage: AppLocalizations.of(context)!.chooseVariableTextSourceFile,
+                        icon: Icons.source,
+                        onTap: () => context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged()),
+                      ),
+                    // if selected element is any text element:
                     if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
                       _createLeftPanelAction(
                         context: context,
