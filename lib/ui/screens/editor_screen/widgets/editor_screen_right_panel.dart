@@ -4,6 +4,7 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/fonts_dialog.dart';
 
 class EditorScreenRightPanel extends StatelessWidget {
   const EditorScreenRightPanel({Key? key}) : super(key: key);
@@ -12,10 +13,6 @@ class EditorScreenRightPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData toc = Theme.of(context);
     return BlocBuilder<EditorBloc, EditorState>(
-      // TODO: Add options to style the variable and static text, and change the source file of variable text.
-      // TODO: then add option to process the data (generate the images with the variables set) and proper error handling
-      // TODO: then add option to save the currently edited widget locally or online
-      // TODO: remove the widgets below in favor of the widgets mentioned above
       builder: (context, editorState) => Container(
         color: toc.colorScheme.primary,
         child: editorState.selectedElement
@@ -38,6 +35,8 @@ class EditorScreenRightPanel extends StatelessWidget {
                   // if selected element is any text element:
                   if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
                     _elementSizeText(context, el),
+                    _divider(context),
+                    _elementFontText(context, el),
                     _divider(context),
                   ],
                   // if selected element is variable text:
@@ -178,6 +177,21 @@ class EditorScreenRightPanel extends StatelessWidget {
         context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged());
       },
       child: Text('File: ${(el.properties as VariableTextProperties).placeHolderText}', textAlign: TextAlign.center),
+    );
+  }
+
+  Widget _elementFontText(BuildContext context, Element el) {
+    TextStyle? style;
+    if (el.properties.isStaticTextProperties) {
+      style = (el.properties as StaticTextProperties).textStyle;
+    } else if (el.properties.isVariableTextProperties) {
+      style = (el.properties as VariableTextProperties).textStyle;
+    }
+    return InkWell(
+      onTap: () {
+        showFontsDialog(context, el);
+      },
+      child: Text('Font: ${style?.fontFamily?.split('_')[0]}', textAlign: TextAlign.center),
     );
   }
 }

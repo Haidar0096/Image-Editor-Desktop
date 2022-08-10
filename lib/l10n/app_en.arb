@@ -24,10 +24,10 @@
   "appName": "Image Editor",
   "appVersion": "Version: 1.0",
   "pressAnywhereToGoBack": "Press anywhere to go back.",
-  "errorHasOccurred" : "An error has occurred.",
+  "errorHasOccurred": "An error has occurred.",
   "undo": "Undo",
   "redo": "Redo",
-  "clearEditor":"Clear Editor",
+  "clearEditor": "Clear Editor",
   "properties": "Properties",
   "fileName": "File Name",
   "showOrder": "Show Order",
@@ -44,5 +44,7 @@
   "love": "❤ This app is dedicated to my love, Mom, JE T'AIME ❤",
   "featureComingSoon": "This feature is coming soon!",
   "ok": "OK",
-  "deselect": "Deselect"
+  "deselect": "Deselect",
+  "fontFamily": "Font Family",
+  "chooseVariableTextSourceFile": "Choose variable text source file."
 }

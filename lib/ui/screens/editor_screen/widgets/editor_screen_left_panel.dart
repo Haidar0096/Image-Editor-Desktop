@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:photo_editor/services/editor/editor.dart';
+import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+
+import 'fonts_dialog.dart';
 
 class EditorScreenLeftPanel extends StatelessWidget {
   const EditorScreenLeftPanel({Key? key}) : super(key: key);
@@ -102,79 +104,25 @@ class EditorScreenLeftPanel extends StatelessWidget {
                         context: context,
                         tooltipMessage: AppLocalizations.of(context)!.textJustification,
                         icon: Icons.format_align_justify,
-                        onTap: () {
-                          late final TextAlign? selectedElementTextAlign;
-                          if (el.properties.isStaticTextProperties) {
-                            selectedElementTextAlign = (el.properties as StaticTextProperties).textAlign;
-                          } else if (el.properties.isVariableTextProperties) {
-                            selectedElementTextAlign = (el.properties as VariableTextProperties).textAlign;
-                          }
-
-                          List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
-                          int nextIndex = (values.indexOf(selectedElementTextAlign ?? values[0]) + 1) % values.length;
-                          TextAlign? updatedTextAlign = values[nextIndex];
-                          if (el.properties.isStaticTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
-                          } else if (el.properties.isVariableTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
-                          }
-                        },
+                        onTap: () => _changeTextJustification(el, context),
                       ),
                       _createLeftPanelAction(
                         context: context,
                         tooltipMessage: AppLocalizations.of(context)!.makeTextLarger,
                         icon: Icons.text_increase_rounded,
-                        onTap: () {
-                          late final TextStyle? selectedElementTextStyle;
-                          if (el.properties.isStaticTextProperties) {
-                            selectedElementTextStyle = (el.properties as StaticTextProperties).textStyle;
-                          } else if (el.properties.isVariableTextProperties) {
-                            selectedElementTextStyle = (el.properties as VariableTextProperties).textStyle;
-                          }
-
-                          TextStyle? updatedTextStyle =
-                              selectedElementTextStyle?.copyWith(fontSize: selectedElementTextStyle.fontSize! + 1);
-
-                          if (el.properties.isStaticTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
-                          } else if (el.properties.isVariableTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
-                          }
-                        },
+                        onTap: () => _makeTextLarger(el, context),
                       ),
                       _createLeftPanelAction(
                         context: context,
                         tooltipMessage: AppLocalizations.of(context)!.makeTextSmaller,
                         icon: Icons.text_decrease_rounded,
-                        onTap: () {
-                          late final TextStyle? selectedElementTextStyle;
-                          if (el.properties.isStaticTextProperties) {
-                            selectedElementTextStyle = (el.properties as StaticTextProperties).textStyle;
-                          } else if (el.properties.isVariableTextProperties) {
-                            selectedElementTextStyle = (el.properties as VariableTextProperties).textStyle;
-                          }
-
-                          TextStyle updatedTextStyle =
-                              selectedElementTextStyle!.copyWith(fontSize: selectedElementTextStyle.fontSize! - 1);
-
-                          if (el.properties.isStaticTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
-                          } else if (el.properties.isVariableTextProperties) {
-                            context
-                                .read<EditorBloc>()
-                                .add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
-                          }
-                        },
+                        onTap: () => _makeTextSmaller(el, context),
+                      ),
+                      _createLeftPanelAction(
+                        context: context,
+                        tooltipMessage: AppLocalizations.of(context)!.fontFamily,
+                        icon: Icons.font_download,
+                        onTap: () => showFontsDialog(context, el),
                       ),
                     ]
                   ],
@@ -184,6 +132,73 @@ class EditorScreenLeftPanel extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _changeTextJustification(editor.Element element, BuildContext context) {
+    _changeTextProperties(
+      context: context,
+      element: element,
+      updatedTextAlignBuilder: (currentTextAlign) {
+        List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
+        int nextIndex = (values.indexOf(currentTextAlign ?? values[0]) + 1) % values.length;
+        return values[nextIndex];
+      },
+    );
+  }
+
+  void _makeTextLarger(editor.Element element, BuildContext context) {
+    _changeTextProperties(
+      context: context,
+      element: element,
+      updatedTextStyleBuilder: (currentTextStyle) =>
+          currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 1),
+    );
+  }
+
+  void _makeTextSmaller(editor.Element element, BuildContext context) {
+    _changeTextProperties(
+      context: context,
+      element: element,
+      updatedTextStyleBuilder: (currentTextStyle) =>
+          currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! - 1),
+    );
+  }
+
+  void _changeTextProperties({
+    required BuildContext context,
+    required editor.Element element,
+    TextStyle? Function(TextStyle? currentTextStyle)? updatedTextStyleBuilder,
+    TextAlign? Function(TextAlign? currentTextAlign)? updatedTextAlignBuilder,
+  }) {
+    late final TextStyle? selectedElementTextStyle;
+    late final TextAlign? selectedElementTextAlign;
+    if (element.properties.isStaticTextProperties) {
+      selectedElementTextStyle = (element.properties as editor.StaticTextProperties).textStyle;
+      selectedElementTextAlign = (element.properties as editor.StaticTextProperties).textAlign;
+    } else if (element.properties.isVariableTextProperties) {
+      selectedElementTextStyle = (element.properties as editor.VariableTextProperties).textStyle;
+      selectedElementTextAlign = (element.properties as editor.VariableTextProperties).textAlign;
+    }
+
+    if (updatedTextStyleBuilder != null) {
+      TextStyle? updatedTextStyle = updatedTextStyleBuilder.call(selectedElementTextStyle);
+
+      if (element.properties.isStaticTextProperties) {
+        context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
+      } else if (element.properties.isVariableTextProperties) {
+        context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
+      }
+    }
+
+    if (updatedTextAlignBuilder != null) {
+      TextAlign? updatedTextAlign = updatedTextAlignBuilder.call(selectedElementTextAlign);
+
+      if (element.properties.isStaticTextProperties) {
+        context.read<EditorBloc>().add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
+      } else if (element.properties.isVariableTextProperties) {
+        context.read<EditorBloc>().add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
+      }
+    }
   }
 
   Widget _createLeftPanelAction({

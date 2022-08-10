@@ -30,6 +30,9 @@ void main() async {
   // load language settings
   final storage = await HydratedStorage.build(storageDirectory: await getApplicationSupportDirectory());
 
+  // // prevent http fetching of google fonts
+  // GoogleFonts.config.allowRuntimeFetching = false;
+
   HydratedBlocOverrides.runZoned(
     () => runApp(const PhotoEditorApp()),
     storage: storage,
