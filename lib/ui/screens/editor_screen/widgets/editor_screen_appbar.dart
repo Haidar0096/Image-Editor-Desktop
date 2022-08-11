@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_editor/ui/common/widgets/bar.dart';
 import 'package:photo_editor/ui/common/widgets/coming_soon_dialog.dart';
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/widgets/settings_dialog.dart';
@@ -10,48 +11,41 @@ class EditorScreenAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData toc = Theme.of(context);
-    return Container(
-      color: toc.colorScheme.secondary,
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              child: Text(
-                AppLocalizations.of(context)!.file,
-                style: toc.textTheme.titleMedium,
-              ),
-              onTap: () {
-                // TODO: Implement "file" menu
-                showComingSoonDialog(context);
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              child: Text(
-                AppLocalizations.of(context)!.settings,
-                style: toc.textTheme.titleMedium,
-              ),
-              onTap: () {
-                showSettingsDialog(context);
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              child: Text(
-                AppLocalizations.of(context)!.about,
-                style: toc.textTheme.titleMedium,
-              ),
-              onTap: () {
-                Navigator.of(context).pushNamed(AboutScreen.routeName);
-              },
-            ),
-          )
-        ],
+    return Bar(
+      backgroundColor: toc.colorScheme.primary,
+      mainAxis: Axis.horizontal,
+      actions: [
+        _buildBarAction(
+          context,
+          AppLocalizations.of(context)!.file,
+          () => showComingSoonDialog(context),
+        ),
+        _buildBarAction(
+          context,
+          AppLocalizations.of(context)!.settings,
+          () => showSettingsDialog(context),
+        ),
+        _buildBarAction(
+          context,
+          AppLocalizations.of(context)!.about,
+          () => Navigator.of(context).pushNamed(AboutScreen.routeName),
+        ),
+      ],
+    );
+  }
+
+  BarAction _buildBarAction(
+    BuildContext context,
+    String text,
+    VoidCallback onTap,
+  ) {
+    final ThemeData toc = Theme.of(context);
+    return BarAction(
+      onTap: onTap,
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: toc.textTheme.titleMedium,
       ),
     );
   }

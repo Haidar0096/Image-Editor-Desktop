@@ -2,21 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:photo_editor/ui/common/routes/route_transitions.dart';
 import 'package:photo_editor/ui/common/styles/styles.dart';
 
-/// Shows a dialog with a list of options of type [T]. The list is backed by another list of [Widget]s of the same length.
-/// Each widget corresponds to the option at the same index. When a widget is tapped, and if [onSelected] is provided, then
+import 'bar.dart';
+
+typedef OptionMapper<T> = Widget Function(T option);
+
+/// Shows a dialog with a list of widgets created from a list of options of type [T].
+/// Each widget corresponds to an option. When a widget is tapped, and if [onSelected] is provided, then
 /// this callback will be invoked with the corresponding value of the [T] type. See [ListDialog] for more details.
 ///
 /// Parameters:
 ///
 /// - [options] : The options that will correspond to the widgets in the list.
-/// - [optionsWidgets] : The widgets that will be displayed in the list.
+/// - [optionMapper] : Maps each option into a corresponding widget.
 /// - [onSelected] : The callback that will be invoked when an option is selected.
 /// - [title] : The title of the dialog.
 /// - [closeWhenTappedOutside] : Whether the dialog should close when tapped outside of the dialog.
 void showListDialog<T>({
   required BuildContext context,
   required List<T> options,
-  required List<Widget> optionsWidgets,
+  required OptionMapper optionMapper,
   void Function(T option)? onSelected,
   Widget? title,
   bool? closeWhenTappedOutside,
@@ -30,30 +34,37 @@ void showListDialog<T>({
 }) =>
     Navigator.of(context).push(
       fadeInRoute(
-          child: ListDialog<T>(
-            options: options,
-            optionsWidgets: optionsWidgets,
-            onSelected: onSelected,
-            title: title,
-            closeWhenTappedOutside: closeWhenTappedOutside,
-            width: width,
-            height: height,
-            titleBarFlex: titleBarFlex,
-            bodyFlex: bodyFlex,
-            titleBarBackgroundColor: titleBackgroundColor,
-            bodyBackgroundColor: bodyBackgroundColor,
-            elevation: elevation,
-          ),
-          opaque: false,
-          duration: kDialogTransitionDuration),
+        child: ListDialog<T>(
+          options: options,
+          optionMapper: optionMapper,
+          onSelected: onSelected,
+          title: title,
+          closeWhenTappedOutside: closeWhenTappedOutside,
+          width: width,
+          height: height,
+          titleBarFlex: titleBarFlex,
+          bodyFlex: bodyFlex,
+          titleBarBackgroundColor: titleBackgroundColor,
+          bodyBackgroundColor: bodyBackgroundColor,
+          elevation: elevation,
+        ),
+        opaque: false,
+        duration: kDialogTransitionDuration,
+      ),
     );
 
 /// A customizable dialog widget with a list of options of type [T]. Usually used with [showListDialog].
-/// The list of options is backed by a list of widgets of the same length, each option corresponds to the widget at the same index.
 /// When the widget is pressed and if onSelected is provided then it will be invoked with the corresponding option.
+/// Parameters:
+///
+/// - [options] : The options that will correspond to the widgets in the list.
+/// - [optionMapper] : Maps each option into a corresponding widget.
+/// - [onSelected] : The callback that will be invoked when an option is selected.
+/// - [title] : The title of the dialog.
+/// - [closeWhenTappedOutside] : Whether the dialog should close when tapped outside of the dialog.
 class ListDialog<T> extends StatelessWidget {
   final List<T> options;
-  final List<Widget> optionsWidgets;
+  final OptionMapper optionMapper;
   final void Function(T option)? onSelected;
   final Widget? title;
   final bool? closeWhenTappedOutside;
@@ -68,7 +79,7 @@ class ListDialog<T> extends StatelessWidget {
   const ListDialog({
     Key? key,
     required this.options,
-    required this.optionsWidgets,
+    required this.optionMapper,
     this.onSelected,
     this.title,
     this.closeWhenTappedOutside,
@@ -79,11 +90,7 @@ class ListDialog<T> extends StatelessWidget {
     this.titleBarBackgroundColor,
     this.bodyBackgroundColor,
     this.elevation,
-  })  : assert(
-          options.length == optionsWidgets.length,
-          'The options and optionsWidgets must be of the same length',
-        ),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,16 +116,25 @@ class ListDialog<T> extends StatelessWidget {
                   child: Column(
                     children: [
                       Expanded(
-                          flex: titleBarFlex ?? 10,
-                          child: ListDialogTitleBar(
-                            title: title,
-                            backgroundColor: titleBarBackgroundColor,
-                          )),
+                        flex: titleBarFlex ?? 10,
+                        child: Bar(
+                          backgroundColor: titleBarBackgroundColor,
+                          actions: [
+                            BarAction(
+                              preferredAlignment: Alignment.center,
+                              child: Container(
+                                child: title,
+                              ),
+                            ),
+                          ],
+                          mainAxis: Axis.horizontal,
+                        ),
+                      ),
                       Expanded(
                         flex: bodyFlex ?? 90,
                         child: ListDialogBody(
                           options: options,
-                          optionsWidgets: optionsWidgets,
+                          optionMapper: optionMapper,
                           onSelected: onSelected,
                           backgroundColor: bodyBackgroundColor,
                         ),
@@ -135,58 +151,16 @@ class ListDialog<T> extends StatelessWidget {
   }
 }
 
-class ListDialogTitleBar extends StatelessWidget {
-  /// The title of the dialog.
-  final Widget? title;
-
-  final Color? backgroundColor;
-
-  const ListDialogTitleBar({
-    Key? key,
-    required this.title,
-    this.backgroundColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData toc = Theme.of(context);
-    return Container(
-      color: backgroundColor ?? toc.colorScheme.secondary,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: title,
-          ),
-          Align(
-            alignment: Directionality.of(context).name == 'ltr' ? Alignment.topLeft : Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                child: Icon(
-                  Icons.arrow_back,
-                  color: toc.colorScheme.onSecondary,
-                ),
-                onTap: () => Navigator.of(context).pop(),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class ListDialogBody<T> extends StatelessWidget {
   final List<T> options;
-  final List<Widget> optionsWidgets;
+  final OptionMapper optionMapper;
   final void Function(T option)? onSelected;
   final Color? backgroundColor;
 
   const ListDialogBody({
     Key? key,
     required this.options,
-    required this.optionsWidgets,
+    required this.optionMapper,
     this.onSelected,
     this.backgroundColor,
   }) : super(key: key);
@@ -201,7 +175,7 @@ class ListDialogBody<T> extends StatelessWidget {
         itemBuilder: (context, index) {
           return Listener(
             onPointerUp: (_) => onSelected?.call(options[index]),
-            child: optionsWidgets[index],
+            child: optionMapper.call(options[index]),
           );
         },
       ),

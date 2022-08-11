@@ -6,8 +6,9 @@ get _defaultButtonStyle => ButtonStyle(
 
 /// The theme of the app.
 get themeData => ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey).copyWith(
-        background: Colors.grey.shade500,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: Colors.deepPurpleAccent,
+        background: Colors.grey,
       ),
       textTheme: Typography.whiteRedwoodCity,
       elevatedButtonTheme: ElevatedButtonThemeData(style: _defaultButtonStyle),

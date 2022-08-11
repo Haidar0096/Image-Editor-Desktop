@@ -1,61 +1,60 @@
 import 'package:flutter/material.dart' hide Element;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:photo_editor/services/editor/editor.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/common_functions.dart';
 import 'package:photo_editor/ui/screens/editor_screen/widgets/fonts_dialog.dart';
 
 class EditorScreenRightPanel extends StatelessWidget {
   const EditorScreenRightPanel({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final ThemeData toc = Theme.of(context);
-    return BlocBuilder<EditorBloc, EditorState>(
-      builder: (context, editorState) => Container(
-        color: toc.colorScheme.primary,
-        child: editorState.selectedElement
-            .map<Widget>(
-              (el) => ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
-                  ),
-                  _divider(context),
-                  _xPositionText(context, el),
-                  _divider(context),
-                  _yPositionText(context, el),
-                  _divider(context),
-                  _elementWidthText(context, el),
-                  _divider(context),
-                  _elementHeightText(context, el),
-                  _divider(context),
-                  // if selected element is any text element:
-                  if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
-                    _elementSizeText(context, el),
+  Widget build(BuildContext context) => BlocBuilder<EditorBloc, EditorState>(
+        builder: (context, editorState) => Container(
+          color: Theme.of(context).colorScheme.secondary,
+          child: editorState.selectedElement
+              .map<Widget>(
+                (el) => ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
+                    ),
                     _divider(context),
-                    _elementFontText(context, el),
+                    _xPositionText(context, el),
+                    _divider(context),
+                    _yPositionText(context, el),
+                    _divider(context),
+                    _elementWidthText(context, el),
+                    _divider(context),
+                    _elementHeightText(context, el),
+                    _divider(context),
+                    // if selected element is any text element:
+                    if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
+                      _elementSizeText(context, el),
+                      _divider(context),
+                      _elementFontText(context, el),
+                      _divider(context),
+                    ],
+                    // if selected element is variable text:
+                    if (el.properties.isVariableTextProperties) ...[
+                      _elementSourceFileText(context, el),
+                      _divider(context),
+                    ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
+                    ),
                     _divider(context),
                   ],
-                  // if selected element is variable text:
-                  if (el.properties.isVariableTextProperties) ...[
-                    _elementSourceFileText(context, el),
-                    _divider(context),
-                  ],
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
-                  ),
-                  _divider(context),
-                ],
-              ),
-            )
-            .getOrElse(() => Container()),
-      ),
-    );
-  }
+                ),
+              )
+              .getOrElse(() => Container()),
+        ),
+      );
 
   Divider _divider(BuildContext context) => Divider(color: Theme.of(context).colorScheme.onSecondary);
 
@@ -85,7 +84,7 @@ class EditorScreenRightPanel extends StatelessWidget {
     );
   }
 
-  Widget _xPositionText(BuildContext context, Element el) => _createDoubleStateText(
+  Widget _xPositionText(BuildContext context, editor.Element el) => _createDoubleStateText(
         context: context,
         initialText: 'x: ${el.rect.topLeft.dx.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.topLeft.dx.toStringAsFixed(2),
@@ -98,7 +97,7 @@ class EditorScreenRightPanel extends StatelessWidget {
         },
       );
 
-  Widget _yPositionText(BuildContext context, Element el) => _createDoubleStateText(
+  Widget _yPositionText(BuildContext context, editor.Element el) => _createDoubleStateText(
         context: context,
         initialText: 'y: ${el.rect.topLeft.dy.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.topLeft.dy.toStringAsFixed(2),
@@ -111,7 +110,7 @@ class EditorScreenRightPanel extends StatelessWidget {
         },
       );
 
-  Widget _elementWidthText(BuildContext context, Element el) => _createDoubleStateText(
+  Widget _elementWidthText(BuildContext context, editor.Element el) => _createDoubleStateText(
         context: context,
         initialText: 'w: ${el.rect.size.width.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.size.width.toStringAsFixed(2),
@@ -125,7 +124,7 @@ class EditorScreenRightPanel extends StatelessWidget {
         },
       );
 
-  Widget _elementHeightText(BuildContext context, Element el) => _createDoubleStateText(
+  Widget _elementHeightText(BuildContext context, editor.Element el) => _createDoubleStateText(
         context: context,
         initialText: 'h: ${el.rect.size.height.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.size.height.toStringAsFixed(2),
@@ -139,59 +138,63 @@ class EditorScreenRightPanel extends StatelessWidget {
         },
       );
 
-  Widget _elementSizeText(BuildContext context, Element el) {
-    TextStyle? currentStyle;
-
+  Widget _elementSizeText(BuildContext context, editor.Element el) {
+    TextStyle? currentTextStyle;
     if (el.properties.isStaticTextProperties) {
-      currentStyle = (el.properties as StaticTextProperties).textStyle;
+      currentTextStyle = (el.properties as editor.StaticTextProperties).textStyle;
     } else if (el.properties.isVariableTextProperties) {
-      currentStyle = (el.properties as VariableTextProperties).textStyle;
+      currentTextStyle = (el.properties as editor.VariableTextProperties).textStyle;
     }
 
     return _createDoubleStateText(
       context: context,
-      initialText: '${AppLocalizations.of(context)!.fontSize}: ${currentStyle?.fontSize?.toStringAsFixed(2)}',
-      onGainFocus: () => '${currentStyle?.fontSize?.toStringAsFixed(2)}',
+      initialText: '${AppLocalizations.of(context)!.fontSize}: ${currentTextStyle?.fontSize?.toStringAsFixed(2)}',
+      onGainFocus: () => '${currentTextStyle?.fontSize?.toStringAsFixed(2)}',
       onLoseFocus: (updatedValue) {
         double? updatedFontSize = double.tryParse(updatedValue);
 
         if (updatedFontSize == null || !updatedFontSize.isFinite) {
-          updatedFontSize = currentStyle?.fontSize;
+          updatedFontSize = currentTextStyle?.fontSize;
         }
 
-        TextStyle? updatedTextStyle = currentStyle?.copyWith(fontSize: updatedFontSize);
+        changeTextElementProperties(
+          context: context,
+          element: el,
+          updatedTextStyleBuilder: (currentTextStyle) => currentTextStyle?.copyWith(fontSize: updatedFontSize),
+        );
 
-        if (el.properties.isStaticTextProperties) {
-          context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
-        } else if (el.properties.isVariableTextProperties) {
-          context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
-        }
-        return 'Font: ${currentStyle?.fontSize?.toStringAsFixed(2)}';
+        return 'Font: ${currentTextStyle?.fontSize?.toStringAsFixed(2)}';
       },
     );
   }
 
-  Widget _elementSourceFileText(BuildContext context, Element el) {
-    return InkWell(
-      onTap: () {
-        context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged());
-      },
-      child: Text('File: ${(el.properties as VariableTextProperties).placeHolderText}', textAlign: TextAlign.center),
-    );
-  }
+  Widget _elementSourceFileText(BuildContext context, editor.Element el) => InkWell(
+        onTap: () {
+          context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged());
+        },
+        child: Text('File: ${(el.properties as editor.VariableTextProperties).placeHolderText}',
+            textAlign: TextAlign.center),
+      );
 
-  Widget _elementFontText(BuildContext context, Element el) {
+  Widget _elementFontText(BuildContext context, editor.Element el) {
     TextStyle? style;
     if (el.properties.isStaticTextProperties) {
-      style = (el.properties as StaticTextProperties).textStyle;
+      style = (el.properties as editor.StaticTextProperties).textStyle;
     } else if (el.properties.isVariableTextProperties) {
-      style = (el.properties as VariableTextProperties).textStyle;
+      style = (el.properties as editor.VariableTextProperties).textStyle;
     }
     return InkWell(
-      onTap: () {
-        showFontsDialog(context, el);
-      },
+      onTap: () => _showFontsDialog(el, context),
       child: Text('Font: ${style?.fontFamily?.split('_')[0]}', textAlign: TextAlign.center),
     );
   }
+
+  void _showFontsDialog(editor.Element el, BuildContext context) => showFontsDialog(
+        context: context,
+        onSelected: (fontFamily) => changeTextElementProperties(
+          context: context,
+          element: el,
+          updatedTextStyleBuilder: (currentTextStyle) => GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),
+        ),
+      );
 }

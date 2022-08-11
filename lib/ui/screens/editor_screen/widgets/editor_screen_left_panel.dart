@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 
+import 'common_functions.dart';
 import 'fonts_dialog.dart';
 
 class EditorScreenLeftPanel extends StatelessWidget {
@@ -15,7 +17,7 @@ class EditorScreenLeftPanel extends StatelessWidget {
     final MediaQueryData moc = MediaQuery.of(context);
     return BlocBuilder<EditorBloc, EditorState>(
       builder: (context, editorState) => Container(
-        color: toc.colorScheme.primary,
+        color: toc.colorScheme.secondary,
         child: ListView(
           children: [
             _createLeftPanelAction(
@@ -122,7 +124,7 @@ class EditorScreenLeftPanel extends StatelessWidget {
                         context: context,
                         tooltipMessage: AppLocalizations.of(context)!.fontFamily,
                         icon: Icons.font_download,
-                        onTap: () => showFontsDialog(context, el),
+                        onTap: () => _showFontsDialog(el, context),
                       ),
                     ]
                   ],
@@ -134,72 +136,38 @@ class EditorScreenLeftPanel extends StatelessWidget {
     );
   }
 
-  void _changeTextJustification(editor.Element element, BuildContext context) {
-    _changeTextProperties(
-      context: context,
-      element: element,
-      updatedTextAlignBuilder: (currentTextAlign) {
-        List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
-        int nextIndex = (values.indexOf(currentTextAlign ?? values[0]) + 1) % values.length;
-        return values[nextIndex];
-      },
-    );
-  }
+  void _changeTextJustification(editor.Element element, BuildContext context) => changeTextElementProperties(
+        context: context,
+        element: element,
+        updatedTextAlignBuilder: (currentTextAlign) {
+          List<TextAlign> values = [TextAlign.start, TextAlign.center, TextAlign.end];
+          int nextIndex = (values.indexOf(currentTextAlign ?? values[0]) + 1) % values.length;
+          return values[nextIndex];
+        },
+      );
 
-  void _makeTextLarger(editor.Element element, BuildContext context) {
-    _changeTextProperties(
-      context: context,
-      element: element,
-      updatedTextStyleBuilder: (currentTextStyle) =>
-          currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 1),
-    );
-  }
+  void _makeTextLarger(editor.Element element, BuildContext context) => changeTextElementProperties(
+        context: context,
+        element: element,
+        updatedTextStyleBuilder: (currentTextStyle) =>
+            currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 1),
+      );
 
-  void _makeTextSmaller(editor.Element element, BuildContext context) {
-    _changeTextProperties(
-      context: context,
-      element: element,
-      updatedTextStyleBuilder: (currentTextStyle) =>
-          currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! - 1),
-    );
-  }
+  void _makeTextSmaller(editor.Element element, BuildContext context) => changeTextElementProperties(
+        context: context,
+        element: element,
+        updatedTextStyleBuilder: (currentTextStyle) =>
+            currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! - 1),
+      );
 
-  void _changeTextProperties({
-    required BuildContext context,
-    required editor.Element element,
-    TextStyle? Function(TextStyle? currentTextStyle)? updatedTextStyleBuilder,
-    TextAlign? Function(TextAlign? currentTextAlign)? updatedTextAlignBuilder,
-  }) {
-    late final TextStyle? selectedElementTextStyle;
-    late final TextAlign? selectedElementTextAlign;
-    if (element.properties.isStaticTextProperties) {
-      selectedElementTextStyle = (element.properties as editor.StaticTextProperties).textStyle;
-      selectedElementTextAlign = (element.properties as editor.StaticTextProperties).textAlign;
-    } else if (element.properties.isVariableTextProperties) {
-      selectedElementTextStyle = (element.properties as editor.VariableTextProperties).textStyle;
-      selectedElementTextAlign = (element.properties as editor.VariableTextProperties).textAlign;
-    }
-
-    if (updatedTextStyleBuilder != null) {
-      TextStyle? updatedTextStyle = updatedTextStyleBuilder.call(selectedElementTextStyle);
-
-      if (element.properties.isStaticTextProperties) {
-        context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
-      } else if (element.properties.isVariableTextProperties) {
-        context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
-      }
-    }
-
-    if (updatedTextAlignBuilder != null) {
-      TextAlign? updatedTextAlign = updatedTextAlignBuilder.call(selectedElementTextAlign);
-
-      if (element.properties.isStaticTextProperties) {
-        context.read<EditorBloc>().add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
-      } else if (element.properties.isVariableTextProperties) {
-        context.read<EditorBloc>().add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
-      }
-    }
-  }
+  void _showFontsDialog(editor.Element el, BuildContext context) => showFontsDialog(
+        context: context,
+        onSelected: (fontFamily) => changeTextElementProperties(
+          context: context,
+          element: el,
+          updatedTextStyleBuilder: (currentTextStyle) => GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),
+        ),
+      );
 
   Widget _createLeftPanelAction({
     required BuildContext context,
@@ -207,20 +175,18 @@ class EditorScreenLeftPanel extends StatelessWidget {
     required IconData icon,
     Color? iconColor,
     required VoidCallback onTap,
-  }) {
-    final ThemeData toc = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Tooltip(
-        message: tooltipMessage,
-        child: InkWell(
-          onTap: onTap,
-          child: Icon(
-            icon,
-            color: iconColor ?? toc.colorScheme.onPrimary,
+  }) =>
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Tooltip(
+          message: tooltipMessage,
+          child: InkWell(
+            onTap: onTap,
+            child: Icon(
+              icon,
+              color: iconColor ?? Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

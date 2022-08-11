@@ -7,7 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:photo_editor/localization/language.dart';
 import 'package:photo_editor/localization/localization_cubit.dart';
-import 'package:photo_editor/service_provider/service_provider.dart';
+import 'package:photo_editor/service_provider/service_provider.dart' as service_provider;
 import 'package:photo_editor/ui/common/routes/route_transitions.dart' as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
@@ -20,7 +20,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // set up dependency injection
-  configureDependencies();
+  service_provider.configureDependencies();
 
   // limit the window size boundaries on desktops
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -28,9 +28,9 @@ void main() async {
   }
 
   // load language settings
-  final storage = await HydratedStorage.build(storageDirectory: await getApplicationSupportDirectory());
+  final HydratedStorage storage = await HydratedStorage.build(storageDirectory: await getApplicationSupportDirectory());
 
-  // // prevent http fetching of google fonts
+  // uncomment the following line to prevent http fetching of google fonts
   // GoogleFonts.config.allowRuntimeFetching = false;
 
   HydratedBlocOverrides.runZoned(
@@ -45,7 +45,7 @@ class PhotoEditorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => serviceProvider.get<EditorBloc>()),
+          BlocProvider(create: (context) => service_provider.serviceProvider.get<EditorBloc>()),
           // BlocProvider(create: (context) => serviceProvider.get<ScreenshotCubit>()), // TODO: uncomment later
           BlocProvider(create: (context) => LocalizationCubit()),
         ],
@@ -76,10 +76,11 @@ class PhotoEditorApp extends StatelessWidget {
           child: const AboutScreen(),
           settings: routeSettings,
         );
+      default:
+        return route_transitions.fadeInRoute(
+          child: const ErrorScreen(),
+          settings: routeSettings,
+        );
     }
-    return route_transitions.fadeInRoute(
-      child: const ErrorScreen(),
-      settings: routeSettings,
-    );
   }
 }

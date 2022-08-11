@@ -12,7 +12,7 @@ import 'package:flutter/services.dart';
 class DoubleStateText extends StatefulWidget {
   /// This callback will be invoked when this widget is a [Text] and the user clicks on it.
   ///
-  /// The returned will be used as the initial text of the [TextField].
+  /// The returned [String] will be used as the initial text of the [TextField].
   ///
   /// If null is returned or if this callback is not provided, then the [initialText] value will be used instead as initial text
   /// of the [TextField].
