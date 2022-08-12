@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart' hide Element;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/common_functions.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/common_editor_functions.dart' as common_editor_functions;
 import 'package:photo_editor/ui/screens/editor_screen/widgets/fonts_dialog.dart';
 
 class EditorScreenRightPanel extends StatelessWidget {
@@ -157,7 +157,7 @@ class EditorScreenRightPanel extends StatelessWidget {
           updatedFontSize = currentTextStyle?.fontSize;
         }
 
-        changeTextElementProperties(
+        common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,
           updatedTextStyleBuilder: (currentTextStyle) => currentTextStyle?.copyWith(fontSize: updatedFontSize),
@@ -191,7 +191,7 @@ class EditorScreenRightPanel extends StatelessWidget {
 
   void _showFontsDialog(editor.Element el, BuildContext context) => showFontsDialog(
         context: context,
-        onSelected: (fontFamily) => changeTextElementProperties(
+        onSelected: (fontFamily) => common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,
           updatedTextStyleBuilder: (currentTextStyle) => GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),

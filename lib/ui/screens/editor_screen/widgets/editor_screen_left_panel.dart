@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
+import 'package:photo_editor/services/fonts_service/fonts_service.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 
-import 'common_functions.dart';
+import 'common_editor_functions.dart' as common_editor_functions;
 import 'fonts_dialog.dart';
 
 class EditorScreenLeftPanel extends StatelessWidget {
@@ -136,7 +136,8 @@ class EditorScreenLeftPanel extends StatelessWidget {
     );
   }
 
-  void _changeTextJustification(editor.Element element, BuildContext context) => changeTextElementProperties(
+  void _changeTextJustification(editor.Element element, BuildContext context) =>
+      common_editor_functions.changeTextElementProperties(
         context: context,
         element: element,
         updatedTextAlignBuilder: (currentTextAlign) {
@@ -146,14 +147,16 @@ class EditorScreenLeftPanel extends StatelessWidget {
         },
       );
 
-  void _makeTextLarger(editor.Element element, BuildContext context) => changeTextElementProperties(
+  void _makeTextLarger(editor.Element element, BuildContext context) =>
+      common_editor_functions.changeTextElementProperties(
         context: context,
         element: element,
         updatedTextStyleBuilder: (currentTextStyle) =>
             currentTextStyle!.copyWith(fontSize: currentTextStyle.fontSize! + 1),
       );
 
-  void _makeTextSmaller(editor.Element element, BuildContext context) => changeTextElementProperties(
+  void _makeTextSmaller(editor.Element element, BuildContext context) =>
+      common_editor_functions.changeTextElementProperties(
         context: context,
         element: element,
         updatedTextStyleBuilder: (currentTextStyle) =>
@@ -162,10 +165,10 @@ class EditorScreenLeftPanel extends StatelessWidget {
 
   void _showFontsDialog(editor.Element el, BuildContext context) => showFontsDialog(
         context: context,
-        onSelected: (fontFamily) => changeTextElementProperties(
+        onSelected: (fontFamily) => common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,
-          updatedTextStyleBuilder: (currentTextStyle) => GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),
+          updatedTextStyleBuilder: (currentTextStyle) => FontsService.getFont(fontFamily, textStyle: currentTextStyle!),
         ),
       );
 

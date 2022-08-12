@@ -87,6 +87,9 @@ dependencies:
   # For useful functions on collections
   collection: ^1.16.0
 
+  # For pagination.
+  infinite_scroll_pagination: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

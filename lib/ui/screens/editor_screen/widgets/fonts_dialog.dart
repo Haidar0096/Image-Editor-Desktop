@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:photo_editor/services/fonts_service/fonts_service.dart';
 import 'package:photo_editor/ui/common/widgets/list_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-List<String> fonts = GoogleFonts.asMap().keys.toList(growable: false);
 
 void showFontsDialog({
   required BuildContext context,
   required Function(String fontFamily) onSelected,
+  int? resultsPerPage,
 }) {
   final ThemeData toc = Theme.of(context);
+  final List<String> fonts = FontsService.getAvailableFontsNames();
   showListDialog<String>(
     context: context,
     title: Text(
       AppLocalizations.of(context)!.fontFamily,
     ),
-    options: fonts,
-    optionMapper: (fontName) => Padding(
+    data: fonts,
+    dataMapper: (fontFamily) => Padding(
       padding: const EdgeInsets.all(8.0),
       child: MouseRegion(
-        cursor: SystemMouseCursors.grab,
+        cursor: SystemMouseCursors.click,
         child: Text(
-          fontName,
-          style: GoogleFonts.getFont(fontName, textStyle: TextStyle(fontSize: 40, color: toc.colorScheme.onBackground)),
+          fontFamily,
+          style:
+              FontsService.getFont(fontFamily, textStyle: TextStyle(fontSize: 40, color: toc.colorScheme.onBackground)),
           textAlign: TextAlign.center,
         ),
       ),
@@ -31,5 +32,7 @@ void showFontsDialog({
       onSelected(fontFamily);
       Navigator.of(context).pop();
     },
+    resultsPerPage: resultsPerPage ?? 20,
+    cacheExtent: 100,
   );
 }

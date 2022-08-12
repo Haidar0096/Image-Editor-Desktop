@@ -17,7 +17,11 @@ get themeData => ThemeData(
         waitDuration: const Duration(milliseconds: 500),
         textStyle: Typography.whiteRedwoodCity.titleMedium,
       ),
+      scrollbarTheme: ScrollbarThemeData(
+        trackVisibility: MaterialStateProperty.all(true),
+      ),
     );
 
 const BorderRadius kBorderRadius = BorderRadius.all(Radius.circular(10));
 const Duration kDialogTransitionDuration = Duration(milliseconds: 300);
+const Duration kScrollTransitionDuration = Duration(milliseconds: 50);

@@ -1,27 +1,31 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_editor/ui/common/routes/route_transitions.dart';
 import 'package:photo_editor/ui/common/styles/styles.dart';
+import 'package:photo_editor/ui/common/widgets/paginated_listview.dart';
 
 import 'bar.dart';
 
-typedef OptionMapper<T> = Widget Function(T option);
+typedef DataMapper<T> = Widget Function(T data);
 
-/// Shows a dialog with a list of widgets created from a list of options of type [T].
-/// Each widget corresponds to an option. When a widget is tapped, and if [onSelected] is provided, then
+/// Shows a dialog with a list of widgets created from a list of data of type [T].
+/// Each widget corresponds to a data object. When a widget is tapped, and if [onSelected] is provided, then
 /// this callback will be invoked with the corresponding value of the [T] type. See [ListDialog] for more details.
 ///
 /// Parameters:
 ///
-/// - [options] : The options that will correspond to the widgets in the list.
-/// - [optionMapper] : Maps each option into a corresponding widget.
-/// - [onSelected] : The callback that will be invoked when an option is selected.
+/// - [data] : The data that will correspond to the widgets in the list.
+/// - [dataMapper] : Maps each data object into a corresponding widget.
+/// - [onSelected] : The callback that will be invoked when an data object is selected.
+/// - [resultsPerPage] : The number of widgets to display per page.
 /// - [title] : The title of the dialog.
 /// - [closeWhenTappedOutside] : Whether the dialog should close when tapped outside of the dialog.
 void showListDialog<T>({
   required BuildContext context,
-  required List<T> options,
-  required OptionMapper optionMapper,
-  void Function(T option)? onSelected,
+  required List<T> data,
+  required DataMapper dataMapper,
+  void Function(T data)? onSelected,
+  int? resultsPerPage,
   Widget? title,
   bool? closeWhenTappedOutside,
   double? width,
@@ -31,13 +35,30 @@ void showListDialog<T>({
   Color? titleBackgroundColor,
   Color? bodyBackgroundColor,
   double? elevation,
+  double? cacheExtent,
+  double? itemExtent,
+  ScrollPhysics? physics,
+  bool? addAutomaticKeepAlives,
+  bool? addRepaintBoundaries,
+  bool? addSemanticIndexes,
+  Clip? clipBehavior,
+  DragStartBehavior? dragStartBehavior,
+  ScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+  EdgeInsets? padding,
+  bool? primary,
+  String? restorationId,
+  bool? reverse,
+  ScrollController? scrollController,
+  Axis? scrollDirection,
+  bool? shrinkWrap,
 }) =>
     Navigator.of(context).push(
       fadeInRoute(
         child: ListDialog<T>(
-          options: options,
-          optionMapper: optionMapper,
+          data: data,
+          dataMapper: dataMapper,
           onSelected: onSelected,
+          resultsPerPage: resultsPerPage,
           title: title,
           closeWhenTappedOutside: closeWhenTappedOutside,
           width: width,
@@ -47,25 +68,43 @@ void showListDialog<T>({
           titleBarBackgroundColor: titleBackgroundColor,
           bodyBackgroundColor: bodyBackgroundColor,
           elevation: elevation,
+          cacheExtent: cacheExtent,
+          itemExtent: itemExtent,
+          physics: physics,
+          addAutomaticKeepAlives: addAutomaticKeepAlives,
+          addRepaintBoundaries: addRepaintBoundaries,
+          addSemanticIndexes: addSemanticIndexes,
+          clipBehavior: clipBehavior,
+          dragStartBehavior: dragStartBehavior,
+          keyboardDismissBehavior: keyboardDismissBehavior,
+          padding: padding,
+          primary: primary,
+          restorationId: restorationId,
+          reverse: reverse,
+          scrollController: scrollController,
+          scrollDirection: scrollDirection,
+          shrinkWrap: shrinkWrap,
         ),
         opaque: false,
         duration: kDialogTransitionDuration,
       ),
     );
 
-/// A customizable dialog widget with a list of options of type [T]. Usually used with [showListDialog].
-/// When the widget is pressed and if onSelected is provided then it will be invoked with the corresponding option.
+/// A customizable dialog widget with a list of data objects of type [T]. Usually used with [showListDialog].
+/// When the widget is pressed and if onSelected is provided then it will be invoked with the corresponding data object.
 /// Parameters:
 ///
-/// - [options] : The options that will correspond to the widgets in the list.
-/// - [optionMapper] : Maps each option into a corresponding widget.
-/// - [onSelected] : The callback that will be invoked when an option is selected.
+/// - [data] : The data objects that will correspond to the widgets in the list.
+/// - [dataMapper] : Maps each data object into a corresponding widget.
+/// - [onSelected] : The callback that will be invoked when an data object is selected.
+/// - [resultsPerPage] : The number of widgets to display per page.
 /// - [title] : The title of the dialog.
 /// - [closeWhenTappedOutside] : Whether the dialog should close when tapped outside of the dialog.
 class ListDialog<T> extends StatelessWidget {
-  final List<T> options;
-  final OptionMapper optionMapper;
-  final void Function(T option)? onSelected;
+  final List<T> data;
+  final DataMapper dataMapper;
+  final void Function(T data)? onSelected;
+  final int? resultsPerPage;
   final Widget? title;
   final bool? closeWhenTappedOutside;
   final double? width;
@@ -76,11 +115,44 @@ class ListDialog<T> extends StatelessWidget {
   final Color? bodyBackgroundColor;
   final double? elevation;
 
+  final double? cacheExtent;
+
+  final double? itemExtent;
+
+  final ScrollPhysics? physics;
+
+  final bool? addAutomaticKeepAlives;
+
+  final bool? addRepaintBoundaries;
+
+  final bool? addSemanticIndexes;
+
+  final Clip? clipBehavior;
+
+  final DragStartBehavior? dragStartBehavior;
+
+  final ScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
+
+  final EdgeInsets? padding;
+
+  final bool? primary;
+
+  final String? restorationId;
+
+  final bool? reverse;
+
+  final ScrollController? scrollController;
+
+  final Axis? scrollDirection;
+
+  final bool? shrinkWrap;
+
   const ListDialog({
     Key? key,
-    required this.options,
-    required this.optionMapper,
+    required this.data,
+    required this.dataMapper,
     this.onSelected,
+    this.resultsPerPage,
     this.title,
     this.closeWhenTappedOutside,
     this.width,
@@ -90,6 +162,22 @@ class ListDialog<T> extends StatelessWidget {
     this.titleBarBackgroundColor,
     this.bodyBackgroundColor,
     this.elevation,
+    this.cacheExtent,
+    this.itemExtent,
+    this.physics,
+    this.addAutomaticKeepAlives,
+    this.addRepaintBoundaries,
+    this.addSemanticIndexes,
+    this.clipBehavior,
+    this.dragStartBehavior,
+    this.keyboardDismissBehavior,
+    this.padding,
+    this.primary,
+    this.restorationId,
+    this.reverse,
+    this.scrollController,
+    this.scrollDirection,
+    this.shrinkWrap,
   }) : super(key: key);
 
   @override
@@ -132,11 +220,33 @@ class ListDialog<T> extends StatelessWidget {
                       ),
                       Expanded(
                         flex: bodyFlex ?? 90,
-                        child: ListDialogBody(
-                          options: options,
-                          optionMapper: optionMapper,
-                          onSelected: onSelected,
-                          backgroundColor: bodyBackgroundColor,
+                        child: Container(
+                          color: bodyBackgroundColor ?? Theme.of(context).colorScheme.background,
+                          child: PaginatedListView<T>(
+                            data: data,
+                            dataMapper: (data) => Listener(
+                              behavior: HitTestBehavior.translucent,
+                              onPointerUp: (_) => onSelected?.call(data),
+                              child: dataMapper.call(data),
+                            ),
+                            pageSize: resultsPerPage,
+                            cacheExtent: cacheExtent,
+                            itemExtent: itemExtent,
+                            physics: physics,
+                            addAutomaticKeepAlives: addAutomaticKeepAlives,
+                            addRepaintBoundaries: addRepaintBoundaries,
+                            addSemanticIndexes: addSemanticIndexes,
+                            clipBehavior: clipBehavior,
+                            dragStartBehavior: dragStartBehavior,
+                            keyboardDismissBehavior: keyboardDismissBehavior,
+                            padding: padding,
+                            primary: primary,
+                            restorationId: restorationId,
+                            reverse: reverse,
+                            scrollController: scrollController,
+                            scrollDirection: scrollDirection,
+                            shrinkWrap: shrinkWrap,
+                          ),
                         ),
                       ),
                     ],
@@ -147,38 +257,6 @@ class ListDialog<T> extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class ListDialogBody<T> extends StatelessWidget {
-  final List<T> options;
-  final OptionMapper optionMapper;
-  final void Function(T option)? onSelected;
-  final Color? backgroundColor;
-
-  const ListDialogBody({
-    Key? key,
-    required this.options,
-    required this.optionMapper,
-    this.onSelected,
-    this.backgroundColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData toc = Theme.of(context);
-    return Container(
-      color: backgroundColor ?? toc.colorScheme.background,
-      child: ListView.builder(
-        itemCount: options.length,
-        itemBuilder: (context, index) {
-          return Listener(
-            onPointerUp: (_) => onSelected?.call(options[index]),
-            child: optionMapper.call(options[index]),
-          );
-        },
-      ),
     );
   }
 }

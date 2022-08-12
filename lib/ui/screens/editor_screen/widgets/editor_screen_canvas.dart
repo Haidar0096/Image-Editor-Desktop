@@ -32,10 +32,10 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
       if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.delete) {
         BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
       }
-      if(event is RawKeyDownEvent && event.isControlPressed && event.character == 'z'){
+      if (event is RawKeyDownEvent && event.isControlPressed && event.character == 'z') {
         BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
       }
-      if(event is RawKeyDownEvent && event.isControlPressed && event.character == 'y'){
+      if (event is RawKeyDownEvent && event.isControlPressed && event.character == 'y') {
         BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
       }
     };
