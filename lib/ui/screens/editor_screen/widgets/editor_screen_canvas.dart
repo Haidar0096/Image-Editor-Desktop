@@ -21,24 +21,9 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   // this key is used to locate the coordinate system of the canvas widget correctly
   final GlobalKey _editorCanvasContainerKey = GlobalKey();
 
-  late void Function(RawKeyEvent) _keyboardKeysListener;
-
   @override
   void initState() {
     super.initState();
-
-    // listen to the delete key event to remove the selected element
-    _keyboardKeysListener = (RawKeyEvent event) {
-      if (event is RawKeyDownEvent && event.logicalKey == LogicalKeyboardKey.delete) {
-        BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
-      }
-      if (event is RawKeyDownEvent && event.isControlPressed && event.character == 'z') {
-        BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
-      }
-      if (event is RawKeyDownEvent && event.isControlPressed && event.character == 'y') {
-        BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
-      }
-    };
     RawKeyboard.instance.addListener(_keyboardKeysListener);
   }
 
@@ -46,6 +31,24 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   void dispose() {
     RawKeyboard.instance.removeListener(_keyboardKeysListener);
     super.dispose();
+  }
+
+  // listen to the relevant keys
+  void _keyboardKeysListener(RawKeyEvent event) {
+    bool isEditingText = context.read<EditorBloc>().state.isEditingTextElement;
+
+    if (event is RawKeyUpEvent && event.logicalKey == LogicalKeyboardKey.delete) {
+      BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
+    }
+    if (event is RawKeyDownEvent &&
+        event.isControlPressed &&
+        event.isKeyPressed(LogicalKeyboardKey.keyZ) &&
+        !isEditingText) {
+      BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
+    }
+    if (event is RawKeyDownEvent && event.isControlPressed && event.isKeyPressed(LogicalKeyboardKey.keyY)) {
+      BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
+    }
   }
 
   @override

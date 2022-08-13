@@ -76,45 +76,49 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
       alignment: Alignment.center,
       children: [
         Positioned.fill(
-          child: InteractiveViewer(
-            transformationController: _canvasScaleController,
-            onInteractionStart: (details) => widget.onInteractionStart?.call(details),
-            onInteractionUpdate: (details) => widget.onInteractionUpdate?.call(details),
-            onInteractionEnd: (details) {
-              widget.onInteractionEnd?.call(details);
-              _showScale();
-            },
-            boundaryMargin: widget.boundaryMargin ?? const EdgeInsets.all(double.infinity),
-            minScale: widget.minScale ?? 0.5,
-            maxScale: widget.maxScale ?? 10.0,
-            panEnabled: widget.panEnabled ?? true,
-            scaleEnabled: widget.scaleEnabled ?? true,
-            alignPanAxis: widget.alignPanAxis ?? false,
-            scaleFactor: widget.scaleFactor ?? 200.0,
-            clipBehavior: widget.clipBehavior ?? Clip.hardEdge,
-            constrained: widget.constrained ?? true,
-            child: LimitedBox(
-              maxWidth: MediaQuery.of(context).size.width,
-              maxHeight: MediaQuery.of(context).size.height,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.onBackground,
-                    width: !_editorCentered ? 3.0 : 0.0,
-                  ),
-                ),
-                width: double.infinity,
-                height: double.infinity,
-                child: widget.child,
-              ),
-            ),
-          ),
+          child: _buildInteractiveViewer(context),
         ),
         // widget that displays the current scale of the canvas
         if (_canvasScaleValueVisible) Positioned.fill(child: _scaleValueWidget(context)),
         // button to restore canvas zoom to 1.0
         if (!_editorCentered) Positioned.fill(child: _resetZoomButton(context)),
       ],
+    );
+  }
+
+  InteractiveViewer _buildInteractiveViewer(BuildContext context) {
+    return InteractiveViewer(
+      transformationController: _canvasScaleController,
+      onInteractionStart: (details) => widget.onInteractionStart?.call(details),
+      onInteractionUpdate: (details) => widget.onInteractionUpdate?.call(details),
+      onInteractionEnd: (details) {
+        widget.onInteractionEnd?.call(details);
+        _showScale();
+      },
+      boundaryMargin: widget.boundaryMargin ?? const EdgeInsets.all(double.infinity),
+      minScale: widget.minScale ?? 0.5,
+      maxScale: widget.maxScale ?? 10.0,
+      panEnabled: widget.panEnabled ?? true,
+      scaleEnabled: widget.scaleEnabled ?? true,
+      alignPanAxis: widget.alignPanAxis ?? false,
+      scaleFactor: widget.scaleFactor ?? 200.0,
+      clipBehavior: widget.clipBehavior ?? Clip.hardEdge,
+      constrained: widget.constrained ?? true,
+      child: LimitedBox(
+        maxWidth: MediaQuery.of(context).size.width,
+        maxHeight: MediaQuery.of(context).size.height,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.onBackground,
+              width: !_editorCentered ? 3.0 : 0.0,
+            ),
+          ),
+          width: double.infinity,
+          height: double.infinity,
+          child: widget.child,
+        ),
+      ),
     );
   }
 

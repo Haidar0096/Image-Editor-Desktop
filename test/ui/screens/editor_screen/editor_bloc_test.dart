@@ -1966,18 +1966,19 @@ void main() {
       ],
     );
 
-    blocTest<EditorBloc, EditorState>('Should not emit states and should throw when there is no selected element.',
-        seed: () => createEditorState(
-              editor: Editor.fromSet({image1, image2}),
-              draggedElement: some(image1),
-              dragPosition: some(image1.rect.center),
-              selectedElement: none(),
-            ),
-        build: () => createEditorBloc(),
-        act: (bloc) => bloc.add(const RemoveSelectedElement()),
-        expect: () => [],
-        errors: () =>
-            [const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set")]);
+    blocTest<EditorBloc, EditorState>(
+      'Should not emit states when there is no selected element.',
+      seed: () => createEditorState(
+        editor: Editor.fromSet({image1, image2}),
+        draggedElement: some(image1),
+        dragPosition: some(image1.rect.center),
+        selectedElement: none(),
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) => bloc.add(const RemoveSelectedElement()),
+      expect: () => [],
+      errors: () => [],
+    );
 
     blocTest<EditorBloc, EditorState>(
       'Should save the state after removing an element.',
@@ -2042,18 +2043,6 @@ void main() {
         ),
       ],
     );
-    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
-        build: () => createEditorBloc(),
-        seed: () => createEditorState(
-              editor: Editor.fromSet({image1}),
-              selectedElement: none(),
-              dragPosition: none(),
-              draggedElement: none(),
-            ),
-        act: (bloc) => bloc.add(const RemoveSelectedElement()),
-        expect: () => [],
-        errors: () =>
-            [const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set")]);
   });
 
   group('DeselectElement', () {

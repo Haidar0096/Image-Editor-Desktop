@@ -635,7 +635,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   Future<void> _handleRemoveSelectedElement(RemoveSelectedElement event, Emitter emit) async {
     state.selectedElement.fold(
       () {
-        throw const InvalidStateError(message: "RemoveSelectedElement was fired but no selectedElement was set");
+        // no selected element, do nothing
       },
       (el) {
         emit(

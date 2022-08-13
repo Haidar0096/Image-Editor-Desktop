@@ -7,6 +7,8 @@ import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 class EditorStaticTextWidget extends StatefulWidget {
   final editor.StaticTextProperties properties;
   final bool isSelected;
+
+  /// Whether the text mode is editing or not editing.
   final bool isEditingText;
 
   const EditorStaticTextWidget({
@@ -30,47 +32,36 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
     _textController = TextEditingController(text: widget.properties.text);
     _focusNode = FocusNode();
 
-    KeyEventResult Function(FocusNode, KeyEvent)? currentHandler = _focusNode.onKeyEvent;
-
     // When `Tab` is pressed, advance the cursor and add some spaces.
+    KeyEventResult Function(FocusNode, KeyEvent)? currentHandler = _focusNode.onKeyEvent;
     _focusNode.onKeyEvent = (node, event) {
-      if (event.logicalKey == LogicalKeyboardKey.tab) {
+      if ((event is KeyDownEvent || event is KeyRepeatEvent) && event.logicalKey == LogicalKeyboardKey.tab) {
         _insertTabAtCurrentCursorPosition();
         return KeyEventResult.handled;
       }
       return currentHandler?.call(node, event) ?? KeyEventResult.ignored;
     };
 
-    // Check if we are editing the text initially
+    // Check if we were editing the text previously
     if (widget.isEditingText) {
       _focusNode.requestFocus();
     }
 
+    // listen to focus node changes.
     _focusNode.addListener(_focusNodeListener);
   }
 
   @override
   void dispose() {
     _textController.dispose();
-    _focusNode.removeListener(_addTextEditingModeChangedEvent);
-    _focusNode.removeListener(_addTextChangedEvent);
+    _focusNode.removeListener(_focusNodeListener);
     _focusNode.dispose();
     super.dispose();
   }
 
   void _focusNodeListener() {
-    _addTextEditingModeChangedEvent();
-    _addTextChangedEvent();
-  }
-
-  void _addTextChangedEvent() {
     if (!_focusNode.hasFocus) {
       context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: _textController.text));
-    }
-  }
-
-  void _addTextEditingModeChangedEvent() {
-    if (!_focusNode.hasFocus) {
       context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(false));
     }
   }
@@ -90,7 +81,7 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
 
     _textController.text = prefixText + tab + suffixText;
 
-    // Cursor move to end of added text
+    // Move the cursor to end of added text
     _textController.selection = TextSelection(
       baseOffset: cursorPos + tabLength,
       extentOffset: cursorPos + tabLength,
