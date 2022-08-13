@@ -46,10 +46,7 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
       _focusNode.requestFocus();
     }
 
-    // register callback to change text editing mode on focus lost
-    _focusNode.addListener(_addTextEditingModeChangedEvent);
-
-    _focusNode.addListener(_addTextChangedEvent);
+    _focusNode.addListener(_focusNodeListener);
   }
 
   @override
@@ -59,6 +56,11 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
     _focusNode.removeListener(_addTextChangedEvent);
     _focusNode.dispose();
     super.dispose();
+  }
+
+  void _focusNodeListener() {
+    _addTextEditingModeChangedEvent();
+    _addTextChangedEvent();
   }
 
   void _addTextChangedEvent() {

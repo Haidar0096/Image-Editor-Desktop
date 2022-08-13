@@ -80,10 +80,10 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
-    on<StaticTextChanged>(
-      (event, emit) async => await _handleStaticTextChanged(event, emit),
-      transformer: droppable(),
-    );
+    // on<StaticTextChanged>(
+    //   (event, emit) async => await _handleStaticTextChanged(event, emit),
+    //   transformer: droppable(),
+    // );
 
     on<StaticTextStyleChanged>(
       (event, emit) async => await _handleStaticTextStyleChanged(event, emit),
@@ -195,14 +195,26 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
-    on<TextEditingModeChanged>(
-      (event, emit) async => await _handleTextEditingModeChanged(event, emit),
-      transformer: droppable(),
-    );
+    // on<TextEditingModeChanged>(
+    //   (event, emit) async => await _handleTextEditingModeChanged(event, emit),
+    //   transformer: droppable(),
+    // );
 
     on<ClearEditor>(
       (event, emit) async => await _handleClearEditor(event, emit),
       transformer: droppable(),
+    );
+
+    // events that must be handled sequentially:
+    on<EditorEvent>(
+      (event, emit) async {
+        if (event is TextEditingModeChanged) {
+          await _handleTextEditingModeChanged(event, emit);
+        } else if (event is StaticTextChanged) {
+          await _handleStaticTextChanged(event, emit);
+        }
+      },
+      transformer: sequential(),
     );
 
     // save the initial state of the editor
@@ -300,15 +312,24 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         throw const InvalidStateError(message: "StaticTextChanged was fired but no element was selected");
       },
       (el) {
-        final Element updatedElement = el.copyWith(
-          properties: (el.properties as StaticTextProperties).copyWith(text: event.updatedText),
-        );
-        emit(
-          state.copyWith(
-            editor: state.editor.updateElement(updatedElement),
-            selectedElement: some(updatedElement),
-          ),
-        );
+        if (event.updatedText.isEmpty && !state.isEditingTextElement) {
+          emit(
+            state.copyWith(
+              editor: state.editor.removeElement(el.id),
+              selectedElement: none(),
+            ),
+          );
+        } else {
+          final Element updatedElement = el.copyWith(
+            properties: (el.properties as StaticTextProperties).copyWith(text: event.updatedText),
+          );
+          emit(
+            state.copyWith(
+              editor: state.editor.updateElement(updatedElement),
+              selectedElement: some(updatedElement),
+            ),
+          );
+        }
         // save the state after editing
         _saveState(state);
       },
@@ -550,22 +571,8 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         // no selected element, do nothing
       },
       (el) {
-        el.properties.maybeWhen(
-          staticTextProperties: (text, _, __) {
-            if (text.isEmpty) {
-              emit(
-                state.copyWith(
-                  selectedElement: none(),
-                  editor: state.editor.removeElement(el.id),
-                ),
-              );
-              _saveState(state);
-            } else {
-              emit(state.copyWith(selectedElement: none()));
-            }
-          },
-          orElse: () => emit(state.copyWith(selectedElement: none())),
-        );
+        // there is selected element, deselect it
+        emit(state.copyWith(selectedElement: none()));
       },
     );
   }
@@ -652,22 +659,8 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
         throw const InvalidStateError(message: "DeselectElement was fired but no selectedElement was set");
       },
       (el) {
-        el.properties.maybeWhen(
-          staticTextProperties: (text, _, __) {
-            if (text.isEmpty) {
-              emit(
-                state.copyWith(
-                  selectedElement: none(),
-                  editor: state.editor.removeElement(el.id),
-                ),
-              );
-              _saveState(state);
-            } else {
-              emit(state.copyWith(selectedElement: none()));
-            }
-          },
-          orElse: () => emit(state.copyWith(selectedElement: none())),
-        );
+        // there is selected element, deselect it
+        emit(state.copyWith(selectedElement: none()));
       },
     );
   }

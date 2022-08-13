@@ -550,17 +550,60 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
-        build: () => createEditorBloc(),
-        seed: () => createEditorState(
-              editor: Editor.fromSet({staticText}),
-              selectedElement: none(),
-              dragPosition: none(),
-              draggedElement: none(),
-            ),
-        act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
-        expect: () => [],
-        errors: () => [const InvalidStateError(message: "StaticTextChanged was fired but no element was selected")]);
+    blocTest<EditorBloc, EditorState>(
+      'Should not emit states when no element is selected and should throw.',
+      build: () => createEditorBloc(),
+      seed: () => createEditorState(
+        editor: Editor.fromSet({staticText}),
+        selectedElement: none(),
+        dragPosition: none(),
+        draggedElement: none(),
+      ),
+      act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
+      expect: () => [],
+      errors: () => [const InvalidStateError(message: "StaticTextChanged was fired but no element was selected")],
+    );
+
+    blocTest<EditorBloc, EditorState>(
+      'Should delete the text element if its an empty text and text editing mode is false, and save the state.',
+      seed: () => createEditorState(
+        editor: Editor.fromSet({staticText}),
+        draggedElement: none(),
+        dragPosition: none(),
+        selectedElement: some(staticText),
+        isEditingTextElement: true,
+      ),
+      build: () => createEditorBloc(),
+      act: (bloc) {
+        bloc.add(const StaticTextChanged(updatedText: 'abc'));
+        bloc.add(const EditorEvent.textEditingModeChanged(false));
+        bloc.add(const StaticTextChanged(updatedText: ''));
+        bloc.add(const Undo());
+        bloc.add(const Redo());
+      },
+      expect: () {
+        final Element updatedStaticText1 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
+
+        final EditorState expectedState1 = createEditorState(
+          editor: Editor.fromSet({updatedStaticText1}),
+          draggedElement: none(),
+          dragPosition: none(),
+          selectedElement: some(updatedStaticText1),
+          isEditingTextElement: true,
+        );
+        return [
+          expectedState1,
+          expectedState1.copyWith(isEditingTextElement: false),
+          EditorState.initial(),
+          expectedState1.copyWith(
+            isEditingTextElement: false,
+            selectedElement: none(),
+          ),
+          EditorState.initial(),
+        ];
+      },
+    );
   });
 
   group('StaticTextStyleChanged', () {
@@ -1587,46 +1630,6 @@ void main() {
         ),
       ],
     );
-    blocTest<EditorBloc, EditorState>(
-      'Should delete the selected element if its an empty text and save the state.',
-      seed: () => createEditorState(
-        editor: Editor.fromSet({staticText}),
-        draggedElement: none(),
-        dragPosition: none(),
-        selectedElement: some(staticText),
-      ),
-      build: () => createEditorBloc(),
-      act: (bloc) {
-        bloc.add(const StaticTextChanged(updatedText: 'abc'));
-        bloc.add(const StaticTextChanged(updatedText: ''));
-        bloc.add(const CanvasTap());
-        bloc.add(const Undo());
-        bloc.add(const Redo());
-      },
-      expect: () {
-        final Element updatedStaticText1 =
-            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
-        final Element updatedStaticText2 =
-            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''));
-        final EditorState expectedState1 = createEditorState(
-          editor: Editor.fromSet({updatedStaticText1}),
-          draggedElement: none(),
-          dragPosition: none(),
-          selectedElement: some(updatedStaticText1),
-        );
-        final EditorState expectedState2 = expectedState1.copyWith(
-          editor: Editor.fromSet({updatedStaticText2}),
-          selectedElement: some(updatedStaticText2),
-        );
-        return [
-          expectedState1,
-          expectedState2,
-          EditorState.initial(),
-          expectedState2.copyWith(selectedElement: none()),
-          EditorState.initial(),
-        ];
-      },
-    );
   });
 
   group('ElementDragStart', () {
@@ -2062,14 +2065,6 @@ void main() {
       showOrder: 1,
       id: '1',
     );
-    // static text element
-    const Element staticText = Element(
-      rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
-      properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
-      showOrder: 2,
-      id: '2',
-    );
     blocTest<EditorBloc, EditorState>(
       'Should deselect the selected element.',
       seed: () => createEditorState(
@@ -2090,47 +2085,6 @@ void main() {
       ],
     );
 
-    blocTest<EditorBloc, EditorState>(
-      'Should delete the selected element if its an empty text and save the state.',
-      seed: () => createEditorState(
-        editor: Editor.fromSet({staticText}),
-        draggedElement: none(),
-        dragPosition: none(),
-        selectedElement: some(staticText),
-      ),
-      build: () => createEditorBloc(),
-      act: (bloc) {
-        bloc.add(const StaticTextChanged(updatedText: 'abc'));
-        bloc.add(const StaticTextChanged(updatedText: ''));
-        bloc.add(const DeselectElement());
-        bloc.add(const Undo());
-        bloc.add(const Redo());
-      },
-      expect: () {
-        final Element updatedStaticText1 =
-            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
-        final Element updatedStaticText2 =
-            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: ''));
-
-        final EditorState expectedState1 = createEditorState(
-          editor: Editor.fromSet({updatedStaticText1}),
-          draggedElement: none(),
-          dragPosition: none(),
-          selectedElement: some(updatedStaticText1),
-        );
-        final EditorState expectedState2 = expectedState1.copyWith(
-          editor: Editor.fromSet({updatedStaticText2}),
-          selectedElement: some(updatedStaticText2),
-        );
-        return [
-          expectedState1,
-          expectedState2,
-          EditorState.initial(),
-          expectedState2.copyWith(selectedElement: none()),
-          EditorState.initial(),
-        ];
-      },
-    );
     blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
