@@ -47,10 +47,27 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
     }
 
     // register callback to change text editing mode on focus lost
-    _focusNode.addListener(_changeTextEditingModeOnFocusLost);
+    _focusNode.addListener(_addTextEditingModeChangedEvent);
+
+    _focusNode.addListener(_addTextChangedEvent);
   }
 
-  void _changeTextEditingModeOnFocusLost() {
+  @override
+  void dispose() {
+    _textController.dispose();
+    _focusNode.removeListener(_addTextEditingModeChangedEvent);
+    _focusNode.removeListener(_addTextChangedEvent);
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _addTextChangedEvent() {
+    if (!_focusNode.hasFocus) {
+      context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: _textController.text));
+    }
+  }
+
+  void _addTextEditingModeChangedEvent() {
     if (!_focusNode.hasFocus) {
       context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(false));
     }
@@ -59,31 +76,23 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
   void _insertTabAtCurrentCursorPosition() {
     int cursorPos = _textController.selection.base.offset;
 
-    // Right text of cursor position
+    // Text to the right of current cursor position
     String suffixText = _textController.text.substring(cursorPos);
 
-    // Add new text on cursor position
-    String tab = '\t';
-    int length = tab.length;
+    // Add new text at cursor position
+    String tab = '  ';
+    int tabLength = tab.length;
 
-    // Get the left text of cursor
+    // Get the text to the left of the cursor
     String prefixText = _textController.text.substring(0, cursorPos);
 
     _textController.text = prefixText + tab + suffixText;
 
     // Cursor move to end of added text
     _textController.selection = TextSelection(
-      baseOffset: cursorPos + length,
-      extentOffset: cursorPos + length,
+      baseOffset: cursorPos + tabLength,
+      extentOffset: cursorPos + tabLength,
     );
-  }
-
-  @override
-  void dispose() {
-    _textController.dispose();
-    _focusNode.removeListener(_changeTextEditingModeOnFocusLost);
-    _focusNode.dispose();
-    super.dispose();
   }
 
   @override
@@ -97,9 +106,6 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
           controller: _textController,
           decoration: null,
           maxLines: null,
-          onChanged: (text) {
-            context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: text));
-          },
           style: widget.properties.textStyle,
           textAlign: widget.properties.textAlign ?? TextAlign.start,
         );
