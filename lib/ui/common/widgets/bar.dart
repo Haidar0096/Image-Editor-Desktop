@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// A bar that can be horizontal or vertical. If you want to place a widget at a custom position in the bar, you can
-/// use the [BarAction] widget and customize it to your needs.
+/// A bar widget, which is a column or row with actions (widgets). If you want to place a widget at a custom position in the bar,
+/// you can use the [BarAction] widget and customize it to your needs.
 class Bar extends StatelessWidget {
   /// The background color of the bar.
   final Color? backgroundColor;

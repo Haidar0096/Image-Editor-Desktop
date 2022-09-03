@@ -39,3 +39,11 @@ void changeTextElementProperties({
     }
   }
 }
+
+TextStyle? getTextElementTextStyle(editor.Element element) {
+  assert(element.properties.isStaticTextProperties || element.properties.isVariableTextProperties);
+  if (element.properties.isStaticTextProperties) {
+    return (element.properties as editor.StaticTextProperties).textStyle;
+  }
+  return (element.properties as editor.VariableTextProperties).textStyle;
+}

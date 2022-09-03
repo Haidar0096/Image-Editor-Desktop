@@ -5,6 +5,7 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/services/fonts_service/fonts_service.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
 
+import 'color_picker_dialog.dart';
 import 'common_editor_functions.dart' as common_editor_functions;
 import 'fonts_dialog.dart';
 
@@ -92,7 +93,7 @@ class EditorScreenLeftPanel extends StatelessWidget {
                       icon: Icons.deselect,
                       onTap: () => context.read<EditorBloc>().add(const EditorEvent.deselectElement()),
                     ),
-                    // if selected element is variable text:
+                    // special case: if selected element is variable text:
                     if (el.properties.isVariableTextProperties)
                       _createLeftPanelAction(
                         context: context,
@@ -100,7 +101,7 @@ class EditorScreenLeftPanel extends StatelessWidget {
                         icon: Icons.source,
                         onTap: () => context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged()),
                       ),
-                    // if selected element is any text element:
+                    // special case: if selected element is any text element:
                     if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
                       _createLeftPanelAction(
                         context: context,
@@ -125,6 +126,12 @@ class EditorScreenLeftPanel extends StatelessWidget {
                         tooltipMessage: AppLocalizations.of(context)!.fontFamily,
                         icon: Icons.font_download,
                         onTap: () => _showFontsDialog(el, context),
+                      ),
+                      _createLeftPanelAction(
+                        context: context,
+                        tooltipMessage: AppLocalizations.of(context)!.changeColor,
+                        icon: Icons.color_lens_rounded,
+                        onTap: () => _showColorPickerDialog(el, context),
                       ),
                     ]
                   ],
@@ -169,6 +176,16 @@ class EditorScreenLeftPanel extends StatelessWidget {
           context: context,
           element: el,
           updatedTextStyleBuilder: (currentTextStyle) => FontsService.getFont(fontFamily, textStyle: currentTextStyle!),
+        ),
+      );
+
+  void _showColorPickerDialog(editor.Element el, BuildContext context) => showColorPickerDialog(
+        context: context,
+        initialColor: common_editor_functions.getTextElementTextStyle(el)?.color ?? Colors.black,
+        onColorChanged: (color) => common_editor_functions.changeTextElementProperties(
+          context: context,
+          element: el,
+          updatedTextStyleBuilder: (currentTextStyle) => currentTextStyle!.copyWith(color: color),
         ),
       );
 
