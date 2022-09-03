@@ -5,7 +5,7 @@ import 'package:photo_editor/ui/common/styles/styles.dart';
 
 typedef DataMapper<T> = Widget Function(T data);
 
-/// A special list view that lazily displays the provided data. For detailed info on the parameters, see the [ListView] and [PaginatedListView] classes.
+/// A special list view that lazily displays the provided data. For detailed info on the parameters, see the [ListView] and [PagedListView] classes.
 class PaginatedListView<T> extends StatefulWidget {
   /// The data to be displayed in the list.
   final List<T> data;
