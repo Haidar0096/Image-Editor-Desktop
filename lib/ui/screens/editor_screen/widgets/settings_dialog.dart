@@ -183,10 +183,7 @@ class _ChangeLanguageWidget extends StatelessWidget {
                   ...Language.values
                       .map(
                         (lang) => PopupMenuItem(
-                          child: Text(
-                            lang.name,
-                            style: toc.textTheme.titleMedium!.copyWith(color: toc.colorScheme.onBackground),
-                          ),
+                          child: Center(child: Text(lang.name, textAlign: TextAlign.center)),
                           onTap: () {
                             context.read<LocalizationCubit>().setLanguage(lang);
                           },
@@ -210,7 +207,7 @@ class _ChangeLanguageWidget extends StatelessWidget {
                           builder: (context, localizationState) {
                             return Text(
                               localizationState.language.name,
-                              style: toc.textTheme.titleMedium,
+                              style: toc.textTheme.subtitle2,
                             );
                           },
                         ),

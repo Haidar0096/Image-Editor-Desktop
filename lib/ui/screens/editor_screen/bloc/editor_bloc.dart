@@ -293,7 +293,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
             rect: ui.Rect.fromLTWH(0.0, 0.0, size.width + 0.1 * size.width, size.height + 0.1 * size.height),
             properties: ElementProperties.staticTextProperties(
               text: event.initialText,
-              textStyle: const widgets.TextStyle(fontSize: 30, color: material.Colors.black),
+              textStyle: const widgets.TextStyle(fontSize: 30),
             ),
             showOrder:
                 optionOf(state.editor.elementsSortedByShowOrder.lastOrNull).fold(() => 1, (e) => e.showOrder + 1),
@@ -404,7 +404,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
             properties: ElementProperties.variableTextProperties(
               placeHolderText: event.initialText,
               sourceFilePath: none(),
-              textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
+              textStyle: const material.TextStyle(fontSize: 30),
             ),
             showOrder:
                 optionOf(state.editor.elementsSortedByShowOrder.lastOrNull).fold(() => 1, (e) => e.showOrder + 1),

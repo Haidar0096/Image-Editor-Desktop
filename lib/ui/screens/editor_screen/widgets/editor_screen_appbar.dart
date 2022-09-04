@@ -45,7 +45,7 @@ class EditorScreenAppBar extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         text,
-        style: toc.textTheme.titleMedium,
+        style: toc.textTheme.subtitle2,
       ),
     );
   }

@@ -181,7 +181,7 @@ class EditorScreenLeftPanel extends StatelessWidget {
 
   void _showColorPickerDialog(editor.Element el, BuildContext context) => showColorPickerDialog(
         context: context,
-        initialColor: common_editor_functions.getTextElementTextStyle(el)?.color ?? Colors.black,
+        initialColor: common_editor_functions.getTextElementTextStyle(el)?.color ?? Colors.white,
         onColorChanged: (color) => common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,

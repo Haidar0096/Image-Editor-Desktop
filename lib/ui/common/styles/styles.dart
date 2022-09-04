@@ -10,7 +10,11 @@ get themeData => ThemeData(
         seedColor: Colors.deepPurpleAccent,
         background: Colors.grey,
       ),
-      textTheme: Typography.whiteRedwoodCity,
+      textTheme: Typography.whiteRedwoodCity.copyWith(
+        subtitle1: Typography.whiteRedwoodCity.subtitle1!.copyWith(
+          color: Colors.black,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: _defaultButtonStyle),
       textButtonTheme: TextButtonThemeData(style: _defaultButtonStyle),
       tooltipTheme: TooltipThemeData(
@@ -19,6 +23,12 @@ get themeData => ThemeData(
       ),
       scrollbarTheme: ScrollbarThemeData(
         trackVisibility: MaterialStateProperty.all(true),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        textStyle: Typography.whiteRedwoodCity.titleMedium!.copyWith(color: Colors.black),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
     );
 
