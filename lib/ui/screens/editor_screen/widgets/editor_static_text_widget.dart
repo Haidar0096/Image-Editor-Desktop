@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 
 class EditorStaticTextWidget extends StatefulWidget {
   final editor.StaticTextProperties properties;
@@ -99,7 +99,9 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
           controller: _textController,
           decoration: null,
           maxLines: null,
-          style: widget.properties.textStyle,
+          style: widget.properties.textStyle?.copyWith(
+            color: widget.properties.textStyle?.color ?? Theme.of(context).textTheme.subtitle2?.color,
+          ),
           textAlign: widget.properties.textAlign ?? TextAlign.start,
         );
 

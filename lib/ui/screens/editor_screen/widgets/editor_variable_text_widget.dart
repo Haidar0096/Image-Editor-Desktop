@@ -10,7 +10,9 @@ class EditorVariableTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       properties.placeHolderText,
-      style: properties.textStyle,
+      style: properties.textStyle?.copyWith(
+        color: properties.textStyle?.color ?? Theme.of(context).textTheme.subtitle2?.color,
+      ),
       textAlign: properties.textAlign,
     );
   }

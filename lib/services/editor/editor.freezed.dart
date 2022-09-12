@@ -114,7 +114,7 @@ abstract class _Editor implements Editor {
   @override
 
   /// The elements in the editor.
-  ISet<Element> get elements => throw _privateConstructorUsedError;
+  ISet<Element> get elements;
   @override
   @JsonKey(ignore: true)
   _$$_EditorCopyWith<_$_Editor> get copyWith => throw _privateConstructorUsedError;
@@ -295,19 +295,19 @@ abstract class _Element implements Element {
   @override
 
   /// The unique id of the element.
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
 
   /// The properties of the element.
-  ElementProperties get properties => throw _privateConstructorUsedError;
+  ElementProperties get properties;
   @override
 
   /// The rectangle in which the element is contained.
-  widgets.Rect get rect => throw _privateConstructorUsedError;
+  widgets.Rect get rect;
   @override
 
   /// The order this element should be shown amongst other elements in the editor.
-  int get showOrder => throw _privateConstructorUsedError;
+  int get showOrder;
   @override
   @JsonKey(ignore: true)
   _$$_ElementCopyWith<_$_Element> get copyWith => throw _privateConstructorUsedError;
@@ -523,7 +523,7 @@ abstract class FileImageProperties extends ElementProperties {
   const FileImageProperties._() : super._();
 
   /// The path of the file containing this image.
-  String get sourceFilePath => throw _privateConstructorUsedError;
+  String get sourceFilePath;
   @JsonKey(ignore: true)
   _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith => throw _privateConstructorUsedError;
 }
@@ -692,13 +692,13 @@ abstract class StaticTextProperties extends ElementProperties {
   const StaticTextProperties._() : super._();
 
   /// The value of the text.
-  String get text => throw _privateConstructorUsedError;
+  String get text;
 
   /// The style of the text.
-  widgets.TextStyle? get textStyle => throw _privateConstructorUsedError;
+  widgets.TextStyle? get textStyle;
 
   /// The alignment of the text.
-  widgets.TextAlign? get textAlign => throw _privateConstructorUsedError;
+  widgets.TextAlign? get textAlign;
   @JsonKey(ignore: true)
   _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith => throw _privateConstructorUsedError;
 }
@@ -889,16 +889,16 @@ abstract class VariableTextProperties extends ElementProperties {
   const VariableTextProperties._() : super._();
 
   /// The text to show in the editing phase.
-  String get placeHolderText => throw _privateConstructorUsedError;
+  String get placeHolderText;
 
   /// The style of the text.
-  widgets.TextStyle? get textStyle => throw _privateConstructorUsedError;
+  widgets.TextStyle? get textStyle;
 
   /// The alignment of the text.
-  widgets.TextAlign? get textAlign => throw _privateConstructorUsedError;
+  widgets.TextAlign? get textAlign;
 
   /// The path of the file containing the text to be generated.
-  Option<String> get sourceFilePath => throw _privateConstructorUsedError;
+  Option<String> get sourceFilePath;
   @JsonKey(ignore: true)
   _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith => throw _privateConstructorUsedError;
 }

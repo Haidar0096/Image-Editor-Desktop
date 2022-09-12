@@ -11,7 +11,8 @@ import 'package:photo_editor/service_provider/service_provider.dart' as service_
 import 'package:photo_editor/ui/common/routes/route_transitions.dart' as route_transitions;
 import 'package:photo_editor/ui/common/styles/styles.dart' as styles;
 import 'package:photo_editor/ui/screens/about_screen/about_screen.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/screenshot_cubit/screenshot_cubit.dart';
 import 'package:photo_editor/ui/screens/error_screen/error_screen.dart';
 import 'package:photo_editor/ui/screens/editor_screen/editor_screen.dart';
 import 'package:window_size/window_size.dart' as window_size;
@@ -46,7 +47,7 @@ class PhotoEditorApp extends StatelessWidget {
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => service_provider.serviceProvider.get<EditorBloc>()),
-          // BlocProvider(create: (context) => serviceProvider.get<ScreenshotCubit>()), // TODO: uncomment later
+          BlocProvider(create: (context) => service_provider.serviceProvider.get<ScreenshotCubit>()),
           BlocProvider(create: (context) => LocalizationCubit()),
         ],
         child: Builder(

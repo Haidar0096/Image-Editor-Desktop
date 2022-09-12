@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/services/fonts_service/fonts_service.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 
-import 'color_picker_dialog.dart';
+import '../../../common/widgets/color_picker_dialog.dart';
 import 'common_editor_functions.dart' as common_editor_functions;
 import 'fonts_dialog.dart';
 

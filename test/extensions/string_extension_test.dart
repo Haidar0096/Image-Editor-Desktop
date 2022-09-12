@@ -92,4 +92,45 @@ void main() {
       );
     });
   });
+  group('unCamelCase', () {
+    test('Should return correct results.', () {
+      String s1 = 'helloWorld';
+      String s2 = 'helloworld';
+      String s3 = 'helloWorldIAmACamelCaseString';
+      String s4 = 'HelloWorld';
+      String s5 = 'I am not a camel case string';
+
+      expect(s1.unCamelCase(), 'Hello World');
+      expect(s1.unCamelCase(capitalize: false), 'hello world');
+
+      expect(s2.unCamelCase(), 'helloworld');
+      expect(s2.unCamelCase(capitalize: false), 'helloworld');
+
+      expect(s3.unCamelCase(), 'Hello World I Am A Camel Case String');
+      expect(s3.unCamelCase(capitalize: false), 'hello world i am a camel case string');
+
+      expect(s4.unCamelCase(), 'Hello World');
+      expect(s4.unCamelCase(capitalize: false), 'hello world');
+
+      expect(s5.unCamelCase(), 'I am not a camel case string');
+      expect(s5.unCamelCase(capitalize: false), 'I am not a camel case string');
+    });
+  });
+  group('isAlphaNumericUnderScore', () {
+    test('Should return the correct results.', () {
+      String s1 = 'helloWorld';
+      String s2 = 'helloworld';
+      String s3 = 'helloWorld1';
+      String s4 = '1helloWorld';
+      String s5 = '1helloWorld_';
+      String s6 = 'not alpha numeric';
+
+      expect(s1.isAlphaNumericUnderScore(), true);
+      expect(s2.isAlphaNumericUnderScore(), true);
+      expect(s3.isAlphaNumericUnderScore(), true);
+      expect(s4.isAlphaNumericUnderScore(), true);
+      expect(s5.isAlphaNumericUnderScore(), true);
+      expect(s6.isAlphaNumericUnderScore(), false);
+    });
+  });
 }

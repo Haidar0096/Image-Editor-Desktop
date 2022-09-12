@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dartz/dartz.dart' show some, none;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,7 +8,7 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/ui/common/widgets/custom_interactive_viewer.dart';
 import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_element_delegate_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:math' as math;
@@ -24,12 +27,15 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) => context.read<EditorBloc>().add(EditorEvent.setCanvasKey(some(_editorCanvasContainerKey))));
     RawKeyboard.instance.addListener(_keyboardKeysListener);
   }
 
   @override
   void dispose() {
     RawKeyboard.instance.removeListener(_keyboardKeysListener);
+    context.read<EditorBloc>().add(EditorEvent.setCanvasKey(none()));
     super.dispose();
   }
 
@@ -58,6 +64,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
       color: toc.colorScheme.tertiary,
       child: CustomInteractiveViewer(
         resetZoomButtonTooltip: AppLocalizations.of(context)!.resetSize,
+        maxScale: 10.0,
         child: _editorComponents(context),
       ),
     );
@@ -71,9 +78,16 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
           width: double.infinity,
           height: double.infinity,
           key: _editorCanvasContainerKey,
-          color: toc.colorScheme.background,
+          color: editorState.canvasBackgroundColor.toNullable() ?? toc.colorScheme.background,
           child: Stack(
             children: [
+              if (editorState.canvasBackgroundImageFile.isSome())
+                Positioned.fill(
+                  child: Image.file(
+                    File(editorState.canvasBackgroundImageFile.toNullable()!.path),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               // gesture detector that fills the editor canvas to detect gestures on empty areas on the canvas
               Positioned.fill(
                 child: _canvasEmptyAreaGestureDetector(context),

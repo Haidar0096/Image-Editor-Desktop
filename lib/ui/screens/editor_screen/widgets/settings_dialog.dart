@@ -6,6 +6,7 @@ import 'package:photo_editor/localization/localization_cubit.dart';
 import 'package:photo_editor/ui/common/routes/route_transitions.dart';
 import 'package:photo_editor/ui/common/styles/styles.dart';
 
+/// Shows the settings dialog.
 void showSettingsDialog(BuildContext context) => Navigator.of(context).push(
       fadeInRoute(child: const _SettingsDialog(), opaque: false, duration: kDialogTransitionDuration),
     );

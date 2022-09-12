@@ -18,27 +18,31 @@ class CustomInteractiveViewer extends StatefulWidget {
   final Clip? clipBehavior;
   final bool? constrained;
 
+  /// The border radius of the child when it is not centered within the interactive viewer.
+  final double? borderRadius;
+
   final Widget child;
 
   final String? resetZoomButtonTooltip;
 
-  const CustomInteractiveViewer(
-      {Key? key,
-      required this.child,
-      this.resetZoomButtonTooltip,
-      this.onInteractionStart,
-      this.onInteractionUpdate,
-      this.onInteractionEnd,
-      this.boundaryMargin,
-      this.minScale,
-      this.maxScale,
-      this.panEnabled,
-      this.scaleEnabled,
-      this.alignPanAxis,
-      this.scaleFactor,
-      this.clipBehavior,
-      this.constrained})
-      : super(key: key);
+  const CustomInteractiveViewer({
+    Key? key,
+    required this.child,
+    this.resetZoomButtonTooltip,
+    this.onInteractionStart,
+    this.onInteractionUpdate,
+    this.onInteractionEnd,
+    this.boundaryMargin,
+    this.minScale,
+    this.maxScale,
+    this.panEnabled,
+    this.scaleEnabled,
+    this.alignPanAxis,
+    this.scaleFactor,
+    this.clipBehavior,
+    this.constrained,
+    this.borderRadius,
+  }) : super(key: key);
 
   @override
   State<CustomInteractiveViewer> createState() => _CustomInteractiveViewerState();
@@ -111,7 +115,7 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
           decoration: BoxDecoration(
             border: Border.all(
               color: Theme.of(context).colorScheme.onBackground,
-              width: !_editorCentered ? 3.0 : 0.0,
+              width: !_editorCentered ? widget.borderRadius ?? 0.0 : 0.0,
             ),
           ),
           width: double.infinity,

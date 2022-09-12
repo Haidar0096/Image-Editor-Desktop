@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 
 void changeTextElementProperties({
   required BuildContext context,

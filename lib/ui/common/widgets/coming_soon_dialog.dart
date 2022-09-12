@@ -3,6 +3,7 @@ import 'package:photo_editor/ui/common/routes/route_transitions.dart';
 import 'package:photo_editor/ui/common/styles/styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// Shows coming soon dialog.
 void showComingSoonDialog(BuildContext context) => Navigator.of(context).push(
       fadeInRoute(
         child: const _ComingSoonDialog(),

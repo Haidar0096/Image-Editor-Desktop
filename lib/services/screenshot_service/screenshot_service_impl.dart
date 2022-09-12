@@ -1,115 +1,93 @@
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart' as widgets;
-import 'package:photo_editor/extensions/double_extension.dart';
 import 'package:photo_editor/services/screenshot_service/screenshot_service.dart';
 
-/// The default implementation of ScreenshotService. It uses a 3rd party package to implement the contract.
+/// The default implementation of ScreenshotService.
 class ScreenshotServiceDefaultImpl implements ScreenshotService {
   @override
   Future<Uint8List> captureWidget({
-    widgets.BuildContext? context,
-    required widgets.Widget widget,
-  }) async =>
-      await _captureFromWidget(widget, context: context);
-
-  /// [context] parameter is used to Inherit App Theme and MediaQuery data.
-  Future<Uint8List> _captureFromWidget(
-    widgets.Widget widget, {
-    Duration delay = const Duration(seconds: 1),
-    double? pixelRatio,
-    widgets.BuildContext? context,
+    BuildContext? context,
+    required Widget widget,
+    Duration? delay,
+    required ui.FlutterWindow window,
+    required Size outputImageSize,
+    double? outputImagePixelRatio,
+    ui.ImageByteFormat? outputImageByteFormat,
   }) async {
-    // Retry counter
     int retryCounter = 3;
     bool isDirty = false;
 
-    widgets.Widget child = widget;
+    Widget child = widget;
 
     if (context != null) {
       // Inherit Theme and MediaQuery of app
-      child = widgets.InheritedTheme.captureAll(
+      child = InheritedTheme.captureAll(
         context,
-        widgets.MediaQuery(data: widgets.MediaQuery.of(context), child: child),
+        MediaQuery(data: MediaQuery.of(context), child: Material(color: Colors.transparent, child: child)),
       );
     }
 
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
 
-    Size logicalSize = ui.window.physicalSize / ui.window.devicePixelRatio;
-    Size imageSize = ui.window.physicalSize;
-
-    assert(logicalSize.aspectRatio.toPrecision(5) == imageSize.aspectRatio.toPrecision(5));
-
     final RenderView renderView = RenderView(
-      window: ui.window,
+      window: window,
       child: RenderPositionedBox(alignment: Alignment.center, child: repaintBoundary),
       configuration: ViewConfiguration(
-        size: logicalSize,
-        devicePixelRatio: pixelRatio ?? 1.0,
+        size: outputImageSize,
+        devicePixelRatio: window.devicePixelRatio,
       ),
     );
 
     final PipelineOwner pipelineOwner = PipelineOwner();
-    final widgets.BuildOwner buildOwner = widgets.BuildOwner(
-        focusManager: widgets.FocusManager(),
-        onBuildScheduled: () {
-          ///
-          ///current render is dirty, mark it.
-          ///
-          isDirty = true;
-        });
+    final BuildOwner buildOwner = BuildOwner(focusManager: FocusManager(), onBuildScheduled: () => isDirty = true);
 
     pipelineOwner.rootNode = renderView;
     renderView.prepareInitialFrame();
 
-    final widgets.RenderObjectToWidgetElement<RenderBox> rootElement = widgets.RenderObjectToWidgetAdapter<RenderBox>(
-        container: repaintBoundary,
-        child: widgets.Directionality(
-          textDirection: TextDirection.ltr,
-          child: child,
-        )).attachToRenderTree(
-      buildOwner,
-    );
-    // Render Widget
-    buildOwner.buildScope(
-      rootElement,
-    );
-    buildOwner.finalizeTree();
+    final RenderObjectToWidgetElement<RenderBox> rootElement = RenderObjectToWidgetAdapter<RenderBox>(
+      container: repaintBoundary,
+      child: Directionality(
+        textDirection: context != null ? Directionality.of(context) : TextDirection.ltr,
+        child: child,
+      ),
+    ).attachToRenderTree(buildOwner);
 
+    buildOwner.buildScope(rootElement);
+    buildOwner.finalizeTree();
     pipelineOwner.flushLayout();
     pipelineOwner.flushCompositingBits();
     pipelineOwner.flushPaint();
 
-    ui.Image? image;
+    ui.Image image;
 
     do {
       // Reset the dirty flag
       isDirty = false;
 
-      image = await repaintBoundary.toImage(pixelRatio: pixelRatio ?? (imageSize.width / logicalSize.width));
+      image = await repaintBoundary.toImage(pixelRatio: outputImagePixelRatio ?? 1.0);
 
-      // This delay should increase with Widget tree Size
-      await Future.delayed(delay);
+      // This delay should increase with widget tree size
+      await Future.delayed(delay ?? const Duration(milliseconds: 1000));
 
       // Check does this require rebuild
       if (isDirty) {
         // Previous capture has been updated, re-render again.
-        buildOwner.buildScope(
-          rootElement,
-        );
+        buildOwner.buildScope(rootElement);
         buildOwner.finalizeTree();
         pipelineOwner.flushLayout();
         pipelineOwner.flushCompositingBits();
         pipelineOwner.flushPaint();
       }
+
       retryCounter--;
-      //retry until capture is successful
+      // Retry until capture is successful
     } while (isDirty && retryCounter >= 0);
 
-    final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    final ByteData? byteData = await image.toByteData(format: outputImageByteFormat ?? ui.ImageByteFormat.png);
+    image.dispose();
 
     return byteData!.buffer.asUint8List();
   }

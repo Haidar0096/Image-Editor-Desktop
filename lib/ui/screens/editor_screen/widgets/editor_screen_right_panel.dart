@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
+import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:photo_editor/ui/screens/editor_screen/widgets/common_editor_functions.dart' as common_editor_functions;
 import 'package:photo_editor/ui/screens/editor_screen/widgets/fonts_dialog.dart';

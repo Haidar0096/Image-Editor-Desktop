@@ -90,6 +90,18 @@ dependencies:
   # For pagination.
   infinite_scroll_pagination: ^3.2.0
 
+  # For more async options
+  async: ^2.9.0
+
+  # For image manipulation
+  image: ^3.2.0
+
+  # for launching file explorer
+  url_launcher: ^6.1.5
+
+  # For taking screenshots
+  screenshot: ^1.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -120,8 +132,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  #  assets:
-  #    - assets/fonts/google_fonts/
+  assets:
+    - assets/fonts/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

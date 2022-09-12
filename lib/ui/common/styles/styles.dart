@@ -8,7 +8,7 @@ get _defaultButtonStyle => ButtonStyle(
 get themeData => ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.deepPurpleAccent,
-        background: Colors.grey,
+        background: Colors.white,
       ),
       textTheme: Typography.whiteRedwoodCity.copyWith(
         subtitle1: Typography.whiteRedwoodCity.subtitle1!.copyWith(
@@ -35,3 +35,4 @@ get themeData => ThemeData(
 const BorderRadius kBorderRadius = BorderRadius.all(Radius.circular(10));
 const Duration kDialogTransitionDuration = Duration(milliseconds: 300);
 const Duration kScrollTransitionDuration = Duration(milliseconds: 50);
+const Size kDialogSize = Size(300, 170);
