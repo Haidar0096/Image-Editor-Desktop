@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:photo_editor/dependency_injection/service_locator.dart';
-import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_app_bar.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_nav_bar.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_widget.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/left_panel.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/right_panel.dart';
+import 'package:photo_editor/ui/common/widgets/loading_widget.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_screen_appbar.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_screen_canvas.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_screen_left_panel.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_screen_navbar.dart';
+import 'package:photo_editor/ui/screens/editor_screen/widgets/editor_screen_right_panel.dart';
+
+import 'bloc/screenshot_cubit/screenshot_cubit.dart';
 
 class EditorScreen extends StatelessWidget {
   static const routeName = '/editor-screen';
@@ -15,52 +16,69 @@ class EditorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final toc = Theme.of(context);
+    final ThemeData toc = Theme.of(context);
 
-    const leftPanelFlex = 5;
-    const rightPanelFlex = 10;
-    const editorWidgetFlex = 100 - leftPanelFlex - rightPanelFlex;
+    const int editorScreenAppBarFlex = 5;
+    const int editorScreenBodyFlex = 90;
+    const int editorScreenNavBarFlex = 5;
 
-    const appBarFlex = 10;
-    const navBarFlex = 3;
-    const bodyFlex = 100 - appBarFlex - navBarFlex;
+    const int editorScreenLeftPanelFlex = 4;
+    const int editorScreenCanvasFlex = 87;
+    const int editorScreenRightPanelFlex = 9;
 
-    return Scaffold(
-      backgroundColor: toc.colorScheme.background,
-      body: BlocProvider<EditorBloc>(
-        create: (context) => serviceLocator.get<EditorBloc>(),
-        child: Column(
-          children: [
-            const Expanded(
-              flex: appBarFlex,
-              child: EditorAppBar(),
-            ),
-            Expanded(
-              flex: bodyFlex,
-              child: Row(
-                children: const [
-                  Expanded(
-                    flex: leftPanelFlex,
-                    child: LeftPanel(),
-                  ),
-                  Expanded(
-                    flex: editorWidgetFlex,
-                    child: EditorWidget(),
-                  ),
-                  Expanded(
-                    flex: rightPanelFlex,
-                    child: RightPanel(),
-                  ),
-                ],
+    return BlocBuilder<ScreenshotCubit, ScreenshotState>(
+      builder: (context, screenshotState) {
+        return Material(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    const Expanded(flex: editorScreenAppBarFlex, child: EditorScreenAppBar()),
+                    Expanded(
+                      flex: editorScreenBodyFlex,
+                      child: Row(
+                        children: const [
+                          Expanded(flex: editorScreenLeftPanelFlex, child: EditorScreenLeftPanel()),
+                          Expanded(flex: editorScreenCanvasFlex, child: EditorScreenCanvas()),
+                          Expanded(flex: editorScreenRightPanelFlex, child: EditorScreenRightPanel()),
+                        ],
+                      ),
+                    ),
+                    const Expanded(flex: editorScreenNavBarFlex, child: EditorScreenNavBar()),
+                  ],
+                ),
               ),
-            ),
-            const Expanded(
-              flex: navBarFlex,
-              child: EditorNavBar(),
-            ),
-          ],
-        ),
-      ),
+              if (screenshotState.processingState != ProcessingState.idle)
+                const Positioned.fill(child: AbsorbPointer()),
+              if (screenshotState.processingState != ProcessingState.idle)
+                Positioned.fill(
+                  child: LoadingWidget(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            screenshotState.processingState.getMessage(context),
+                            style: toc.textTheme.subtitle1,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            screenshotState.progressMessage.fold(() => '', (progress) => progress),
+                            style: toc.textTheme.subtitle1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onDismiss: () => context.read<ScreenshotCubit>().cancelCaptureWidget(context),
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

@@ -1,30 +1,19 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'dart:ui';
-
-import 'languages.dart';
+import 'language.dart';
 
 part 'localization_state.dart';
 
-///Tracks and sets the locale of the app
+///Manages the locale of the app.
 class LocalizationCubit extends HydratedCubit<LocalizationState> {
-  LocalizationCubit()
-      : super(LocalizationState(
-            locale: Locale.fromSubtags(languageCode: Language.en.value)));
+  LocalizationCubit() : super(const LocalizationState(language: Language.english));
 
-  void setLanguage(Language language) {
-    emit(LocalizationState(
-        locale: Locale.fromSubtags(languageCode: language.value)));
-  }
-
-  Locale get locale => state.locale;
+  void setLanguage(Language language) => emit(LocalizationState(language: language));
 
   @override
   LocalizationState? fromJson(Map<String, dynamic> json) => LocalizationState(
-        locale: Locale.fromSubtags(languageCode: json['language_code']),
+        language: Language.values.where((lang) => lang.languageCode == json['language_code']).first,
       );
 
   @override
-  Map<String, dynamic>? toJson(LocalizationState state) => {
-        'language_code': state.locale.languageCode,
-      };
+  Map<String, dynamic>? toJson(LocalizationState state) => {'language_code': state.language.languageCode};
 }

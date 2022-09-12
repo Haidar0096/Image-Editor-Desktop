@@ -12,24 +12,11 @@ part of 'editor.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EditorTearOff {
-  const _$EditorTearOff();
-
-  _Editor call({required ISet<Element> elements}) {
-    return _Editor(
-      elements: elements,
-    );
-  }
-}
-
-/// @nodoc
-const $Editor = _$EditorTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Editor {
+  /// The elements in the editor.
   ISet<Element> get elements => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,8 +25,7 @@ mixin _$Editor {
 
 /// @nodoc
 abstract class $EditorCopyWith<$Res> {
-  factory $EditorCopyWith(Editor value, $Res Function(Editor) then) =
-      _$EditorCopyWithImpl<$Res>;
+  factory $EditorCopyWith(Editor value, $Res Function(Editor) then) = _$EditorCopyWithImpl<$Res>;
   $Res call({ISet<Element> elements});
 }
 
@@ -65,27 +51,25 @@ class _$EditorCopyWithImpl<$Res> implements $EditorCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
-  factory _$EditorCopyWith(_Editor value, $Res Function(_Editor) then) =
-      __$EditorCopyWithImpl<$Res>;
+abstract class _$$_EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
+  factory _$$_EditorCopyWith(_$_Editor value, $Res Function(_$_Editor) then) = __$$_EditorCopyWithImpl<$Res>;
   @override
   $Res call({ISet<Element> elements});
 }
 
 /// @nodoc
-class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
-    implements _$EditorCopyWith<$Res> {
-  __$EditorCopyWithImpl(_Editor _value, $Res Function(_Editor) _then)
-      : super(_value, (v) => _then(v as _Editor));
+class __$$_EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res> implements _$$_EditorCopyWith<$Res> {
+  __$$_EditorCopyWithImpl(_$_Editor _value, $Res Function(_$_Editor) _then)
+      : super(_value, (v) => _then(v as _$_Editor));
 
   @override
-  _Editor get _value => super._value as _Editor;
+  _$_Editor get _value => super._value as _$_Editor;
 
   @override
   $Res call({
     Object? elements = freezed,
   }) {
-    return _then(_Editor(
+    return _then(_$_Editor(
       elements: elements == freezed
           ? _value.elements
           : elements // ignore: cast_nullable_to_non_nullable
@@ -99,6 +83,7 @@ class __$EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
 class _$_Editor implements _Editor {
   const _$_Editor({required this.elements});
 
+  /// The elements in the editor.
   @override
   final ISet<Element> elements;
 
@@ -111,56 +96,42 @@ class _$_Editor implements _Editor {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Editor &&
+            other is _$_Editor &&
             const DeepCollectionEquality().equals(other.elements, elements));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(elements));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(elements));
 
   @JsonKey(ignore: true)
   @override
-  _$EditorCopyWith<_Editor> get copyWith =>
-      __$EditorCopyWithImpl<_Editor>(this, _$identity);
+  _$$_EditorCopyWith<_$_Editor> get copyWith => __$$_EditorCopyWithImpl<_$_Editor>(this, _$identity);
 }
 
 abstract class _Editor implements Editor {
-  const factory _Editor({required ISet<Element> elements}) = _$_Editor;
+  const factory _Editor({required final ISet<Element> elements}) = _$_Editor;
 
   @override
+
+  /// The elements in the editor.
   ISet<Element> get elements;
   @override
   @JsonKey(ignore: true)
-  _$EditorCopyWith<_Editor> get copyWith => throw _privateConstructorUsedError;
+  _$$_EditorCopyWith<_$_Editor> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ElementTearOff {
-  const _$ElementTearOff();
-
-  _Element call(
-      {required String id,
-      required ElementType elementType,
-      required Rect rect,
-      required int showOrder}) {
-    return _Element(
-      id: id,
-      elementType: elementType,
-      rect: rect,
-      showOrder: showOrder,
-    );
-  }
-}
-
-/// @nodoc
-const $Element = _$ElementTearOff();
 
 /// @nodoc
 mixin _$Element {
+  /// The unique id of the element.
   String get id => throw _privateConstructorUsedError;
-  ElementType get elementType => throw _privateConstructorUsedError;
-  Rect get rect => throw _privateConstructorUsedError;
+
+  /// The properties of the element.
+  ElementProperties get properties => throw _privateConstructorUsedError;
+
+  /// The rectangle in which the element is contained.
+  widgets.Rect get rect => throw _privateConstructorUsedError;
+
+  /// The order this element should be shown amongst other elements in the editor.
   int get showOrder => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -169,11 +140,10 @@ mixin _$Element {
 
 /// @nodoc
 abstract class $ElementCopyWith<$Res> {
-  factory $ElementCopyWith(Element value, $Res Function(Element) then) =
-      _$ElementCopyWithImpl<$Res>;
-  $Res call({String id, ElementType elementType, Rect rect, int showOrder});
+  factory $ElementCopyWith(Element value, $Res Function(Element) then) = _$ElementCopyWithImpl<$Res>;
+  $Res call({String id, ElementProperties properties, widgets.Rect rect, int showOrder});
 
-  $ElementTypeCopyWith<$Res> get elementType;
+  $ElementPropertiesCopyWith<$Res> get properties;
 }
 
 /// @nodoc
@@ -187,7 +157,7 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? elementType = freezed,
+    Object? properties = freezed,
     Object? rect = freezed,
     Object? showOrder = freezed,
   }) {
@@ -196,14 +166,14 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      elementType: elementType == freezed
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as ElementType,
+      properties: properties == freezed
+          ? _value.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as ElementProperties,
       rect: rect == freezed
           ? _value.rect
           : rect // ignore: cast_nullable_to_non_nullable
-              as Rect,
+              as widgets.Rect,
       showOrder: showOrder == freezed
           ? _value.showOrder
           : showOrder // ignore: cast_nullable_to_non_nullable
@@ -212,53 +182,51 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
   }
 
   @override
-  $ElementTypeCopyWith<$Res> get elementType {
-    return $ElementTypeCopyWith<$Res>(_value.elementType, (value) {
-      return _then(_value.copyWith(elementType: value));
+  $ElementPropertiesCopyWith<$Res> get properties {
+    return $ElementPropertiesCopyWith<$Res>(_value.properties, (value) {
+      return _then(_value.copyWith(properties: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
-  factory _$ElementCopyWith(_Element value, $Res Function(_Element) then) =
-      __$ElementCopyWithImpl<$Res>;
+abstract class _$$_ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
+  factory _$$_ElementCopyWith(_$_Element value, $Res Function(_$_Element) then) = __$$_ElementCopyWithImpl<$Res>;
   @override
-  $Res call({String id, ElementType elementType, Rect rect, int showOrder});
+  $Res call({String id, ElementProperties properties, widgets.Rect rect, int showOrder});
 
   @override
-  $ElementTypeCopyWith<$Res> get elementType;
+  $ElementPropertiesCopyWith<$Res> get properties;
 }
 
 /// @nodoc
-class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
-    implements _$ElementCopyWith<$Res> {
-  __$ElementCopyWithImpl(_Element _value, $Res Function(_Element) _then)
-      : super(_value, (v) => _then(v as _Element));
+class __$$_ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res> implements _$$_ElementCopyWith<$Res> {
+  __$$_ElementCopyWithImpl(_$_Element _value, $Res Function(_$_Element) _then)
+      : super(_value, (v) => _then(v as _$_Element));
 
   @override
-  _Element get _value => super._value as _Element;
+  _$_Element get _value => super._value as _$_Element;
 
   @override
   $Res call({
     Object? id = freezed,
-    Object? elementType = freezed,
+    Object? properties = freezed,
     Object? rect = freezed,
     Object? showOrder = freezed,
   }) {
-    return _then(_Element(
+    return _then(_$_Element(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      elementType: elementType == freezed
-          ? _value.elementType
-          : elementType // ignore: cast_nullable_to_non_nullable
-              as ElementType,
+      properties: properties == freezed
+          ? _value.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as ElementProperties,
       rect: rect == freezed
           ? _value.rect
           : rect // ignore: cast_nullable_to_non_nullable
-              as Rect,
+              as widgets.Rect,
       showOrder: showOrder == freezed
           ? _value.showOrder
           : showOrder // ignore: cast_nullable_to_non_nullable
@@ -270,34 +238,36 @@ class __$ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Element implements _Element {
-  const _$_Element(
-      {required this.id,
-      required this.elementType,
-      required this.rect,
-      required this.showOrder});
+  const _$_Element({required this.id, required this.properties, required this.rect, required this.showOrder});
 
+  /// The unique id of the element.
   @override
   final String id;
+
+  /// The properties of the element.
   @override
-  final ElementType elementType;
+  final ElementProperties properties;
+
+  /// The rectangle in which the element is contained.
   @override
-  final Rect rect;
+  final widgets.Rect rect;
+
+  /// The order this element should be shown amongst other elements in the editor.
   @override
   final int showOrder;
 
   @override
   String toString() {
-    return 'Element(id: $id, elementType: $elementType, rect: $rect, showOrder: $showOrder)';
+    return 'Element(id: $id, properties: $properties, rect: $rect, showOrder: $showOrder)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Element &&
+            other is _$_Element &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.elementType, elementType) &&
+            const DeepCollectionEquality().equals(other.properties, properties) &&
             const DeepCollectionEquality().equals(other.rect, rect) &&
             const DeepCollectionEquality().equals(other.showOrder, showOrder));
   }
@@ -306,142 +276,137 @@ class _$_Element implements _Element {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(elementType),
+      const DeepCollectionEquality().hash(properties),
       const DeepCollectionEquality().hash(rect),
       const DeepCollectionEquality().hash(showOrder));
 
   @JsonKey(ignore: true)
   @override
-  _$ElementCopyWith<_Element> get copyWith =>
-      __$ElementCopyWithImpl<_Element>(this, _$identity);
+  _$$_ElementCopyWith<_$_Element> get copyWith => __$$_ElementCopyWithImpl<_$_Element>(this, _$identity);
 }
 
 abstract class _Element implements Element {
   const factory _Element(
-      {required String id,
-      required ElementType elementType,
-      required Rect rect,
-      required int showOrder}) = _$_Element;
+      {required final String id,
+      required final ElementProperties properties,
+      required final widgets.Rect rect,
+      required final int showOrder}) = _$_Element;
 
   @override
+
+  /// The unique id of the element.
   String get id;
   @override
-  ElementType get elementType;
+
+  /// The properties of the element.
+  ElementProperties get properties;
   @override
-  Rect get rect;
+
+  /// The rectangle in which the element is contained.
+  widgets.Rect get rect;
   @override
+
+  /// The order this element should be shown amongst other elements in the editor.
   int get showOrder;
   @override
   @JsonKey(ignore: true)
-  _$ElementCopyWith<_Element> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_ElementCopyWith<_$_Element> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$ElementTypeTearOff {
-  const _$ElementTypeTearOff();
-
-  ImageElementType image({required String path}) {
-    return ImageElementType(
-      path: path,
-    );
-  }
-
-  TextElementType text({required String value}) {
-    return TextElementType(
-      value: value,
-    );
-  }
-}
-
-/// @nodoc
-const $ElementType = _$ElementTypeTearOff();
-
-/// @nodoc
-mixin _$ElementType {
+mixin _$ElementProperties {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String path) image,
-    required TResult Function(String value) text,
+    required TResult Function(String sourceFilePath) fileImageProperties,
+    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+        staticTextProperties,
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)
+        variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ImageElementType value) image,
-    required TResult Function(TextElementType value) text,
+    required TResult Function(FileImageProperties value) fileImageProperties,
+    required TResult Function(StaticTextProperties value) staticTextProperties,
+    required TResult Function(VariableTextProperties value) variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ElementTypeCopyWith<$Res> {
-  factory $ElementTypeCopyWith(
-          ElementType value, $Res Function(ElementType) then) =
-      _$ElementTypeCopyWithImpl<$Res>;
+abstract class $ElementPropertiesCopyWith<$Res> {
+  factory $ElementPropertiesCopyWith(ElementProperties value, $Res Function(ElementProperties) then) =
+      _$ElementPropertiesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ElementTypeCopyWithImpl<$Res> implements $ElementTypeCopyWith<$Res> {
-  _$ElementTypeCopyWithImpl(this._value, this._then);
+class _$ElementPropertiesCopyWithImpl<$Res> implements $ElementPropertiesCopyWith<$Res> {
+  _$ElementPropertiesCopyWithImpl(this._value, this._then);
 
-  final ElementType _value;
+  final ElementProperties _value;
   // ignore: unused_field
-  final $Res Function(ElementType) _then;
+  final $Res Function(ElementProperties) _then;
 }
 
 /// @nodoc
-abstract class $ImageElementTypeCopyWith<$Res> {
-  factory $ImageElementTypeCopyWith(
-          ImageElementType value, $Res Function(ImageElementType) then) =
-      _$ImageElementTypeCopyWithImpl<$Res>;
-  $Res call({String path});
+abstract class _$$FileImagePropertiesCopyWith<$Res> {
+  factory _$$FileImagePropertiesCopyWith(_$FileImageProperties value, $Res Function(_$FileImageProperties) then) =
+      __$$FileImagePropertiesCopyWithImpl<$Res>;
+  $Res call({String sourceFilePath});
 }
 
 /// @nodoc
-class _$ImageElementTypeCopyWithImpl<$Res>
-    extends _$ElementTypeCopyWithImpl<$Res>
-    implements $ImageElementTypeCopyWith<$Res> {
-  _$ImageElementTypeCopyWithImpl(
-      ImageElementType _value, $Res Function(ImageElementType) _then)
-      : super(_value, (v) => _then(v as ImageElementType));
+class __$$FileImagePropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+    implements _$$FileImagePropertiesCopyWith<$Res> {
+  __$$FileImagePropertiesCopyWithImpl(_$FileImageProperties _value, $Res Function(_$FileImageProperties) _then)
+      : super(_value, (v) => _then(v as _$FileImageProperties));
 
   @override
-  ImageElementType get _value => super._value as ImageElementType;
+  _$FileImageProperties get _value => super._value as _$FileImageProperties;
 
   @override
   $Res call({
-    Object? path = freezed,
+    Object? sourceFilePath = freezed,
   }) {
-    return _then(ImageElementType(
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
+    return _then(_$FileImageProperties(
+      sourceFilePath: sourceFilePath == freezed
+          ? _value.sourceFilePath
+          : sourceFilePath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -449,61 +414,71 @@ class _$ImageElementTypeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ImageElementType implements ImageElementType {
-  const _$ImageElementType({required this.path});
+class _$FileImageProperties extends FileImageProperties {
+  const _$FileImageProperties({required this.sourceFilePath}) : super._();
 
+  /// The path of the file containing this image.
   @override
-  final String path;
+  final String sourceFilePath;
 
   @override
   String toString() {
-    return 'ElementType.image(path: $path)';
+    return 'ElementProperties.fileImageProperties(sourceFilePath: $sourceFilePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ImageElementType &&
-            const DeepCollectionEquality().equals(other.path, path));
+            other is _$FileImageProperties &&
+            const DeepCollectionEquality().equals(other.sourceFilePath, sourceFilePath));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(path));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(sourceFilePath));
 
   @JsonKey(ignore: true)
   @override
-  $ImageElementTypeCopyWith<ImageElementType> get copyWith =>
-      _$ImageElementTypeCopyWithImpl<ImageElementType>(this, _$identity);
+  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith =>
+      __$$FileImagePropertiesCopyWithImpl<_$FileImageProperties>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String path) image,
-    required TResult Function(String value) text,
+    required TResult Function(String sourceFilePath) fileImageProperties,
+    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+        staticTextProperties,
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)
+        variableTextProperties,
   }) {
-    return image(path);
+    return fileImageProperties(sourceFilePath);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
   }) {
-    return image?.call(path);
+    return fileImageProperties?.call(sourceFilePath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
     required TResult orElse(),
   }) {
-    if (image != null) {
-      return image(path);
+    if (fileImageProperties != null) {
+      return fileImageProperties(sourceFilePath);
     }
     return orElse();
   }
@@ -511,133 +486,165 @@ class _$ImageElementType implements ImageElementType {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ImageElementType value) image,
-    required TResult Function(TextElementType value) text,
+    required TResult Function(FileImageProperties value) fileImageProperties,
+    required TResult Function(StaticTextProperties value) staticTextProperties,
+    required TResult Function(VariableTextProperties value) variableTextProperties,
   }) {
-    return image(this);
+    return fileImageProperties(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
   }) {
-    return image?.call(this);
+    return fileImageProperties?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
     required TResult orElse(),
   }) {
-    if (image != null) {
-      return image(this);
+    if (fileImageProperties != null) {
+      return fileImageProperties(this);
     }
     return orElse();
   }
 }
 
-abstract class ImageElementType implements ElementType {
-  const factory ImageElementType({required String path}) = _$ImageElementType;
+abstract class FileImageProperties extends ElementProperties {
+  const factory FileImageProperties({required final String sourceFilePath}) = _$FileImageProperties;
+  const FileImageProperties._() : super._();
 
-  String get path;
+  /// The path of the file containing this image.
+  String get sourceFilePath;
   @JsonKey(ignore: true)
-  $ImageElementTypeCopyWith<ImageElementType> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TextElementTypeCopyWith<$Res> {
-  factory $TextElementTypeCopyWith(
-          TextElementType value, $Res Function(TextElementType) then) =
-      _$TextElementTypeCopyWithImpl<$Res>;
-  $Res call({String value});
+abstract class _$$StaticTextPropertiesCopyWith<$Res> {
+  factory _$$StaticTextPropertiesCopyWith(_$StaticTextProperties value, $Res Function(_$StaticTextProperties) then) =
+      __$$StaticTextPropertiesCopyWithImpl<$Res>;
+  $Res call({String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign});
 }
 
 /// @nodoc
-class _$TextElementTypeCopyWithImpl<$Res>
-    extends _$ElementTypeCopyWithImpl<$Res>
-    implements $TextElementTypeCopyWith<$Res> {
-  _$TextElementTypeCopyWithImpl(
-      TextElementType _value, $Res Function(TextElementType) _then)
-      : super(_value, (v) => _then(v as TextElementType));
+class __$$StaticTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+    implements _$$StaticTextPropertiesCopyWith<$Res> {
+  __$$StaticTextPropertiesCopyWithImpl(_$StaticTextProperties _value, $Res Function(_$StaticTextProperties) _then)
+      : super(_value, (v) => _then(v as _$StaticTextProperties));
 
   @override
-  TextElementType get _value => super._value as TextElementType;
+  _$StaticTextProperties get _value => super._value as _$StaticTextProperties;
 
   @override
   $Res call({
-    Object? value = freezed,
+    Object? text = freezed,
+    Object? textStyle = freezed,
+    Object? textAlign = freezed,
   }) {
-    return _then(TextElementType(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
+    return _then(_$StaticTextProperties(
+      text: text == freezed
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
+      textStyle: textStyle == freezed
+          ? _value.textStyle
+          : textStyle // ignore: cast_nullable_to_non_nullable
+              as widgets.TextStyle?,
+      textAlign: textAlign == freezed
+          ? _value.textAlign
+          : textAlign // ignore: cast_nullable_to_non_nullable
+              as widgets.TextAlign?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$TextElementType implements TextElementType {
-  const _$TextElementType({required this.value});
+class _$StaticTextProperties extends StaticTextProperties {
+  const _$StaticTextProperties({required this.text, this.textStyle, this.textAlign}) : super._();
 
+  /// The value of the text.
   @override
-  final String value;
+  final String text;
+
+  /// The style of the text.
+  @override
+  final widgets.TextStyle? textStyle;
+
+  /// The alignment of the text.
+  @override
+  final widgets.TextAlign? textAlign;
 
   @override
   String toString() {
-    return 'ElementType.text(value: $value)';
+    return 'ElementProperties.staticTextProperties(text: $text, textStyle: $textStyle, textAlign: $textAlign)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is TextElementType &&
-            const DeepCollectionEquality().equals(other.value, value));
+            other is _$StaticTextProperties &&
+            const DeepCollectionEquality().equals(other.text, text) &&
+            const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
+            const DeepCollectionEquality().equals(other.textAlign, textAlign));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(text),
+      const DeepCollectionEquality().hash(textStyle), const DeepCollectionEquality().hash(textAlign));
 
   @JsonKey(ignore: true)
   @override
-  $TextElementTypeCopyWith<TextElementType> get copyWith =>
-      _$TextElementTypeCopyWithImpl<TextElementType>(this, _$identity);
+  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith =>
+      __$$StaticTextPropertiesCopyWithImpl<_$StaticTextProperties>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String path) image,
-    required TResult Function(String value) text,
+    required TResult Function(String sourceFilePath) fileImageProperties,
+    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+        staticTextProperties,
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)
+        variableTextProperties,
   }) {
-    return text(value);
+    return staticTextProperties(text, textStyle, textAlign);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
   }) {
-    return text?.call(value);
+    return staticTextProperties?.call(text, textStyle, textAlign);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String path)? image,
-    TResult Function(String value)? text,
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
     required TResult orElse(),
   }) {
-    if (text != null) {
-      return text(value);
+    if (staticTextProperties != null) {
+      return staticTextProperties(text, textStyle, textAlign);
     }
     return orElse();
   }
@@ -645,40 +652,253 @@ class _$TextElementType implements TextElementType {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ImageElementType value) image,
-    required TResult Function(TextElementType value) text,
+    required TResult Function(FileImageProperties value) fileImageProperties,
+    required TResult Function(StaticTextProperties value) staticTextProperties,
+    required TResult Function(VariableTextProperties value) variableTextProperties,
   }) {
-    return text(this);
+    return staticTextProperties(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
   }) {
-    return text?.call(this);
+    return staticTextProperties?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ImageElementType value)? image,
-    TResult Function(TextElementType value)? text,
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
     required TResult orElse(),
   }) {
-    if (text != null) {
-      return text(this);
+    if (staticTextProperties != null) {
+      return staticTextProperties(this);
     }
     return orElse();
   }
 }
 
-abstract class TextElementType implements ElementType {
-  const factory TextElementType({required String value}) = _$TextElementType;
+abstract class StaticTextProperties extends ElementProperties {
+  const factory StaticTextProperties(
+      {required final String text,
+      final widgets.TextStyle? textStyle,
+      final widgets.TextAlign? textAlign}) = _$StaticTextProperties;
+  const StaticTextProperties._() : super._();
 
-  String get value;
+  /// The value of the text.
+  String get text;
+
+  /// The style of the text.
+  widgets.TextStyle? get textStyle;
+
+  /// The alignment of the text.
+  widgets.TextAlign? get textAlign;
   @JsonKey(ignore: true)
-  $TextElementTypeCopyWith<TextElementType> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VariableTextPropertiesCopyWith<$Res> {
+  factory _$$VariableTextPropertiesCopyWith(
+          _$VariableTextProperties value, $Res Function(_$VariableTextProperties) then) =
+      __$$VariableTextPropertiesCopyWithImpl<$Res>;
+  $Res call(
+      {String placeHolderText,
+      widgets.TextStyle? textStyle,
+      widgets.TextAlign? textAlign,
+      Option<String> sourceFilePath});
+}
+
+/// @nodoc
+class __$$VariableTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+    implements _$$VariableTextPropertiesCopyWith<$Res> {
+  __$$VariableTextPropertiesCopyWithImpl(_$VariableTextProperties _value, $Res Function(_$VariableTextProperties) _then)
+      : super(_value, (v) => _then(v as _$VariableTextProperties));
+
+  @override
+  _$VariableTextProperties get _value => super._value as _$VariableTextProperties;
+
+  @override
+  $Res call({
+    Object? placeHolderText = freezed,
+    Object? textStyle = freezed,
+    Object? textAlign = freezed,
+    Object? sourceFilePath = freezed,
+  }) {
+    return _then(_$VariableTextProperties(
+      placeHolderText: placeHolderText == freezed
+          ? _value.placeHolderText
+          : placeHolderText // ignore: cast_nullable_to_non_nullable
+              as String,
+      textStyle: textStyle == freezed
+          ? _value.textStyle
+          : textStyle // ignore: cast_nullable_to_non_nullable
+              as widgets.TextStyle?,
+      textAlign: textAlign == freezed
+          ? _value.textAlign
+          : textAlign // ignore: cast_nullable_to_non_nullable
+              as widgets.TextAlign?,
+      sourceFilePath: sourceFilePath == freezed
+          ? _value.sourceFilePath
+          : sourceFilePath // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VariableTextProperties extends VariableTextProperties {
+  const _$VariableTextProperties(
+      {required this.placeHolderText, this.textStyle, this.textAlign, required this.sourceFilePath})
+      : super._();
+
+  /// The text to show in the editing phase.
+  @override
+  final String placeHolderText;
+
+  /// The style of the text.
+  @override
+  final widgets.TextStyle? textStyle;
+
+  /// The alignment of the text.
+  @override
+  final widgets.TextAlign? textAlign;
+
+  /// The path of the file containing the text to be generated.
+  @override
+  final Option<String> sourceFilePath;
+
+  @override
+  String toString() {
+    return 'ElementProperties.variableTextProperties(placeHolderText: $placeHolderText, textStyle: $textStyle, textAlign: $textAlign, sourceFilePath: $sourceFilePath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VariableTextProperties &&
+            const DeepCollectionEquality().equals(other.placeHolderText, placeHolderText) &&
+            const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
+            const DeepCollectionEquality().equals(other.textAlign, textAlign) &&
+            const DeepCollectionEquality().equals(other.sourceFilePath, sourceFilePath));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(placeHolderText),
+      const DeepCollectionEquality().hash(textStyle),
+      const DeepCollectionEquality().hash(textAlign),
+      const DeepCollectionEquality().hash(sourceFilePath));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith =>
+      __$$VariableTextPropertiesCopyWithImpl<_$VariableTextProperties>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sourceFilePath) fileImageProperties,
+    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+        staticTextProperties,
+    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)
+        variableTextProperties,
+  }) {
+    return variableTextProperties(placeHolderText, textStyle, textAlign, sourceFilePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
+  }) {
+    return variableTextProperties?.call(placeHolderText, textStyle, textAlign, sourceFilePath);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sourceFilePath)? fileImageProperties,
+    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+            Option<String> sourceFilePath)?
+        variableTextProperties,
+    required TResult orElse(),
+  }) {
+    if (variableTextProperties != null) {
+      return variableTextProperties(placeHolderText, textStyle, textAlign, sourceFilePath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FileImageProperties value) fileImageProperties,
+    required TResult Function(StaticTextProperties value) staticTextProperties,
+    required TResult Function(VariableTextProperties value) variableTextProperties,
+  }) {
+    return variableTextProperties(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
+  }) {
+    return variableTextProperties?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FileImageProperties value)? fileImageProperties,
+    TResult Function(StaticTextProperties value)? staticTextProperties,
+    TResult Function(VariableTextProperties value)? variableTextProperties,
+    required TResult orElse(),
+  }) {
+    if (variableTextProperties != null) {
+      return variableTextProperties(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class VariableTextProperties extends ElementProperties {
+  const factory VariableTextProperties(
+      {required final String placeHolderText,
+      final widgets.TextStyle? textStyle,
+      final widgets.TextAlign? textAlign,
+      required final Option<String> sourceFilePath}) = _$VariableTextProperties;
+  const VariableTextProperties._() : super._();
+
+  /// The text to show in the editing phase.
+  String get placeHolderText;
+
+  /// The style of the text.
+  widgets.TextStyle? get textStyle;
+
+  /// The alignment of the text.
+  widgets.TextAlign? get textAlign;
+
+  /// The path of the file containing the text to be generated.
+  Option<String> get sourceFilePath;
+  @JsonKey(ignore: true)
+  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith => throw _privateConstructorUsedError;
 }
