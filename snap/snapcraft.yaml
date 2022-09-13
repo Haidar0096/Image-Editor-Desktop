@@ -1,0 +1,28 @@
+name: batch-image-editor
+version: 0.1.0
+summary: Batch Image Editor
+description: Basic image editor that can generate images using text from text files in batches.
+
+confinement: strict
+base: core18
+grade: stable
+
+slots:
+  dbus-batch-image-editor:
+    interface: dbus
+    bus: session
+    name: org.zlimits.batch_image_editor
+
+apps:
+  batch-image-editor:
+    command: batch_image_editor
+    extensions: [flutter-master]
+    plugs:
+      - network
+    slots:
+      - dbus-batch-image-editor
+parts:
+  batch-image-editor:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
