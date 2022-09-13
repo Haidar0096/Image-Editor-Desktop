@@ -6,4 +6,4 @@ some screen shots:
 
 ![Screenshot](screenshots/s1.png)
 ![Screenshot](screenshots/s2.png)
-![](https://github.com/Haidar0096/Image-Editor-Desktop/blob/master/screenshots/image_editor_tutorial.mkv)
+![](screenshots/image_editor_tutorial.mkv)
