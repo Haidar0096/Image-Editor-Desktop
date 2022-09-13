@@ -19,7 +19,8 @@ class EditorElementDelegateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final EditorBloc bloc = context.read<EditorBloc>();
-    bool isSelectedElement = bloc.state.selectedElement.fold(() => false, (el) => el.id == element.id);
+    bool isSelectedElement = bloc.state.selectedElement
+        .fold(() => false, (el) => el.id == element.id);
     bool isEditingText = bloc.state.isEditingTextElement;
     return element.properties.map(
       fileImageProperties: (fileImageProperties) => EditorImageWidget(
@@ -32,7 +33,8 @@ class EditorElementDelegateWidget extends StatelessWidget {
         isSelected: isSelectedElement,
         isEditingText: isEditingText,
       ),
-      variableTextProperties: (variableTextProperties) => EditorVariableTextWidget(properties: variableTextProperties),
+      variableTextProperties: (variableTextProperties) =>
+          EditorVariableTextWidget(properties: variableTextProperties),
     );
   }
 }

@@ -10,7 +10,8 @@ import 'package:file_picker/file_picker.dart' as api;
 abstract class FilePicker {
   /// Creates a file picker that can be used to pick files or directories from the filesystem.
   @factoryMethod
-  factory FilePicker() => FilePickerDefaultImpl(apiFilePicker: api.FilePicker.platform);
+  factory FilePicker() =>
+      FilePickerDefaultImpl(apiFilePicker: api.FilePicker.platform);
 
   /// Picks a single file from the file system.
   ///

@@ -25,7 +25,8 @@ mixin _$Editor {
 
 /// @nodoc
 abstract class $EditorCopyWith<$Res> {
-  factory $EditorCopyWith(Editor value, $Res Function(Editor) then) = _$EditorCopyWithImpl<$Res>;
+  factory $EditorCopyWith(Editor value, $Res Function(Editor) then) =
+      _$EditorCopyWithImpl<$Res>;
   $Res call({ISet<Element> elements});
 }
 
@@ -52,13 +53,15 @@ class _$EditorCopyWithImpl<$Res> implements $EditorCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$_EditorCopyWith<$Res> implements $EditorCopyWith<$Res> {
-  factory _$$_EditorCopyWith(_$_Editor value, $Res Function(_$_Editor) then) = __$$_EditorCopyWithImpl<$Res>;
+  factory _$$_EditorCopyWith(_$_Editor value, $Res Function(_$_Editor) then) =
+      __$$_EditorCopyWithImpl<$Res>;
   @override
   $Res call({ISet<Element> elements});
 }
 
 /// @nodoc
-class __$$_EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res> implements _$$_EditorCopyWith<$Res> {
+class __$$_EditorCopyWithImpl<$Res> extends _$EditorCopyWithImpl<$Res>
+    implements _$$_EditorCopyWith<$Res> {
   __$$_EditorCopyWithImpl(_$_Editor _value, $Res Function(_$_Editor) _then)
       : super(_value, (v) => _then(v as _$_Editor));
 
@@ -101,11 +104,13 @@ class _$_Editor implements _Editor {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(elements));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(elements));
 
   @JsonKey(ignore: true)
   @override
-  _$$_EditorCopyWith<_$_Editor> get copyWith => __$$_EditorCopyWithImpl<_$_Editor>(this, _$identity);
+  _$$_EditorCopyWith<_$_Editor> get copyWith =>
+      __$$_EditorCopyWithImpl<_$_Editor>(this, _$identity);
 }
 
 abstract class _Editor implements Editor {
@@ -117,7 +122,8 @@ abstract class _Editor implements Editor {
   ISet<Element> get elements;
   @override
   @JsonKey(ignore: true)
-  _$$_EditorCopyWith<_$_Editor> get copyWith => throw _privateConstructorUsedError;
+  _$$_EditorCopyWith<_$_Editor> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -140,8 +146,13 @@ mixin _$Element {
 
 /// @nodoc
 abstract class $ElementCopyWith<$Res> {
-  factory $ElementCopyWith(Element value, $Res Function(Element) then) = _$ElementCopyWithImpl<$Res>;
-  $Res call({String id, ElementProperties properties, widgets.Rect rect, int showOrder});
+  factory $ElementCopyWith(Element value, $Res Function(Element) then) =
+      _$ElementCopyWithImpl<$Res>;
+  $Res call(
+      {String id,
+      ElementProperties properties,
+      widgets.Rect rect,
+      int showOrder});
 
   $ElementPropertiesCopyWith<$Res> get properties;
 }
@@ -191,16 +202,23 @@ class _$ElementCopyWithImpl<$Res> implements $ElementCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$_ElementCopyWith<$Res> implements $ElementCopyWith<$Res> {
-  factory _$$_ElementCopyWith(_$_Element value, $Res Function(_$_Element) then) = __$$_ElementCopyWithImpl<$Res>;
+  factory _$$_ElementCopyWith(
+          _$_Element value, $Res Function(_$_Element) then) =
+      __$$_ElementCopyWithImpl<$Res>;
   @override
-  $Res call({String id, ElementProperties properties, widgets.Rect rect, int showOrder});
+  $Res call(
+      {String id,
+      ElementProperties properties,
+      widgets.Rect rect,
+      int showOrder});
 
   @override
   $ElementPropertiesCopyWith<$Res> get properties;
 }
 
 /// @nodoc
-class __$$_ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res> implements _$$_ElementCopyWith<$Res> {
+class __$$_ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res>
+    implements _$$_ElementCopyWith<$Res> {
   __$$_ElementCopyWithImpl(_$_Element _value, $Res Function(_$_Element) _then)
       : super(_value, (v) => _then(v as _$_Element));
 
@@ -238,7 +256,11 @@ class __$$_ElementCopyWithImpl<$Res> extends _$ElementCopyWithImpl<$Res> impleme
 /// @nodoc
 
 class _$_Element implements _Element {
-  const _$_Element({required this.id, required this.properties, required this.rect, required this.showOrder});
+  const _$_Element(
+      {required this.id,
+      required this.properties,
+      required this.rect,
+      required this.showOrder});
 
   /// The unique id of the element.
   @override
@@ -267,7 +289,8 @@ class _$_Element implements _Element {
         (other.runtimeType == runtimeType &&
             other is _$_Element &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.properties, properties) &&
+            const DeepCollectionEquality()
+                .equals(other.properties, properties) &&
             const DeepCollectionEquality().equals(other.rect, rect) &&
             const DeepCollectionEquality().equals(other.showOrder, showOrder));
   }
@@ -282,7 +305,8 @@ class _$_Element implements _Element {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ElementCopyWith<_$_Element> get copyWith => __$$_ElementCopyWithImpl<_$_Element>(this, _$identity);
+  _$$_ElementCopyWith<_$_Element> get copyWith =>
+      __$$_ElementCopyWithImpl<_$_Element>(this, _$identity);
 }
 
 abstract class _Element implements Element {
@@ -310,7 +334,8 @@ abstract class _Element implements Element {
   int get showOrder;
   @override
   @JsonKey(ignore: true)
-  _$$_ElementCopyWith<_$_Element> get copyWith => throw _privateConstructorUsedError;
+  _$$_ElementCopyWith<_$_Element> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -318,9 +343,13 @@ mixin _$ElementProperties {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
-    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+    required TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)
         staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+    required TResult Function(
+            String placeHolderText,
+            widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign,
             Option<String> sourceFilePath)
         variableTextProperties,
   }) =>
@@ -328,18 +357,22 @@ mixin _$ElementProperties {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) =>
@@ -348,7 +381,8 @@ mixin _$ElementProperties {
   TResult map<TResult extends Object?>({
     required TResult Function(FileImageProperties value) fileImageProperties,
     required TResult Function(StaticTextProperties value) staticTextProperties,
-    required TResult Function(VariableTextProperties value) variableTextProperties,
+    required TResult Function(VariableTextProperties value)
+        variableTextProperties,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -370,12 +404,14 @@ mixin _$ElementProperties {
 
 /// @nodoc
 abstract class $ElementPropertiesCopyWith<$Res> {
-  factory $ElementPropertiesCopyWith(ElementProperties value, $Res Function(ElementProperties) then) =
+  factory $ElementPropertiesCopyWith(
+          ElementProperties value, $Res Function(ElementProperties) then) =
       _$ElementPropertiesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ElementPropertiesCopyWithImpl<$Res> implements $ElementPropertiesCopyWith<$Res> {
+class _$ElementPropertiesCopyWithImpl<$Res>
+    implements $ElementPropertiesCopyWith<$Res> {
   _$ElementPropertiesCopyWithImpl(this._value, this._then);
 
   final ElementProperties _value;
@@ -385,15 +421,18 @@ class _$ElementPropertiesCopyWithImpl<$Res> implements $ElementPropertiesCopyWit
 
 /// @nodoc
 abstract class _$$FileImagePropertiesCopyWith<$Res> {
-  factory _$$FileImagePropertiesCopyWith(_$FileImageProperties value, $Res Function(_$FileImageProperties) then) =
+  factory _$$FileImagePropertiesCopyWith(_$FileImageProperties value,
+          $Res Function(_$FileImageProperties) then) =
       __$$FileImagePropertiesCopyWithImpl<$Res>;
   $Res call({String sourceFilePath});
 }
 
 /// @nodoc
-class __$$FileImagePropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+class __$$FileImagePropertiesCopyWithImpl<$Res>
+    extends _$ElementPropertiesCopyWithImpl<$Res>
     implements _$$FileImagePropertiesCopyWith<$Res> {
-  __$$FileImagePropertiesCopyWithImpl(_$FileImageProperties _value, $Res Function(_$FileImageProperties) _then)
+  __$$FileImagePropertiesCopyWithImpl(
+      _$FileImageProperties _value, $Res Function(_$FileImageProperties) _then)
       : super(_value, (v) => _then(v as _$FileImageProperties));
 
   @override
@@ -431,24 +470,31 @@ class _$FileImageProperties extends FileImageProperties {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FileImageProperties &&
-            const DeepCollectionEquality().equals(other.sourceFilePath, sourceFilePath));
+            const DeepCollectionEquality()
+                .equals(other.sourceFilePath, sourceFilePath));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(sourceFilePath));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(sourceFilePath));
 
   @JsonKey(ignore: true)
   @override
   _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith =>
-      __$$FileImagePropertiesCopyWithImpl<_$FileImageProperties>(this, _$identity);
+      __$$FileImagePropertiesCopyWithImpl<_$FileImageProperties>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
-    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+    required TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)
         staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+    required TResult Function(
+            String placeHolderText,
+            widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign,
             Option<String> sourceFilePath)
         variableTextProperties,
   }) {
@@ -459,9 +505,11 @@ class _$FileImageProperties extends FileImageProperties {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
     return fileImageProperties?.call(sourceFilePath);
@@ -471,9 +519,11 @@ class _$FileImageProperties extends FileImageProperties {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
@@ -488,7 +538,8 @@ class _$FileImageProperties extends FileImageProperties {
   TResult map<TResult extends Object?>({
     required TResult Function(FileImageProperties value) fileImageProperties,
     required TResult Function(StaticTextProperties value) staticTextProperties,
-    required TResult Function(VariableTextProperties value) variableTextProperties,
+    required TResult Function(VariableTextProperties value)
+        variableTextProperties,
   }) {
     return fileImageProperties(this);
   }
@@ -519,26 +570,34 @@ class _$FileImageProperties extends FileImageProperties {
 }
 
 abstract class FileImageProperties extends ElementProperties {
-  const factory FileImageProperties({required final String sourceFilePath}) = _$FileImageProperties;
+  const factory FileImageProperties({required final String sourceFilePath}) =
+      _$FileImageProperties;
   const FileImageProperties._() : super._();
 
   /// The path of the file containing this image.
   String get sourceFilePath;
   @JsonKey(ignore: true)
-  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith => throw _privateConstructorUsedError;
+  _$$FileImagePropertiesCopyWith<_$FileImageProperties> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StaticTextPropertiesCopyWith<$Res> {
-  factory _$$StaticTextPropertiesCopyWith(_$StaticTextProperties value, $Res Function(_$StaticTextProperties) then) =
+  factory _$$StaticTextPropertiesCopyWith(_$StaticTextProperties value,
+          $Res Function(_$StaticTextProperties) then) =
       __$$StaticTextPropertiesCopyWithImpl<$Res>;
-  $Res call({String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign});
+  $Res call(
+      {String text,
+      widgets.TextStyle? textStyle,
+      widgets.TextAlign? textAlign});
 }
 
 /// @nodoc
-class __$$StaticTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+class __$$StaticTextPropertiesCopyWithImpl<$Res>
+    extends _$ElementPropertiesCopyWithImpl<$Res>
     implements _$$StaticTextPropertiesCopyWith<$Res> {
-  __$$StaticTextPropertiesCopyWithImpl(_$StaticTextProperties _value, $Res Function(_$StaticTextProperties) _then)
+  __$$StaticTextPropertiesCopyWithImpl(_$StaticTextProperties _value,
+      $Res Function(_$StaticTextProperties) _then)
       : super(_value, (v) => _then(v as _$StaticTextProperties));
 
   @override
@@ -570,7 +629,9 @@ class __$$StaticTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopy
 /// @nodoc
 
 class _$StaticTextProperties extends StaticTextProperties {
-  const _$StaticTextProperties({required this.text, this.textStyle, this.textAlign}) : super._();
+  const _$StaticTextProperties(
+      {required this.text, this.textStyle, this.textAlign})
+      : super._();
 
   /// The value of the text.
   @override
@@ -600,21 +661,29 @@ class _$StaticTextProperties extends StaticTextProperties {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(text),
-      const DeepCollectionEquality().hash(textStyle), const DeepCollectionEquality().hash(textAlign));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(text),
+      const DeepCollectionEquality().hash(textStyle),
+      const DeepCollectionEquality().hash(textAlign));
 
   @JsonKey(ignore: true)
   @override
   _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith =>
-      __$$StaticTextPropertiesCopyWithImpl<_$StaticTextProperties>(this, _$identity);
+      __$$StaticTextPropertiesCopyWithImpl<_$StaticTextProperties>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
-    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+    required TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)
         staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+    required TResult Function(
+            String placeHolderText,
+            widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign,
             Option<String> sourceFilePath)
         variableTextProperties,
   }) {
@@ -625,9 +694,11 @@ class _$StaticTextProperties extends StaticTextProperties {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
     return staticTextProperties?.call(text, textStyle, textAlign);
@@ -637,9 +708,11 @@ class _$StaticTextProperties extends StaticTextProperties {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
@@ -654,7 +727,8 @@ class _$StaticTextProperties extends StaticTextProperties {
   TResult map<TResult extends Object?>({
     required TResult Function(FileImageProperties value) fileImageProperties,
     required TResult Function(StaticTextProperties value) staticTextProperties,
-    required TResult Function(VariableTextProperties value) variableTextProperties,
+    required TResult Function(VariableTextProperties value)
+        variableTextProperties,
   }) {
     return staticTextProperties(this);
   }
@@ -700,13 +774,14 @@ abstract class StaticTextProperties extends ElementProperties {
   /// The alignment of the text.
   widgets.TextAlign? get textAlign;
   @JsonKey(ignore: true)
-  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith => throw _privateConstructorUsedError;
+  _$$StaticTextPropertiesCopyWith<_$StaticTextProperties> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$VariableTextPropertiesCopyWith<$Res> {
-  factory _$$VariableTextPropertiesCopyWith(
-          _$VariableTextProperties value, $Res Function(_$VariableTextProperties) then) =
+  factory _$$VariableTextPropertiesCopyWith(_$VariableTextProperties value,
+          $Res Function(_$VariableTextProperties) then) =
       __$$VariableTextPropertiesCopyWithImpl<$Res>;
   $Res call(
       {String placeHolderText,
@@ -716,13 +791,16 @@ abstract class _$$VariableTextPropertiesCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$VariableTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCopyWithImpl<$Res>
+class __$$VariableTextPropertiesCopyWithImpl<$Res>
+    extends _$ElementPropertiesCopyWithImpl<$Res>
     implements _$$VariableTextPropertiesCopyWith<$Res> {
-  __$$VariableTextPropertiesCopyWithImpl(_$VariableTextProperties _value, $Res Function(_$VariableTextProperties) _then)
+  __$$VariableTextPropertiesCopyWithImpl(_$VariableTextProperties _value,
+      $Res Function(_$VariableTextProperties) _then)
       : super(_value, (v) => _then(v as _$VariableTextProperties));
 
   @override
-  _$VariableTextProperties get _value => super._value as _$VariableTextProperties;
+  _$VariableTextProperties get _value =>
+      super._value as _$VariableTextProperties;
 
   @override
   $Res call({
@@ -756,7 +834,10 @@ class __$$VariableTextPropertiesCopyWithImpl<$Res> extends _$ElementPropertiesCo
 
 class _$VariableTextProperties extends VariableTextProperties {
   const _$VariableTextProperties(
-      {required this.placeHolderText, this.textStyle, this.textAlign, required this.sourceFilePath})
+      {required this.placeHolderText,
+      this.textStyle,
+      this.textAlign,
+      required this.sourceFilePath})
       : super._();
 
   /// The text to show in the editing phase.
@@ -785,10 +866,12 @@ class _$VariableTextProperties extends VariableTextProperties {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VariableTextProperties &&
-            const DeepCollectionEquality().equals(other.placeHolderText, placeHolderText) &&
+            const DeepCollectionEquality()
+                .equals(other.placeHolderText, placeHolderText) &&
             const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
             const DeepCollectionEquality().equals(other.textAlign, textAlign) &&
-            const DeepCollectionEquality().equals(other.sourceFilePath, sourceFilePath));
+            const DeepCollectionEquality()
+                .equals(other.sourceFilePath, sourceFilePath));
   }
 
   @override
@@ -802,45 +885,57 @@ class _$VariableTextProperties extends VariableTextProperties {
   @JsonKey(ignore: true)
   @override
   _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith =>
-      __$$VariableTextPropertiesCopyWithImpl<_$VariableTextProperties>(this, _$identity);
+      __$$VariableTextPropertiesCopyWithImpl<_$VariableTextProperties>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String sourceFilePath) fileImageProperties,
-    required TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)
+    required TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)
         staticTextProperties,
-    required TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
+    required TResult Function(
+            String placeHolderText,
+            widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign,
             Option<String> sourceFilePath)
         variableTextProperties,
   }) {
-    return variableTextProperties(placeHolderText, textStyle, textAlign, sourceFilePath);
+    return variableTextProperties(
+        placeHolderText, textStyle, textAlign, sourceFilePath);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
   }) {
-    return variableTextProperties?.call(placeHolderText, textStyle, textAlign, sourceFilePath);
+    return variableTextProperties?.call(
+        placeHolderText, textStyle, textAlign, sourceFilePath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String sourceFilePath)? fileImageProperties,
-    TResult Function(String text, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign)? staticTextProperties,
-    TResult Function(String placeHolderText, widgets.TextStyle? textStyle, widgets.TextAlign? textAlign,
-            Option<String> sourceFilePath)?
+    TResult Function(String text, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign)?
+        staticTextProperties,
+    TResult Function(String placeHolderText, widgets.TextStyle? textStyle,
+            widgets.TextAlign? textAlign, Option<String> sourceFilePath)?
         variableTextProperties,
     required TResult orElse(),
   }) {
     if (variableTextProperties != null) {
-      return variableTextProperties(placeHolderText, textStyle, textAlign, sourceFilePath);
+      return variableTextProperties(
+          placeHolderText, textStyle, textAlign, sourceFilePath);
     }
     return orElse();
   }
@@ -850,7 +945,8 @@ class _$VariableTextProperties extends VariableTextProperties {
   TResult map<TResult extends Object?>({
     required TResult Function(FileImageProperties value) fileImageProperties,
     required TResult Function(StaticTextProperties value) staticTextProperties,
-    required TResult Function(VariableTextProperties value) variableTextProperties,
+    required TResult Function(VariableTextProperties value)
+        variableTextProperties,
   }) {
     return variableTextProperties(this);
   }
@@ -900,5 +996,6 @@ abstract class VariableTextProperties extends ElementProperties {
   /// The path of the file containing the text to be generated.
   Option<String> get sourceFilePath;
   @JsonKey(ignore: true)
-  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith => throw _privateConstructorUsedError;
+  _$$VariableTextPropertiesCopyWith<_$VariableTextProperties> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -5,15 +5,20 @@ part 'localization_state.dart';
 
 ///Manages the locale of the app.
 class LocalizationCubit extends HydratedCubit<LocalizationState> {
-  LocalizationCubit() : super(const LocalizationState(language: Language.english));
+  LocalizationCubit()
+      : super(const LocalizationState(language: Language.english));
 
-  void setLanguage(Language language) => emit(LocalizationState(language: language));
+  void setLanguage(Language language) =>
+      emit(LocalizationState(language: language));
 
   @override
   LocalizationState? fromJson(Map<String, dynamic> json) => LocalizationState(
-        language: Language.values.where((lang) => lang.languageCode == json['language_code']).first,
+        language: Language.values
+            .where((lang) => lang.languageCode == json['language_code'])
+            .first,
       );
 
   @override
-  Map<String, dynamic>? toJson(LocalizationState state) => {'language_code': state.language.languageCode};
+  Map<String, dynamic>? toJson(LocalizationState state) =>
+      {'language_code': state.language.languageCode};
 }

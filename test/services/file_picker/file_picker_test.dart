@@ -9,7 +9,8 @@ import 'package:photo_editor/services/file_picker/file_picker_impl.dart';
 
 import 'file_picker_test.mocks.dart';
 
-@GenerateMocks([], customMocks: [MockSpec<api.FilePicker>(as: #MockApiFilePicker)])
+@GenerateMocks([],
+    customMocks: [MockSpec<api.FilePicker>(as: #MockApiFilePicker)])
 void main() {
   group('pickSingleFile', () {
     test('Should return the correct result when a file is picked,', () async {
@@ -20,7 +21,8 @@ void main() {
         mockApiFilePicker.pickFiles(
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
           dialogTitle: captureThat(equals('Pick a file'), named: 'dialogTitle'),
-          allowedExtensions: captureThat(equals(['jpeg', 'jpg']), named: 'allowedExtensions'),
+          allowedExtensions:
+              captureThat(equals(['jpeg', 'jpg']), named: 'allowedExtensions'),
           type: captureThat(equals(api.FileType.custom), named: 'type'),
           allowMultiple: captureThat(equals(false), named: 'allowMultiple'),
           onFileLoading: captureAnyNamed('onFileLoading'),
@@ -44,7 +46,8 @@ void main() {
       // pick a file
       // we don't use the factory constructor here since we want to inject
       // the mock api file picker instead of a real one, for the purpose of testing
-      FilePicker filePicker = FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
+      FilePicker filePicker =
+          FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
 
       final io.File? result = (await filePicker.pickSingleFile(
         dialogTitle: 'Pick a file',
@@ -56,7 +59,8 @@ void main() {
       // assert the result is correct
       expect(result?.path, '/image.jpeg');
     });
-    test('Should return the correct result when a file is not picked,', () async {
+    test('Should return the correct result when a file is not picked,',
+        () async {
       // set up the mocks
       final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
@@ -64,7 +68,8 @@ void main() {
         mockApiFilePicker.pickFiles(
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
           dialogTitle: captureThat(equals('Pick a file'), named: 'dialogTitle'),
-          allowedExtensions: captureThat(equals(['jpeg', 'jpg']), named: 'allowedExtensions'),
+          allowedExtensions:
+              captureThat(equals(['jpeg', 'jpg']), named: 'allowedExtensions'),
           type: captureThat(equals(api.FileType.custom), named: 'type'),
           allowMultiple: captureThat(equals(false), named: 'allowMultiple'),
           onFileLoading: captureAnyNamed('onFileLoading'),
@@ -78,7 +83,8 @@ void main() {
       // pick a file
       // we don't use the factory constructor here since we want to inject
       // the mock api file picker instead of a real one, for the purpose of testing
-      FilePicker filePicker = FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
+      FilePicker filePicker =
+          FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
 
       final io.File? result = (await filePicker.pickSingleFile(
         dialogTitle: 'Pick a file',
@@ -107,7 +113,8 @@ void main() {
       // pick a directory
       // we don't use the factory constructor here since we want to inject
       // the mock api file picker instead of a real one, for the purpose of testing
-      FilePicker filePicker = FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
+      FilePicker filePicker =
+          FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
 
       final String? result = (await filePicker.pickPath(
         dialogTitle: 'Pick a file',
@@ -118,7 +125,8 @@ void main() {
       // assert the result is correct
       expect(result, '/');
     });
-    test('Should return the correct result when a path is not picked,', () async {
+    test('Should return the correct result when a path is not picked,',
+        () async {
       // set up the mocks
       final MockApiFilePicker mockApiFilePicker = MockApiFilePicker();
 
@@ -133,7 +141,8 @@ void main() {
       // pick a directory
       // we don't use the factory constructor here since we want to inject
       // the mock api file picker instead of a real one, for the purpose of testing
-      FilePicker filePicker = FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
+      FilePicker filePicker =
+          FilePickerDefaultImpl(apiFilePicker: mockApiFilePicker);
 
       final String? result = (await filePicker.pickPath(
         dialogTitle: 'Pick a file',

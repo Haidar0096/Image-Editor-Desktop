@@ -11,7 +11,9 @@ void main() {
   group('copyResize', () {
     test('should return a resized copy of the image.', () async {
       final ImageEditor imageEditor = ImageEditor();
-      final Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
+      final Uint8List imageData =
+          File('test_resources/image_editor_test_resources/fayruz_love.png')
+              .readAsBytesSync();
       final Uint8List jpegActualResizedImageData = await imageEditor.copyResize(
         imageData: imageData,
         inputFormat: ImageFormat.png,
@@ -30,7 +32,9 @@ void main() {
       expect(jpegActualResizedImageData, jpegExpectedResizedImageData);
       expect(pngActualResizedImageData, pngExpectedResizedImageData);
     });
-    test('Should throw an error if image could not be decoded when copyResize is called.', () async {
+    test(
+        'Should throw an error if image could not be decoded when copyResize is called.',
+        () async {
       final ImageEditor imageEditor = ImageEditor();
       expect(
         () => imageEditor.copyResize(
@@ -49,8 +53,11 @@ void main() {
   group('encodeImage', () {
     test('should return an encoded copy of the image.', () async {
       final ImageEditor imageEditor = ImageEditor();
-      final Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
-      final Uint8List jpegActualEncodedImageData = await imageEditor.encodeImage(
+      final Uint8List imageData =
+          File('test_resources/image_editor_test_resources/fayruz_love.png')
+              .readAsBytesSync();
+      final Uint8List jpegActualEncodedImageData =
+          await imageEditor.encodeImage(
         imageData: imageData,
         inputFormat: ImageFormat.png,
         outputFormat: ImageFormat.jpeg,
@@ -64,7 +71,9 @@ void main() {
       expect(jpegActualEncodedImageData, jpegExpectedEncodedImageData);
       expect(pngActualEncodedImageData, pngExpectedEncodedImageData);
     });
-    test('Should throw an error if image could not be decoded when encode is called.', () async {
+    test(
+        'Should throw an error if image could not be decoded when encode is called.',
+        () async {
       final ImageEditor imageEditor = ImageEditor();
       try {
         await imageEditor.encodeImage(
@@ -81,7 +90,9 @@ void main() {
 
   group('saveImage', () {
     test('Should save the image correctly', () async {
-      Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
+      Uint8List imageData =
+          File('test_resources/image_editor_test_resources/fayruz_love.png')
+              .readAsBytesSync();
       final ImageEditor imageEditor = ImageEditor();
       await imageEditor.saveImage(
         imageData: imageData,
@@ -89,8 +100,9 @@ void main() {
         name: 'fayruz_love',
         path: 'test_resources/image_editor_test_resources/saved_image',
       );
-      final savedImageData =
-          File('test_resources/image_editor_test_resources/saved_image/fayruz_love.png').readAsBytesSync();
+      final savedImageData = File(
+              'test_resources/image_editor_test_resources/saved_image/fayruz_love.png')
+          .readAsBytesSync();
       expect(savedImageData, imageData);
     });
   });

@@ -14,7 +14,8 @@ import 'package:logger/src/logger.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:photo_editor/services/file_picker/file_picker.dart' as _i4;
 import 'package:photo_editor/services/image_editor/image_editor.dart' as _i11;
-import 'package:photo_editor/services/screenshot_service/screenshot_service.dart' as _i7;
+import 'package:photo_editor/services/screenshot_service/screenshot_service.dart'
+    as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,7 +29,8 @@ import 'package:photo_editor/services/screenshot_service/screenshot_service.dart
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeOption_0<A> extends _i1.SmartFake implements _i2.Option<A> {
-  _FakeOption_0(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+  _FakeOption_0(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [Logger].
@@ -41,27 +43,37 @@ class MockLogger extends _i1.Mock implements _i3.Logger {
 
   @override
   void v(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#v, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#v, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void d(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#d, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#d, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void i(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#i, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#i, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void w(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#w, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#w, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void e(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#e, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#e, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void wtf(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#wtf, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#wtf, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
-  void log(_i3.Level? level, dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#log, [level, message, error, stackTrace]), returnValueForMissingStub: null);
+  void log(_i3.Level? level, dynamic message,
+          [dynamic error, StackTrace? stackTrace]) =>
+      super.noSuchMethod(
+          Invocation.method(#log, [level, message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
-  void close() => super.noSuchMethod(Invocation.method(#close, []), returnValueForMissingStub: null);
+  void close() => super.noSuchMethod(Invocation.method(#close, []),
+      returnValueForMissingStub: null);
 }
 
 /// A class which mocks [FilePicker].
@@ -74,10 +86,17 @@ class MockFilePicker extends _i1.Mock implements _i4.FilePicker {
 
   @override
   _i5.Future<_i2.Option<_i6.File>> pickSingleFile(
-          {String? initialDirectory, String? dialogTitle, List<String>? allowedExtensions}) =>
-      (super
-          .noSuchMethod(Invocation.method(#pickSingleFile, [], {#initialDirectory: initialDirectory, #dialogTitle: dialogTitle, #allowedExtensions: allowedExtensions}),
-              returnValue: _i5.Future<_i2.Option<_i6.File>>.value(_FakeOption_0<_i6.File>(
+          {String? initialDirectory,
+          String? dialogTitle,
+          List<String>? allowedExtensions}) =>
+      (super.noSuchMethod(
+          Invocation.method(#pickSingleFile, [], {
+            #initialDirectory: initialDirectory,
+            #dialogTitle: dialogTitle,
+            #allowedExtensions: allowedExtensions
+          }),
+          returnValue:
+              _i5.Future<_i2.Option<_i6.File>>.value(_FakeOption_0<_i6.File>(
                   this,
                   Invocation.method(#pickSingleFile, [], {
                     #initialDirectory: initialDirectory,
@@ -85,12 +104,15 @@ class MockFilePicker extends _i1.Mock implements _i4.FilePicker {
                     #allowedExtensions: allowedExtensions
                   })))) as _i5.Future<_i2.Option<_i6.File>>);
   @override
-  _i5.Future<_i2.Option<_i6.Directory>> pickPath({String? dialogTitle, String? initialDirectory}) => (super
-          .noSuchMethod(
-              Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}),
-              returnValue: _i5.Future<_i2.Option<_i6.Directory>>.value(_FakeOption_0<_i6.Directory>(this,
-                  Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}))))
-      as _i5.Future<_i2.Option<_i6.Directory>>);
+  _i5.Future<_i2.Option<_i6.Directory>> pickPath(
+          {String? dialogTitle, String? initialDirectory}) =>
+      (super.noSuchMethod(Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}),
+          returnValue: _i5.Future<_i2.Option<_i6.Directory>>.value(_FakeOption_0<_i6.Directory>(
+              this,
+              Invocation.method(#pickPath, [], {
+                #dialogTitle: dialogTitle,
+                #initialDirectory: initialDirectory
+              })))) as _i5.Future<_i2.Option<_i6.Directory>>);
 }
 
 /// A class which mocks [ScreenshotService].
@@ -111,16 +133,17 @@ class MockScreenshotService extends _i1.Mock implements _i7.ScreenshotService {
           double? outputImagePixelRatio,
           _i10.ImageByteFormat? outputImageByteFormat}) =>
       (super.noSuchMethod(
-          Invocation.method(#captureWidget, [], {
-            #context: context,
-            #widget: widget,
-            #delay: delay,
-            #window: window,
-            #outputImageSize: outputImageSize,
-            #outputImagePixelRatio: outputImagePixelRatio,
-            #outputImageByteFormat: outputImageByteFormat
-          }),
-          returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0))) as _i5.Future<_i8.Uint8List>);
+              Invocation.method(#captureWidget, [], {
+                #context: context,
+                #widget: widget,
+                #delay: delay,
+                #window: window,
+                #outputImageSize: outputImageSize,
+                #outputImagePixelRatio: outputImagePixelRatio,
+                #outputImageByteFormat: outputImageByteFormat
+              }),
+              returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0)))
+          as _i5.Future<_i8.Uint8List>);
 }
 
 /// A class which mocks [ImageEditor].
@@ -140,27 +163,45 @@ class MockImageEditor extends _i1.Mock implements _i11.ImageEditor {
           int? height,
           int? quality}) =>
       (super.noSuchMethod(
-          Invocation.method(#copyResize, [], {
-            #imageData: imageData,
-            #outputFormat: outputFormat,
-            #inputFormat: inputFormat,
-            #width: width,
-            #height: height,
-            #quality: quality
-          }),
-          returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0))) as _i5.Future<_i8.Uint8List>);
+              Invocation.method(#copyResize, [], {
+                #imageData: imageData,
+                #outputFormat: outputFormat,
+                #inputFormat: inputFormat,
+                #width: width,
+                #height: height,
+                #quality: quality
+              }),
+              returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0)))
+          as _i5.Future<_i8.Uint8List>);
   @override
   _i5.Future<_i8.Uint8List> encodeImage(
-          {_i8.Uint8List? imageData, _i11.ImageFormat? outputFormat, _i11.ImageFormat? inputFormat, int? quality}) =>
+          {_i8.Uint8List? imageData,
+          _i11.ImageFormat? outputFormat,
+          _i11.ImageFormat? inputFormat,
+          int? quality}) =>
       (super.noSuchMethod(
-          Invocation.method(#encodeImage, [],
-              {#imageData: imageData, #outputFormat: outputFormat, #inputFormat: inputFormat, #quality: quality}),
-          returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0))) as _i5.Future<_i8.Uint8List>);
+              Invocation.method(#encodeImage, [], {
+                #imageData: imageData,
+                #outputFormat: outputFormat,
+                #inputFormat: inputFormat,
+                #quality: quality
+              }),
+              returnValue: _i5.Future<_i8.Uint8List>.value(_i8.Uint8List(0)))
+          as _i5.Future<_i8.Uint8List>);
   @override
-  _i5.Future<void> saveImage({_i8.Uint8List? imageData, _i11.ImageFormat? outputFormat, String? path, String? name}) =>
+  _i5.Future<void> saveImage(
+          {_i8.Uint8List? imageData,
+          _i11.ImageFormat? outputFormat,
+          String? path,
+          String? name}) =>
       (super.noSuchMethod(
-          Invocation.method(
-              #saveImage, [], {#imageData: imageData, #outputFormat: outputFormat, #path: path, #name: name}),
-          returnValue: _i5.Future<void>.value(),
-          returnValueForMissingStub: _i5.Future<void>.value()) as _i5.Future<void>);
+              Invocation.method(#saveImage, [], {
+                #imageData: imageData,
+                #outputFormat: outputFormat,
+                #path: path,
+                #name: name
+              }),
+              returnValue: _i5.Future<void>.value(),
+              returnValueForMissingStub: _i5.Future<void>.value())
+          as _i5.Future<void>);
 }

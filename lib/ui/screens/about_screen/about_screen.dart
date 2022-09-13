@@ -37,7 +37,8 @@ class AboutScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   Text(
                     AppLocalizations.of(context)!.love,
-                    style: GoogleFonts.amiri().copyWith(color: toc.colorScheme.onBackground, fontSize: 40),
+                    style: GoogleFonts.amiri().copyWith(
+                        color: toc.colorScheme.onBackground, fontSize: 40),
                   ),
                 ],
               ),

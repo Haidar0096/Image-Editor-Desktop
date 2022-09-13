@@ -60,7 +60,10 @@ void main() {
 
       // Add multiple elements to empty editor
       expect(
-        Editor.empty().addElement(image).addElement(staticText).addElement(variableText),
+        Editor.empty()
+            .addElement(image)
+            .addElement(staticText)
+            .addElement(variableText),
         Editor.fromSet({image, staticText, variableText}),
       );
     });
@@ -104,7 +107,9 @@ void main() {
         Editor.fromSet({updatedImage}),
       );
     });
-    test('Updating an element which does not exist in the editor adds it to the editor', () {
+    test(
+        'Updating an element which does not exist in the editor adds it to the editor',
+        () {
       expect(
         Editor.empty().updateElement(image),
         Editor.fromSet({image}),
@@ -130,7 +135,9 @@ void main() {
       expect(Editor.fromSet({image}).removeElement(image.id), Editor.empty());
     });
 
-    test('Removing an element whose id does not exist from the editor returns same editor', () {
+    test(
+        'Removing an element whose id does not exist from the editor returns same editor',
+        () {
       final Editor editor = Editor.fromSet({image});
       expect(editor.removeElement('-1'), editor);
     });
@@ -162,7 +169,9 @@ void main() {
         }),
       );
     });
-    test('Translating an element which is not in the editor returns the same editor', () {
+    test(
+        'Translating an element which is not in the editor returns the same editor',
+        () {
       final Editor editor = Editor.fromSet({});
       expect(
         editor.translateElement(image.id, const Offset(100, 100)),
@@ -218,7 +227,9 @@ void main() {
   });
 
   group('elementsSortedByShowOrder', () {
-    test('Should return the elements sorted by id (ascending) for non empty editor', () {
+    test(
+        'Should return the elements sorted by id (ascending) for non empty editor',
+        () {
       // image element
       Element image = Element(
         id: '1',
@@ -246,7 +257,8 @@ void main() {
       );
 
       expect(
-        Editor.fromSet({image, staticText, variableText}).elementsSortedByShowOrder,
+        Editor.fromSet({image, staticText, variableText})
+            .elementsSortedByShowOrder,
         IList([image, staticText, variableText]),
       );
     });
@@ -258,7 +270,9 @@ void main() {
     });
   });
   group('elementsSortedByShowOrderDescending', () {
-    test('Should return the elements sorted by id (descending) for non empty editor', () {
+    test(
+        'Should return the elements sorted by id (descending) for non empty editor',
+        () {
       // image element
       Element image = Element(
         id: '1',
@@ -286,7 +300,8 @@ void main() {
       );
 
       expect(
-        Editor.fromSet({image, staticText, variableText}).elementsSortedByShowOrderDescending,
+        Editor.fromSet({image, staticText, variableText})
+            .elementsSortedByShowOrderDescending,
         IList([variableText, staticText, image]),
       );
     });
@@ -338,9 +353,11 @@ void main() {
     });
     test('Returned elements must be ordered by their show order', () {
       final Editor editor = Editor.fromSet({image, staticText, variableText});
-      expect(editor.elementsAtPosition(const Offset(65, 65)), IList([image, staticText]));
+      expect(editor.elementsAtPosition(const Offset(65, 65)),
+          IList([image, staticText]));
     });
-    test('Should return none() when the element at the position does not exist', () {
+    test('Should return none() when the element at the position does not exist',
+        () {
       // when the editor is empty
       expect(
         Editor.empty().elementsAtPosition(const Offset(100, 100)),

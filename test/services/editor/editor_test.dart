@@ -13,11 +13,14 @@ void main() {
     test('Should return the correct allowedTextFilesExtensions', () {
       expect(allowedTextFilesExtensions, IList(const ['txt']));
     });
-    test('Should return the correct minElementSideSize', () => expect(minElementSideSize, 30.0));
+    test('Should return the correct minElementSideSize',
+        () => expect(minElementSideSize, 30.0));
   });
 
   group('Element', () {
-    test('Should return the correct response when asked about the element properties', () {
+    test(
+        'Should return the correct response when asked about the element properties',
+        () {
       Rect rect = const Rect.fromLTWH(0, 0, 100, 100);
       Element fileImage = Element(
         id: '1',
@@ -35,7 +38,8 @@ void main() {
         id: '3',
         showOrder: 3,
         rect: rect,
-        properties: VariableTextProperties(sourceFilePath: some('hi.txt'), placeHolderText: 'hi.txt'),
+        properties: VariableTextProperties(
+            sourceFilePath: some('hi.txt'), placeHolderText: 'hi.txt'),
       );
 
       expect(fileImage.properties.isFileImageProperties, true);

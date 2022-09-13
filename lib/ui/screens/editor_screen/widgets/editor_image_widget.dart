@@ -7,7 +7,9 @@ class EditorImageWidget extends StatelessWidget {
   final editor.FileImageProperties properties;
   final Size size;
 
-  const EditorImageWidget({Key? key, required this.properties, required this.size}) : super(key: key);
+  const EditorImageWidget(
+      {Key? key, required this.properties, required this.size})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

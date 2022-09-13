@@ -21,10 +21,12 @@ class _GenerateImageSettingsDialog extends StatefulWidget {
   const _GenerateImageSettingsDialog({Key? key}) : super(key: key);
 
   @override
-  State<_GenerateImageSettingsDialog> createState() => _GenerateImageSettingsDialogState();
+  State<_GenerateImageSettingsDialog> createState() =>
+      _GenerateImageSettingsDialogState();
 }
 
-class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDialog> {
+class _GenerateImageSettingsDialogState
+    extends State<_GenerateImageSettingsDialog> {
   late final TextEditingController _baseFileNameController;
 
   @override
@@ -126,7 +128,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
     );
   }
 
-  TableRow _qualityRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _qualityRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     final ThemeData toc = Theme.of(context);
     return TableRow(
       children: [
@@ -139,12 +142,15 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('${screenshotCubitState.outputImageQuality} %', style: toc.textTheme.subtitle1),
+              child: Text('${screenshotCubitState.outputImageQuality} %',
+                  style: toc.textTheme.subtitle1),
             ),
             Slider(
               value: screenshotCubitState.outputImageQuality.toDouble(),
               onChanged: (value) {
-                context.read<ScreenshotCubit>().setOutputImageQuality(value.toInt());
+                context
+                    .read<ScreenshotCubit>()
+                    .setOutputImageQuality(value.toInt());
               },
               min: ScreenshotCubit.minimumOutputImageResolution.toDouble(),
               max: ScreenshotCubit.maximumOutputImageResolution.toDouble(),
@@ -155,7 +161,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
     );
   }
 
-  TableRow _outputImageSizeRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _outputImageSizeRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     return TableRow(
       children: [
         _propertyLabel(
@@ -180,13 +187,15 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
                 ),
             ];
           },
-          onSelected: (size) => context.read<ScreenshotCubit>().setOutputImageSize(size),
+          onSelected: (size) =>
+              context.read<ScreenshotCubit>().setOutputImageSize(size),
         ),
       ],
     );
   }
 
-  TableRow _fileExtensionRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _fileExtensionRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     return TableRow(
       children: [
         _propertyLabel(
@@ -197,7 +206,9 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
         PopupMenuButton<ImageFormat>(
           child: _propertyLabel(
             context,
-            screenshotCubitState.outputImageFormat.toString().unCamelCase(capitalize: false),
+            screenshotCubitState.outputImageFormat
+                .toString()
+                .unCamelCase(capitalize: false),
             background: true,
           ),
           itemBuilder: (context) {
@@ -211,13 +222,15 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
                 ),
             ];
           },
-          onSelected: (format) => context.read<ScreenshotCubit>().setImageFileExtension(format),
+          onSelected: (format) =>
+              context.read<ScreenshotCubit>().setImageFileExtension(format),
         ),
       ],
     );
   }
 
-  TableRow _baseFileNameRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _baseFileNameRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     final ThemeData toc = Theme.of(context);
     return TableRow(
       children: [
@@ -228,7 +241,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
         ),
         TextField(
           controller: _baseFileNameController,
-          onChanged: (value) => context.read<ScreenshotCubit>().setBaseFileName(value),
+          onChanged: (value) =>
+              context.read<ScreenshotCubit>().setBaseFileName(value),
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide: BorderSide(
@@ -245,7 +259,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
     );
   }
 
-  TableRow _fileNamingTypeRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _fileNamingTypeRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     return TableRow(
       children: [
         _propertyLabel(
@@ -270,7 +285,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
                 ),
             ];
           },
-          onSelected: (fileNamingType) => context.read<ScreenshotCubit>().setFileNamingType(fileNamingType),
+          onSelected: (fileNamingType) =>
+              context.read<ScreenshotCubit>().setFileNamingType(fileNamingType),
         ),
       ],
     );
@@ -291,8 +307,11 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             onPressed: () async {
-              final validationResult = context.read<ScreenshotCubit>().validateGenerateImageSettings();
-              if (validationResult != GenerateImageSettingsValidationResult.valid) {
+              final validationResult = context
+                  .read<ScreenshotCubit>()
+                  .validateGenerateImageSettings();
+              if (validationResult !=
+                  GenerateImageSettingsValidationResult.valid) {
                 showInfoDialog(context, validationResult.getMessage(context));
                 return;
               }
@@ -305,7 +324,8 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
     );
   }
 
-  TableRow _directoryRow(BuildContext context, ScreenshotState screenshotCubitState) {
+  TableRow _directoryRow(
+      BuildContext context, ScreenshotState screenshotCubitState) {
     return TableRow(
       children: [
         _propertyLabel(
@@ -322,13 +342,15 @@ class _GenerateImageSettingsDialogState extends State<_GenerateImageSettingsDial
             ),
             background: true,
           ),
-          onTap: () => context.read<ScreenshotCubit>().setOutputImageDirectory(),
+          onTap: () =>
+              context.read<ScreenshotCubit>().setOutputImageDirectory(),
         ),
       ],
     );
   }
 
-  Widget _propertyLabel(BuildContext context, String text, {required bool background}) {
+  Widget _propertyLabel(BuildContext context, String text,
+      {required bool background}) {
     final ThemeData toc = Theme.of(context);
     return Container(
       decoration: background

@@ -75,7 +75,8 @@ Future<void> showPromptDialog({
                                       Navigator.of(dialogContext).pop();
                                     },
                                     child: Text(
-                                      cancelButtonText ?? AppLocalizations.of(context)!.cancel,
+                                      cancelButtonText ??
+                                          AppLocalizations.of(context)!.cancel,
                                       style: toc.textTheme.subtitle2,
                                     ),
                                   ),
@@ -88,7 +89,8 @@ Future<void> showPromptDialog({
                                       Navigator.of(dialogContext).pop();
                                     },
                                     child: Text(
-                                      confirmButtonText ?? AppLocalizations.of(context)!.ok,
+                                      confirmButtonText ??
+                                          AppLocalizations.of(context)!.ok,
                                       style: toc.textTheme.subtitle2,
                                     ),
                                   ),

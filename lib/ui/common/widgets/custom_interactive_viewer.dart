@@ -45,7 +45,8 @@ class CustomInteractiveViewer extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CustomInteractiveViewer> createState() => _CustomInteractiveViewerState();
+  State<CustomInteractiveViewer> createState() =>
+      _CustomInteractiveViewerState();
 }
 
 class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
@@ -59,7 +60,8 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
   bool _canvasScaleValueVisible = false;
 
   /// Whether the child widget is centered inside the [InteractiveViewer] as it was when it was created.
-  bool get _editorCentered => _canvasScaleController.value == Matrix4.identity();
+  bool get _editorCentered =>
+      _canvasScaleController.value == Matrix4.identity();
 
   @override
   void initState() {
@@ -83,7 +85,8 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
           child: _buildInteractiveViewer(context),
         ),
         // widget that displays the current scale of the canvas
-        if (_canvasScaleValueVisible) Positioned.fill(child: _scaleValueWidget(context)),
+        if (_canvasScaleValueVisible)
+          Positioned.fill(child: _scaleValueWidget(context)),
         // button to restore canvas zoom to 1.0
         if (!_editorCentered) Positioned.fill(child: _resetZoomButton(context)),
       ],
@@ -94,12 +97,14 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
     return InteractiveViewer(
       transformationController: _canvasScaleController,
       onInteractionStart: (details) => widget.onInteractionStart?.call(details),
-      onInteractionUpdate: (details) => widget.onInteractionUpdate?.call(details),
+      onInteractionUpdate: (details) =>
+          widget.onInteractionUpdate?.call(details),
       onInteractionEnd: (details) {
         widget.onInteractionEnd?.call(details);
         _showScale();
       },
-      boundaryMargin: widget.boundaryMargin ?? const EdgeInsets.all(double.infinity),
+      boundaryMargin:
+          widget.boundaryMargin ?? const EdgeInsets.all(double.infinity),
       minScale: widget.minScale ?? 0.5,
       maxScale: widget.maxScale ?? 10.0,
       panEnabled: widget.panEnabled ?? true,
@@ -135,7 +140,8 @@ class _CustomInteractiveViewerState extends State<CustomInteractiveViewer> {
               width: 100,
               height: 100,
               alignment: Alignment.center,
-              child: Text(_canvasScaleValue.toStringAsFixed(2), style: Theme.of(context).textTheme.headline4)),
+              child: Text(_canvasScaleValue.toStringAsFixed(2),
+                  style: Theme.of(context).textTheme.headline4)),
         ),
       );
 

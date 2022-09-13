@@ -27,11 +27,14 @@ import 'package:photo_editor/services/timeline/timeline.dart' as _i9;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeOption_0<A> extends _i1.SmartFake implements _i2.Option<A> {
-  _FakeOption_0(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+  _FakeOption_0(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
 }
 
-class _FakeUnmodifiableListView_1<E> extends _i1.SmartFake implements _i3.UnmodifiableListView<E> {
-  _FakeUnmodifiableListView_1(Object parent, Invocation parentInvocation) : super(parent, parentInvocation);
+class _FakeUnmodifiableListView_1<E> extends _i1.SmartFake
+    implements _i3.UnmodifiableListView<E> {
+  _FakeUnmodifiableListView_1(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [Logger].
@@ -44,39 +47,52 @@ class MockLogger extends _i1.Mock implements _i4.Logger {
 
   @override
   void v(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#v, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#v, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void d(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#d, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#d, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void i(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#i, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#i, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void w(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#w, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#w, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void e(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#e, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#e, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
   void wtf(dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#wtf, [message, error, stackTrace]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#wtf, [message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
-  void log(_i4.Level? level, dynamic message, [dynamic error, StackTrace? stackTrace]) =>
-      super.noSuchMethod(Invocation.method(#log, [level, message, error, stackTrace]), returnValueForMissingStub: null);
+  void log(_i4.Level? level, dynamic message,
+          [dynamic error, StackTrace? stackTrace]) =>
+      super.noSuchMethod(
+          Invocation.method(#log, [level, message, error, stackTrace]),
+          returnValueForMissingStub: null);
   @override
-  void close() => super.noSuchMethod(Invocation.method(#close, []), returnValueForMissingStub: null);
+  void close() => super.noSuchMethod(Invocation.method(#close, []),
+      returnValueForMissingStub: null);
 }
 
 /// A class which mocks [ElementIdGenerator].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockElementIdGenerator extends _i1.Mock implements _i5.ElementIdGenerator {
+class MockElementIdGenerator extends _i1.Mock
+    implements _i5.ElementIdGenerator {
   MockElementIdGenerator() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  String generate() => (super.noSuchMethod(Invocation.method(#generate, []), returnValue: '') as String);
+  String generate() =>
+      (super.noSuchMethod(Invocation.method(#generate, []), returnValue: '')
+          as String);
 }
 
 /// A class which mocks [FilePicker].
@@ -89,10 +105,17 @@ class MockFilePicker extends _i1.Mock implements _i6.FilePicker {
 
   @override
   _i7.Future<_i2.Option<_i8.File>> pickSingleFile(
-          {String? initialDirectory, String? dialogTitle, List<String>? allowedExtensions}) =>
-      (super
-          .noSuchMethod(Invocation.method(#pickSingleFile, [], {#initialDirectory: initialDirectory, #dialogTitle: dialogTitle, #allowedExtensions: allowedExtensions}),
-              returnValue: _i7.Future<_i2.Option<_i8.File>>.value(_FakeOption_0<_i8.File>(
+          {String? initialDirectory,
+          String? dialogTitle,
+          List<String>? allowedExtensions}) =>
+      (super.noSuchMethod(
+          Invocation.method(#pickSingleFile, [], {
+            #initialDirectory: initialDirectory,
+            #dialogTitle: dialogTitle,
+            #allowedExtensions: allowedExtensions
+          }),
+          returnValue:
+              _i7.Future<_i2.Option<_i8.File>>.value(_FakeOption_0<_i8.File>(
                   this,
                   Invocation.method(#pickSingleFile, [], {
                     #initialDirectory: initialDirectory,
@@ -100,12 +123,15 @@ class MockFilePicker extends _i1.Mock implements _i6.FilePicker {
                     #allowedExtensions: allowedExtensions
                   })))) as _i7.Future<_i2.Option<_i8.File>>);
   @override
-  _i7.Future<_i2.Option<_i8.Directory>> pickPath({String? dialogTitle, String? initialDirectory}) => (super
-          .noSuchMethod(
-              Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}),
-              returnValue: _i7.Future<_i2.Option<_i8.Directory>>.value(_FakeOption_0<_i8.Directory>(this,
-                  Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}))))
-      as _i7.Future<_i2.Option<_i8.Directory>>);
+  _i7.Future<_i2.Option<_i8.Directory>> pickPath(
+          {String? dialogTitle, String? initialDirectory}) =>
+      (super.noSuchMethod(Invocation.method(#pickPath, [], {#dialogTitle: dialogTitle, #initialDirectory: initialDirectory}),
+          returnValue: _i7.Future<_i2.Option<_i8.Directory>>.value(_FakeOption_0<_i8.Directory>(
+              this,
+              Invocation.method(#pickPath, [], {
+                #dialogTitle: dialogTitle,
+                #initialDirectory: initialDirectory
+              })))) as _i7.Future<_i2.Option<_i8.Directory>>);
 }
 
 /// A class which mocks [Timeline].
@@ -117,39 +143,68 @@ class MockEditorTimeline extends _i1.Mock implements _i9.Timeline<_i10.Editor> {
   }
 
   @override
-  _i3.UnmodifiableListView<_i10.Editor> get elements => (super.noSuchMethod(Invocation.getter(#elements),
-          returnValue: _FakeUnmodifiableListView_1<_i10.Editor>(this, Invocation.getter(#elements)))
-      as _i3.UnmodifiableListView<_i10.Editor>);
+  _i3.UnmodifiableListView<_i10.Editor> get elements =>
+      (super.noSuchMethod(Invocation.getter(#elements),
+              returnValue: _FakeUnmodifiableListView_1<_i10.Editor>(
+                  this, Invocation.getter(#elements)))
+          as _i3.UnmodifiableListView<_i10.Editor>);
   @override
-  int get maxSize => (super.noSuchMethod(Invocation.getter(#maxSize), returnValue: 0) as int);
+  int get maxSize =>
+      (super.noSuchMethod(Invocation.getter(#maxSize), returnValue: 0) as int);
   @override
-  int get length => (super.noSuchMethod(Invocation.getter(#length), returnValue: 0) as int);
+  int get length =>
+      (super.noSuchMethod(Invocation.getter(#length), returnValue: 0) as int);
   @override
-  bool get isEmpty => (super.noSuchMethod(Invocation.getter(#isEmpty), returnValue: false) as bool);
+  bool get isEmpty =>
+      (super.noSuchMethod(Invocation.getter(#isEmpty), returnValue: false)
+          as bool);
   @override
-  bool get isNotEmpty => (super.noSuchMethod(Invocation.getter(#isNotEmpty), returnValue: false) as bool);
+  bool get isNotEmpty =>
+      (super.noSuchMethod(Invocation.getter(#isNotEmpty), returnValue: false)
+          as bool);
   @override
-  bool get hasNext => (super.noSuchMethod(Invocation.getter(#hasNext), returnValue: false) as bool);
+  bool get hasNext =>
+      (super.noSuchMethod(Invocation.getter(#hasNext), returnValue: false)
+          as bool);
   @override
-  bool get hasPrevious => (super.noSuchMethod(Invocation.getter(#hasPrevious), returnValue: false) as bool);
+  bool get hasPrevious =>
+      (super.noSuchMethod(Invocation.getter(#hasPrevious), returnValue: false)
+          as bool);
   @override
-  _i2.Option<_i10.Editor> get next => (super.noSuchMethod(Invocation.getter(#next),
-      returnValue: _FakeOption_0<_i10.Editor>(this, Invocation.getter(#next))) as _i2.Option<_i10.Editor>);
+  _i2.Option<_i10.Editor> get next =>
+      (super.noSuchMethod(Invocation.getter(#next),
+              returnValue:
+                  _FakeOption_0<_i10.Editor>(this, Invocation.getter(#next)))
+          as _i2.Option<_i10.Editor>);
   @override
-  _i2.Option<_i10.Editor> get current => (super.noSuchMethod(Invocation.getter(#current),
-      returnValue: _FakeOption_0<_i10.Editor>(this, Invocation.getter(#current))) as _i2.Option<_i10.Editor>);
+  _i2.Option<_i10.Editor> get current =>
+      (super.noSuchMethod(Invocation.getter(#current),
+              returnValue:
+                  _FakeOption_0<_i10.Editor>(this, Invocation.getter(#current)))
+          as _i2.Option<_i10.Editor>);
   @override
-  _i2.Option<_i10.Editor> get previous => (super.noSuchMethod(Invocation.getter(#previous),
-      returnValue: _FakeOption_0<_i10.Editor>(this, Invocation.getter(#previous))) as _i2.Option<_i10.Editor>);
+  _i2.Option<_i10.Editor> get previous => (super.noSuchMethod(
+          Invocation.getter(#previous),
+          returnValue:
+              _FakeOption_0<_i10.Editor>(this, Invocation.getter(#previous)))
+      as _i2.Option<_i10.Editor>);
   @override
-  _i2.Option<_i10.Editor> get top => (super.noSuchMethod(Invocation.getter(#top),
-      returnValue: _FakeOption_0<_i10.Editor>(this, Invocation.getter(#top))) as _i2.Option<_i10.Editor>);
+  _i2.Option<_i10.Editor> get top =>
+      (super.noSuchMethod(Invocation.getter(#top),
+              returnValue:
+                  _FakeOption_0<_i10.Editor>(this, Invocation.getter(#top)))
+          as _i2.Option<_i10.Editor>);
   @override
-  void push(_i10.Editor? t) => super.noSuchMethod(Invocation.method(#push, [t]), returnValueForMissingStub: null);
+  void push(_i10.Editor? t) => super.noSuchMethod(Invocation.method(#push, [t]),
+      returnValueForMissingStub: null);
   @override
-  void clear() => super.noSuchMethod(Invocation.method(#clear, []), returnValueForMissingStub: null);
+  void clear() => super.noSuchMethod(Invocation.method(#clear, []),
+      returnValueForMissingStub: null);
   @override
-  void toTheBeginning() => super.noSuchMethod(Invocation.method(#toTheBeginning, []), returnValueForMissingStub: null);
+  void toTheBeginning() =>
+      super.noSuchMethod(Invocation.method(#toTheBeginning, []),
+          returnValueForMissingStub: null);
   @override
-  void toTheEnd() => super.noSuchMethod(Invocation.method(#toTheEnd, []), returnValueForMissingStub: null);
+  void toTheEnd() => super.noSuchMethod(Invocation.method(#toTheEnd, []),
+      returnValueForMissingStub: null);
 }

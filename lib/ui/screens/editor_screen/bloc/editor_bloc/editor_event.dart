@@ -123,16 +123,19 @@ class EditorEvent with _$EditorEvent {
   const factory EditorEvent.deselectElement() = DeselectElement;
 
   /// fires when selected element should be brought to the front.
-  const factory EditorEvent.bringSelectedElementToFront() = BringSelectedElementToFront;
+  const factory EditorEvent.bringSelectedElementToFront() =
+      BringSelectedElementToFront;
 
   /// fires when selected element resizing is updated.
-  const factory EditorEvent.resizeUpdate(ResizeDirection resizeDirection, Offset delta) = ResizeUpdate;
+  const factory EditorEvent.resizeUpdate(
+      ResizeDirection resizeDirection, Offset delta) = ResizeUpdate;
 
   /// fires when selected element resizing ends.
   const factory EditorEvent.resizeEnd() = ResizeEnd;
 
   /// fires when selected element size changes.
-  const factory EditorEvent.selectedElementSizeChanged(Size updatedSize) = SelectedElementSizeChanged;
+  const factory EditorEvent.selectedElementSizeChanged(Size updatedSize) =
+      SelectedElementSizeChanged;
 
   /// fires when selected element position changes.
   const factory EditorEvent.selectedElementPositionChanged(
@@ -141,7 +144,8 @@ class EditorEvent with _$EditorEvent {
   ) = SelectedElementPositionChanged;
 
   /// Fires when the editing mode of a text element changes.
-  const factory EditorEvent.textEditingModeChanged(bool isEditingTextElement) = TextEditingModeChanged;
+  const factory EditorEvent.textEditingModeChanged(bool isEditingTextElement) =
+      TextEditingModeChanged;
 
   /// Fires when clear editor button is tapped.
   const factory EditorEvent.clearEditor() = ClearEditor;
@@ -150,11 +154,14 @@ class EditorEvent with _$EditorEvent {
   const factory EditorEvent.setCanvasKey(Option<GlobalKey> key) = SetCanvasKey;
 
   /// Fires when canvas background color is updated.
-  const factory EditorEvent.changeCanvasBackgroundColor(Color color) = ChangeCanvasBackgroundColor;
+  const factory EditorEvent.changeCanvasBackgroundColor(Color color) =
+      ChangeCanvasBackgroundColor;
 
   /// Fires when canvas background image is updated.
-  const factory EditorEvent.changeCanvasBackgroundImage() = ChangeCanvasBackgroundImage;
+  const factory EditorEvent.changeCanvasBackgroundImage() =
+      ChangeCanvasBackgroundImage;
 
   /// Fires when canvas background image is removed.
-  const factory EditorEvent.removeCanvasBackgroundImage() = RemoveCanvasBackgroundImage;
+  const factory EditorEvent.removeCanvasBackgroundImage() =
+      RemoveCanvasBackgroundImage;
 }

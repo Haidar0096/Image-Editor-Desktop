@@ -24,14 +24,16 @@ class Editor with _$Editor {
   factory Editor.empty() => Editor(elements: ISet());
 
   /// Convenient factory to create an editor from the provided [Set] of [Element]s.
-  factory Editor.fromSet(Set<Element> elements) => Editor(elements: elements.lock);
+  factory Editor.fromSet(Set<Element> elements) =>
+      Editor(elements: elements.lock);
 }
 
 /// Represents the ID of an [Element] in the [Editor]
 typedef ElementId = String;
 
 /// The allowed extensions of image files that the editor can work with.
-IList<String> get allowedImageFilesExtensions => IList(const ['jpeg', 'png', 'jpg']);
+IList<String> get allowedImageFilesExtensions =>
+    IList(const ['jpeg', 'png', 'jpg']);
 
 /// The allowed extensions of text files that the editor can work with.
 IList<String> get allowedTextFilesExtensions => IList(const ['txt']);

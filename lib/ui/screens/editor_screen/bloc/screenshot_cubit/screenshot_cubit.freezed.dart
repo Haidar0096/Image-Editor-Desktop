@@ -23,7 +23,8 @@ mixin _$ScreenshotState {
   Option<String> get progressMessage => throw _privateConstructorUsedError;
 
   /// The directory to save the generated images in.
-  Option<Directory> get outputImageDirectory => throw _privateConstructorUsedError;
+  Option<Directory> get outputImageDirectory =>
+      throw _privateConstructorUsedError;
 
   /// The naming strategy of the generated images.
   FileNamingType get fileNamingType => throw _privateConstructorUsedError;
@@ -41,12 +42,14 @@ mixin _$ScreenshotState {
   int get outputImageQuality => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ScreenshotStateCopyWith<ScreenshotState> get copyWith => throw _privateConstructorUsedError;
+  $ScreenshotStateCopyWith<ScreenshotState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ScreenshotStateCopyWith<$Res> {
-  factory $ScreenshotStateCopyWith(ScreenshotState value, $Res Function(ScreenshotState) then) =
+  factory $ScreenshotStateCopyWith(
+          ScreenshotState value, $Res Function(ScreenshotState) then) =
       _$ScreenshotStateCopyWithImpl<$Res>;
   $Res call(
       {ProcessingState processingState,
@@ -60,7 +63,8 @@ abstract class $ScreenshotStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreenshotStateCopyWithImpl<$Res> implements $ScreenshotStateCopyWith<$Res> {
+class _$ScreenshotStateCopyWithImpl<$Res>
+    implements $ScreenshotStateCopyWith<$Res> {
   _$ScreenshotStateCopyWithImpl(this._value, this._then);
 
   final ScreenshotState _value;
@@ -116,8 +120,10 @@ class _$ScreenshotStateCopyWithImpl<$Res> implements $ScreenshotStateCopyWith<$R
 }
 
 /// @nodoc
-abstract class _$$_ScreenshotStateCopyWith<$Res> implements $ScreenshotStateCopyWith<$Res> {
-  factory _$$_ScreenshotStateCopyWith(_$_ScreenshotState value, $Res Function(_$_ScreenshotState) then) =
+abstract class _$$_ScreenshotStateCopyWith<$Res>
+    implements $ScreenshotStateCopyWith<$Res> {
+  factory _$$_ScreenshotStateCopyWith(
+          _$_ScreenshotState value, $Res Function(_$_ScreenshotState) then) =
       __$$_ScreenshotStateCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -132,9 +138,11 @@ abstract class _$$_ScreenshotStateCopyWith<$Res> implements $ScreenshotStateCopy
 }
 
 /// @nodoc
-class __$$_ScreenshotStateCopyWithImpl<$Res> extends _$ScreenshotStateCopyWithImpl<$Res>
+class __$$_ScreenshotStateCopyWithImpl<$Res>
+    extends _$ScreenshotStateCopyWithImpl<$Res>
     implements _$$_ScreenshotStateCopyWith<$Res> {
-  __$$_ScreenshotStateCopyWithImpl(_$_ScreenshotState _value, $Res Function(_$_ScreenshotState) _then)
+  __$$_ScreenshotStateCopyWithImpl(
+      _$_ScreenshotState _value, $Res Function(_$_ScreenshotState) _then)
       : super(_value, (v) => _then(v as _$_ScreenshotState));
 
   @override
@@ -244,14 +252,22 @@ class _$_ScreenshotState extends _ScreenshotState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreenshotState &&
-            const DeepCollectionEquality().equals(other.processingState, processingState) &&
-            const DeepCollectionEquality().equals(other.progressMessage, progressMessage) &&
-            const DeepCollectionEquality().equals(other.outputImageDirectory, outputImageDirectory) &&
-            const DeepCollectionEquality().equals(other.fileNamingType, fileNamingType) &&
-            const DeepCollectionEquality().equals(other.baseFileName, baseFileName) &&
-            const DeepCollectionEquality().equals(other.outputImageFormat, outputImageFormat) &&
-            const DeepCollectionEquality().equals(other.outputImageSize, outputImageSize) &&
-            const DeepCollectionEquality().equals(other.outputImageQuality, outputImageQuality));
+            const DeepCollectionEquality()
+                .equals(other.processingState, processingState) &&
+            const DeepCollectionEquality()
+                .equals(other.progressMessage, progressMessage) &&
+            const DeepCollectionEquality()
+                .equals(other.outputImageDirectory, outputImageDirectory) &&
+            const DeepCollectionEquality()
+                .equals(other.fileNamingType, fileNamingType) &&
+            const DeepCollectionEquality()
+                .equals(other.baseFileName, baseFileName) &&
+            const DeepCollectionEquality()
+                .equals(other.outputImageFormat, outputImageFormat) &&
+            const DeepCollectionEquality()
+                .equals(other.outputImageSize, outputImageSize) &&
+            const DeepCollectionEquality()
+                .equals(other.outputImageQuality, outputImageQuality));
   }
 
   @override
@@ -318,5 +334,6 @@ abstract class _ScreenshotState extends ScreenshotState {
   int get outputImageQuality;
   @override
   @JsonKey(ignore: true)
-  _$$_ScreenshotStateCopyWith<_$_ScreenshotState> get copyWith => throw _privateConstructorUsedError;
+  _$$_ScreenshotStateCopyWith<_$_ScreenshotState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

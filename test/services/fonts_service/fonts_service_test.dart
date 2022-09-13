@@ -12,11 +12,13 @@ void main() {
     });
   });
   group('getFont', () {
-    testWidgets('Should return the correct text style for a given font', (WidgetTester tester) async {
+    testWidgets('Should return the correct text style for a given font',
+        (WidgetTester tester) async {
       await tester.pumpWidget(const MaterialApp());
       await tester.pumpAndSettle();
       for (int i = 0; i < expectedAvailableFontsNames.length; i++) {
-        TextStyle textStyle = FontsService.getFont(expectedAvailableFontsNames[i]);
+        TextStyle textStyle =
+            FontsService.getFont(expectedAvailableFontsNames[i]);
         expect(textStyle.fontFamily, expectedFontFamilyNames[i]);
       }
     });

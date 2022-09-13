@@ -23,7 +23,8 @@ class FilePickerDefaultImpl implements FilePicker {
       dialogTitle: dialogTitle,
       initialDirectory: initialDirectory,
     );
-    return optionOf(pickerResult?.files.first.path).map((path) => io.File(path));
+    return optionOf(pickerResult?.files.first.path)
+        .map((path) => io.File(path));
   }
 
   @override

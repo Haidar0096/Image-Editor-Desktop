@@ -20,13 +20,14 @@ extension EditorExtension on Editor {
   /// updated editor.
   ///
   /// If no such element exists, then the element will be added to the editor.
-  Editor updateElement(Element updated) =>
-      copyWith(elements: elements.removeWhere((e) => e.id == updated.id).add(updated));
+  Editor updateElement(Element updated) => copyWith(
+      elements: elements.removeWhere((e) => e.id == updated.id).add(updated));
 
   /// Removes an element from the editor and returns the new updated editor.
   ///
   /// Returns the same editor if the id does not exist.
-  Editor removeElement(ElementId id) => copyWith(elements: elements.removeWhere((e) => e.id == id));
+  Editor removeElement(ElementId id) =>
+      copyWith(elements: elements.removeWhere((e) => e.id == id));
 
   /// Translates the given element's rect by the given offset and returns the new updated editor.
   ///
@@ -34,18 +35,21 @@ extension EditorExtension on Editor {
   Editor translateElement(ElementId id, ui.Offset delta) =>
       optionOf(elements.where((e) => e.id == id).firstOrNull).fold(
         () => this,
-        (element) => updateElement(element.copyWith(rect: element.rect.translate(delta.dx, delta.dy))),
+        (element) => updateElement(
+            element.copyWith(rect: element.rect.translate(delta.dx, delta.dy))),
       );
 
   /// Removes all the elements from the editor and returns the new updated editor.
   Editor clear() => copyWith(elements: elements.clear());
 
   /// Returns [some] with the element with the given id if it exists, or [none] otherwise.
-  Option<Element> elementById(ElementId id) => optionOf(elements.where((element) => element.id == id).firstOrNull);
+  Option<Element> elementById(ElementId id) =>
+      optionOf(elements.where((element) => element.id == id).firstOrNull);
 
   /// Returns the elements sorted by their show order (ascending), or an empty list if the editor
   /// is empty.
-  IList<Element> get elementsSortedByShowOrder => elements.sorted((a, b) => a.showOrder.compareTo(b.showOrder)).lock;
+  IList<Element> get elementsSortedByShowOrder =>
+      elements.sorted((a, b) => a.showOrder.compareTo(b.showOrder)).lock;
 
   /// Returns the elements sorted by their show order (descending), or an empty list if the editor
   /// is empty.

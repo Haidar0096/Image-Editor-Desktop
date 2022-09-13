@@ -34,18 +34,28 @@ class EditorScreen extends StatelessWidget {
               Positioned.fill(
                 child: Column(
                   children: [
-                    const Expanded(flex: editorScreenAppBarFlex, child: EditorScreenAppBar()),
+                    const Expanded(
+                        flex: editorScreenAppBarFlex,
+                        child: EditorScreenAppBar()),
                     Expanded(
                       flex: editorScreenBodyFlex,
                       child: Row(
                         children: const [
-                          Expanded(flex: editorScreenLeftPanelFlex, child: EditorScreenLeftPanel()),
-                          Expanded(flex: editorScreenCanvasFlex, child: EditorScreenCanvas()),
-                          Expanded(flex: editorScreenRightPanelFlex, child: EditorScreenRightPanel()),
+                          Expanded(
+                              flex: editorScreenLeftPanelFlex,
+                              child: EditorScreenLeftPanel()),
+                          Expanded(
+                              flex: editorScreenCanvasFlex,
+                              child: EditorScreenCanvas()),
+                          Expanded(
+                              flex: editorScreenRightPanelFlex,
+                              child: EditorScreenRightPanel()),
                         ],
                       ),
                     ),
-                    const Expanded(flex: editorScreenNavBarFlex, child: EditorScreenNavBar()),
+                    const Expanded(
+                        flex: editorScreenNavBarFlex,
+                        child: EditorScreenNavBar()),
                   ],
                 ),
               ),
@@ -66,13 +76,16 @@ class EditorScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            screenshotState.progressMessage.fold(() => '', (progress) => progress),
+                            screenshotState.progressMessage
+                                .fold(() => '', (progress) => progress),
                             style: toc.textTheme.subtitle1,
                           ),
                         ),
                       ],
                     ),
-                    onDismiss: () => context.read<ScreenshotCubit>().cancelCaptureWidget(context),
+                    onDismiss: () => context
+                        .read<ScreenshotCubit>()
+                        .cancelCaptureWidget(context),
                   ),
                 ),
             ],

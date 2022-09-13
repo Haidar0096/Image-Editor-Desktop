@@ -55,7 +55,8 @@ class EditorScreenshotModelWidget extends StatelessWidget {
 class EditorElementWidgetDelegateModel extends StatelessWidget {
   final editor.Element element;
 
-  const EditorElementWidgetDelegateModel({Key? key, required this.element}) : super(key: key);
+  const EditorElementWidgetDelegateModel({Key? key, required this.element})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => element.properties.map(
@@ -63,7 +64,8 @@ class EditorElementWidgetDelegateModel extends StatelessWidget {
           properties: fileImageProperties,
           size: element.rect.size,
         ),
-        staticTextProperties: (staticTextProperties) => EditorStaticTextWidgetModel(properties: staticTextProperties),
+        staticTextProperties: (staticTextProperties) =>
+            EditorStaticTextWidgetModel(properties: staticTextProperties),
         variableTextProperties: (variableTextProperties) =>
             EditorVariableTextWidgetModel(properties: variableTextProperties),
       );
@@ -102,7 +104,8 @@ class EditorStaticTextWidgetModel extends StatelessWidget {
   Widget build(BuildContext context) => Text(
         properties.text,
         style: properties.textStyle?.copyWith(
-          color: properties.textStyle?.color ?? Theme.of(context).textTheme.subtitle2?.color,
+          color: properties.textStyle?.color ??
+              Theme.of(context).textTheme.subtitle2?.color,
         ),
         textAlign: properties.textAlign,
       );
@@ -120,7 +123,8 @@ class EditorVariableTextWidgetModel extends StatelessWidget {
   Widget build(BuildContext context) => Text(
         properties.placeHolderText,
         style: properties.textStyle?.copyWith(
-          color: properties.textStyle?.color ?? Theme.of(context).textTheme.subtitle2?.color,
+          color: properties.textStyle?.color ??
+              Theme.of(context).textTheme.subtitle2?.color,
         ),
         textAlign: properties.textAlign,
       );

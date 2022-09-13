@@ -52,7 +52,8 @@ Future<void> showInfoDialog(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ElevatedButton(
-                              onPressed: () => Navigator.of(dialogContext).pop(),
+                              onPressed: () =>
+                                  Navigator.of(dialogContext).pop(),
                               child: Text(
                                 AppLocalizations.of(context)!.ok,
                                 style: toc.textTheme.subtitle2,

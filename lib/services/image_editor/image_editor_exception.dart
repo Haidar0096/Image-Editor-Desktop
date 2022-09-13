@@ -9,7 +9,9 @@ class ImageEditorException implements Exception {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImageEditorException && runtimeType == other.runtimeType && message == other.message;
+      other is ImageEditorException &&
+          runtimeType == other.runtimeType &&
+          message == other.message;
 
   @override
   int get hashCode => message.hashCode;

@@ -5,7 +5,8 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/ui/common/widgets/double_state_text.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/editor_bloc/editor_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:photo_editor/ui/screens/editor_screen/widgets/common_editor_functions.dart' as common_editor_functions;
+import 'package:photo_editor/ui/screens/editor_screen/widgets/common_editor_functions.dart'
+    as common_editor_functions;
 import 'package:photo_editor/ui/screens/editor_screen/widgets/fonts_dialog.dart';
 
 class EditorScreenRightPanel extends StatelessWidget {
@@ -21,7 +22,8 @@ class EditorScreenRightPanel extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(AppLocalizations.of(context)!.properties, textAlign: TextAlign.center),
+                      child: Text(AppLocalizations.of(context)!.properties,
+                          textAlign: TextAlign.center),
                     ),
                     _divider(context),
                     _xPositionText(context, el),
@@ -33,7 +35,8 @@ class EditorScreenRightPanel extends StatelessWidget {
                     _elementHeightText(context, el),
                     _divider(context),
                     // if selected element is any text element:
-                    if (el.properties.isStaticTextProperties || el.properties.isVariableTextProperties) ...[
+                    if (el.properties.isStaticTextProperties ||
+                        el.properties.isVariableTextProperties) ...[
                       _elementSizeText(context, el),
                       _divider(context),
                       _elementFontText(context, el),
@@ -46,7 +49,8 @@ class EditorScreenRightPanel extends StatelessWidget {
                     ],
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Show Order: ${el.showOrder}', textAlign: TextAlign.center),
+                      child: Text('Show Order: ${el.showOrder}',
+                          textAlign: TextAlign.center),
                     ),
                     _divider(context),
                   ],
@@ -56,7 +60,8 @@ class EditorScreenRightPanel extends StatelessWidget {
         ),
       );
 
-  Divider _divider(BuildContext context) => Divider(color: Theme.of(context).colorScheme.onSecondary);
+  Divider _divider(BuildContext context) =>
+      Divider(color: Theme.of(context).colorScheme.onSecondary);
 
   Widget _createDoubleStateText({
     required BuildContext context,
@@ -84,56 +89,60 @@ class EditorScreenRightPanel extends StatelessWidget {
     );
   }
 
-  Widget _xPositionText(BuildContext context, editor.Element el) => _createDoubleStateText(
+  Widget _xPositionText(BuildContext context, editor.Element el) =>
+      _createDoubleStateText(
         context: context,
         initialText: 'x: ${el.rect.topLeft.dx.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.topLeft.dx.toStringAsFixed(2),
         onLoseFocus: (updatedValue) {
-          double? updatedX = double.tryParse(updatedValue) ?? el.rect.topLeft.dx;
-          context
-              .read<EditorBloc>()
-              .add(EditorEvent.selectedElementPositionChanged(Offset(updatedX, el.rect.topLeft.dy)));
+          double? updatedX =
+              double.tryParse(updatedValue) ?? el.rect.topLeft.dx;
+          context.read<EditorBloc>().add(
+              EditorEvent.selectedElementPositionChanged(
+                  Offset(updatedX, el.rect.topLeft.dy)));
           return 'x: ${el.rect.topLeft.dx.toStringAsFixed(2)}';
         },
       );
 
-  Widget _yPositionText(BuildContext context, editor.Element el) => _createDoubleStateText(
+  Widget _yPositionText(BuildContext context, editor.Element el) =>
+      _createDoubleStateText(
         context: context,
         initialText: 'y: ${el.rect.topLeft.dy.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.topLeft.dy.toStringAsFixed(2),
         onLoseFocus: (updatedValue) {
-          double? updatedY = double.tryParse(updatedValue) ?? el.rect.topLeft.dy;
-          context
-              .read<EditorBloc>()
-              .add(EditorEvent.selectedElementPositionChanged(Offset(el.rect.topLeft.dx, updatedY)));
+          double? updatedY =
+              double.tryParse(updatedValue) ?? el.rect.topLeft.dy;
+          context.read<EditorBloc>().add(
+              EditorEvent.selectedElementPositionChanged(
+                  Offset(el.rect.topLeft.dx, updatedY)));
           return 'y: ${el.rect.topLeft.dy.toStringAsFixed(2)}';
         },
       );
 
-  Widget _elementWidthText(BuildContext context, editor.Element el) => _createDoubleStateText(
+  Widget _elementWidthText(BuildContext context, editor.Element el) =>
+      _createDoubleStateText(
         context: context,
         initialText: 'w: ${el.rect.size.width.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.size.width.toStringAsFixed(2),
         onLoseFocus: (updatedValue) {
           double updatedWidth = double.tryParse(updatedValue) ?? -1;
 
-          context
-              .read<EditorBloc>()
-              .add(EditorEvent.selectedElementSizeChanged(Size(updatedWidth, el.rect.size.height)));
+          context.read<EditorBloc>().add(EditorEvent.selectedElementSizeChanged(
+              Size(updatedWidth, el.rect.size.height)));
           return 'w: ${el.rect.size.width.toStringAsFixed(2)}';
         },
       );
 
-  Widget _elementHeightText(BuildContext context, editor.Element el) => _createDoubleStateText(
+  Widget _elementHeightText(BuildContext context, editor.Element el) =>
+      _createDoubleStateText(
         context: context,
         initialText: 'h: ${el.rect.size.height.toStringAsFixed(2)}',
         onGainFocus: () => el.rect.size.height.toStringAsFixed(2),
         onLoseFocus: (updatedValue) {
           double updatedHeight = double.tryParse(updatedValue) ?? -1;
 
-          context
-              .read<EditorBloc>()
-              .add(EditorEvent.selectedElementSizeChanged(Size(el.rect.size.width, updatedHeight)));
+          context.read<EditorBloc>().add(EditorEvent.selectedElementSizeChanged(
+              Size(el.rect.size.width, updatedHeight)));
           return 'h: ${el.rect.height.toStringAsFixed(2)}';
         },
       );
@@ -141,14 +150,17 @@ class EditorScreenRightPanel extends StatelessWidget {
   Widget _elementSizeText(BuildContext context, editor.Element el) {
     TextStyle? currentTextStyle;
     if (el.properties.isStaticTextProperties) {
-      currentTextStyle = (el.properties as editor.StaticTextProperties).textStyle;
+      currentTextStyle =
+          (el.properties as editor.StaticTextProperties).textStyle;
     } else if (el.properties.isVariableTextProperties) {
-      currentTextStyle = (el.properties as editor.VariableTextProperties).textStyle;
+      currentTextStyle =
+          (el.properties as editor.VariableTextProperties).textStyle;
     }
 
     return _createDoubleStateText(
       context: context,
-      initialText: '${AppLocalizations.of(context)!.fontSize}: ${currentTextStyle?.fontSize?.toStringAsFixed(2)}',
+      initialText:
+          '${AppLocalizations.of(context)!.fontSize}: ${currentTextStyle?.fontSize?.toStringAsFixed(2)}',
       onGainFocus: () => '${currentTextStyle?.fontSize?.toStringAsFixed(2)}',
       onLoseFocus: (updatedValue) {
         double? updatedFontSize = double.tryParse(updatedValue);
@@ -160,7 +172,8 @@ class EditorScreenRightPanel extends StatelessWidget {
         common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,
-          updatedTextStyleBuilder: (currentTextStyle) => currentTextStyle?.copyWith(fontSize: updatedFontSize),
+          updatedTextStyleBuilder: (currentTextStyle) =>
+              currentTextStyle?.copyWith(fontSize: updatedFontSize),
         );
 
         return 'Font: ${currentTextStyle?.fontSize?.toStringAsFixed(2)}';
@@ -168,11 +181,15 @@ class EditorScreenRightPanel extends StatelessWidget {
     );
   }
 
-  Widget _elementSourceFileText(BuildContext context, editor.Element el) => InkWell(
+  Widget _elementSourceFileText(BuildContext context, editor.Element el) =>
+      InkWell(
         onTap: () {
-          context.read<EditorBloc>().add(const EditorEvent.variableTextFileChanged());
+          context
+              .read<EditorBloc>()
+              .add(const EditorEvent.variableTextFileChanged());
         },
-        child: Text('File: ${(el.properties as editor.VariableTextProperties).placeHolderText}',
+        child: Text(
+            'File: ${(el.properties as editor.VariableTextProperties).placeHolderText}',
             textAlign: TextAlign.center),
       );
 
@@ -185,16 +202,20 @@ class EditorScreenRightPanel extends StatelessWidget {
     }
     return InkWell(
       onTap: () => _showFontsDialog(el, context),
-      child: Text('Font: ${style?.fontFamily?.split('_')[0]}', textAlign: TextAlign.center),
+      child: Text('Font: ${style?.fontFamily?.split('_')[0]}',
+          textAlign: TextAlign.center),
     );
   }
 
-  void _showFontsDialog(editor.Element el, BuildContext context) => showFontsDialog(
+  void _showFontsDialog(editor.Element el, BuildContext context) =>
+      showFontsDialog(
         context: context,
-        onSelected: (fontFamily) => common_editor_functions.changeTextElementProperties(
+        onSelected: (fontFamily) =>
+            common_editor_functions.changeTextElementProperties(
           context: context,
           element: el,
-          updatedTextStyleBuilder: (currentTextStyle) => GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),
+          updatedTextStyleBuilder: (currentTextStyle) =>
+              GoogleFonts.getFont(fontFamily, textStyle: currentTextStyle!),
         ),
       );
 }
