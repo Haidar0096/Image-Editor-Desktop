@@ -83,8 +83,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
     int pageStart = pageKey * _pageSize;
     int pageEnd = (pageKey + 1) * _pageSize;
     if (pageEnd <= widget.data.length) {
-      _controller.appendPage(
-          widget.data.sublist(pageStart, pageEnd), pageKey + 1);
+      _controller.appendPage(widget.data.sublist(pageStart, pageEnd), pageKey + 1);
     } else {
       _controller.appendLastPage(widget.data.sublist(pageStart));
     }
@@ -113,8 +112,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
         itemBuilder: (context, data, index) => widget.dataMapper(data),
         animateTransitions: true,
         transitionDuration: kScrollTransitionDuration,
-        firstPageProgressIndicatorBuilder: (context) =>
-            const CircularProgressIndicator(),
+        firstPageProgressIndicatorBuilder: (context) => const CircularProgressIndicator(),
       ),
       cacheExtent: widget.cacheExtent,
       itemExtent: widget.itemExtent,
@@ -124,8 +122,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
       addSemanticIndexes: widget.addSemanticIndexes ?? true,
       clipBehavior: widget.clipBehavior ?? Clip.hardEdge,
       dragStartBehavior: widget.dragStartBehavior ?? DragStartBehavior.start,
-      keyboardDismissBehavior: widget.keyboardDismissBehavior ??
-          ScrollViewKeyboardDismissBehavior.manual,
+      keyboardDismissBehavior: widget.keyboardDismissBehavior ?? ScrollViewKeyboardDismissBehavior.manual,
       padding: widget.padding,
       primary: widget.primary,
       restorationId: widget.restorationId,

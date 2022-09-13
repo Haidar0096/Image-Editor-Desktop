@@ -221,8 +221,7 @@ class ListDialog<T> extends StatelessWidget {
                       Expanded(
                         flex: bodyFlex ?? 90,
                         child: Container(
-                          color: bodyBackgroundColor ??
-                              Theme.of(context).colorScheme.background,
+                          color: bodyBackgroundColor ?? Theme.of(context).colorScheme.background,
                           child: PaginatedListView<T>(
                             data: data,
                             dataMapper: (data) => Listener(

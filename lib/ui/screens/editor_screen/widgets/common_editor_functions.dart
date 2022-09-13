@@ -12,47 +12,36 @@ void changeTextElementProperties({
   late final TextStyle? selectedElementTextStyle;
   late final TextAlign? selectedElementTextAlign;
   if (element.properties.isStaticTextProperties) {
-    selectedElementTextStyle =
-        (element.properties as editor.StaticTextProperties).textStyle;
-    selectedElementTextAlign =
-        (element.properties as editor.StaticTextProperties).textAlign;
+    selectedElementTextStyle = (element.properties as editor.StaticTextProperties).textStyle;
+    selectedElementTextAlign = (element.properties as editor.StaticTextProperties).textAlign;
   } else if (element.properties.isVariableTextProperties) {
-    selectedElementTextStyle =
-        (element.properties as editor.VariableTextProperties).textStyle;
-    selectedElementTextAlign =
-        (element.properties as editor.VariableTextProperties).textAlign;
+    selectedElementTextStyle = (element.properties as editor.VariableTextProperties).textStyle;
+    selectedElementTextAlign = (element.properties as editor.VariableTextProperties).textAlign;
   }
 
   if (updatedTextStyleBuilder != null) {
-    TextStyle? updatedTextStyle =
-        updatedTextStyleBuilder.call(selectedElementTextStyle);
+    TextStyle? updatedTextStyle = updatedTextStyleBuilder.call(selectedElementTextStyle);
 
     if (element.properties.isStaticTextProperties) {
-      context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(
-          updatedTextStyle: updatedTextStyle));
+      context.read<EditorBloc>().add(EditorEvent.staticTextStyleChanged(updatedTextStyle: updatedTextStyle));
     } else if (element.properties.isVariableTextProperties) {
-      context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(
-          updatedTextStyle: updatedTextStyle));
+      context.read<EditorBloc>().add(EditorEvent.variableTextStyleChanged(updatedTextStyle: updatedTextStyle));
     }
   }
 
   if (updatedTextAlignBuilder != null) {
-    TextAlign? updatedTextAlign =
-        updatedTextAlignBuilder.call(selectedElementTextAlign);
+    TextAlign? updatedTextAlign = updatedTextAlignBuilder.call(selectedElementTextAlign);
 
     if (element.properties.isStaticTextProperties) {
-      context.read<EditorBloc>().add(EditorEvent.staticTextAlignChanged(
-          updatedTextAlign: updatedTextAlign));
+      context.read<EditorBloc>().add(EditorEvent.staticTextAlignChanged(updatedTextAlign: updatedTextAlign));
     } else if (element.properties.isVariableTextProperties) {
-      context.read<EditorBloc>().add(EditorEvent.variableTextAlignChanged(
-          updatedTextAlign: updatedTextAlign));
+      context.read<EditorBloc>().add(EditorEvent.variableTextAlignChanged(updatedTextAlign: updatedTextAlign));
     }
   }
 }
 
 TextStyle? getTextElementTextStyle(editor.Element element) {
-  assert(element.properties.isStaticTextProperties ||
-      element.properties.isVariableTextProperties);
+  assert(element.properties.isStaticTextProperties || element.properties.isVariableTextProperties);
   if (element.properties.isStaticTextProperties) {
     return (element.properties as editor.StaticTextProperties).textStyle;
   }

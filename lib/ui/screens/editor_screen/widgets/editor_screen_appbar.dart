@@ -70,11 +70,9 @@ Widget _buildFileMenu(BuildContext context) {
           onTap: () => Future.delayed(
             Duration.zero,
             () async {
-              final bool generateImageSettingsValid =
-                  await showGenerateImageSettingsDialog(context);
+              final bool generateImageSettingsValid = await showGenerateImageSettingsDialog(context);
               if (generateImageSettingsValid) {
-                final editorElements =
-                    context.read<EditorBloc>().state.editor.elements;
+                final editorElements = context.read<EditorBloc>().state.editor.elements;
                 final canvasSize = (context
                         .read<EditorBloc>()
                         .state
@@ -83,26 +81,18 @@ Widget _buildFileMenu(BuildContext context) {
                         .currentContext!
                         .findRenderObject() as RenderBox)
                     .size;
-                final result =
-                    await context.read<ScreenshotCubit>().captureWidget(
-                          elements: editorElements.toList(),
-                          context: context,
-                          canvasSize: canvasSize,
-                          canvasBackgroundColor: context
-                              .read<EditorBloc>()
-                              .state
-                              .canvasBackgroundColor,
-                          canvasBackgroundImageFile: context
-                              .read<EditorBloc>()
-                              .state
-                              .canvasBackgroundImageFile,
-                        );
+                final result = await context.read<ScreenshotCubit>().captureWidget(
+                      elements: editorElements.toList(),
+                      context: context,
+                      canvasSize: canvasSize,
+                      canvasBackgroundColor: context.read<EditorBloc>().state.canvasBackgroundColor,
+                      canvasBackgroundImageFile: context.read<EditorBloc>().state.canvasBackgroundImageFile,
+                    );
                 result.fold(
                   (message) => showInfoDialog(context, message),
                   (_) async => showPromptDialog(
                     context: context,
-                    title: AppLocalizations.of(context)!
-                        .openGeneratedImagesFolderPrompt,
+                    title: AppLocalizations.of(context)!.openGeneratedImagesFolderPrompt,
                     onConfirm: () async {
                       final Uri savedImagesUri = Uri.parse(
                           'file:${context.read<ScreenshotCubit>().state.outputImageDirectory.toNullable()!.path}');

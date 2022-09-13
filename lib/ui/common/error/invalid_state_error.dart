@@ -10,9 +10,7 @@ class InvalidStateError {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is InvalidStateError &&
-          runtimeType == other.runtimeType &&
-          message == other.message;
+      other is InvalidStateError && runtimeType == other.runtimeType && message == other.message;
 
   @override
   int get hashCode => message.hashCode;

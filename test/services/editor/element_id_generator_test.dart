@@ -6,9 +6,7 @@ import 'package:uuid/uuid.dart';
 
 void main() {
   group('generate', () {
-    test(
-        'Should generate the expected series of ids when seeded with same seed',
-        () {
+    test('Should generate the expected series of ids when seeded with same seed', () {
       // set up a mock rng that generates Uint8List using the seed value.
       int seed = 0;
       Uint8List naiveRNG() {

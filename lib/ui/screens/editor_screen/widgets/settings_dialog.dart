@@ -8,10 +8,7 @@ import 'package:photo_editor/ui/common/styles/styles.dart';
 
 /// Shows the settings dialog.
 void showSettingsDialog(BuildContext context) => Navigator.of(context).push(
-      fadeInRoute(
-          child: const _SettingsDialog(),
-          opaque: false,
-          duration: kDialogTransitionDuration),
+      fadeInRoute(child: const _SettingsDialog(), opaque: false, duration: kDialogTransitionDuration),
     );
 
 class _SettingsDialog extends StatelessWidget {
@@ -65,9 +62,7 @@ class _SettingsDialogAppBar extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment: Directionality.of(context).name == 'ltr'
-                ? Alignment.topLeft
-                : Alignment.topRight,
+            alignment: Directionality.of(context).name == 'ltr' ? Alignment.topLeft : Alignment.topRight,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: InkWell(
@@ -189,9 +184,7 @@ class _ChangeLanguageWidget extends StatelessWidget {
                   ...Language.values
                       .map(
                         (lang) => PopupMenuItem(
-                          child: Center(
-                              child:
-                                  Text(lang.name, textAlign: TextAlign.center)),
+                          child: Center(child: Text(lang.name, textAlign: TextAlign.center)),
                           onTap: () {
                             context.read<LocalizationCubit>().setLanguage(lang);
                           },
@@ -211,8 +204,7 @@ class _ChangeLanguageWidget extends StatelessWidget {
                       decoration: BoxDecoration(color: toc.colorScheme.primary),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:
-                            BlocBuilder<LocalizationCubit, LocalizationState>(
+                        child: BlocBuilder<LocalizationCubit, LocalizationState>(
                           builder: (context, localizationState) {
                             return Text(
                               localizationState.language.name,

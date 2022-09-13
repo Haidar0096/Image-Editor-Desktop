@@ -64,8 +64,7 @@ void main() {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -99,12 +98,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -131,8 +127,7 @@ void main() {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -148,12 +143,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -188,12 +180,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -229,8 +218,7 @@ void main() {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -246,12 +234,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -294,12 +279,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -353,8 +335,7 @@ void main() {
       rect: Rect.fromLTRB(0.0, 0.0, 1353.0, 33.0),
       properties: ElementProperties.staticTextProperties(
         text: 'Type the text here (Double tap to start):',
-        textStyle:
-            material.TextStyle(fontSize: 30, color: material.Colors.black),
+        textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -386,8 +367,7 @@ void main() {
           material.MaterialApp(
             theme: styles.themeData,
             home: BlocProvider<EditorBloc>(
-              create: (context) =>
-                  createEditorBloc(elementIdGenerator: mockElementIdGenerator),
+              create: (context) => createEditorBloc(elementIdGenerator: mockElementIdGenerator),
               child: const material.Scaffold(),
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -397,13 +377,11 @@ void main() {
         await tester.pumpAndSettle();
 
         // get a context to use with the bloc
-        final material.BuildContext context =
-            tester.element(find.byType(material.Scaffold));
+        final material.BuildContext context = tester.element(find.byType(material.Scaffold));
 
         // listen to the bloc stream of states
         final List<EditorState> actualStates = [];
-        final Stream<EditorState> blocStream =
-            BlocProvider.of<EditorBloc>(context).stream;
+        final Stream<EditorState> blocStream = BlocProvider.of<EditorBloc>(context).stream;
         blocStream.listen(actualStates.add);
 
         // add the event
@@ -455,8 +433,7 @@ void main() {
           material.MaterialApp(
             theme: styles.themeData,
             home: BlocProvider<EditorBloc>(
-              create: (context) =>
-                  createEditorBloc(elementIdGenerator: mockElementIdGenerator),
+              create: (context) => createEditorBloc(elementIdGenerator: mockElementIdGenerator),
               child: const material.Scaffold(),
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -466,13 +443,11 @@ void main() {
         await tester.pumpAndSettle();
 
         // get a context to use with the bloc
-        final material.BuildContext context =
-            tester.element(find.byType(material.Scaffold));
+        final material.BuildContext context = tester.element(find.byType(material.Scaffold));
 
         // listen to the bloc stream of states
         final List<EditorState> actualStates = [];
-        final Stream<EditorState> blocStream =
-            BlocProvider.of<EditorBloc>(context).stream;
+        final Stream<EditorState> blocStream = BlocProvider.of<EditorBloc>(context).stream;
         blocStream.listen(actualStates.add);
 
         // add the AddStaticText event
@@ -524,9 +499,7 @@ void main() {
     const Element staticText = Element(
       rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:',
-          textStyle:
-              material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 1,
       id: '1',
     );
@@ -540,12 +513,10 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc
-          .add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
+      act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
-            properties: (staticText.properties as StaticTextProperties)
-                .copyWith(text: 'Hello World'));
+            properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedStaticText}),
           draggedElement: none(),
@@ -566,15 +537,13 @@ void main() {
         draggedElement: none(),
       ),
       act: (bloc) {
-        bloc.add(
-            const EditorEvent.staticTextChanged(updatedText: 'Hello World'));
+        bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World'));
         bloc.add(const EditorEvent.undo());
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
-            properties: (staticText.properties as StaticTextProperties)
-                .copyWith(text: 'Hello World'));
+            properties: (staticText.properties as StaticTextProperties).copyWith(text: 'Hello World'));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedStaticText}),
           draggedElement: none(),
@@ -597,13 +566,9 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc
-          .add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
+      act: (bloc) => bloc.add(const EditorEvent.staticTextChanged(updatedText: 'Hello World')),
       expect: () => [],
-      errors: () => [
-        const InvalidStateError(
-            message: "StaticTextChanged was fired but no element was selected")
-      ],
+      errors: () => [const InvalidStateError(message: "StaticTextChanged was fired but no element was selected")],
     );
 
     blocTest<EditorBloc, EditorState>(
@@ -624,9 +589,8 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
-        final Element updatedStaticText1 = staticText.copyWith(
-            properties: (staticText.properties as StaticTextProperties)
-                .copyWith(text: 'abc'));
+        final Element updatedStaticText1 =
+            staticText.copyWith(properties: (staticText.properties as StaticTextProperties).copyWith(text: 'abc'));
 
         final EditorState expectedState1 = createEditorState(
           editor: Editor.fromSet({updatedStaticText1}),
@@ -654,9 +618,7 @@ void main() {
     const Element staticText = Element(
       rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:',
-          textStyle:
-              material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 1,
       id: '1',
     );
@@ -671,15 +633,13 @@ void main() {
         draggedElement: none(),
       ),
       act: (bloc) => bloc.add(EditorEvent.staticTextStyleChanged(
-          updatedTextStyle: (staticText.properties as StaticTextProperties)
-              .textStyle!
-              .copyWith(color: material.Colors.yellow))),
+          updatedTextStyle:
+              (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
           properties: (staticText.properties as StaticTextProperties).copyWith(
-            textStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(color: material.Colors.yellow),
+            textStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
         );
         final expectedState = createEditorState(
@@ -704,38 +664,27 @@ void main() {
       act: (bloc) {
         // Ok
         bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 10)));
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10)));
         // Ok
         bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 0)));
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0)));
         // Should not change the style, font negative
         bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: -1)));
+            updatedTextStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: -1)));
         // Should not change the style, font infinite
         bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: double.infinity)));
+            updatedTextStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
       },
       expect: () {
         final Element updatedStaticText1 = staticText.copyWith(
           properties: (staticText.properties as StaticTextProperties).copyWith(
-            textStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 10),
+            textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 10),
           ),
         );
         final Element updatedStaticText2 = staticText.copyWith(
           properties: (staticText.properties as StaticTextProperties).copyWith(
-            textStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 0),
+            textStyle: (staticText.properties as StaticTextProperties).textStyle!.copyWith(fontSize: 0),
           ),
         );
         final expectedState1 = createEditorState(
@@ -765,18 +714,16 @@ void main() {
       ),
       act: (bloc) {
         bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(color: material.Colors.yellow)));
+            updatedTextStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow)));
         bloc.add(const EditorEvent.undo());
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
           properties: (staticText.properties as StaticTextProperties).copyWith(
-            textStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(color: material.Colors.yellow),
+            textStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
         );
         final expectedState = createEditorState(
@@ -792,8 +739,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no element is selected and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({staticText}),
@@ -802,15 +748,11 @@ void main() {
               draggedElement: none(),
             ),
         act: (bloc) => bloc.add(EditorEvent.staticTextStyleChanged(
-            updatedTextStyle: (staticText.properties as StaticTextProperties)
-                .textStyle!
-                .copyWith(color: material.Colors.yellow))),
+            updatedTextStyle:
+                (staticText.properties as StaticTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "StaticTextStyleChanged was fired but no element was selected")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "StaticTextStyleChanged was fired but no element was selected")]);
   });
 
   group('StaticTextAlignChanged', () {
@@ -818,9 +760,7 @@ void main() {
     const Element staticText = Element(
       rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:',
-          textStyle:
-              material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 1,
       id: '1',
     );
@@ -834,12 +774,10 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(
-          updatedTextAlign: material.TextAlign.end)),
+      act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
-          properties: (staticText.properties as StaticTextProperties)
-              .copyWith(textAlign: material.TextAlign.end),
+          properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end),
         );
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedStaticText}),
@@ -861,15 +799,13 @@ void main() {
         draggedElement: none(),
       ),
       act: (bloc) {
-        bloc.add(const EditorEvent.staticTextAlignChanged(
-            updatedTextAlign: material.TextAlign.end));
+        bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end));
         bloc.add(const EditorEvent.undo());
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
         final Element updatedStaticText = staticText.copyWith(
-            properties: (staticText.properties as StaticTextProperties)
-                .copyWith(textAlign: material.TextAlign.end));
+            properties: (staticText.properties as StaticTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = createEditorState(
           editor: Editor.fromSet(
             {updatedStaticText},
@@ -885,8 +821,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no element is selected and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({staticText}),
@@ -894,14 +829,10 @@ void main() {
               dragPosition: none(),
               draggedElement: none(),
             ),
-        act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(
-            updatedTextAlign: material.TextAlign.end)),
+        act: (bloc) => bloc.add(const EditorEvent.staticTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "StaticTextAlignChanged was fired but no element was selected")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "StaticTextAlignChanged was fired but no element was selected")]);
   });
 
   group('AddVariableText', () {
@@ -917,8 +848,7 @@ void main() {
       properties: ElementProperties.variableTextProperties(
         sourceFilePath: none(),
         placeHolderText: 'Generated text appears here.',
-        textStyle: const material.TextStyle(
-            fontSize: 30, color: material.Colors.black),
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -950,8 +880,7 @@ void main() {
           material.MaterialApp(
             theme: styles.themeData,
             home: BlocProvider<EditorBloc>(
-              create: (context) =>
-                  createEditorBloc(elementIdGenerator: mockElementIdGenerator),
+              create: (context) => createEditorBloc(elementIdGenerator: mockElementIdGenerator),
               child: const material.Scaffold(),
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -961,13 +890,11 @@ void main() {
         await tester.pumpAndSettle();
 
         // get a context to use with the bloc
-        final material.BuildContext context =
-            tester.element(find.byType(material.Scaffold));
+        final material.BuildContext context = tester.element(find.byType(material.Scaffold));
 
         // listen to the bloc stream of states
         final List<EditorState> actualStates = [];
-        final Stream<EditorState> blocStream =
-            BlocProvider.of<EditorBloc>(context).stream;
+        final Stream<EditorState> blocStream = BlocProvider.of<EditorBloc>(context).stream;
         blocStream.listen(actualStates.add);
 
         // add the event
@@ -1019,8 +946,7 @@ void main() {
           material.MaterialApp(
             theme: styles.themeData,
             home: BlocProvider<EditorBloc>(
-              create: (context) =>
-                  createEditorBloc(elementIdGenerator: mockElementIdGenerator),
+              create: (context) => createEditorBloc(elementIdGenerator: mockElementIdGenerator),
               child: const material.Scaffold(),
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -1030,13 +956,11 @@ void main() {
         await tester.pumpAndSettle();
 
         // get a context to use with the bloc
-        final material.BuildContext context =
-            tester.element(find.byType(material.Scaffold));
+        final material.BuildContext context = tester.element(find.byType(material.Scaffold));
 
         // listen to the bloc stream of states
         final List<EditorState> actualStates = [];
-        final Stream<EditorState> blocStream =
-            BlocProvider.of<EditorBloc>(context).stream;
+        final Stream<EditorState> blocStream = BlocProvider.of<EditorBloc>(context).stream;
         blocStream.listen(actualStates.add);
 
         // add the AddStaticText event
@@ -1090,8 +1014,7 @@ void main() {
       properties: ElementProperties.variableTextProperties(
         sourceFilePath: none(),
         placeHolderText: 'Generated text appears here.',
-        textStyle: const material.TextStyle(
-            fontSize: 30, color: material.Colors.black),
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -1105,9 +1028,7 @@ void main() {
       setUp: () {
         mockFilePicker = MockFilePicker();
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedTextFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedTextFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File('hello.txt')));
       },
@@ -1121,8 +1042,7 @@ void main() {
       act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-          properties:
-              (variableText.properties as VariableTextProperties).copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
             sourceFilePath: some('hello.txt'),
             placeHolderText: 'hello.txt',
           ),
@@ -1142,9 +1062,7 @@ void main() {
       setUp: () {
         mockFilePicker = MockFilePicker();
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedTextFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedTextFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => none());
       },
@@ -1164,9 +1082,7 @@ void main() {
       setUp: () {
         mockFilePicker = MockFilePicker();
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedTextFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedTextFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File('hello.txt')));
       },
@@ -1184,8 +1100,7 @@ void main() {
       },
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-          properties:
-              (variableText.properties as VariableTextProperties).copyWith(
+          properties: (variableText.properties as VariableTextProperties).copyWith(
             sourceFilePath: some('hello.txt'),
             placeHolderText: 'hello.txt',
           ),
@@ -1203,8 +1118,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no element is selected and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({variableText}),
@@ -1214,11 +1128,8 @@ void main() {
             ),
         act: (bloc) => bloc.add(const EditorEvent.variableTextFileChanged()),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "VariableTextFileChanged was fired but no element was selected")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextFileChanged was fired but no element was selected")]);
   });
 
   group('VariableTextStyleChanged', () {
@@ -1228,8 +1139,7 @@ void main() {
       properties: ElementProperties.variableTextProperties(
         sourceFilePath: none(),
         placeHolderText: 'Generated text appears here.',
-        textStyle: const material.TextStyle(
-            fontSize: 30, color: material.Colors.black),
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -1245,16 +1155,14 @@ void main() {
         draggedElement: none(),
       ),
       act: (bloc) => bloc.add(EditorEvent.variableTextStyleChanged(
-          updatedTextStyle: (variableText.properties as VariableTextProperties)
-              .textStyle!
-              .copyWith(color: material.Colors.yellow))),
+          updatedTextStyle:
+              (variableText.properties as VariableTextProperties).textStyle!.copyWith(color: material.Colors.yellow))),
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-          properties: (variableText.properties as VariableTextProperties)
-              .copyWith(
-                  textStyle: (variableText.properties as VariableTextProperties)
-                      .textStyle!
-                      .copyWith(color: material.Colors.yellow)),
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+              textStyle: (variableText.properties as VariableTextProperties)
+                  .textStyle!
+                  .copyWith(color: material.Colors.yellow)),
         );
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedVariableText}),
@@ -1278,44 +1186,27 @@ void main() {
       act: (bloc) {
         // Ok
         bloc.add(EditorEvent.variableTextStyleChanged(
-            updatedTextStyle:
-                (variableText.properties as VariableTextProperties)
-                    .textStyle!
-                    .copyWith(fontSize: 10)));
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10)));
         // Ok
         bloc.add(EditorEvent.variableTextStyleChanged(
-            updatedTextStyle:
-                (variableText.properties as VariableTextProperties)
-                    .textStyle!
-                    .copyWith(fontSize: 0)));
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0)));
         // Should not change the style, font negative
         bloc.add(EditorEvent.variableTextStyleChanged(
-            updatedTextStyle:
-                (variableText.properties as VariableTextProperties)
-                    .textStyle!
-                    .copyWith(fontSize: -1)));
+            updatedTextStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: -1)));
         // Should not change the style, font infinite
         bloc.add(EditorEvent.variableTextStyleChanged(
             updatedTextStyle:
-                (variableText.properties as VariableTextProperties)
-                    .textStyle!
-                    .copyWith(fontSize: double.infinity)));
+                (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: double.infinity)));
       },
       expect: () {
         final Element updatedVariableText1 = variableText.copyWith(
-          properties:
-              (variableText.properties as VariableTextProperties).copyWith(
-            textStyle: (variableText.properties as VariableTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 10),
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 10),
           ),
         );
         final Element updatedVariableText2 = variableText.copyWith(
-          properties:
-              (variableText.properties as VariableTextProperties).copyWith(
-            textStyle: (variableText.properties as VariableTextProperties)
-                .textStyle!
-                .copyWith(fontSize: 0),
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle: (variableText.properties as VariableTextProperties).textStyle!.copyWith(fontSize: 0),
           ),
         );
         final expectedState1 = createEditorState(
@@ -1347,9 +1238,7 @@ void main() {
         bloc.add(
           EditorEvent.variableTextStyleChanged(
             updatedTextStyle:
-                (variableText.properties as VariableTextProperties)
-                    .textStyle!
-                    .copyWith(color: material.Colors.yellow),
+                (variableText.properties as VariableTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
         );
         bloc.add(const EditorEvent.undo());
@@ -1357,11 +1246,9 @@ void main() {
       },
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-          properties:
-              (variableText.properties as VariableTextProperties).copyWith(
-            textStyle: (variableText.properties as VariableTextProperties)
-                .textStyle!
-                .copyWith(color: material.Colors.yellow),
+          properties: (variableText.properties as VariableTextProperties).copyWith(
+            textStyle:
+                (variableText.properties as VariableTextProperties).textStyle!.copyWith(color: material.Colors.yellow),
           ),
         );
         final expectedState = createEditorState(
@@ -1377,8 +1264,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no element is selected and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({variableText}),
@@ -1388,18 +1274,14 @@ void main() {
             ),
         act: (bloc) => bloc.add(
               EditorEvent.variableTextStyleChanged(
-                updatedTextStyle:
-                    (variableText.properties as VariableTextProperties)
-                        .textStyle!
-                        .copyWith(color: material.Colors.yellow),
+                updatedTextStyle: (variableText.properties as VariableTextProperties)
+                    .textStyle!
+                    .copyWith(color: material.Colors.yellow),
               ),
             ),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "VariableTextStyleChanged was fired but no element was selected")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextStyleChanged was fired but no element was selected")]);
   });
 
   group('VariableTextAlignChanged', () {
@@ -1409,8 +1291,7 @@ void main() {
       properties: ElementProperties.variableTextProperties(
         sourceFilePath: none(),
         placeHolderText: 'Generated text appears here.',
-        textStyle: const material.TextStyle(
-            fontSize: 30, color: material.Colors.black),
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -1425,12 +1306,11 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(
-          updatedTextAlign: material.TextAlign.end)),
+      act: (bloc) => bloc.add(const EditorEvent.variableTextAlignChanged(updatedTextAlign: material.TextAlign.end)),
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-            properties: (variableText.properties as VariableTextProperties)
-                .copyWith(textAlign: material.TextAlign.end));
+            properties:
+                (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = createEditorState(
           editor: Editor.fromSet(
             {updatedVariableText},
@@ -1461,8 +1341,8 @@ void main() {
       },
       expect: () {
         final Element updatedVariableText = variableText.copyWith(
-            properties: (variableText.properties as VariableTextProperties)
-                .copyWith(textAlign: material.TextAlign.end));
+            properties:
+                (variableText.properties as VariableTextProperties).copyWith(textAlign: material.TextAlign.end));
         final expectedState = createEditorState(
           editor: Editor.fromSet(
             {updatedVariableText},
@@ -1478,8 +1358,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no element is selected and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no element is selected and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({variableText}),
@@ -1491,26 +1370,21 @@ void main() {
               updatedTextAlign: material.TextAlign.end,
             )),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "VariableTextAlignChanged was fired but no element was selected")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "VariableTextAlignChanged was fired but no element was selected")]);
   });
 
   group('AddImage', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
     const Element image2 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties: ElementProperties.fileImageProperties(
-          sourceFilePath: 'hello_world.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello_world.jpeg'),
       showOrder: 2,
       id: '2',
     );
@@ -1526,12 +1400,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -1558,12 +1429,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image2.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image2.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image2.id);
       },
@@ -1595,9 +1463,7 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => none());
       },
@@ -1622,12 +1488,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -1717,8 +1580,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no dragPosition is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no dragPosition is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({}),
@@ -1728,11 +1590,7 @@ void main() {
             ),
         act: (bloc) => bloc.add(const CanvasDragUpdate(Offset(10.0, 10.0))),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "CanvasDragUpdate was fired but no dragPosition was set")
-            ]);
+        errors: () => [const InvalidStateError(message: "CanvasDragUpdate was fired but no dragPosition was set")]);
   });
   group('CanvasDragEnd', () {
     blocTest<EditorBloc, EditorState>(
@@ -1760,9 +1618,7 @@ void main() {
     const Element staticText = Element(
       rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:',
-          textStyle:
-              material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 2,
       id: '2',
     );
@@ -1792,8 +1648,7 @@ void main() {
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -1827,15 +1682,13 @@ void main() {
       // image with top-left at (0,0)
       const Element image1 = Element(
         rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-        properties:
-            ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+        properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
         showOrder: 1,
         id: '1',
       );
       const Element image2 = Element(
         rect: Rect.fromLTWH(300, 300, 250, 250),
-        properties: ElementProperties.fileImageProperties(
-            sourceFilePath: 'hello2.jpeg'),
+        properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello2.jpeg'),
         showOrder: 2,
         id: '2',
       );
@@ -1916,8 +1769,7 @@ void main() {
           ];
         },
       );
-      blocTest<EditorBloc, EditorState>(
-          'Should not emit states when no draggedElement is set and should throw.',
+      blocTest<EditorBloc, EditorState>('Should not emit states when no draggedElement is set and should throw.',
           build: () => createEditorBloc(),
           seed: () => createEditorState(
                 editor: Editor.fromSet({image1}),
@@ -1929,11 +1781,9 @@ void main() {
           expect: () => [],
           errors: () => [
                 const InvalidStateError(
-                    message:
-                        "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
+                    message: "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
               ]);
-      blocTest<EditorBloc, EditorState>(
-          'Should not emit states when no dragPosition is set and should throw.',
+      blocTest<EditorBloc, EditorState>('Should not emit states when no dragPosition is set and should throw.',
           build: () => createEditorBloc(),
           seed: () => createEditorState(
                 editor: Editor.fromSet({image1}),
@@ -1945,8 +1795,7 @@ void main() {
           expect: () => [],
           errors: () => [
                 const InvalidStateError(
-                    message:
-                        "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
+                    message: "ElementDragUpdate was fired but no dragPosition or no draggedElement was set")
               ]);
     },
   );
@@ -1956,8 +1805,7 @@ void main() {
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -1993,12 +1841,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -2015,8 +1860,7 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
-        final Element image1Updated =
-            image1.copyWith(rect: image1.rect.translate(10, 10));
+        final Element image1Updated = image1.copyWith(rect: image1.rect.translate(10, 10));
         return [
           // after add event
           createEditorState(
@@ -2070,8 +1914,7 @@ void main() {
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2100,15 +1943,13 @@ void main() {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
     const Element image2 = Element(
       rect: Rect.fromLTWH(125.0, 125.0, 250, 250),
-      properties: ElementProperties.fileImageProperties(
-          sourceFilePath: 'hello_world.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello_world.jpeg'),
       showOrder: 2,
       id: '2',
     );
@@ -2158,12 +1999,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -2223,8 +2061,7 @@ void main() {
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2248,8 +2085,7 @@ void main() {
       ],
     );
 
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no selectedElement is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({image1}),
@@ -2259,25 +2095,19 @@ void main() {
             ),
         act: (bloc) => bloc.add(const DeselectElement()),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "DeselectElement was fired but no selectedElement was set")
-            ]);
+        errors: () => [const InvalidStateError(message: "DeselectElement was fired but no selectedElement was set")]);
   });
   group('BringSelectedElementToFront', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
     const Element image2 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties: ElementProperties.fileImageProperties(
-          sourceFilePath: 'hello_world.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello_world.jpeg'),
       showOrder: 2,
       id: '2',
     );
@@ -2308,8 +2138,7 @@ void main() {
       },
     );
 
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states and should throw when there is no selected element.',
+    blocTest<EditorBloc, EditorState>('Should not emit states and should throw when there is no selected element.',
         seed: () => createEditorState(
               editor: Editor.fromSet({image1, image2}),
               draggedElement: none(),
@@ -2319,11 +2148,8 @@ void main() {
         build: () => createEditorBloc(),
         act: (bloc) => bloc.add(const BringSelectedElementToFront()),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "BringSelectedElementToFront was fired but no selectedElement was set")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "BringSelectedElementToFront was fired but no selectedElement was set")]);
 
     blocTest<EditorBloc, EditorState>(
       'Should save the state after bringing an element to the front.',
@@ -2333,12 +2159,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image2.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image2.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image2.id);
       },
@@ -2392,8 +2215,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no selectedElement is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({image1}),
@@ -2403,19 +2225,15 @@ void main() {
             ),
         act: (bloc) => bloc.add(const BringSelectedElementToFront()),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "BringSelectedElementToFront was fired but no selectedElement was set")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "BringSelectedElementToFront was fired but no selectedElement was set")]);
   });
   group('ResizeUpdate', () {
     // define elements used in tests
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2428,12 +2246,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc
-          .add(const ResizeUpdate(ResizeDirection.topLeft, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topLeft, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomRight,
-                image1.rect.topLeft.translate(100, 100)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomRight, image1.rect.topLeft.translate(100, 100)));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2453,12 +2269,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc
-          .add(const ResizeUpdate(ResizeDirection.topCenter, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topCenter, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomLeft,
-                image1.rect.topRight.translate(0, 100)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomLeft, image1.rect.topRight.translate(0, 100)));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2478,12 +2292,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc
-          .add(const ResizeUpdate(ResizeDirection.topRight, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.topRight, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomLeft,
-                image1.rect.topRight.translate(100, 100)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomLeft, image1.rect.topRight.translate(100, 100)));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2503,12 +2315,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.centerRight, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(100, 100))),
       expect: () {
         final Element image1Updated = image1.copyWith(
-            rect: Rect.fromLTWH(image1.rect.left, image1.rect.top,
-                image1.rect.width + 100, image1.rect.height));
+            rect: Rect.fromLTWH(image1.rect.left, image1.rect.top, image1.rect.width + 100, image1.rect.height));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2528,12 +2338,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.bottomRight, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomRight, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.topLeft,
-                image1.rect.bottomRight.translate(100, 100)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.topLeft, image1.rect.bottomRight.translate(100, 100)));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2553,12 +2361,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.bottomCenter, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomCenter, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.topLeft,
-                image1.rect.bottomRight.translate(0, 100)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.topLeft, image1.rect.bottomRight.translate(0, 100)));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2578,12 +2384,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.bottomLeft, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomLeft, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomLeft.translate(100, 100),
-                image1.rect.topRight));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomLeft.translate(100, 100), image1.rect.topRight));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2603,12 +2407,10 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.centerLeft, Offset(100, 100))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerLeft, Offset(100, 100))),
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomLeft.translate(100, 0),
-                image1.rect.topRight));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomLeft.translate(100, 0), image1.rect.topRight));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2628,11 +2430,9 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
       expect: () {
-        final Element image1Updated =
-            image1.copyWith(rect: const Rect.fromLTWH(0, 0, 30, 250));
+        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 30, 250));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2652,11 +2452,9 @@ void main() {
         selectedElement: some(image1),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) => bloc.add(
-          const ResizeUpdate(ResizeDirection.bottomCenter, Offset(0, -245))),
+      act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.bottomCenter, Offset(0, -245))),
       expect: () {
-        final Element image1Updated =
-            image1.copyWith(rect: const Rect.fromLTWH(0, 0, 250, 30));
+        final Element image1Updated = image1.copyWith(rect: const Rect.fromLTWH(0, 0, 250, 30));
         return [
           createEditorState(
             editor: Editor.fromSet({image1Updated}),
@@ -2667,8 +2465,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no selectedElement is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({image1}),
@@ -2676,22 +2473,16 @@ void main() {
               dragPosition: none(),
               draggedElement: none(),
             ),
-        act: (bloc) => bloc.add(
-            const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
+        act: (bloc) => bloc.add(const ResizeUpdate(ResizeDirection.centerRight, Offset(-245, 0))),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "ResizeUpdate was fired but no selectedElement was set")
-            ]);
+        errors: () => [const InvalidStateError(message: "ResizeUpdate was fired but no selectedElement was set")]);
   });
   group('ResizeEnd', () {
     // define elements used in tests
     // image with top-left at (0,0)
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2707,12 +2498,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -2729,9 +2517,8 @@ void main() {
         bloc.add(const Redo());
       },
       expect: () {
-        final Element image1Updated = image1.copyWith(
-            rect: Rect.fromPoints(image1.rect.bottomRight,
-                image1.rect.topLeft.translate(10, 10)));
+        final Element image1Updated =
+            image1.copyWith(rect: Rect.fromPoints(image1.rect.bottomRight, image1.rect.topLeft.translate(10, 10)));
         return [
           // after add event
           createEditorState(
@@ -2777,8 +2564,7 @@ void main() {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 200, 200),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2792,12 +2578,10 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc
-          .add(const EditorEvent.selectedElementSizeChanged(Size(100, 100))),
+      act: (bloc) => bloc.add(const EditorEvent.selectedElementSizeChanged(Size(100, 100))),
       expect: () {
-        final Element updatedImage1 = image1.copyWith(
-            rect: Rect.fromCenter(
-                center: const Offset(100, 100), width: 100, height: 100));
+        final Element updatedImage1 =
+            image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedImage1}),
           draggedElement: none(),
@@ -2839,9 +2623,8 @@ void main() {
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
-        final Element updatedImage1 = image1.copyWith(
-            rect: Rect.fromCenter(
-                center: const Offset(100, 100), width: 100, height: 100));
+        final Element updatedImage1 =
+            image1.copyWith(rect: Rect.fromCenter(center: const Offset(100, 100), width: 100, height: 100));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedImage1}),
           draggedElement: none(),
@@ -2855,8 +2638,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no selectedElement is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({image1}),
@@ -2864,21 +2646,16 @@ void main() {
               dragPosition: none(),
               draggedElement: none(),
             ),
-        act: (bloc) =>
-            bloc.add(const SelectedElementSizeChanged(Size(100, 100))),
+        act: (bloc) => bloc.add(const SelectedElementSizeChanged(Size(100, 100))),
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "SelectedElementSizeChanged was fired but no selectedElement was set")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "SelectedElementSizeChanged was fired but no selectedElement was set")]);
   });
   group('SelectedElementPositionChanged', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 200, 200),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -2892,11 +2669,9 @@ void main() {
         dragPosition: none(),
         draggedElement: none(),
       ),
-      act: (bloc) => bloc.add(
-          const EditorEvent.selectedElementPositionChanged(Offset(100, 100))),
+      act: (bloc) => bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100))),
       expect: () {
-        final Element updatedImage1 =
-            image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
+        final Element updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedImage1}),
           draggedElement: none(),
@@ -2918,18 +2693,14 @@ void main() {
       ),
       act: (bloc) {
         // OK
-        bloc.add(
-            const EditorEvent.selectedElementPositionChanged(Offset(10, 10)));
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(10, 10)));
         // out of bounds
-        bloc.add(const EditorEvent.selectedElementPositionChanged(
-            Offset(double.infinity, 10)));
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(double.infinity, 10)));
         // out of bounds
-        bloc.add(const EditorEvent.selectedElementPositionChanged(
-            Offset(10, double.infinity)));
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(10, double.infinity)));
       },
       expect: () {
-        final updatedImage1 =
-            image1.copyWith(rect: const Rect.fromLTWH(10, 10, 200, 200));
+        final updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(10, 10, 200, 200));
         return [
           createEditorState(
             editor: Editor.fromSet({updatedImage1}),
@@ -2951,14 +2722,12 @@ void main() {
         draggedElement: none(),
       ),
       act: (bloc) {
-        bloc.add(
-            const EditorEvent.selectedElementPositionChanged(Offset(100, 100)));
+        bloc.add(const EditorEvent.selectedElementPositionChanged(Offset(100, 100)));
         bloc.add(const EditorEvent.undo());
         bloc.add(const EditorEvent.redo());
       },
       expect: () {
-        final Element updatedImage1 =
-            image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
+        final Element updatedImage1 = image1.copyWith(rect: const Rect.fromLTWH(100, 100, 200, 200));
         final expectedState = createEditorState(
           editor: Editor.fromSet({updatedImage1}),
           draggedElement: none(),
@@ -2972,8 +2741,7 @@ void main() {
         ];
       },
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states when no selectedElement is set and should throw.',
+    blocTest<EditorBloc, EditorState>('Should not emit states when no selectedElement is set and should throw.',
         build: () => createEditorBloc(),
         seed: () => createEditorState(
               editor: Editor.fromSet({image1}),
@@ -2981,21 +2749,18 @@ void main() {
               dragPosition: none(),
               draggedElement: none(),
             ),
-        act: (bloc) =>
-            bloc.add(const SelectedElementPositionChanged(Offset(100, 100))),
+        act: (bloc) => bloc.add(const SelectedElementPositionChanged(Offset(100, 100))),
         expect: () => [],
         errors: () => [
               const InvalidStateError(
-                  message:
-                      "SelectedElementPositionChanged was fired but no selectedElement was set")
+                  message: "SelectedElementPositionChanged was fired but no selectedElement was set")
             ]);
   });
   group('TextEditingModeChanged', () {
     // define elements used in tests
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -3004,8 +2769,7 @@ void main() {
       properties: ElementProperties.variableTextProperties(
         sourceFilePath: none(),
         placeHolderText: 'Generated text appears here.',
-        textStyle: const material.TextStyle(
-            fontSize: 30, color: material.Colors.black),
+        textStyle: const material.TextStyle(fontSize: 30, color: material.Colors.black),
       ),
       showOrder: 1,
       id: '1',
@@ -3013,9 +2777,7 @@ void main() {
     const Element staticText = Element(
       rect: Rect.fromLTRB(0.0, 0.0, 627.0, 33.0),
       properties: ElementProperties.staticTextProperties(
-          text: 'Type the text here:',
-          textStyle:
-              material.TextStyle(fontSize: 30, color: material.Colors.black)),
+          text: 'Type the text here:', textStyle: material.TextStyle(fontSize: 30, color: material.Colors.black)),
       showOrder: 1,
       id: '1',
     );
@@ -3049,8 +2811,7 @@ void main() {
         )
       ],
     );
-    blocTest<EditorBloc, EditorState>(
-        'Should not emit states and should throw when no element is selected',
+    blocTest<EditorBloc, EditorState>('Should not emit states and should throw when no element is selected',
         seed: () => createEditorState(
               editor: Editor.fromSet({staticText, variableText, image1}),
               selectedElement: none(),
@@ -3062,11 +2823,8 @@ void main() {
           bloc.add(const EditorEvent.textEditingModeChanged(true));
         },
         expect: () => [],
-        errors: () => [
-              const InvalidStateError(
-                  message:
-                      "TextEditingModeChanged was fired but no selectedElement was set")
-            ]);
+        errors: () =>
+            [const InvalidStateError(message: "TextEditingModeChanged was fired but no selectedElement was set")]);
     blocTest<EditorBloc, EditorState>(
         'Should not emit states and should throw when selected element is not static text',
         seed: () => createEditorState(
@@ -3082,8 +2840,7 @@ void main() {
         expect: () => [],
         errors: () => [
               const InvalidStateError(
-                  message:
-                      "TextEditingModeChanged was fired but selected element was not static text element")
+                  message: "TextEditingModeChanged was fired but selected element was not static text element")
             ]);
   });
   group('ClearEditorEvent', () {
@@ -3091,8 +2848,7 @@ void main() {
 
     const Element image1 = Element(
       rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
-      properties:
-          ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
       showOrder: 1,
       id: '1',
     );
@@ -3131,12 +2887,9 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(
-              equals(allowedImageFilesExtensions.unlock),
-              named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
-        )).thenAnswer((realInvocation) async => some(
-            File((image1.properties as FileImageProperties).sourceFilePath)));
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
         when(mockElementIdGenerator.generate()).thenReturn(image1.id);
       },
@@ -3190,11 +2943,9 @@ void main() {
         editor: Editor.fromSet({}),
       ),
       build: () => createEditorBloc(),
-      act: (bloc) =>
-          bloc.add(const ChangeCanvasBackgroundColor(material.Colors.red)),
+      act: (bloc) => bloc.add(const ChangeCanvasBackgroundColor(material.Colors.red)),
       expect: () => [
-        EditorState.initial()
-            .copyWith(canvasBackgroundColor: some(material.Colors.red)),
+        EditorState.initial().copyWith(canvasBackgroundColor: some(material.Colors.red)),
       ],
     );
   });
@@ -3212,16 +2963,13 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-                allowedExtensions: captureThat(
-                    equals(allowedImageFilesExtensions.unlock),
-                    named: 'allowedExtensions')))
+                allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions')))
             .thenAnswer((realInvocation) async => some(backgroundImageFile));
       },
       build: () => createEditorBloc(filePicker: mockFilePicker),
       act: (bloc) => bloc.add(const ChangeCanvasBackgroundImage()),
       expect: () => [
-        EditorState.initial()
-            .copyWith(canvasBackgroundImageFile: some(backgroundImageFile)),
+        EditorState.initial().copyWith(canvasBackgroundImageFile: some(backgroundImageFile)),
       ],
     );
     blocTest<EditorBloc, EditorState>(
@@ -3235,9 +2983,7 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-                allowedExtensions: captureThat(
-                    equals(allowedImageFilesExtensions.unlock),
-                    named: 'allowedExtensions')))
+                allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions')))
             .thenAnswer((realInvocation) async => none());
       },
       build: () => createEditorBloc(filePicker: mockFilePicker),

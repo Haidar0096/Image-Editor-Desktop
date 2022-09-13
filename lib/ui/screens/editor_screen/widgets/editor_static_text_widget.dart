@@ -33,11 +33,9 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
     _focusNode = FocusNode();
 
     // When `Tab` is pressed, advance the cursor and add some spaces.
-    KeyEventResult Function(FocusNode, KeyEvent)? currentHandler =
-        _focusNode.onKeyEvent;
+    KeyEventResult Function(FocusNode, KeyEvent)? currentHandler = _focusNode.onKeyEvent;
     _focusNode.onKeyEvent = (node, event) {
-      if ((event is KeyDownEvent || event is KeyRepeatEvent) &&
-          event.logicalKey == LogicalKeyboardKey.tab) {
+      if ((event is KeyDownEvent || event is KeyRepeatEvent) && event.logicalKey == LogicalKeyboardKey.tab) {
         _insertTabAtCurrentCursorPosition();
         return KeyEventResult.handled;
       }
@@ -63,11 +61,8 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
 
   void _focusNodeListener() {
     if (!_focusNode.hasFocus) {
-      context.read<EditorBloc>().add(
-          EditorEvent.staticTextChanged(updatedText: _textController.text));
-      context
-          .read<EditorBloc>()
-          .add(const EditorEvent.textEditingModeChanged(false));
+      context.read<EditorBloc>().add(EditorEvent.staticTextChanged(updatedText: _textController.text));
+      context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(false));
     }
   }
 
@@ -105,8 +100,7 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
           decoration: null,
           maxLines: null,
           style: widget.properties.textStyle?.copyWith(
-            color: widget.properties.textStyle?.color ??
-                Theme.of(context).textTheme.subtitle2?.color,
+            color: widget.properties.textStyle?.color ?? Theme.of(context).textTheme.subtitle2?.color,
           ),
           textAlign: widget.properties.textAlign ?? TextAlign.start,
         );
@@ -116,14 +110,11 @@ class _EditorStaticTextWidgetState extends State<EditorStaticTextWidget> {
             behavior: HitTestBehavior.translucent,
             onTap: () {
               setState(() {
-                context
-                    .read<EditorBloc>()
-                    .add(const EditorEvent.textEditingModeChanged(true));
+                context.read<EditorBloc>().add(const EditorEvent.textEditingModeChanged(true));
                 WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                   _focusNode.requestFocus();
-                  _textController.selection = TextSelection(
-                      baseOffset: 0,
-                      extentOffset: _textController.value.text.length);
+                  _textController.selection =
+                      TextSelection(baseOffset: 0, extentOffset: _textController.value.text.length);
                 });
               });
             },

@@ -19,6 +19,7 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/image_editor/image_editor.dart';
+import 'package:photo_editor/services/image_editor/image_editor_exception.dart';
 import 'package:photo_editor/services/screenshot_service/screenshot_service.dart';
 import 'package:photo_editor/ui/common/error/invalid_state_error.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -45,8 +46,7 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
   /// and the content of the text file that this variable text element is pointing to.
   /// It is used to cache the content of the text files that are used by the variable text elements.
   @visibleForTesting
-  UnmodifiableListView<VariableTextData> variableTextsData =
-      UnmodifiableListView([]);
+  UnmodifiableListView<VariableTextData> variableTextsData = UnmodifiableListView([]);
 
   /// The allowed sizes for the generated image files, in dips.
   static const List<Size> allowedOutputImageSizes = [
@@ -71,43 +71,33 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
     );
   }
 
-  ScreenshotCubit(this._screenshotService, this._filePicker, this._logger,
-      this._imageEditor)
+  ScreenshotCubit(this._screenshotService, this._filePicker, this._logger, this._imageEditor)
       : super(ScreenshotState.initial());
 
   Future<void> setOutputImageDirectory() async => _filePicker
-      .pickPath(
-          initialDirectory:
-              state.outputImageDirectory.fold(() => '/', (dir) => dir.path))
+      .pickPath(initialDirectory: state.outputImageDirectory.fold(() => '/', (dir) => dir.path))
       .then((dir) => emit(state.copyWith(outputImageDirectory: dir)));
 
-  void setFileNamingType(FileNamingType fileNamingType) =>
-      emit(state.copyWith(fileNamingType: fileNamingType));
+  void setFileNamingType(FileNamingType fileNamingType) => emit(state.copyWith(fileNamingType: fileNamingType));
 
-  void setBaseFileName(String baseFileName) =>
-      emit(state.copyWith(baseFileName: some(baseFileName)));
+  void setBaseFileName(String baseFileName) => emit(state.copyWith(baseFileName: some(baseFileName)));
 
-  void setImageFileExtension(ImageFormat imageFormat) =>
-      emit(state.copyWith(outputImageFormat: imageFormat));
+  void setImageFileExtension(ImageFormat imageFormat) => emit(state.copyWith(outputImageFormat: imageFormat));
 
-  void setOutputImageSize(Size size) =>
-      emit(state.copyWith(outputImageSize: size));
+  void setOutputImageSize(Size size) => emit(state.copyWith(outputImageSize: size));
 
-  void setOutputImageQuality(int quality) =>
-      emit(state.copyWith(outputImageQuality: quality));
+  void setOutputImageQuality(int quality) => emit(state.copyWith(outputImageQuality: quality));
 
   GenerateImageSettingsValidationResult validateGenerateImageSettings() {
     if (state.outputImageDirectory.isNone()) {
       return GenerateImageSettingsValidationResult.directoryMustBeSet;
     }
-    if (state.baseFileName.isNone() &&
-        state.fileNamingType == FileNamingType.namePlusNumber) {
+    if (state.baseFileName.isNone() && state.fileNamingType == FileNamingType.namePlusNumber) {
       return GenerateImageSettingsValidationResult.baseFileNameMustBeSet;
     }
     if (state.fileNamingType == FileNamingType.namePlusNumber &&
         !state.baseFileName.getOrElse(() => '').isAlphaNumericUnderScore()) {
-      return GenerateImageSettingsValidationResult
-          .baseFileNameMustBeAlphaNumeric;
+      return GenerateImageSettingsValidationResult.baseFileNameMustBeAlphaNumeric;
     }
     return GenerateImageSettingsValidationResult.valid;
   }
@@ -124,14 +114,11 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
     required Option<File> canvasBackgroundImageFile,
   }) async {
     if (state.processingState != ProcessingState.idle) {
-      throw const InvalidStateError(
-          message: 'captureWidget called when processing state was not idle');
+      throw const InvalidStateError(message: 'captureWidget called when processing state was not idle');
     }
 
-    if (validateGenerateImageSettings() !=
-        GenerateImageSettingsValidationResult.valid) {
-      throw const InvalidStateError(
-          message: 'captureWidget called with invalid generate image settings');
+    if (validateGenerateImageSettings() != GenerateImageSettingsValidationResult.valid) {
+      throw const InvalidStateError(message: 'captureWidget called with invalid generate image settings');
     }
 
     emit(state.copyWith(processingState: ProcessingState.processStart));
@@ -163,40 +150,34 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
     // make sure all variable text elements have source files
     if (_someVariableTextElementsHaveNoSourceFile(elements)) {
       emit(state.copyWith(processingState: ProcessingState.idle));
-      _captureWidgetCompleter.complete(
-          left(AppLocalizations.of(context)!.someTextsHaveNoSourceFile));
+      _captureWidgetCompleter.complete(left(AppLocalizations.of(context)!.someTextsHaveNoSourceFile));
+      return;
     }
     try {
-      if (_isCancelledOrCompleted) return;
       // read all variable text elements' files and save them to the cache
       emit(state.copyWith(processingState: ProcessingState.readingData));
-      variableTextsData =
-          UnmodifiableListView(await _readVariableTextFiles(elements));
+      variableTextsData = UnmodifiableListView(await _readVariableTextFiles(elements));
 
+      if (_isCancelledOrCompleted) return;
       // make sure all variable text files have same number of lines
       late final bool haveSameLinesCount;
-      if (_isCancelledOrCompleted) return;
       emit(state.copyWith(processingState: ProcessingState.validatingReadData));
-      haveSameLinesCount =
-          await _allVariableTextElementsHaveSameLinesCount(variableTextsData);
+      haveSameLinesCount = await _allVariableTextElementsHaveSameLinesCount(variableTextsData);
 
       if (_isCancelledOrCompleted) return;
       if (!(haveSameLinesCount)) {
         emit(state.copyWith(processingState: ProcessingState.idle));
-        _captureWidgetCompleter.complete(left(
-            AppLocalizations.of(context)!.someTextsHaveDifferentLineCount));
+        _captureWidgetCompleter.complete(left(AppLocalizations.of(context)!.someTextsHaveDifferentLineCount));
       }
 
       // generate the images
       List<Uint8List> imagesData = [];
-      if (_isCancelledOrCompleted) return;
       final String imageString = AppLocalizations.of(context)!.image;
       final String ofString = AppLocalizations.of(context)!.ofString;
       if (variableTextsData.isEmpty) {
         // no variable texts, generate only one image
         emit(state.copyWith(
-            processingState: ProcessingState.capturing,
-            progressMessage: some('$imageString 1 $ofString 1')));
+            processingState: ProcessingState.capturing, progressMessage: some('$imageString 1 $ofString 1')));
         final Widget widget = EditorScreenshotModelWidget(
           elements: elements,
           theme: Theme.of(context),
@@ -204,8 +185,7 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
           backgroundColor: canvasBackgroundColor,
           backgroundImageFile: canvasBackgroundImageFile,
         );
-        final Uint8List capturedImageData =
-            await _screenshotService.captureWidget(
+        final Uint8List capturedImageData = await _screenshotService.captureWidget(
           widget: widget,
           context: context,
           window: ui.window,
@@ -222,23 +202,19 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
           if (_isCancelledOrCompleted) return;
           emit(state.copyWith(
               processingState: ProcessingState.capturing,
-              progressMessage:
-                  some('$imageString ${line + 1} $ofString $linesCount')));
+              progressMessage: some('$imageString ${line + 1} $ofString $linesCount')));
           final Widget widget = EditorScreenshotModelWidget(
             elements: elements.map((element) {
               if (!element.properties.isVariableTextProperties) {
                 return element;
               } else {
                 // get the `VariableTextData` associated with this element
-                final VariableTextData variableTextData = variableTextsData
-                    .firstWhere((td) => td.elementId == element.id);
+                final VariableTextData variableTextData =
+                    variableTextsData.firstWhere((td) => td.elementId == element.id);
                 // get this element's `VariableTextProperties`
-                final editor.VariableTextProperties props =
-                    element.properties as editor.VariableTextProperties;
+                final editor.VariableTextProperties props = element.properties as editor.VariableTextProperties;
                 // return the element with updated `VariableTextProperties`
-                return element.copyWith(
-                    properties: props.copyWith(
-                        placeHolderText: variableTextData.data[line]));
+                return element.copyWith(properties: props.copyWith(placeHolderText: variableTextData.data[line]));
               }
             }).toList(),
             theme: Theme.of(context),
@@ -261,14 +237,13 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
       for (int i = 0; i < imagesData.length; i++) {
         late Uint8List processedImageData;
 
-        // resize the image
         if (_isCancelledOrCompleted) return;
+        // resize the image
         final String imageString = AppLocalizations.of(context)!.image;
         final String ofString = AppLocalizations.of(context)!.ofString;
         emit(state.copyWith(
             processingState: ProcessingState.resizing,
-            progressMessage:
-                some('$imageString ${i + 1} $ofString ${imagesData.length}')));
+            progressMessage: some('$imageString ${i + 1} $ofString ${imagesData.length}')));
         processedImageData = await _imageEditor.copyResize(
           imageData: imagesData[i],
           outputFormat: state.outputImageFormat,
@@ -290,31 +265,26 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
 
       // finally complete the future
       completerResult = right(null);
-    } catch (e) {
+    } on ImageEditorException catch (e) {
       _logger.e('An error has occurred in captureWidget', e);
       completerResult = left(AppLocalizations.of(context)!.errorHasOccurred);
     }
 
-    // clear the progress message, and idle the state of the cubit
     if (_isCancelledOrCompleted) return;
-    emit(state.copyWith(
-        processingState: ProcessingState.idle, progressMessage: none()));
+    // clear the progress message, and idle the state of the cubit
+    emit(state.copyWith(processingState: ProcessingState.idle, progressMessage: none()));
     _captureWidgetCompleter.complete(completerResult);
   }
 
   /// Cancels the execution of the process of capturing the widget. Takes effect starting from the next step of the process.
   void cancelCaptureWidget(BuildContext context) {
-    emit(state.copyWith(
-        processingState: ProcessingState.idle, progressMessage: none()));
-    _captureWidgetCompleter
-        .complete(left(AppLocalizations.of(context)!.operationCanceled));
+    emit(state.copyWith(processingState: ProcessingState.idle, progressMessage: none()));
+    _captureWidgetCompleter.complete(left(AppLocalizations.of(context)!.operationCanceled));
   }
 
-  bool get _isCancelledOrCompleted =>
-      _captureWidgetCompleter.isCanceled || _captureWidgetCompleter.isCompleted;
+  bool get _isCancelledOrCompleted => _captureWidgetCompleter.isCanceled || _captureWidgetCompleter.isCompleted;
 
-  Future<List<VariableTextData>> _readVariableTextFiles(
-      List<editor.Element> elements) async {
+  Future<List<VariableTextData>> _readVariableTextFiles(List<editor.Element> elements) async {
     List<VariableTextData> variableTextsData = [];
     const LineSplitter splitter = LineSplitter();
     for (var element in elements) {
@@ -322,15 +292,13 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
         var props = element.properties as editor.VariableTextProperties;
         var sourceFilePath = props.sourceFilePath.toNullable()!;
         String contents = await File(sourceFilePath).readAsString();
-        variableTextsData.add(VariableTextData(
-            elementId: element.id, data: splitter.convert(contents)));
+        variableTextsData.add(VariableTextData(elementId: element.id, data: splitter.convert(contents)));
       }
     }
     return variableTextsData;
   }
 
-  bool _someVariableTextElementsHaveNoSourceFile(
-      List<editor.Element> elements) {
+  bool _someVariableTextElementsHaveNoSourceFile(List<editor.Element> elements) {
     for (var element in elements) {
       if (element.properties.isVariableTextProperties) {
         var props = element.properties as editor.VariableTextProperties;
@@ -342,8 +310,7 @@ class ScreenshotCubit extends Cubit<ScreenshotState> {
     return false;
   }
 
-  Future<bool> _allVariableTextElementsHaveSameLinesCount(
-      List<VariableTextData> variableTextsData) async {
+  Future<bool> _allVariableTextElementsHaveSameLinesCount(List<VariableTextData> variableTextsData) async {
     if (variableTextsData.isEmpty) {
       return true;
     }
@@ -459,8 +426,7 @@ enum GenerateImageSettingsValidationResult {
   baseFileNameMustBeAlphaNumeric,
 }
 
-extension GenerateImageSettingsValidationResultExtension
-    on GenerateImageSettingsValidationResult {
+extension GenerateImageSettingsValidationResultExtension on GenerateImageSettingsValidationResult {
   /// Returns the appropriate Message according to the current [GenerateImageSettingsValidationResult].
   String getMessage(BuildContext context) {
     switch (this) {

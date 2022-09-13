@@ -56,8 +56,7 @@ class ManipulatingBallsWidget extends StatelessWidget {
     this.onResizeCenterLeft,
     this.onResizeEnd,
     this.ballDiameter = 40.0,
-  })  : assert(ballDiameter >= 0,
-            'ballDiameter must be greater than or equal to 0.'),
+  })  : assert(ballDiameter >= 0, 'ballDiameter must be greater than or equal to 0.'),
         super(key: key);
 
   @override
@@ -187,9 +186,7 @@ class ManipulatingBall extends StatelessWidget {
         onPanStart: onDragStart,
         onPanUpdate: onDragUpdate,
         onPanEnd: onDragEnd,
-        child: Container(
-            decoration: BoxDecoration(
-                color: Colors.blue.withOpacity(0.7), shape: BoxShape.circle)),
+        child: Container(decoration: BoxDecoration(color: Colors.blue.withOpacity(0.7), shape: BoxShape.circle)),
       ),
     );
   }
@@ -218,14 +215,11 @@ class _ManipulatingBallDelegate extends SingleChildLayoutDelegate {
       case ResizeDirection.topRight:
         return Offset(size.width - childSize.width, 0);
       case ResizeDirection.centerRight:
-        return Offset(size.width - childSize.width,
-            size.height / 2 - childSize.height / 2);
+        return Offset(size.width - childSize.width, size.height / 2 - childSize.height / 2);
       case ResizeDirection.bottomRight:
-        return Offset(
-            size.width - childSize.width, size.height - childSize.height);
+        return Offset(size.width - childSize.width, size.height - childSize.height);
       case ResizeDirection.bottomCenter:
-        return Offset(size.width / 2 - childSize.width / 2,
-            size.height - childSize.height);
+        return Offset(size.width / 2 - childSize.width / 2, size.height - childSize.height);
       case ResizeDirection.bottomLeft:
         return Offset(0, size.height - childSize.height);
       case ResizeDirection.centerLeft:
@@ -235,8 +229,7 @@ class _ManipulatingBallDelegate extends SingleChildLayoutDelegate {
 
   @override
   bool shouldRelayout(_ManipulatingBallDelegate oldDelegate) {
-    return oldDelegate.resizeDirection != resizeDirection ||
-        oldDelegate.ballDiameter != ballDiameter;
+    return oldDelegate.resizeDirection != resizeDirection || oldDelegate.ballDiameter != ballDiameter;
   }
 }
 

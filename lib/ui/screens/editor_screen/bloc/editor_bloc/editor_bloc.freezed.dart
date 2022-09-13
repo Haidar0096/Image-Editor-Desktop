@@ -20,28 +20,21 @@ mixin _$EditorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -49,16 +42,13 @@ mixin _$EditorEvent {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -68,14 +58,11 @@ mixin _$EditorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -84,8 +71,7 @@ mixin _$EditorEvent {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -93,15 +79,13 @@ mixin _$EditorEvent {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -111,14 +95,11 @@ mixin _$EditorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -127,8 +108,7 @@ mixin _$EditorEvent {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -136,15 +116,13 @@ mixin _$EditorEvent {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -157,17 +135,12 @@ mixin _$EditorEvent {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -177,27 +150,19 @@ mixin _$EditorEvent {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -223,23 +188,17 @@ mixin _$EditorEvent {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -265,23 +224,17 @@ mixin _$EditorEvent {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -289,9 +242,7 @@ mixin _$EditorEvent {
 
 /// @nodoc
 abstract class $EditorEventCopyWith<$Res> {
-  factory $EditorEventCopyWith(
-          EditorEvent value, $Res Function(EditorEvent) then) =
-      _$EditorEventCopyWithImpl<$Res>;
+  factory $EditorEventCopyWith(EditorEvent value, $Res Function(EditorEvent) then) = _$EditorEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -305,15 +256,12 @@ class _$EditorEventCopyWithImpl<$Res> implements $EditorEventCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$UndoCopyWith<$Res> {
-  factory _$$UndoCopyWith(_$Undo value, $Res Function(_$Undo) then) =
-      __$$UndoCopyWithImpl<$Res>;
+  factory _$$UndoCopyWith(_$Undo value, $Res Function(_$Undo) then) = __$$UndoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UndoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$UndoCopyWith<$Res> {
-  __$$UndoCopyWithImpl(_$Undo _value, $Res Function(_$Undo) _then)
-      : super(_value, (v) => _then(v as _$Undo));
+class __$$UndoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$UndoCopyWith<$Res> {
+  __$$UndoCopyWithImpl(_$Undo _value, $Res Function(_$Undo) _then) : super(_value, (v) => _then(v as _$Undo));
 
   @override
   _$Undo get _value => super._value as _$Undo;
@@ -331,8 +279,7 @@ class _$Undo implements Undo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Undo);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Undo);
   }
 
   @override
@@ -343,28 +290,21 @@ class _$Undo implements Undo {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -372,16 +312,13 @@ class _$Undo implements Undo {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -394,14 +331,11 @@ class _$Undo implements Undo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -410,8 +344,7 @@ class _$Undo implements Undo {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -419,15 +352,13 @@ class _$Undo implements Undo {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -440,14 +371,11 @@ class _$Undo implements Undo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -456,8 +384,7 @@ class _$Undo implements Undo {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -465,15 +392,13 @@ class _$Undo implements Undo {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -492,17 +417,12 @@ class _$Undo implements Undo {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -512,27 +432,19 @@ class _$Undo implements Undo {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return undo(this);
   }
@@ -561,23 +473,17 @@ class _$Undo implements Undo {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return undo?.call(this);
   }
@@ -606,23 +512,17 @@ class _$Undo implements Undo {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -638,15 +538,12 @@ abstract class Undo implements EditorEvent {
 
 /// @nodoc
 abstract class _$$RedoCopyWith<$Res> {
-  factory _$$RedoCopyWith(_$Redo value, $Res Function(_$Redo) then) =
-      __$$RedoCopyWithImpl<$Res>;
+  factory _$$RedoCopyWith(_$Redo value, $Res Function(_$Redo) then) = __$$RedoCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RedoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$RedoCopyWith<$Res> {
-  __$$RedoCopyWithImpl(_$Redo _value, $Res Function(_$Redo) _then)
-      : super(_value, (v) => _then(v as _$Redo));
+class __$$RedoCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$RedoCopyWith<$Res> {
+  __$$RedoCopyWithImpl(_$Redo _value, $Res Function(_$Redo) _then) : super(_value, (v) => _then(v as _$Redo));
 
   @override
   _$Redo get _value => super._value as _$Redo;
@@ -664,8 +561,7 @@ class _$Redo implements Redo {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Redo);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$Redo);
   }
 
   @override
@@ -676,28 +572,21 @@ class _$Redo implements Redo {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -705,16 +594,13 @@ class _$Redo implements Redo {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -727,14 +613,11 @@ class _$Redo implements Redo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -743,8 +626,7 @@ class _$Redo implements Redo {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -752,15 +634,13 @@ class _$Redo implements Redo {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -773,14 +653,11 @@ class _$Redo implements Redo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -789,8 +666,7 @@ class _$Redo implements Redo {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -798,15 +674,13 @@ class _$Redo implements Redo {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -825,17 +699,12 @@ class _$Redo implements Redo {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -845,27 +714,19 @@ class _$Redo implements Redo {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return redo(this);
   }
@@ -894,23 +755,17 @@ class _$Redo implements Redo {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return redo?.call(this);
   }
@@ -939,23 +794,17 @@ class _$Redo implements Redo {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -971,22 +820,15 @@ abstract class Redo implements EditorEvent {
 
 /// @nodoc
 abstract class _$$AddStaticTextCopyWith<$Res> {
-  factory _$$AddStaticTextCopyWith(
-          _$AddStaticText value, $Res Function(_$AddStaticText) then) =
+  factory _$$AddStaticTextCopyWith(_$AddStaticText value, $Res Function(_$AddStaticText) then) =
       __$$AddStaticTextCopyWithImpl<$Res>;
-  $Res call(
-      {String initialText,
-      TextDirection textDirection,
-      double minWidth,
-      double maxWidth});
+  $Res call({String initialText, TextDirection textDirection, double minWidth, double maxWidth});
 }
 
 /// @nodoc
-class __$$AddStaticTextCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$AddStaticTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$AddStaticTextCopyWith<$Res> {
-  __$$AddStaticTextCopyWithImpl(
-      _$AddStaticText _value, $Res Function(_$AddStaticText) _then)
+  __$$AddStaticTextCopyWithImpl(_$AddStaticText _value, $Res Function(_$AddStaticText) _then)
       : super(_value, (v) => _then(v as _$AddStaticText));
 
   @override
@@ -1024,10 +866,7 @@ class __$$AddStaticTextCopyWithImpl<$Res>
 
 class _$AddStaticText implements AddStaticText {
   const _$AddStaticText(
-      {required this.initialText,
-      required this.textDirection,
-      required this.minWidth,
-      required this.maxWidth});
+      {required this.initialText, required this.textDirection, required this.minWidth, required this.maxWidth});
 
   /// The initial text of the static text.
   @override
@@ -1055,10 +894,8 @@ class _$AddStaticText implements AddStaticText {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddStaticText &&
-            const DeepCollectionEquality()
-                .equals(other.initialText, initialText) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
+            const DeepCollectionEquality().equals(other.initialText, initialText) &&
+            const DeepCollectionEquality().equals(other.textDirection, textDirection) &&
             const DeepCollectionEquality().equals(other.minWidth, minWidth) &&
             const DeepCollectionEquality().equals(other.maxWidth, maxWidth));
   }
@@ -1081,28 +918,21 @@ class _$AddStaticText implements AddStaticText {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -1110,16 +940,13 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -1132,14 +959,11 @@ class _$AddStaticText implements AddStaticText {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1148,8 +972,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1157,15 +980,13 @@ class _$AddStaticText implements AddStaticText {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1178,14 +999,11 @@ class _$AddStaticText implements AddStaticText {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1194,8 +1012,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1203,15 +1020,13 @@ class _$AddStaticText implements AddStaticText {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1230,17 +1045,12 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -1250,27 +1060,19 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return addStaticText(this);
   }
@@ -1299,23 +1101,17 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return addStaticText?.call(this);
   }
@@ -1344,23 +1140,17 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -1389,24 +1179,20 @@ abstract class AddStaticText implements EditorEvent {
   /// The maximum width of the static text.
   double get maxWidth;
   @JsonKey(ignore: true)
-  _$$AddStaticTextCopyWith<_$AddStaticText> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddStaticTextCopyWith<_$AddStaticText> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StaticTextChangedCopyWith<$Res> {
-  factory _$$StaticTextChangedCopyWith(
-          _$StaticTextChanged value, $Res Function(_$StaticTextChanged) then) =
+  factory _$$StaticTextChangedCopyWith(_$StaticTextChanged value, $Res Function(_$StaticTextChanged) then) =
       __$$StaticTextChangedCopyWithImpl<$Res>;
   $Res call({String updatedText});
 }
 
 /// @nodoc
-class __$$StaticTextChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$StaticTextChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$StaticTextChangedCopyWith<$Res> {
-  __$$StaticTextChangedCopyWithImpl(
-      _$StaticTextChanged _value, $Res Function(_$StaticTextChanged) _then)
+  __$$StaticTextChangedCopyWithImpl(_$StaticTextChanged _value, $Res Function(_$StaticTextChanged) _then)
       : super(_value, (v) => _then(v as _$StaticTextChanged));
 
   @override
@@ -1444,13 +1230,11 @@ class _$StaticTextChanged implements StaticTextChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StaticTextChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedText, updatedText));
+            const DeepCollectionEquality().equals(other.updatedText, updatedText));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedText));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedText));
 
   @JsonKey(ignore: true)
   @override
@@ -1462,28 +1246,21 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -1491,16 +1268,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -1513,14 +1287,11 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1529,8 +1300,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1538,15 +1308,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1559,14 +1327,11 @@ class _$StaticTextChanged implements StaticTextChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1575,8 +1340,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1584,15 +1348,13 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1611,17 +1373,12 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -1631,27 +1388,19 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return staticTextChanged(this);
   }
@@ -1680,23 +1429,17 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return staticTextChanged?.call(this);
   }
@@ -1725,23 +1468,17 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (staticTextChanged != null) {
@@ -1752,35 +1489,30 @@ class _$StaticTextChanged implements StaticTextChanged {
 }
 
 abstract class StaticTextChanged implements EditorEvent {
-  const factory StaticTextChanged({required final String updatedText}) =
-      _$StaticTextChanged;
+  const factory StaticTextChanged({required final String updatedText}) = _$StaticTextChanged;
 
   /// The new value of the text.
   String get updatedText;
   @JsonKey(ignore: true)
-  _$$StaticTextChangedCopyWith<_$StaticTextChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StaticTextChangedCopyWith<_$StaticTextChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StaticTextStyleChangedCopyWith<$Res> {
-  factory _$$StaticTextStyleChangedCopyWith(_$StaticTextStyleChanged value,
-          $Res Function(_$StaticTextStyleChanged) then) =
+  factory _$$StaticTextStyleChangedCopyWith(
+          _$StaticTextStyleChanged value, $Res Function(_$StaticTextStyleChanged) then) =
       __$$StaticTextStyleChangedCopyWithImpl<$Res>;
   $Res call({TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
-class __$$StaticTextStyleChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$StaticTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$StaticTextStyleChangedCopyWith<$Res> {
-  __$$StaticTextStyleChangedCopyWithImpl(_$StaticTextStyleChanged _value,
-      $Res Function(_$StaticTextStyleChanged) _then)
+  __$$StaticTextStyleChangedCopyWithImpl(_$StaticTextStyleChanged _value, $Res Function(_$StaticTextStyleChanged) _then)
       : super(_value, (v) => _then(v as _$StaticTextStyleChanged));
 
   @override
-  _$StaticTextStyleChanged get _value =>
-      super._value as _$StaticTextStyleChanged;
+  _$StaticTextStyleChanged get _value => super._value as _$StaticTextStyleChanged;
 
   @override
   $Res call({
@@ -1814,47 +1546,37 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StaticTextStyleChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextStyle, updatedTextStyle));
+            const DeepCollectionEquality().equals(other.updatedTextStyle, updatedTextStyle));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedTextStyle));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedTextStyle));
 
   @JsonKey(ignore: true)
   @override
   _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith =>
-      __$$StaticTextStyleChangedCopyWithImpl<_$StaticTextStyleChanged>(
-          this, _$identity);
+      __$$StaticTextStyleChangedCopyWithImpl<_$StaticTextStyleChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -1862,16 +1584,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -1884,14 +1603,11 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1900,8 +1616,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1909,15 +1624,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1930,14 +1643,11 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -1946,8 +1656,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -1955,15 +1664,13 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -1982,17 +1689,12 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -2002,27 +1704,19 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return staticTextStyleChanged(this);
   }
@@ -2051,23 +1745,17 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return staticTextStyleChanged?.call(this);
   }
@@ -2096,23 +1784,17 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (staticTextStyleChanged != null) {
@@ -2123,35 +1805,30 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
 }
 
 abstract class StaticTextStyleChanged implements EditorEvent {
-  const factory StaticTextStyleChanged({final TextStyle? updatedTextStyle}) =
-      _$StaticTextStyleChanged;
+  const factory StaticTextStyleChanged({final TextStyle? updatedTextStyle}) = _$StaticTextStyleChanged;
 
   /// The new value of the text style in the element.
   TextStyle? get updatedTextStyle;
   @JsonKey(ignore: true)
-  _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StaticTextStyleChangedCopyWith<_$StaticTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$StaticTextAlignChangedCopyWith<$Res> {
-  factory _$$StaticTextAlignChangedCopyWith(_$StaticTextAlignChanged value,
-          $Res Function(_$StaticTextAlignChanged) then) =
+  factory _$$StaticTextAlignChangedCopyWith(
+          _$StaticTextAlignChanged value, $Res Function(_$StaticTextAlignChanged) then) =
       __$$StaticTextAlignChangedCopyWithImpl<$Res>;
   $Res call({TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
-class __$$StaticTextAlignChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$StaticTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$StaticTextAlignChangedCopyWith<$Res> {
-  __$$StaticTextAlignChangedCopyWithImpl(_$StaticTextAlignChanged _value,
-      $Res Function(_$StaticTextAlignChanged) _then)
+  __$$StaticTextAlignChangedCopyWithImpl(_$StaticTextAlignChanged _value, $Res Function(_$StaticTextAlignChanged) _then)
       : super(_value, (v) => _then(v as _$StaticTextAlignChanged));
 
   @override
-  _$StaticTextAlignChanged get _value =>
-      super._value as _$StaticTextAlignChanged;
+  _$StaticTextAlignChanged get _value => super._value as _$StaticTextAlignChanged;
 
   @override
   $Res call({
@@ -2185,47 +1862,37 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StaticTextAlignChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextAlign, updatedTextAlign));
+            const DeepCollectionEquality().equals(other.updatedTextAlign, updatedTextAlign));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedTextAlign));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedTextAlign));
 
   @JsonKey(ignore: true)
   @override
   _$$StaticTextAlignChangedCopyWith<_$StaticTextAlignChanged> get copyWith =>
-      __$$StaticTextAlignChangedCopyWithImpl<_$StaticTextAlignChanged>(
-          this, _$identity);
+      __$$StaticTextAlignChangedCopyWithImpl<_$StaticTextAlignChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -2233,16 +1900,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -2255,14 +1919,11 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -2271,8 +1932,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -2280,15 +1940,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -2301,14 +1959,11 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -2317,8 +1972,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -2326,15 +1980,13 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -2353,17 +2005,12 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -2373,27 +2020,19 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return staticTextAlignChanged(this);
   }
@@ -2422,23 +2061,17 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return staticTextAlignChanged?.call(this);
   }
@@ -2467,23 +2100,17 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (staticTextAlignChanged != null) {
@@ -2494,34 +2121,25 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
 }
 
 abstract class StaticTextAlignChanged implements EditorEvent {
-  const factory StaticTextAlignChanged({final TextAlign? updatedTextAlign}) =
-      _$StaticTextAlignChanged;
+  const factory StaticTextAlignChanged({final TextAlign? updatedTextAlign}) = _$StaticTextAlignChanged;
 
   /// The new value of the text align in the element.
   TextAlign? get updatedTextAlign;
   @JsonKey(ignore: true)
-  _$$StaticTextAlignChangedCopyWith<_$StaticTextAlignChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StaticTextAlignChangedCopyWith<_$StaticTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AddVariableTextCopyWith<$Res> {
-  factory _$$AddVariableTextCopyWith(
-          _$AddVariableText value, $Res Function(_$AddVariableText) then) =
+  factory _$$AddVariableTextCopyWith(_$AddVariableText value, $Res Function(_$AddVariableText) then) =
       __$$AddVariableTextCopyWithImpl<$Res>;
-  $Res call(
-      {String initialText,
-      TextDirection textDirection,
-      double minWidth,
-      double maxWidth});
+  $Res call({String initialText, TextDirection textDirection, double minWidth, double maxWidth});
 }
 
 /// @nodoc
-class __$$AddVariableTextCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$AddVariableTextCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$AddVariableTextCopyWith<$Res> {
-  __$$AddVariableTextCopyWithImpl(
-      _$AddVariableText _value, $Res Function(_$AddVariableText) _then)
+  __$$AddVariableTextCopyWithImpl(_$AddVariableText _value, $Res Function(_$AddVariableText) _then)
       : super(_value, (v) => _then(v as _$AddVariableText));
 
   @override
@@ -2559,10 +2177,7 @@ class __$$AddVariableTextCopyWithImpl<$Res>
 
 class _$AddVariableText implements AddVariableText {
   const _$AddVariableText(
-      {required this.initialText,
-      required this.textDirection,
-      required this.minWidth,
-      required this.maxWidth});
+      {required this.initialText, required this.textDirection, required this.minWidth, required this.maxWidth});
 
   /// The initial text of the variable text.
   @override
@@ -2590,10 +2205,8 @@ class _$AddVariableText implements AddVariableText {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddVariableText &&
-            const DeepCollectionEquality()
-                .equals(other.initialText, initialText) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
+            const DeepCollectionEquality().equals(other.initialText, initialText) &&
+            const DeepCollectionEquality().equals(other.textDirection, textDirection) &&
             const DeepCollectionEquality().equals(other.minWidth, minWidth) &&
             const DeepCollectionEquality().equals(other.maxWidth, maxWidth));
   }
@@ -2616,28 +2229,21 @@ class _$AddVariableText implements AddVariableText {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -2645,16 +2251,13 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -2667,14 +2270,11 @@ class _$AddVariableText implements AddVariableText {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -2683,8 +2283,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -2692,21 +2291,18 @@ class _$AddVariableText implements AddVariableText {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
   }) {
-    return addVariableText?.call(
-        initialText, textDirection, minWidth, maxWidth);
+    return addVariableText?.call(initialText, textDirection, minWidth, maxWidth);
   }
 
   @override
@@ -2714,14 +2310,11 @@ class _$AddVariableText implements AddVariableText {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -2730,8 +2323,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -2739,15 +2331,13 @@ class _$AddVariableText implements AddVariableText {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -2766,17 +2356,12 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -2786,27 +2371,19 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return addVariableText(this);
   }
@@ -2835,23 +2412,17 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return addVariableText?.call(this);
   }
@@ -2880,23 +2451,17 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -2925,28 +2490,25 @@ abstract class AddVariableText implements EditorEvent {
   /// The maximum width of the variable text placeholder.
   double get maxWidth;
   @JsonKey(ignore: true)
-  _$$AddVariableTextCopyWith<_$AddVariableText> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddVariableTextCopyWith<_$AddVariableText> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$VariableTextFileChangedCopyWith<$Res> {
-  factory _$$VariableTextFileChangedCopyWith(_$VariableTextFileChanged value,
-          $Res Function(_$VariableTextFileChanged) then) =
+  factory _$$VariableTextFileChangedCopyWith(
+          _$VariableTextFileChanged value, $Res Function(_$VariableTextFileChanged) then) =
       __$$VariableTextFileChangedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$VariableTextFileChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$VariableTextFileChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$VariableTextFileChangedCopyWith<$Res> {
-  __$$VariableTextFileChangedCopyWithImpl(_$VariableTextFileChanged _value,
-      $Res Function(_$VariableTextFileChanged) _then)
+  __$$VariableTextFileChangedCopyWithImpl(
+      _$VariableTextFileChanged _value, $Res Function(_$VariableTextFileChanged) _then)
       : super(_value, (v) => _then(v as _$VariableTextFileChanged));
 
   @override
-  _$VariableTextFileChanged get _value =>
-      super._value as _$VariableTextFileChanged;
+  _$VariableTextFileChanged get _value => super._value as _$VariableTextFileChanged;
 }
 
 /// @nodoc
@@ -2961,9 +2523,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$VariableTextFileChanged);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$VariableTextFileChanged);
   }
 
   @override
@@ -2974,28 +2534,21 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -3003,16 +2556,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -3025,14 +2575,11 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3041,8 +2588,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3050,15 +2596,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3071,14 +2615,11 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3087,8 +2628,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3096,15 +2636,13 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3123,17 +2661,12 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -3143,27 +2676,19 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return variableTextFileChanged(this);
   }
@@ -3192,23 +2717,17 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return variableTextFileChanged?.call(this);
   }
@@ -3237,23 +2756,17 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (variableTextFileChanged != null) {
@@ -3269,23 +2782,21 @@ abstract class VariableTextFileChanged implements EditorEvent {
 
 /// @nodoc
 abstract class _$$VariableTextStyleChangedCopyWith<$Res> {
-  factory _$$VariableTextStyleChangedCopyWith(_$VariableTextStyleChanged value,
-          $Res Function(_$VariableTextStyleChanged) then) =
+  factory _$$VariableTextStyleChangedCopyWith(
+          _$VariableTextStyleChanged value, $Res Function(_$VariableTextStyleChanged) then) =
       __$$VariableTextStyleChangedCopyWithImpl<$Res>;
   $Res call({TextStyle? updatedTextStyle});
 }
 
 /// @nodoc
-class __$$VariableTextStyleChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$VariableTextStyleChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$VariableTextStyleChangedCopyWith<$Res> {
-  __$$VariableTextStyleChangedCopyWithImpl(_$VariableTextStyleChanged _value,
-      $Res Function(_$VariableTextStyleChanged) _then)
+  __$$VariableTextStyleChangedCopyWithImpl(
+      _$VariableTextStyleChanged _value, $Res Function(_$VariableTextStyleChanged) _then)
       : super(_value, (v) => _then(v as _$VariableTextStyleChanged));
 
   @override
-  _$VariableTextStyleChanged get _value =>
-      super._value as _$VariableTextStyleChanged;
+  _$VariableTextStyleChanged get _value => super._value as _$VariableTextStyleChanged;
 
   @override
   $Res call({
@@ -3319,48 +2830,37 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VariableTextStyleChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextStyle, updatedTextStyle));
+            const DeepCollectionEquality().equals(other.updatedTextStyle, updatedTextStyle));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedTextStyle));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedTextStyle));
 
   @JsonKey(ignore: true)
   @override
-  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged>
-      get copyWith =>
-          __$$VariableTextStyleChangedCopyWithImpl<_$VariableTextStyleChanged>(
-              this, _$identity);
+  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith =>
+      __$$VariableTextStyleChangedCopyWithImpl<_$VariableTextStyleChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -3368,16 +2868,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -3390,14 +2887,11 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3406,8 +2900,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3415,15 +2908,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3436,14 +2927,11 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3452,8 +2940,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3461,15 +2948,13 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3488,17 +2973,12 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -3508,27 +2988,19 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return variableTextStyleChanged(this);
   }
@@ -3557,23 +3029,17 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return variableTextStyleChanged?.call(this);
   }
@@ -3602,23 +3068,17 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (variableTextStyleChanged != null) {
@@ -3629,35 +3089,31 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
 }
 
 abstract class VariableTextStyleChanged implements EditorEvent {
-  const factory VariableTextStyleChanged({final TextStyle? updatedTextStyle}) =
-      _$VariableTextStyleChanged;
+  const factory VariableTextStyleChanged({final TextStyle? updatedTextStyle}) = _$VariableTextStyleChanged;
 
   /// The new value of the text style in the element.
   TextStyle? get updatedTextStyle;
   @JsonKey(ignore: true)
-  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$VariableTextStyleChangedCopyWith<_$VariableTextStyleChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$VariableTextAlignChangedCopyWith<$Res> {
-  factory _$$VariableTextAlignChangedCopyWith(_$VariableTextAlignChanged value,
-          $Res Function(_$VariableTextAlignChanged) then) =
+  factory _$$VariableTextAlignChangedCopyWith(
+          _$VariableTextAlignChanged value, $Res Function(_$VariableTextAlignChanged) then) =
       __$$VariableTextAlignChangedCopyWithImpl<$Res>;
   $Res call({TextAlign? updatedTextAlign});
 }
 
 /// @nodoc
-class __$$VariableTextAlignChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$VariableTextAlignChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$VariableTextAlignChangedCopyWith<$Res> {
-  __$$VariableTextAlignChangedCopyWithImpl(_$VariableTextAlignChanged _value,
-      $Res Function(_$VariableTextAlignChanged) _then)
+  __$$VariableTextAlignChangedCopyWithImpl(
+      _$VariableTextAlignChanged _value, $Res Function(_$VariableTextAlignChanged) _then)
       : super(_value, (v) => _then(v as _$VariableTextAlignChanged));
 
   @override
-  _$VariableTextAlignChanged get _value =>
-      super._value as _$VariableTextAlignChanged;
+  _$VariableTextAlignChanged get _value => super._value as _$VariableTextAlignChanged;
 
   @override
   $Res call({
@@ -3691,48 +3147,37 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VariableTextAlignChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedTextAlign, updatedTextAlign));
+            const DeepCollectionEquality().equals(other.updatedTextAlign, updatedTextAlign));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedTextAlign));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedTextAlign));
 
   @JsonKey(ignore: true)
   @override
-  _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged>
-      get copyWith =>
-          __$$VariableTextAlignChangedCopyWithImpl<_$VariableTextAlignChanged>(
-              this, _$identity);
+  _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged> get copyWith =>
+      __$$VariableTextAlignChangedCopyWithImpl<_$VariableTextAlignChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -3740,16 +3185,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -3762,14 +3204,11 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3778,8 +3217,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3787,15 +3225,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3808,14 +3244,11 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -3824,8 +3257,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -3833,15 +3265,13 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -3860,17 +3290,12 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -3880,27 +3305,19 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return variableTextAlignChanged(this);
   }
@@ -3929,23 +3346,17 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return variableTextAlignChanged?.call(this);
   }
@@ -3974,23 +3385,17 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (variableTextAlignChanged != null) {
@@ -4001,26 +3406,21 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
 }
 
 abstract class VariableTextAlignChanged implements EditorEvent {
-  const factory VariableTextAlignChanged({final TextAlign? updatedTextAlign}) =
-      _$VariableTextAlignChanged;
+  const factory VariableTextAlignChanged({final TextAlign? updatedTextAlign}) = _$VariableTextAlignChanged;
 
   /// The new value of the text align in the element.
   TextAlign? get updatedTextAlign;
   @JsonKey(ignore: true)
-  _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$VariableTextAlignChangedCopyWith<_$VariableTextAlignChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AddImageCopyWith<$Res> {
-  factory _$$AddImageCopyWith(
-          _$AddImage value, $Res Function(_$AddImage) then) =
-      __$$AddImageCopyWithImpl<$Res>;
+  factory _$$AddImageCopyWith(_$AddImage value, $Res Function(_$AddImage) then) = __$$AddImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AddImageCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$AddImageCopyWith<$Res> {
+class __$$AddImageCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$AddImageCopyWith<$Res> {
   __$$AddImageCopyWithImpl(_$AddImage _value, $Res Function(_$AddImage) _then)
       : super(_value, (v) => _then(v as _$AddImage));
 
@@ -4040,8 +3440,7 @@ class _$AddImage implements AddImage {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddImage);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$AddImage);
   }
 
   @override
@@ -4052,28 +3451,21 @@ class _$AddImage implements AddImage {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -4081,16 +3473,13 @@ class _$AddImage implements AddImage {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -4103,14 +3492,11 @@ class _$AddImage implements AddImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4119,8 +3505,7 @@ class _$AddImage implements AddImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4128,15 +3513,13 @@ class _$AddImage implements AddImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4149,14 +3532,11 @@ class _$AddImage implements AddImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4165,8 +3545,7 @@ class _$AddImage implements AddImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4174,15 +3553,13 @@ class _$AddImage implements AddImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4201,17 +3578,12 @@ class _$AddImage implements AddImage {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -4221,27 +3593,19 @@ class _$AddImage implements AddImage {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return addImage(this);
   }
@@ -4270,23 +3634,17 @@ class _$AddImage implements AddImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return addImage?.call(this);
   }
@@ -4315,23 +3673,17 @@ class _$AddImage implements AddImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -4347,18 +3699,15 @@ abstract class AddImage implements EditorEvent {
 
 /// @nodoc
 abstract class _$$CanvasDragStartCopyWith<$Res> {
-  factory _$$CanvasDragStartCopyWith(
-          _$CanvasDragStart value, $Res Function(_$CanvasDragStart) then) =
+  factory _$$CanvasDragStartCopyWith(_$CanvasDragStart value, $Res Function(_$CanvasDragStart) then) =
       __$$CanvasDragStartCopyWithImpl<$Res>;
   $Res call({Offset localPosition});
 }
 
 /// @nodoc
-class __$$CanvasDragStartCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$CanvasDragStartCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$CanvasDragStartCopyWith<$Res> {
-  __$$CanvasDragStartCopyWithImpl(
-      _$CanvasDragStart _value, $Res Function(_$CanvasDragStart) _then)
+  __$$CanvasDragStartCopyWithImpl(_$CanvasDragStart _value, $Res Function(_$CanvasDragStart) _then)
       : super(_value, (v) => _then(v as _$CanvasDragStart));
 
   @override
@@ -4396,13 +3745,11 @@ class _$CanvasDragStart implements CanvasDragStart {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CanvasDragStart &&
-            const DeepCollectionEquality()
-                .equals(other.localPosition, localPosition));
+            const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(localPosition));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
   @override
@@ -4414,28 +3761,21 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -4443,16 +3783,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -4465,14 +3802,11 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4481,8 +3815,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4490,15 +3823,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4511,14 +3842,11 @@ class _$CanvasDragStart implements CanvasDragStart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4527,8 +3855,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4536,15 +3863,13 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4563,17 +3888,12 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -4583,27 +3903,19 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return canvasDragStart(this);
   }
@@ -4632,23 +3944,17 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return canvasDragStart?.call(this);
   }
@@ -4677,23 +3983,17 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (canvasDragStart != null) {
@@ -4709,24 +4009,20 @@ abstract class CanvasDragStart implements EditorEvent {
   /// The local position in the editor widget where the drag started.
   Offset get localPosition;
   @JsonKey(ignore: true)
-  _$$CanvasDragStartCopyWith<_$CanvasDragStart> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CanvasDragStartCopyWith<_$CanvasDragStart> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CanvasDragUpdateCopyWith<$Res> {
-  factory _$$CanvasDragUpdateCopyWith(
-          _$CanvasDragUpdate value, $Res Function(_$CanvasDragUpdate) then) =
+  factory _$$CanvasDragUpdateCopyWith(_$CanvasDragUpdate value, $Res Function(_$CanvasDragUpdate) then) =
       __$$CanvasDragUpdateCopyWithImpl<$Res>;
   $Res call({Offset delta});
 }
 
 /// @nodoc
-class __$$CanvasDragUpdateCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$CanvasDragUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$CanvasDragUpdateCopyWith<$Res> {
-  __$$CanvasDragUpdateCopyWithImpl(
-      _$CanvasDragUpdate _value, $Res Function(_$CanvasDragUpdate) _then)
+  __$$CanvasDragUpdateCopyWithImpl(_$CanvasDragUpdate _value, $Res Function(_$CanvasDragUpdate) _then)
       : super(_value, (v) => _then(v as _$CanvasDragUpdate));
 
   @override
@@ -4768,8 +4064,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -4781,28 +4076,21 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -4810,16 +4098,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -4832,14 +4117,11 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4848,8 +4130,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4857,15 +4138,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4878,14 +4157,11 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -4894,8 +4170,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -4903,15 +4178,13 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -4930,17 +4203,12 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -4950,27 +4218,19 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return canvasDragUpdate(this);
   }
@@ -4999,23 +4259,17 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return canvasDragUpdate?.call(this);
   }
@@ -5044,23 +4298,17 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (canvasDragUpdate != null) {
@@ -5076,23 +4324,19 @@ abstract class CanvasDragUpdate implements EditorEvent {
   /// The delta of the drag (i.e. the amount of the drag).
   Offset get delta;
   @JsonKey(ignore: true)
-  _$$CanvasDragUpdateCopyWith<_$CanvasDragUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CanvasDragUpdateCopyWith<_$CanvasDragUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CanvasDragEndCopyWith<$Res> {
-  factory _$$CanvasDragEndCopyWith(
-          _$CanvasDragEnd value, $Res Function(_$CanvasDragEnd) then) =
+  factory _$$CanvasDragEndCopyWith(_$CanvasDragEnd value, $Res Function(_$CanvasDragEnd) then) =
       __$$CanvasDragEndCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CanvasDragEndCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$CanvasDragEndCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$CanvasDragEndCopyWith<$Res> {
-  __$$CanvasDragEndCopyWithImpl(
-      _$CanvasDragEnd _value, $Res Function(_$CanvasDragEnd) _then)
+  __$$CanvasDragEndCopyWithImpl(_$CanvasDragEnd _value, $Res Function(_$CanvasDragEnd) _then)
       : super(_value, (v) => _then(v as _$CanvasDragEnd));
 
   @override
@@ -5111,8 +4355,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CanvasDragEnd);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$CanvasDragEnd);
   }
 
   @override
@@ -5123,28 +4366,21 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -5152,16 +4388,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -5174,14 +4407,11 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5190,8 +4420,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -5199,15 +4428,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -5220,14 +4447,11 @@ class _$CanvasDragEnd implements CanvasDragEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5236,8 +4460,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -5245,15 +4468,13 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -5272,17 +4493,12 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -5292,27 +4508,19 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return canvasDragEnd(this);
   }
@@ -5341,23 +4549,17 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return canvasDragEnd?.call(this);
   }
@@ -5386,23 +4588,17 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (canvasDragEnd != null) {
@@ -5418,8 +4614,7 @@ abstract class CanvasDragEnd implements EditorEvent {
 
 /// @nodoc
 abstract class _$$ElementDragStartCopyWith<$Res> {
-  factory _$$ElementDragStartCopyWith(
-          _$ElementDragStart value, $Res Function(_$ElementDragStart) then) =
+  factory _$$ElementDragStartCopyWith(_$ElementDragStart value, $Res Function(_$ElementDragStart) then) =
       __$$ElementDragStartCopyWithImpl<$Res>;
   $Res call({Element draggedElement, Offset localPosition});
 
@@ -5427,11 +4622,9 @@ abstract class _$$ElementDragStartCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ElementDragStartCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$ElementDragStartCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ElementDragStartCopyWith<$Res> {
-  __$$ElementDragStartCopyWithImpl(
-      _$ElementDragStart _value, $Res Function(_$ElementDragStart) _then)
+  __$$ElementDragStartCopyWithImpl(_$ElementDragStart _value, $Res Function(_$ElementDragStart) _then)
       : super(_value, (v) => _then(v as _$ElementDragStart));
 
   @override
@@ -5485,16 +4678,12 @@ class _$ElementDragStart implements ElementDragStart {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ElementDragStart &&
-            const DeepCollectionEquality()
-                .equals(other.draggedElement, draggedElement) &&
-            const DeepCollectionEquality()
-                .equals(other.localPosition, localPosition));
+            const DeepCollectionEquality().equals(other.draggedElement, draggedElement) &&
+            const DeepCollectionEquality().equals(other.localPosition, localPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(draggedElement),
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(draggedElement),
       const DeepCollectionEquality().hash(localPosition));
 
   @JsonKey(ignore: true)
@@ -5507,28 +4696,21 @@ class _$ElementDragStart implements ElementDragStart {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -5536,16 +4718,13 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -5558,14 +4737,11 @@ class _$ElementDragStart implements ElementDragStart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5574,8 +4750,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -5583,15 +4758,13 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -5604,14 +4777,11 @@ class _$ElementDragStart implements ElementDragStart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5620,8 +4790,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -5629,15 +4798,13 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -5656,17 +4823,12 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -5676,27 +4838,19 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return elementDragStart(this);
   }
@@ -5725,23 +4879,17 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return elementDragStart?.call(this);
   }
@@ -5770,23 +4918,17 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (elementDragStart != null) {
@@ -5797,9 +4939,7 @@ class _$ElementDragStart implements ElementDragStart {
 }
 
 abstract class ElementDragStart implements EditorEvent {
-  const factory ElementDragStart(
-          final Element draggedElement, final Offset localPosition) =
-      _$ElementDragStart;
+  const factory ElementDragStart(final Element draggedElement, final Offset localPosition) = _$ElementDragStart;
 
   /// The element being dragged.
   Element get draggedElement;
@@ -5807,24 +4947,20 @@ abstract class ElementDragStart implements EditorEvent {
   /// The local position in the editor widget where the drag started.
   Offset get localPosition;
   @JsonKey(ignore: true)
-  _$$ElementDragStartCopyWith<_$ElementDragStart> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ElementDragStartCopyWith<_$ElementDragStart> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ElementDragUpdateCopyWith<$Res> {
-  factory _$$ElementDragUpdateCopyWith(
-          _$ElementDragUpdate value, $Res Function(_$ElementDragUpdate) then) =
+  factory _$$ElementDragUpdateCopyWith(_$ElementDragUpdate value, $Res Function(_$ElementDragUpdate) then) =
       __$$ElementDragUpdateCopyWithImpl<$Res>;
   $Res call({Offset delta});
 }
 
 /// @nodoc
-class __$$ElementDragUpdateCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$ElementDragUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ElementDragUpdateCopyWith<$Res> {
-  __$$ElementDragUpdateCopyWithImpl(
-      _$ElementDragUpdate _value, $Res Function(_$ElementDragUpdate) _then)
+  __$$ElementDragUpdateCopyWithImpl(_$ElementDragUpdate _value, $Res Function(_$ElementDragUpdate) _then)
       : super(_value, (v) => _then(v as _$ElementDragUpdate));
 
   @override
@@ -5866,8 +5002,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -5879,28 +5014,21 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -5908,16 +5036,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -5930,14 +5055,11 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5946,8 +5068,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -5955,15 +5076,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -5976,14 +5095,11 @@ class _$ElementDragUpdate implements ElementDragUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -5992,8 +5108,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -6001,15 +5116,13 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -6028,17 +5141,12 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -6048,27 +5156,19 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return elementDragUpdate(this);
   }
@@ -6097,23 +5197,17 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return elementDragUpdate?.call(this);
   }
@@ -6142,23 +5236,17 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (elementDragUpdate != null) {
@@ -6174,23 +5262,19 @@ abstract class ElementDragUpdate implements EditorEvent {
   /// The delta of the drag (i.e. the amount of the drag).
   Offset get delta;
   @JsonKey(ignore: true)
-  _$$ElementDragUpdateCopyWith<_$ElementDragUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ElementDragUpdateCopyWith<_$ElementDragUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ElementDragEndCopyWith<$Res> {
-  factory _$$ElementDragEndCopyWith(
-          _$ElementDragEnd value, $Res Function(_$ElementDragEnd) then) =
+  factory _$$ElementDragEndCopyWith(_$ElementDragEnd value, $Res Function(_$ElementDragEnd) then) =
       __$$ElementDragEndCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ElementDragEndCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$ElementDragEndCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ElementDragEndCopyWith<$Res> {
-  __$$ElementDragEndCopyWithImpl(
-      _$ElementDragEnd _value, $Res Function(_$ElementDragEnd) _then)
+  __$$ElementDragEndCopyWithImpl(_$ElementDragEnd _value, $Res Function(_$ElementDragEnd) _then)
       : super(_value, (v) => _then(v as _$ElementDragEnd));
 
   @override
@@ -6209,8 +5293,7 @@ class _$ElementDragEnd implements ElementDragEnd {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ElementDragEnd);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ElementDragEnd);
   }
 
   @override
@@ -6221,28 +5304,21 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -6250,16 +5326,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -6272,14 +5345,11 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -6288,8 +5358,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -6297,15 +5366,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -6318,14 +5385,11 @@ class _$ElementDragEnd implements ElementDragEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -6334,8 +5398,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -6343,15 +5406,13 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -6370,17 +5431,12 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -6390,27 +5446,19 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return elementDragEnd(this);
   }
@@ -6439,23 +5487,17 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return elementDragEnd?.call(this);
   }
@@ -6484,23 +5526,17 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (elementDragEnd != null) {
@@ -6516,16 +5552,12 @@ abstract class ElementDragEnd implements EditorEvent {
 
 /// @nodoc
 abstract class _$$CanvasTapCopyWith<$Res> {
-  factory _$$CanvasTapCopyWith(
-          _$CanvasTap value, $Res Function(_$CanvasTap) then) =
-      __$$CanvasTapCopyWithImpl<$Res>;
+  factory _$$CanvasTapCopyWith(_$CanvasTap value, $Res Function(_$CanvasTap) then) = __$$CanvasTapCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CanvasTapCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$CanvasTapCopyWith<$Res> {
-  __$$CanvasTapCopyWithImpl(
-      _$CanvasTap _value, $Res Function(_$CanvasTap) _then)
+class __$$CanvasTapCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$CanvasTapCopyWith<$Res> {
+  __$$CanvasTapCopyWithImpl(_$CanvasTap _value, $Res Function(_$CanvasTap) _then)
       : super(_value, (v) => _then(v as _$CanvasTap));
 
   @override
@@ -6544,8 +5576,7 @@ class _$CanvasTap implements CanvasTap {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CanvasTap);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$CanvasTap);
   }
 
   @override
@@ -6556,28 +5587,21 @@ class _$CanvasTap implements CanvasTap {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -6585,16 +5609,13 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -6607,14 +5628,11 @@ class _$CanvasTap implements CanvasTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -6623,8 +5641,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -6632,15 +5649,13 @@ class _$CanvasTap implements CanvasTap {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -6653,14 +5668,11 @@ class _$CanvasTap implements CanvasTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -6669,8 +5681,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -6678,15 +5689,13 @@ class _$CanvasTap implements CanvasTap {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -6705,17 +5714,12 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -6725,27 +5729,19 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return canvasTap(this);
   }
@@ -6774,23 +5770,17 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return canvasTap?.call(this);
   }
@@ -6819,23 +5809,17 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (canvasTap != null) {
@@ -6851,8 +5835,7 @@ abstract class CanvasTap implements EditorEvent {
 
 /// @nodoc
 abstract class _$$ElementTapCopyWith<$Res> {
-  factory _$$ElementTapCopyWith(
-          _$ElementTap value, $Res Function(_$ElementTap) then) =
+  factory _$$ElementTapCopyWith(_$ElementTap value, $Res Function(_$ElementTap) then) =
       __$$ElementTapCopyWithImpl<$Res>;
   $Res call({Element element});
 
@@ -6860,10 +5843,8 @@ abstract class _$$ElementTapCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ElementTapCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$ElementTapCopyWith<$Res> {
-  __$$ElementTapCopyWithImpl(
-      _$ElementTap _value, $Res Function(_$ElementTap) _then)
+class __$$ElementTapCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$ElementTapCopyWith<$Res> {
+  __$$ElementTapCopyWithImpl(_$ElementTap _value, $Res Function(_$ElementTap) _then)
       : super(_value, (v) => _then(v as _$ElementTap));
 
   @override
@@ -6912,41 +5893,32 @@ class _$ElementTap implements ElementTap {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(element));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(element));
 
   @JsonKey(ignore: true)
   @override
-  _$$ElementTapCopyWith<_$ElementTap> get copyWith =>
-      __$$ElementTapCopyWithImpl<_$ElementTap>(this, _$identity);
+  _$$ElementTapCopyWith<_$ElementTap> get copyWith => __$$ElementTapCopyWithImpl<_$ElementTap>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -6954,16 +5926,13 @@ class _$ElementTap implements ElementTap {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -6976,14 +5945,11 @@ class _$ElementTap implements ElementTap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -6992,8 +5958,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7001,15 +5966,13 @@ class _$ElementTap implements ElementTap {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7022,14 +5985,11 @@ class _$ElementTap implements ElementTap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -7038,8 +5998,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7047,15 +6006,13 @@ class _$ElementTap implements ElementTap {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7074,17 +6031,12 @@ class _$ElementTap implements ElementTap {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -7094,27 +6046,19 @@ class _$ElementTap implements ElementTap {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return elementTap(this);
   }
@@ -7143,23 +6087,17 @@ class _$ElementTap implements ElementTap {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return elementTap?.call(this);
   }
@@ -7188,23 +6126,17 @@ class _$ElementTap implements ElementTap {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (elementTap != null) {
@@ -7220,23 +6152,19 @@ abstract class ElementTap implements EditorEvent {
   /// The element that has been tapped.
   Element get element;
   @JsonKey(ignore: true)
-  _$$ElementTapCopyWith<_$ElementTap> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ElementTapCopyWith<_$ElementTap> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$RemoveSelectedElementCopyWith<$Res> {
-  factory _$$RemoveSelectedElementCopyWith(_$RemoveSelectedElement value,
-          $Res Function(_$RemoveSelectedElement) then) =
+  factory _$$RemoveSelectedElementCopyWith(_$RemoveSelectedElement value, $Res Function(_$RemoveSelectedElement) then) =
       __$$RemoveSelectedElementCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RemoveSelectedElementCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$RemoveSelectedElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$RemoveSelectedElementCopyWith<$Res> {
-  __$$RemoveSelectedElementCopyWithImpl(_$RemoveSelectedElement _value,
-      $Res Function(_$RemoveSelectedElement) _then)
+  __$$RemoveSelectedElementCopyWithImpl(_$RemoveSelectedElement _value, $Res Function(_$RemoveSelectedElement) _then)
       : super(_value, (v) => _then(v as _$RemoveSelectedElement));
 
   @override
@@ -7255,8 +6183,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$RemoveSelectedElement);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$RemoveSelectedElement);
   }
 
   @override
@@ -7267,28 +6194,21 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -7296,16 +6216,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -7318,14 +6235,11 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -7334,8 +6248,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7343,15 +6256,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7364,14 +6275,11 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -7380,8 +6288,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7389,15 +6296,13 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7416,17 +6321,12 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -7436,27 +6336,19 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return removeSelectedElement(this);
   }
@@ -7485,23 +6377,17 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return removeSelectedElement?.call(this);
   }
@@ -7530,23 +6416,17 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (removeSelectedElement != null) {
@@ -7562,17 +6442,14 @@ abstract class RemoveSelectedElement implements EditorEvent {
 
 /// @nodoc
 abstract class _$$DeselectElementCopyWith<$Res> {
-  factory _$$DeselectElementCopyWith(
-          _$DeselectElement value, $Res Function(_$DeselectElement) then) =
+  factory _$$DeselectElementCopyWith(_$DeselectElement value, $Res Function(_$DeselectElement) then) =
       __$$DeselectElementCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DeselectElementCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$DeselectElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$DeselectElementCopyWith<$Res> {
-  __$$DeselectElementCopyWithImpl(
-      _$DeselectElement _value, $Res Function(_$DeselectElement) _then)
+  __$$DeselectElementCopyWithImpl(_$DeselectElement _value, $Res Function(_$DeselectElement) _then)
       : super(_value, (v) => _then(v as _$DeselectElement));
 
   @override
@@ -7591,8 +6468,7 @@ class _$DeselectElement implements DeselectElement {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DeselectElement);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$DeselectElement);
   }
 
   @override
@@ -7603,28 +6479,21 @@ class _$DeselectElement implements DeselectElement {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -7632,16 +6501,13 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -7654,14 +6520,11 @@ class _$DeselectElement implements DeselectElement {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -7670,8 +6533,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7679,15 +6541,13 @@ class _$DeselectElement implements DeselectElement {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7700,14 +6560,11 @@ class _$DeselectElement implements DeselectElement {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -7716,8 +6573,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -7725,15 +6581,13 @@ class _$DeselectElement implements DeselectElement {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -7752,17 +6606,12 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -7772,27 +6621,19 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return deselectElement(this);
   }
@@ -7821,23 +6662,17 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return deselectElement?.call(this);
   }
@@ -7866,23 +6701,17 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (deselectElement != null) {
@@ -7899,23 +6728,19 @@ abstract class DeselectElement implements EditorEvent {
 /// @nodoc
 abstract class _$$BringSelectedElementToFrontCopyWith<$Res> {
   factory _$$BringSelectedElementToFrontCopyWith(
-          _$BringSelectedElementToFront value,
-          $Res Function(_$BringSelectedElementToFront) then) =
+          _$BringSelectedElementToFront value, $Res Function(_$BringSelectedElementToFront) then) =
       __$$BringSelectedElementToFrontCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$BringSelectedElementToFrontCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$BringSelectedElementToFrontCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$BringSelectedElementToFrontCopyWith<$Res> {
   __$$BringSelectedElementToFrontCopyWithImpl(
-      _$BringSelectedElementToFront _value,
-      $Res Function(_$BringSelectedElementToFront) _then)
+      _$BringSelectedElementToFront _value, $Res Function(_$BringSelectedElementToFront) _then)
       : super(_value, (v) => _then(v as _$BringSelectedElementToFront));
 
   @override
-  _$BringSelectedElementToFront get _value =>
-      super._value as _$BringSelectedElementToFront;
+  _$BringSelectedElementToFront get _value => super._value as _$BringSelectedElementToFront;
 }
 
 /// @nodoc
@@ -7930,9 +6755,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BringSelectedElementToFront);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$BringSelectedElementToFront);
   }
 
   @override
@@ -7943,28 +6766,21 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -7972,16 +6788,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -7994,14 +6807,11 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8010,8 +6820,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8019,15 +6828,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8040,14 +6847,11 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8056,8 +6860,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8065,15 +6868,13 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8092,17 +6893,12 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -8112,27 +6908,19 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return bringSelectedElementToFront(this);
   }
@@ -8161,23 +6949,17 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return bringSelectedElementToFront?.call(this);
   }
@@ -8206,23 +6988,17 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (bringSelectedElementToFront != null) {
@@ -8238,8 +7014,7 @@ abstract class BringSelectedElementToFront implements EditorEvent {
 
 /// @nodoc
 abstract class _$$ResizeUpdateCopyWith<$Res> {
-  factory _$$ResizeUpdateCopyWith(
-          _$ResizeUpdate value, $Res Function(_$ResizeUpdate) then) =
+  factory _$$ResizeUpdateCopyWith(_$ResizeUpdate value, $Res Function(_$ResizeUpdate) then) =
       __$$ResizeUpdateCopyWithImpl<$Res>;
   $Res call({ResizeDirection resizeDirection, Offset delta});
 }
@@ -8247,8 +7022,7 @@ abstract class _$$ResizeUpdateCopyWith<$Res> {
 /// @nodoc
 class __$$ResizeUpdateCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ResizeUpdateCopyWith<$Res> {
-  __$$ResizeUpdateCopyWithImpl(
-      _$ResizeUpdate _value, $Res Function(_$ResizeUpdate) _then)
+  __$$ResizeUpdateCopyWithImpl(_$ResizeUpdate _value, $Res Function(_$ResizeUpdate) _then)
       : super(_value, (v) => _then(v as _$ResizeUpdate));
 
   @override
@@ -8292,16 +7066,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResizeUpdate &&
-            const DeepCollectionEquality()
-                .equals(other.resizeDirection, resizeDirection) &&
+            const DeepCollectionEquality().equals(other.resizeDirection, resizeDirection) &&
             const DeepCollectionEquality().equals(other.delta, delta));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(resizeDirection),
-      const DeepCollectionEquality().hash(delta));
+      runtimeType, const DeepCollectionEquality().hash(resizeDirection), const DeepCollectionEquality().hash(delta));
 
   @JsonKey(ignore: true)
   @override
@@ -8313,28 +7084,21 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -8342,16 +7106,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -8364,14 +7125,11 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8380,8 +7138,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8389,15 +7146,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8410,14 +7165,11 @@ class _$ResizeUpdate implements ResizeUpdate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8426,8 +7178,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8435,15 +7186,13 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8462,17 +7211,12 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -8482,27 +7226,19 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return resizeUpdate(this);
   }
@@ -8531,23 +7267,17 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return resizeUpdate?.call(this);
   }
@@ -8576,23 +7306,17 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (resizeUpdate != null) {
@@ -8603,29 +7327,22 @@ class _$ResizeUpdate implements ResizeUpdate {
 }
 
 abstract class ResizeUpdate implements EditorEvent {
-  const factory ResizeUpdate(
-          final ResizeDirection resizeDirection, final Offset delta) =
-      _$ResizeUpdate;
+  const factory ResizeUpdate(final ResizeDirection resizeDirection, final Offset delta) = _$ResizeUpdate;
 
   ResizeDirection get resizeDirection;
   Offset get delta;
   @JsonKey(ignore: true)
-  _$$ResizeUpdateCopyWith<_$ResizeUpdate> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ResizeUpdateCopyWith<_$ResizeUpdate> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ResizeEndCopyWith<$Res> {
-  factory _$$ResizeEndCopyWith(
-          _$ResizeEnd value, $Res Function(_$ResizeEnd) then) =
-      __$$ResizeEndCopyWithImpl<$Res>;
+  factory _$$ResizeEndCopyWith(_$ResizeEnd value, $Res Function(_$ResizeEnd) then) = __$$ResizeEndCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ResizeEndCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
-    implements _$$ResizeEndCopyWith<$Res> {
-  __$$ResizeEndCopyWithImpl(
-      _$ResizeEnd _value, $Res Function(_$ResizeEnd) _then)
+class __$$ResizeEndCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res> implements _$$ResizeEndCopyWith<$Res> {
+  __$$ResizeEndCopyWithImpl(_$ResizeEnd _value, $Res Function(_$ResizeEnd) _then)
       : super(_value, (v) => _then(v as _$ResizeEnd));
 
   @override
@@ -8644,8 +7361,7 @@ class _$ResizeEnd implements ResizeEnd {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResizeEnd);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ResizeEnd);
   }
 
   @override
@@ -8656,28 +7372,21 @@ class _$ResizeEnd implements ResizeEnd {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -8685,16 +7394,13 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -8707,14 +7413,11 @@ class _$ResizeEnd implements ResizeEnd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8723,8 +7426,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8732,15 +7434,13 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8753,14 +7453,11 @@ class _$ResizeEnd implements ResizeEnd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -8769,8 +7466,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -8778,15 +7474,13 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -8805,17 +7499,12 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -8825,27 +7514,19 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return resizeEnd(this);
   }
@@ -8874,23 +7555,17 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return resizeEnd?.call(this);
   }
@@ -8919,23 +7594,17 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (resizeEnd != null) {
@@ -8952,24 +7621,20 @@ abstract class ResizeEnd implements EditorEvent {
 /// @nodoc
 abstract class _$$SelectedElementSizeChangedCopyWith<$Res> {
   factory _$$SelectedElementSizeChangedCopyWith(
-          _$SelectedElementSizeChanged value,
-          $Res Function(_$SelectedElementSizeChanged) then) =
+          _$SelectedElementSizeChanged value, $Res Function(_$SelectedElementSizeChanged) then) =
       __$$SelectedElementSizeChangedCopyWithImpl<$Res>;
   $Res call({Size updatedSize});
 }
 
 /// @nodoc
-class __$$SelectedElementSizeChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$SelectedElementSizeChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$SelectedElementSizeChangedCopyWith<$Res> {
   __$$SelectedElementSizeChangedCopyWithImpl(
-      _$SelectedElementSizeChanged _value,
-      $Res Function(_$SelectedElementSizeChanged) _then)
+      _$SelectedElementSizeChanged _value, $Res Function(_$SelectedElementSizeChanged) _then)
       : super(_value, (v) => _then(v as _$SelectedElementSizeChanged));
 
   @override
-  _$SelectedElementSizeChanged get _value =>
-      super._value as _$SelectedElementSizeChanged;
+  _$SelectedElementSizeChanged get _value => super._value as _$SelectedElementSizeChanged;
 
   @override
   $Res call({
@@ -9002,47 +7667,37 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectedElementSizeChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedSize, updatedSize));
+            const DeepCollectionEquality().equals(other.updatedSize, updatedSize));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedSize));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedSize));
 
   @JsonKey(ignore: true)
   @override
-  _$$SelectedElementSizeChangedCopyWith<_$SelectedElementSizeChanged>
-      get copyWith => __$$SelectedElementSizeChangedCopyWithImpl<
-          _$SelectedElementSizeChanged>(this, _$identity);
+  _$$SelectedElementSizeChangedCopyWith<_$SelectedElementSizeChanged> get copyWith =>
+      __$$SelectedElementSizeChangedCopyWithImpl<_$SelectedElementSizeChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -9050,16 +7705,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -9072,14 +7724,11 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9088,8 +7737,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9097,15 +7745,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9118,14 +7764,11 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9134,8 +7777,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9143,15 +7785,13 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9170,17 +7810,12 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -9190,27 +7825,19 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return selectedElementSizeChanged(this);
   }
@@ -9239,23 +7866,17 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return selectedElementSizeChanged?.call(this);
   }
@@ -9284,23 +7905,17 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (selectedElementSizeChanged != null) {
@@ -9311,36 +7926,31 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
 }
 
 abstract class SelectedElementSizeChanged implements EditorEvent {
-  const factory SelectedElementSizeChanged(final Size updatedSize) =
-      _$SelectedElementSizeChanged;
+  const factory SelectedElementSizeChanged(final Size updatedSize) = _$SelectedElementSizeChanged;
 
   Size get updatedSize;
   @JsonKey(ignore: true)
-  _$$SelectedElementSizeChangedCopyWith<_$SelectedElementSizeChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SelectedElementSizeChangedCopyWith<_$SelectedElementSizeChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SelectedElementPositionChangedCopyWith<$Res> {
   factory _$$SelectedElementPositionChangedCopyWith(
-          _$SelectedElementPositionChanged value,
-          $Res Function(_$SelectedElementPositionChanged) then) =
+          _$SelectedElementPositionChanged value, $Res Function(_$SelectedElementPositionChanged) then) =
       __$$SelectedElementPositionChangedCopyWithImpl<$Res>;
   $Res call({Offset updatedPosition});
 }
 
 /// @nodoc
-class __$$SelectedElementPositionChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$SelectedElementPositionChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$SelectedElementPositionChangedCopyWith<$Res> {
   __$$SelectedElementPositionChangedCopyWithImpl(
-      _$SelectedElementPositionChanged _value,
-      $Res Function(_$SelectedElementPositionChanged) _then)
+      _$SelectedElementPositionChanged _value, $Res Function(_$SelectedElementPositionChanged) _then)
       : super(_value, (v) => _then(v as _$SelectedElementPositionChanged));
 
   @override
-  _$SelectedElementPositionChanged get _value =>
-      super._value as _$SelectedElementPositionChanged;
+  _$SelectedElementPositionChanged get _value => super._value as _$SelectedElementPositionChanged;
 
   @override
   $Res call({
@@ -9357,8 +7967,7 @@ class __$$SelectedElementPositionChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectedElementPositionChanged
-    implements SelectedElementPositionChanged {
+class _$SelectedElementPositionChanged implements SelectedElementPositionChanged {
   const _$SelectedElementPositionChanged(this.updatedPosition);
 
   /// The new top-left of the element's rect.
@@ -9375,47 +7984,37 @@ class _$SelectedElementPositionChanged
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectedElementPositionChanged &&
-            const DeepCollectionEquality()
-                .equals(other.updatedPosition, updatedPosition));
+            const DeepCollectionEquality().equals(other.updatedPosition, updatedPosition));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(updatedPosition));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(updatedPosition));
 
   @JsonKey(ignore: true)
   @override
-  _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged>
-      get copyWith => __$$SelectedElementPositionChangedCopyWithImpl<
-          _$SelectedElementPositionChanged>(this, _$identity);
+  _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged> get copyWith =>
+      __$$SelectedElementPositionChangedCopyWithImpl<_$SelectedElementPositionChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -9423,16 +8022,13 @@ class _$SelectedElementPositionChanged
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -9445,14 +8041,11 @@ class _$SelectedElementPositionChanged
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9461,8 +8054,7 @@ class _$SelectedElementPositionChanged
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9470,15 +8062,13 @@ class _$SelectedElementPositionChanged
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9491,14 +8081,11 @@ class _$SelectedElementPositionChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9507,8 +8094,7 @@ class _$SelectedElementPositionChanged
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9516,15 +8102,13 @@ class _$SelectedElementPositionChanged
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9543,17 +8127,12 @@ class _$SelectedElementPositionChanged
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -9563,27 +8142,19 @@ class _$SelectedElementPositionChanged
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return selectedElementPositionChanged(this);
   }
@@ -9612,23 +8183,17 @@ class _$SelectedElementPositionChanged
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return selectedElementPositionChanged?.call(this);
   }
@@ -9657,23 +8222,17 @@ class _$SelectedElementPositionChanged
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (selectedElementPositionChanged != null) {
@@ -9684,35 +8243,31 @@ class _$SelectedElementPositionChanged
 }
 
 abstract class SelectedElementPositionChanged implements EditorEvent {
-  const factory SelectedElementPositionChanged(final Offset updatedPosition) =
-      _$SelectedElementPositionChanged;
+  const factory SelectedElementPositionChanged(final Offset updatedPosition) = _$SelectedElementPositionChanged;
 
   /// The new top-left of the element's rect.
   Offset get updatedPosition;
   @JsonKey(ignore: true)
-  _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SelectedElementPositionChangedCopyWith<_$SelectedElementPositionChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$TextEditingModeChangedCopyWith<$Res> {
-  factory _$$TextEditingModeChangedCopyWith(_$TextEditingModeChanged value,
-          $Res Function(_$TextEditingModeChanged) then) =
+  factory _$$TextEditingModeChangedCopyWith(
+          _$TextEditingModeChanged value, $Res Function(_$TextEditingModeChanged) then) =
       __$$TextEditingModeChangedCopyWithImpl<$Res>;
   $Res call({bool isEditingTextElement});
 }
 
 /// @nodoc
-class __$$TextEditingModeChangedCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$TextEditingModeChangedCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$TextEditingModeChangedCopyWith<$Res> {
-  __$$TextEditingModeChangedCopyWithImpl(_$TextEditingModeChanged _value,
-      $Res Function(_$TextEditingModeChanged) _then)
+  __$$TextEditingModeChangedCopyWithImpl(_$TextEditingModeChanged _value, $Res Function(_$TextEditingModeChanged) _then)
       : super(_value, (v) => _then(v as _$TextEditingModeChanged));
 
   @override
-  _$TextEditingModeChanged get _value =>
-      super._value as _$TextEditingModeChanged;
+  _$TextEditingModeChanged get _value => super._value as _$TextEditingModeChanged;
 
   @override
   $Res call({
@@ -9745,47 +8300,37 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TextEditingModeChanged &&
-            const DeepCollectionEquality()
-                .equals(other.isEditingTextElement, isEditingTextElement));
+            const DeepCollectionEquality().equals(other.isEditingTextElement, isEditingTextElement));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(isEditingTextElement));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(isEditingTextElement));
 
   @JsonKey(ignore: true)
   @override
   _$$TextEditingModeChangedCopyWith<_$TextEditingModeChanged> get copyWith =>
-      __$$TextEditingModeChangedCopyWithImpl<_$TextEditingModeChanged>(
-          this, _$identity);
+      __$$TextEditingModeChangedCopyWithImpl<_$TextEditingModeChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -9793,16 +8338,13 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -9815,14 +8357,11 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9831,8 +8370,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9840,15 +8378,13 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9861,14 +8397,11 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -9877,8 +8410,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -9886,15 +8418,13 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -9913,17 +8443,12 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -9933,27 +8458,19 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return textEditingModeChanged(this);
   }
@@ -9982,23 +8499,17 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return textEditingModeChanged?.call(this);
   }
@@ -10027,23 +8538,17 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (textEditingModeChanged != null) {
@@ -10054,27 +8559,23 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
 }
 
 abstract class TextEditingModeChanged implements EditorEvent {
-  const factory TextEditingModeChanged(final bool isEditingTextElement) =
-      _$TextEditingModeChanged;
+  const factory TextEditingModeChanged(final bool isEditingTextElement) = _$TextEditingModeChanged;
 
   bool get isEditingTextElement;
   @JsonKey(ignore: true)
-  _$$TextEditingModeChangedCopyWith<_$TextEditingModeChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TextEditingModeChangedCopyWith<_$TextEditingModeChanged> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ClearEditorCopyWith<$Res> {
-  factory _$$ClearEditorCopyWith(
-          _$ClearEditor value, $Res Function(_$ClearEditor) then) =
+  factory _$$ClearEditorCopyWith(_$ClearEditor value, $Res Function(_$ClearEditor) then) =
       __$$ClearEditorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$ClearEditorCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ClearEditorCopyWith<$Res> {
-  __$$ClearEditorCopyWithImpl(
-      _$ClearEditor _value, $Res Function(_$ClearEditor) _then)
+  __$$ClearEditorCopyWithImpl(_$ClearEditor _value, $Res Function(_$ClearEditor) _then)
       : super(_value, (v) => _then(v as _$ClearEditor));
 
   @override
@@ -10093,8 +8594,7 @@ class _$ClearEditor implements ClearEditor {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClearEditor);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ClearEditor);
   }
 
   @override
@@ -10105,28 +8605,21 @@ class _$ClearEditor implements ClearEditor {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -10134,16 +8627,13 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -10156,14 +8646,11 @@ class _$ClearEditor implements ClearEditor {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10172,8 +8659,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10181,15 +8667,13 @@ class _$ClearEditor implements ClearEditor {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10202,14 +8686,11 @@ class _$ClearEditor implements ClearEditor {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10218,8 +8699,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10227,15 +8707,13 @@ class _$ClearEditor implements ClearEditor {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10254,17 +8732,12 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -10274,27 +8747,19 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return clearEditor(this);
   }
@@ -10323,23 +8788,17 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return clearEditor?.call(this);
   }
@@ -10368,23 +8827,17 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -10400,8 +8853,7 @@ abstract class ClearEditor implements EditorEvent {
 
 /// @nodoc
 abstract class _$$SetCanvasKeyCopyWith<$Res> {
-  factory _$$SetCanvasKeyCopyWith(
-          _$SetCanvasKey value, $Res Function(_$SetCanvasKey) then) =
+  factory _$$SetCanvasKeyCopyWith(_$SetCanvasKey value, $Res Function(_$SetCanvasKey) then) =
       __$$SetCanvasKeyCopyWithImpl<$Res>;
   $Res call({Option<GlobalKey<State<StatefulWidget>>> key});
 }
@@ -10409,8 +8861,7 @@ abstract class _$$SetCanvasKeyCopyWith<$Res> {
 /// @nodoc
 class __$$SetCanvasKeyCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$SetCanvasKeyCopyWith<$Res> {
-  __$$SetCanvasKeyCopyWithImpl(
-      _$SetCanvasKey _value, $Res Function(_$SetCanvasKey) _then)
+  __$$SetCanvasKeyCopyWithImpl(_$SetCanvasKey _value, $Res Function(_$SetCanvasKey) _then)
       : super(_value, (v) => _then(v as _$SetCanvasKey));
 
   @override
@@ -10451,8 +8902,7 @@ class _$SetCanvasKey implements SetCanvasKey {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(key));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(key));
 
   @JsonKey(ignore: true)
   @override
@@ -10464,28 +8914,21 @@ class _$SetCanvasKey implements SetCanvasKey {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -10493,16 +8936,13 @@ class _$SetCanvasKey implements SetCanvasKey {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -10515,14 +8955,11 @@ class _$SetCanvasKey implements SetCanvasKey {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10531,8 +8968,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10540,15 +8976,13 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10561,14 +8995,11 @@ class _$SetCanvasKey implements SetCanvasKey {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10577,8 +9008,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10586,15 +9016,13 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10613,17 +9041,12 @@ class _$SetCanvasKey implements SetCanvasKey {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -10633,27 +9056,19 @@ class _$SetCanvasKey implements SetCanvasKey {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return setCanvasKey(this);
   }
@@ -10682,23 +9097,17 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return setCanvasKey?.call(this);
   }
@@ -10727,23 +9136,17 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (setCanvasKey != null) {
@@ -10754,36 +9157,30 @@ class _$SetCanvasKey implements SetCanvasKey {
 }
 
 abstract class SetCanvasKey implements EditorEvent {
-  const factory SetCanvasKey(
-      final Option<GlobalKey<State<StatefulWidget>>> key) = _$SetCanvasKey;
+  const factory SetCanvasKey(final Option<GlobalKey<State<StatefulWidget>>> key) = _$SetCanvasKey;
 
   Option<GlobalKey<State<StatefulWidget>>> get key;
   @JsonKey(ignore: true)
-  _$$SetCanvasKeyCopyWith<_$SetCanvasKey> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SetCanvasKeyCopyWith<_$SetCanvasKey> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ChangeCanvasBackgroundColorCopyWith<$Res> {
   factory _$$ChangeCanvasBackgroundColorCopyWith(
-          _$ChangeCanvasBackgroundColor value,
-          $Res Function(_$ChangeCanvasBackgroundColor) then) =
+          _$ChangeCanvasBackgroundColor value, $Res Function(_$ChangeCanvasBackgroundColor) then) =
       __$$ChangeCanvasBackgroundColorCopyWithImpl<$Res>;
   $Res call({Color color});
 }
 
 /// @nodoc
-class __$$ChangeCanvasBackgroundColorCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$ChangeCanvasBackgroundColorCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ChangeCanvasBackgroundColorCopyWith<$Res> {
   __$$ChangeCanvasBackgroundColorCopyWithImpl(
-      _$ChangeCanvasBackgroundColor _value,
-      $Res Function(_$ChangeCanvasBackgroundColor) _then)
+      _$ChangeCanvasBackgroundColor _value, $Res Function(_$ChangeCanvasBackgroundColor) _then)
       : super(_value, (v) => _then(v as _$ChangeCanvasBackgroundColor));
 
   @override
-  _$ChangeCanvasBackgroundColor get _value =>
-      super._value as _$ChangeCanvasBackgroundColor;
+  _$ChangeCanvasBackgroundColor get _value => super._value as _$ChangeCanvasBackgroundColor;
 
   @override
   $Res call({
@@ -10820,42 +9217,33 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(color));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(color));
 
   @JsonKey(ignore: true)
   @override
-  _$$ChangeCanvasBackgroundColorCopyWith<_$ChangeCanvasBackgroundColor>
-      get copyWith => __$$ChangeCanvasBackgroundColorCopyWithImpl<
-          _$ChangeCanvasBackgroundColor>(this, _$identity);
+  _$$ChangeCanvasBackgroundColorCopyWith<_$ChangeCanvasBackgroundColor> get copyWith =>
+      __$$ChangeCanvasBackgroundColorCopyWithImpl<_$ChangeCanvasBackgroundColor>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -10863,16 +9251,13 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -10885,14 +9270,11 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10901,8 +9283,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10910,15 +9291,13 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10931,14 +9310,11 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -10947,8 +9323,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -10956,15 +9331,13 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -10983,17 +9356,12 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -11003,27 +9371,19 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return changeCanvasBackgroundColor(this);
   }
@@ -11052,23 +9412,17 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return changeCanvasBackgroundColor?.call(this);
   }
@@ -11097,23 +9451,17 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundColor != null) {
@@ -11124,35 +9472,30 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
 }
 
 abstract class ChangeCanvasBackgroundColor implements EditorEvent {
-  const factory ChangeCanvasBackgroundColor(final Color color) =
-      _$ChangeCanvasBackgroundColor;
+  const factory ChangeCanvasBackgroundColor(final Color color) = _$ChangeCanvasBackgroundColor;
 
   Color get color;
   @JsonKey(ignore: true)
-  _$$ChangeCanvasBackgroundColorCopyWith<_$ChangeCanvasBackgroundColor>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ChangeCanvasBackgroundColorCopyWith<_$ChangeCanvasBackgroundColor> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ChangeCanvasBackgroundImageCopyWith<$Res> {
   factory _$$ChangeCanvasBackgroundImageCopyWith(
-          _$ChangeCanvasBackgroundImage value,
-          $Res Function(_$ChangeCanvasBackgroundImage) then) =
+          _$ChangeCanvasBackgroundImage value, $Res Function(_$ChangeCanvasBackgroundImage) then) =
       __$$ChangeCanvasBackgroundImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ChangeCanvasBackgroundImageCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$ChangeCanvasBackgroundImageCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$ChangeCanvasBackgroundImageCopyWith<$Res> {
   __$$ChangeCanvasBackgroundImageCopyWithImpl(
-      _$ChangeCanvasBackgroundImage _value,
-      $Res Function(_$ChangeCanvasBackgroundImage) _then)
+      _$ChangeCanvasBackgroundImage _value, $Res Function(_$ChangeCanvasBackgroundImage) _then)
       : super(_value, (v) => _then(v as _$ChangeCanvasBackgroundImage));
 
   @override
-  _$ChangeCanvasBackgroundImage get _value =>
-      super._value as _$ChangeCanvasBackgroundImage;
+  _$ChangeCanvasBackgroundImage get _value => super._value as _$ChangeCanvasBackgroundImage;
 }
 
 /// @nodoc
@@ -11167,9 +9510,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeCanvasBackgroundImage);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ChangeCanvasBackgroundImage);
   }
 
   @override
@@ -11180,28 +9521,21 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -11209,16 +9543,13 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -11231,14 +9562,11 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -11247,8 +9575,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -11256,15 +9583,13 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -11277,14 +9602,11 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -11293,8 +9615,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -11302,15 +9623,13 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -11329,17 +9648,12 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -11349,27 +9663,19 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return changeCanvasBackgroundImage(this);
   }
@@ -11398,23 +9704,17 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return changeCanvasBackgroundImage?.call(this);
   }
@@ -11443,23 +9743,17 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundImage != null) {
@@ -11476,23 +9770,19 @@ abstract class ChangeCanvasBackgroundImage implements EditorEvent {
 /// @nodoc
 abstract class _$$RemoveCanvasBackgroundImageCopyWith<$Res> {
   factory _$$RemoveCanvasBackgroundImageCopyWith(
-          _$RemoveCanvasBackgroundImage value,
-          $Res Function(_$RemoveCanvasBackgroundImage) then) =
+          _$RemoveCanvasBackgroundImage value, $Res Function(_$RemoveCanvasBackgroundImage) then) =
       __$$RemoveCanvasBackgroundImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RemoveCanvasBackgroundImageCopyWithImpl<$Res>
-    extends _$EditorEventCopyWithImpl<$Res>
+class __$$RemoveCanvasBackgroundImageCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
     implements _$$RemoveCanvasBackgroundImageCopyWith<$Res> {
   __$$RemoveCanvasBackgroundImageCopyWithImpl(
-      _$RemoveCanvasBackgroundImage _value,
-      $Res Function(_$RemoveCanvasBackgroundImage) _then)
+      _$RemoveCanvasBackgroundImage _value, $Res Function(_$RemoveCanvasBackgroundImage) _then)
       : super(_value, (v) => _then(v as _$RemoveCanvasBackgroundImage));
 
   @override
-  _$RemoveCanvasBackgroundImage get _value =>
-      super._value as _$RemoveCanvasBackgroundImage;
+  _$RemoveCanvasBackgroundImage get _value => super._value as _$RemoveCanvasBackgroundImage;
 }
 
 /// @nodoc
@@ -11507,9 +9797,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RemoveCanvasBackgroundImage);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$RemoveCanvasBackgroundImage);
   }
 
   @override
@@ -11520,28 +9808,21 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
   TResult when<TResult extends Object?>({
     required TResult Function() undo,
     required TResult Function() redo,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addStaticText,
     required TResult Function(String updatedText) staticTextChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        staticTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        staticTextAlignChanged,
-    required TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
         addVariableText,
     required TResult Function() variableTextFileChanged,
-    required TResult Function(TextStyle? updatedTextStyle)
-        variableTextStyleChanged,
-    required TResult Function(TextAlign? updatedTextAlign)
-        variableTextAlignChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
     required TResult Function() addImage,
     required TResult Function(Offset localPosition) canvasDragStart,
     required TResult Function(Offset delta) canvasDragUpdate,
     required TResult Function() canvasDragEnd,
-    required TResult Function(Element draggedElement, Offset localPosition)
-        elementDragStart,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
     required TResult Function(Offset delta) elementDragUpdate,
     required TResult Function() elementDragEnd,
     required TResult Function() canvasTap,
@@ -11549,16 +9830,13 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     required TResult Function() removeSelectedElement,
     required TResult Function() deselectElement,
     required TResult Function() bringSelectedElementToFront,
-    required TResult Function(ResizeDirection resizeDirection, Offset delta)
-        resizeUpdate,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
     required TResult Function() resizeEnd,
     required TResult Function(Size updatedSize) selectedElementSizeChanged,
-    required TResult Function(Offset updatedPosition)
-        selectedElementPositionChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
     required TResult Function(bool isEditingTextElement) textEditingModeChanged,
     required TResult Function() clearEditor,
-    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)
-        setCanvasKey,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
@@ -11571,14 +9849,11 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -11587,8 +9862,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -11596,15 +9870,13 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -11617,14 +9889,11 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? undo,
     TResult Function()? redo,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
-        addStaticText,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
     TResult Function(String updatedText)? staticTextChanged,
     TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
     TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
-    TResult Function(String initialText, TextDirection textDirection,
-            double minWidth, double maxWidth)?
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
         addVariableText,
     TResult Function()? variableTextFileChanged,
     TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
@@ -11633,8 +9902,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(Offset localPosition)? canvasDragStart,
     TResult Function(Offset delta)? canvasDragUpdate,
     TResult Function()? canvasDragEnd,
-    TResult Function(Element draggedElement, Offset localPosition)?
-        elementDragStart,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
     TResult Function(Offset delta)? elementDragUpdate,
     TResult Function()? elementDragEnd,
     TResult Function()? canvasTap,
@@ -11642,15 +9910,13 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function()? removeSelectedElement,
     TResult Function()? deselectElement,
     TResult Function()? bringSelectedElementToFront,
-    TResult Function(ResizeDirection resizeDirection, Offset delta)?
-        resizeUpdate,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
     TResult Function()? resizeEnd,
     TResult Function(Size updatedSize)? selectedElementSizeChanged,
     TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
     TResult Function(bool isEditingTextElement)? textEditingModeChanged,
     TResult Function()? clearEditor,
-    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)?
-        setCanvasKey,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
@@ -11669,17 +9935,12 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     required TResult Function(Redo value) redo,
     required TResult Function(AddStaticText value) addStaticText,
     required TResult Function(StaticTextChanged value) staticTextChanged,
-    required TResult Function(StaticTextStyleChanged value)
-        staticTextStyleChanged,
-    required TResult Function(StaticTextAlignChanged value)
-        staticTextAlignChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
     required TResult Function(AddVariableText value) addVariableText,
-    required TResult Function(VariableTextFileChanged value)
-        variableTextFileChanged,
-    required TResult Function(VariableTextStyleChanged value)
-        variableTextStyleChanged,
-    required TResult Function(VariableTextAlignChanged value)
-        variableTextAlignChanged,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
     required TResult Function(AddImage value) addImage,
     required TResult Function(CanvasDragStart value) canvasDragStart,
     required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
@@ -11689,27 +9950,19 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     required TResult Function(ElementDragEnd value) elementDragEnd,
     required TResult Function(CanvasTap value) canvasTap,
     required TResult Function(ElementTap value) elementTap,
-    required TResult Function(RemoveSelectedElement value)
-        removeSelectedElement,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
     required TResult Function(DeselectElement value) deselectElement,
-    required TResult Function(BringSelectedElementToFront value)
-        bringSelectedElementToFront,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
     required TResult Function(ResizeUpdate value) resizeUpdate,
     required TResult Function(ResizeEnd value) resizeEnd,
-    required TResult Function(SelectedElementSizeChanged value)
-        selectedElementSizeChanged,
-    required TResult Function(SelectedElementPositionChanged value)
-        selectedElementPositionChanged,
-    required TResult Function(TextEditingModeChanged value)
-        textEditingModeChanged,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
     required TResult Function(ClearEditor value) clearEditor,
     required TResult Function(SetCanvasKey value) setCanvasKey,
-    required TResult Function(ChangeCanvasBackgroundColor value)
-        changeCanvasBackgroundColor,
-    required TResult Function(ChangeCanvasBackgroundImage value)
-        changeCanvasBackgroundImage,
-    required TResult Function(RemoveCanvasBackgroundImage value)
-        removeCanvasBackgroundImage,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
   }) {
     return removeCanvasBackgroundImage(this);
   }
@@ -11738,23 +9991,17 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
   }) {
     return removeCanvasBackgroundImage?.call(this);
   }
@@ -11783,23 +10030,17 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(ElementTap value)? elementTap,
     TResult Function(RemoveSelectedElement value)? removeSelectedElement,
     TResult Function(DeselectElement value)? deselectElement,
-    TResult Function(BringSelectedElementToFront value)?
-        bringSelectedElementToFront,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
     TResult Function(ResizeUpdate value)? resizeUpdate,
     TResult Function(ResizeEnd value)? resizeEnd,
-    TResult Function(SelectedElementSizeChanged value)?
-        selectedElementSizeChanged,
-    TResult Function(SelectedElementPositionChanged value)?
-        selectedElementPositionChanged,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
     TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
     TResult Function(ClearEditor value)? clearEditor,
     TResult Function(SetCanvasKey value)? setCanvasKey,
-    TResult Function(ChangeCanvasBackgroundColor value)?
-        changeCanvasBackgroundColor,
-    TResult Function(ChangeCanvasBackgroundImage value)?
-        changeCanvasBackgroundImage,
-    TResult Function(RemoveCanvasBackgroundImage value)?
-        removeCanvasBackgroundImage,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
     required TResult orElse(),
   }) {
     if (removeCanvasBackgroundImage != null) {
@@ -11820,22 +10061,17 @@ mixin _$EditorState {
   Option<Offset> get dragPosition => throw _privateConstructorUsedError;
   Option<Element> get selectedElement => throw _privateConstructorUsedError;
   bool get isEditingTextElement => throw _privateConstructorUsedError;
-  Option<GlobalKey<State<StatefulWidget>>> get canvasKey =>
-      throw _privateConstructorUsedError;
+  Option<GlobalKey<State<StatefulWidget>>> get canvasKey => throw _privateConstructorUsedError;
   Option<Color> get canvasBackgroundColor => throw _privateConstructorUsedError;
-  Option<File> get canvasBackgroundImageFile =>
-      throw _privateConstructorUsedError;
+  Option<File> get canvasBackgroundImageFile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EditorStateCopyWith<EditorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditorStateCopyWith<EditorState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditorStateCopyWith<$Res> {
-  factory $EditorStateCopyWith(
-          EditorState value, $Res Function(EditorState) then) =
-      _$EditorStateCopyWithImpl<$Res>;
+  factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) then) = _$EditorStateCopyWithImpl<$Res>;
   $Res call(
       {Editor editor,
       Option<Element> draggedElement,
@@ -11913,10 +10149,8 @@ class _$EditorStateCopyWithImpl<$Res> implements $EditorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_EditorStateCopyWith<$Res>
-    implements $EditorStateCopyWith<$Res> {
-  factory _$$_EditorStateCopyWith(
-          _$_EditorState value, $Res Function(_$_EditorState) then) =
+abstract class _$$_EditorStateCopyWith<$Res> implements $EditorStateCopyWith<$Res> {
+  factory _$$_EditorStateCopyWith(_$_EditorState value, $Res Function(_$_EditorState) then) =
       __$$_EditorStateCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -11936,8 +10170,7 @@ abstract class _$$_EditorStateCopyWith<$Res>
 /// @nodoc
 class __$$_EditorStateCopyWithImpl<$Res> extends _$EditorStateCopyWithImpl<$Res>
     implements _$$_EditorStateCopyWith<$Res> {
-  __$$_EditorStateCopyWithImpl(
-      _$_EditorState _value, $Res Function(_$_EditorState) _then)
+  __$$_EditorStateCopyWithImpl(_$_EditorState _value, $Res Function(_$_EditorState) _then)
       : super(_value, (v) => _then(v as _$_EditorState));
 
   @override
@@ -12033,19 +10266,13 @@ class _$_EditorState extends _EditorState {
         (other.runtimeType == runtimeType &&
             other is _$_EditorState &&
             const DeepCollectionEquality().equals(other.editor, editor) &&
-            const DeepCollectionEquality()
-                .equals(other.draggedElement, draggedElement) &&
-            const DeepCollectionEquality()
-                .equals(other.dragPosition, dragPosition) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedElement, selectedElement) &&
-            const DeepCollectionEquality()
-                .equals(other.isEditingTextElement, isEditingTextElement) &&
+            const DeepCollectionEquality().equals(other.draggedElement, draggedElement) &&
+            const DeepCollectionEquality().equals(other.dragPosition, dragPosition) &&
+            const DeepCollectionEquality().equals(other.selectedElement, selectedElement) &&
+            const DeepCollectionEquality().equals(other.isEditingTextElement, isEditingTextElement) &&
             const DeepCollectionEquality().equals(other.canvasKey, canvasKey) &&
-            const DeepCollectionEquality()
-                .equals(other.canvasBackgroundColor, canvasBackgroundColor) &&
-            const DeepCollectionEquality().equals(
-                other.canvasBackgroundImageFile, canvasBackgroundImageFile));
+            const DeepCollectionEquality().equals(other.canvasBackgroundColor, canvasBackgroundColor) &&
+            const DeepCollectionEquality().equals(other.canvasBackgroundImageFile, canvasBackgroundImageFile));
   }
 
   @override
@@ -12096,6 +10323,5 @@ abstract class _EditorState extends EditorState {
   Option<File> get canvasBackgroundImageFile;
   @override
   @JsonKey(ignore: true)
-  _$$_EditorStateCopyWith<_$_EditorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_EditorStateCopyWith<_$_EditorState> get copyWith => throw _privateConstructorUsedError;
 }

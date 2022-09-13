@@ -11,8 +11,7 @@ class LoadingWidget extends StatelessWidget {
   /// The child to display in the loading widget.
   final Widget child;
 
-  const LoadingWidget({Key? key, required this.child, this.onDismiss})
-      : super(key: key);
+  const LoadingWidget({Key? key, required this.child, this.onDismiss}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

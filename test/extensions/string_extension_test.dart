@@ -4,8 +4,7 @@ import 'package:photo_editor/extensions/string_extension.dart';
 
 void main() {
   group('textSize', () {
-    testWidgets(
-        'Should return a correct approximate size of the text with a small error.',
+    testWidgets('Should return a correct approximate size of the text with a small error.',
         (WidgetTester tester) async {
       // set up the text and its properties
       const String text = '''
@@ -108,8 +107,7 @@ void main() {
       expect(s2.unCamelCase(capitalize: false), 'helloworld');
 
       expect(s3.unCamelCase(), 'Hello World I Am A Camel Case String');
-      expect(s3.unCamelCase(capitalize: false),
-          'hello world i am a camel case string');
+      expect(s3.unCamelCase(capitalize: false), 'hello world i am a camel case string');
 
       expect(s4.unCamelCase(), 'Hello World');
       expect(s4.unCamelCase(capitalize: false), 'hello world');

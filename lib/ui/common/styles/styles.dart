@@ -25,8 +25,7 @@ get themeData => ThemeData(
         trackVisibility: MaterialStateProperty.all(true),
       ),
       popupMenuTheme: PopupMenuThemeData(
-        textStyle: Typography.whiteRedwoodCity.titleMedium!
-            .copyWith(color: Colors.black),
+        textStyle: Typography.whiteRedwoodCity.titleMedium!.copyWith(color: Colors.black),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

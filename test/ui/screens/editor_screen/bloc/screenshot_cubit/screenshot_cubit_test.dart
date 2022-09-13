@@ -12,6 +12,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
 import 'package:photo_editor/services/image_editor/image_editor.dart';
+import 'package:photo_editor/services/image_editor/image_editor_exception.dart';
 import 'package:photo_editor/services/screenshot_service/screenshot_service.dart';
 import 'package:photo_editor/ui/common/error/invalid_state_error.dart';
 import 'package:photo_editor/ui/screens/editor_screen/bloc/screenshot_cubit/screenshot_cubit.dart';
@@ -68,8 +69,7 @@ void main() {
         baseFileName: baseFileName ?? none(),
         outputImageFormat: outputImageFormat ?? ImageFormat.png,
         outputImageSize: size ?? const Size(1366, 768),
-        outputImageQuality:
-            outputImageQuality ?? ScreenshotCubit.maximumOutputImageResolution,
+        outputImageQuality: outputImageQuality ?? ScreenshotCubit.maximumOutputImageResolution,
       );
 
   group('initialization tests', () {
@@ -127,26 +127,22 @@ void main() {
         mockFilePicker = MockFilePicker();
         when(
           mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory'),
+            initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
           ),
         ).thenAnswer((_) async => some(directory));
       },
       build: () => createScreenshotCubit(filePicker: mockFilePicker),
       act: (cubit) => cubit.setOutputImageDirectory(),
-      expect: () =>
-          [createScreenshotState(outputImageDirectory: some(directory))],
+      expect: () => [createScreenshotState(outputImageDirectory: some(directory))],
     );
     blocTest<ScreenshotCubit, ScreenshotState>(
       'Should set the directory correctly when no directory is chosen.',
-      seed: () =>
-          createScreenshotState(outputImageDirectory: some(Directory('/'))),
+      seed: () => createScreenshotState(outputImageDirectory: some(Directory('/'))),
       setUp: () {
         mockFilePicker = MockFilePicker();
         when(
           mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory'),
+            initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
           ),
         ).thenAnswer((_) async => none());
       },
@@ -156,21 +152,18 @@ void main() {
     );
     blocTest<ScreenshotCubit, ScreenshotState>(
       'Should set the initial directory correctly when there is one.',
-      seed: () => createScreenshotState(
-          outputImageDirectory: some(Directory('/Desktop'))),
+      seed: () => createScreenshotState(outputImageDirectory: some(Directory('/Desktop'))),
       setUp: () {
         mockFilePicker = MockFilePicker();
         when(
           mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/Desktop'), named: 'initialDirectory'),
+            initialDirectory: captureThat(equals('/Desktop'), named: 'initialDirectory'),
           ),
         ).thenAnswer((_) async => some(directory));
       },
       build: () => createScreenshotCubit(filePicker: mockFilePicker),
       act: (cubit) => cubit.setOutputImageDirectory(),
-      expect: () =>
-          [createScreenshotState(outputImageDirectory: some(directory))],
+      expect: () => [createScreenshotState(outputImageDirectory: some(directory))],
     );
   });
 
@@ -180,8 +173,7 @@ void main() {
       seed: () => createScreenshotState(fileNamingType: FileNamingType.number),
       build: () => createScreenshotCubit(),
       act: (cubit) => cubit.setFileNamingType(FileNamingType.date),
-      expect: () =>
-          [createScreenshotState(fileNamingType: FileNamingType.date)],
+      expect: () => [createScreenshotState(fileNamingType: FileNamingType.date)],
     );
   });
 
@@ -201,8 +193,7 @@ void main() {
       seed: () => createScreenshotState(outputImageFormat: ImageFormat.png),
       build: () => createScreenshotCubit(),
       act: (cubit) => cubit.setImageFileExtension(ImageFormat.jpeg),
-      expect: () =>
-          [createScreenshotState(outputImageFormat: ImageFormat.jpeg)],
+      expect: () => [createScreenshotState(outputImageFormat: ImageFormat.jpeg)],
     );
   });
 
@@ -230,23 +221,20 @@ void main() {
     late MockFilePicker mockFilePicker;
     final Directory directory = Directory('/abc');
 
-    test('Should return the appropriate result when directory is not set',
-        () async {
+    test('Should return the appropriate result when directory is not set', () async {
       mockFilePicker = MockFilePicker();
       when(
         mockFilePicker.pickPath(
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         ),
       ).thenAnswer((_) async => none());
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
       await cubit.setOutputImageDirectory();
       final result = cubit.validateGenerateImageSettings();
       expect(result, GenerateImageSettingsValidationResult.directoryMustBeSet);
     });
 
-    test(
-        'Should return the appropriate result when naming type is namePlusNumber and baseFileName is not set',
+    test('Should return the appropriate result when naming type is namePlusNumber and baseFileName is not set',
         () async {
       mockFilePicker = MockFilePicker();
 
@@ -256,18 +244,15 @@ void main() {
         ),
       ).thenAnswer((_) async => some(directory));
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
 
       await cubit.setOutputImageDirectory();
       cubit.setFileNamingType(FileNamingType.namePlusNumber);
       final result = cubit.validateGenerateImageSettings();
-      expect(
-          result, GenerateImageSettingsValidationResult.baseFileNameMustBeSet);
+      expect(result, GenerateImageSettingsValidationResult.baseFileNameMustBeSet);
     });
 
-    test(
-        'Should return the appropriate result when naming type is namePlusNumber and baseFileName is not valid',
+    test('Should return the appropriate result when naming type is namePlusNumber and baseFileName is not valid',
         () async {
       mockFilePicker = MockFilePicker();
 
@@ -277,8 +262,7 @@ void main() {
         ),
       ).thenAnswer((_) async => some(directory));
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
 
       await cubit.setOutputImageDirectory();
       cubit.setFileNamingType(FileNamingType.namePlusNumber);
@@ -296,9 +280,7 @@ void main() {
       );
     });
 
-    test(
-        'Should return the appropriate result when naming type is namePlusNumber and baseFileName is valid',
-        () async {
+    test('Should return the appropriate result when naming type is namePlusNumber and baseFileName is valid', () async {
       mockFilePicker = MockFilePicker();
 
       when(
@@ -307,8 +289,7 @@ void main() {
         ),
       ).thenAnswer((_) async => some(directory));
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
 
       await cubit.setOutputImageDirectory();
       cubit.setFileNamingType(FileNamingType.namePlusNumber);
@@ -319,22 +300,77 @@ void main() {
   });
 
   group('captureWidget', () {
+    // variables used in multiple tests
     const Duration timeoutDuration = Duration(seconds: 1);
-    testWidgets(
-        'Should throw an exception if called multiple times simultaneously.',
-        (tester) async {
+    final editor.Element variableTextNoSourceFile = editor.Element(
+      id: '1',
+      showOrder: 1,
+      rect: const Rect.fromLTWH(0, 0, 100, 100),
+      properties: editor.VariableTextProperties(placeHolderText: '', sourceFilePath: none()),
+    );
+    final editor.Element namesVariableText = editor.Element(
+      id: '1',
+      showOrder: 1,
+      rect: const Rect.fromLTWH(0, 0, 100, 100),
+      properties: editor.VariableTextProperties(
+        placeHolderText: '',
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names.txt'),
+      ),
+    );
+    final editor.Element idsVariableText = editor.Element(
+      id: '2',
+      showOrder: 2,
+      rect: const Rect.fromLTWH(0, 0, 100, 100),
+      properties: editor.VariableTextProperties(
+        placeHolderText: '',
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/ids_long.txt'),
+      ),
+    );
+    const editor.Element staticText = editor.Element(
+      id: '1',
+      showOrder: 1,
+      rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
+      properties: editor.StaticTextProperties(
+        text: 'Type the text here (Double tap to start):',
+        textStyle: TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+      ),
+    );
+
+    editor.Element namesShortVariableText = editor.Element(
+      id: '2',
+      showOrder: 2,
+      rect: const Rect.fromLTWH(491, 50, 598.40, 37.40),
+      properties: editor.VariableTextProperties(
+        placeHolderText: 'Generated Text appears here',
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names_short.txt'),
+        textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+      ),
+    );
+
+    testWidgets('Should throw an exception if called multiple times simultaneously.', (tester) async {
       InvalidStateError? expectedError;
+
+      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
+
+      createDirectoryIfNotExistsRecursive(outputDirectory);
 
       final MockFilePicker mockFilePicker = MockFilePicker();
       when(
         mockFilePicker.pickPath(
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         ),
-      ).thenAnswer((_) async => some(Directory('/')));
+      ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+          createScreenshotCubit(filePicker: mockFilePicker, screenshotService: ScreenshotService());
+
       await cubit.setOutputImageDirectory();
+      cubit.setBaseFileName('nice');
+      cubit.setFileNamingType(FileNamingType.namePlusNumber);
+      cubit.setImageFileExtension(ImageFormat.jpeg);
+      cubit.setOutputImageSize(const Size(800, 600));
+      cubit.setOutputImageQuality(10);
+      await tester.pumpAndSettle();
 
       await tester.pumpWidget(
         MaterialApp(
@@ -350,24 +386,22 @@ void main() {
       await tester.pumpAndSettle();
       final BuildContext context = tester.element(find.byType(Container));
 
-      cubit.captureWidget(
-        context: context,
-        elements: [],
-        canvasSize: Size.zero,
-        canvasBackgroundColor: some(Colors.red),
-        canvasBackgroundImageFile: some(File('')),
-      );
       await tester.runAsync(() async {
         try {
-          await cubit
-              .captureWidget(
-                context: context,
-                elements: [],
-                canvasSize: Size.zero,
-                canvasBackgroundColor: some(Colors.red),
-                canvasBackgroundImageFile: some(File('')),
-              )
-              .timeout(timeoutDuration);
+          cubit.captureWidget(
+            context: context,
+            elements: [],
+            canvasSize: const Size(100, 100),
+            canvasBackgroundColor: some(Colors.red),
+            canvasBackgroundImageFile: some(File('')),
+          );
+          await cubit.captureWidget(
+            context: context,
+            elements: [],
+            canvasSize: Size.zero,
+            canvasBackgroundColor: some(Colors.red),
+            canvasBackgroundImageFile: some(File('')),
+          );
         } on InvalidStateError catch (e) {
           expectedError = e;
         }
@@ -375,18 +409,14 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         expectedError,
-        const InvalidStateError(
-            message: 'captureWidget called when processing state was not idle'),
+        const InvalidStateError(message: 'captureWidget called when processing state was not idle'),
       );
     });
 
-    testWidgets(
-        'Should throw an exception if called with invalid generate image settings.',
-        (tester) async {
+    testWidgets('Should throw an exception if called with invalid generate image settings.', (tester) async {
       InvalidStateError? expectedError;
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(); // settings are invalid initially since no directory is set
+      final ScreenshotCubit cubit = createScreenshotCubit(); // settings are invalid initially since no directory is set
       await tester.pumpWidget(
         MaterialApp(
           home: BlocProvider(
@@ -415,14 +445,11 @@ void main() {
       });
       expect(
         expectedError,
-        const InvalidStateError(
-            message:
-                'captureWidget called with invalid generate image settings'),
+        const InvalidStateError(message: 'captureWidget called with invalid generate image settings'),
       );
     });
 
-    testWidgets(
-        'Should cancel processing and return proper message if a variable text has no source file set.',
+    testWidgets('Should cancel processing and return proper message if a variable text has no source file set.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
       final Directory directory = Directory('/abc');
@@ -432,18 +459,9 @@ void main() {
         ),
       ).thenAnswer((_) async => some(directory));
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
 
       await cubit.setOutputImageDirectory();
-
-      final editor.Element variableText = editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: const Rect.fromLTWH(0, 0, 100, 100),
-        properties: editor.VariableTextProperties(
-            placeHolderText: '', sourceFilePath: none()),
-      );
 
       final List<ScreenshotState> actualStates = [];
 
@@ -469,7 +487,7 @@ void main() {
         result = await cubit
             .captureWidget(
               context: context,
-              elements: [variableText],
+              elements: [variableTextNoSourceFile],
               canvasSize: const Size(100, 100),
               canvasBackgroundColor: none(),
               canvasBackgroundImageFile: none(),
@@ -479,20 +497,14 @@ void main() {
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.processStart,
-            outputImageDirectory: some(directory)),
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.idle,
-            outputImageDirectory: some(directory)),
+        createScreenshotState()
+            .copyWith(processingState: ProcessingState.processStart, outputImageDirectory: some(directory)),
+        createScreenshotState().copyWith(processingState: ProcessingState.idle, outputImageDirectory: some(directory)),
       ];
 
       expect(actualStates, expectedStates);
 
-      expect(
-          result,
-          left(
-              "Some texts have no source file. All variable texts must have a source file."));
+      expect(result, left("Some texts have no source file. All variable texts must have a source file."));
     });
 
     testWidgets(
@@ -506,31 +518,9 @@ void main() {
         ),
       ).thenAnswer((_) async => some(directory));
 
-      final ScreenshotCubit cubit =
-          createScreenshotCubit(filePicker: mockFilePicker);
+      final ScreenshotCubit cubit = createScreenshotCubit(filePicker: mockFilePicker);
 
       await cubit.setOutputImageDirectory();
-
-      final editor.Element namesVariableText = editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: const Rect.fromLTWH(0, 0, 100, 100),
-        properties: editor.VariableTextProperties(
-          placeHolderText: '',
-          sourceFilePath:
-              some('test_resources/screenshot_cubit_test_resources/names.txt'),
-        ),
-      );
-      final editor.Element idsVariableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(0, 0, 100, 100),
-        properties: editor.VariableTextProperties(
-          placeHolderText: '',
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/ids_long.txt'),
-        ),
-      );
 
       final List<ScreenshotState> actualStates = [];
 
@@ -581,36 +571,24 @@ void main() {
       );
 
       final List<ScreenshotState> expectedStates = [
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.processStart,
-            outputImageDirectory: some(directory)),
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.readingData,
-            outputImageDirectory: some(directory)),
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.validatingReadData,
-            outputImageDirectory: some(directory)),
-        createScreenshotState().copyWith(
-            processingState: ProcessingState.idle,
-            outputImageDirectory: some(directory)),
+        createScreenshotState()
+            .copyWith(processingState: ProcessingState.processStart, outputImageDirectory: some(directory)),
+        createScreenshotState()
+            .copyWith(processingState: ProcessingState.readingData, outputImageDirectory: some(directory)),
+        createScreenshotState()
+            .copyWith(processingState: ProcessingState.validatingReadData, outputImageDirectory: some(directory)),
+        createScreenshotState().copyWith(processingState: ProcessingState.idle, outputImageDirectory: some(directory)),
       ];
 
       expect(actualStates, expectedStates);
 
-      expect(
-          result,
-          left(
-              "Some texts have different line count. All variable texts must have the same line count."));
+      expect(result, left("Some texts have different line count. All variable texts must have the same line count."));
     });
 
-    testWidgets(
-        'Should generate and save only one image correctly when there is no variable text',
-        (tester) async {
+    testWidgets('Should generate and save only one image correctly when there is no variable text.', (tester) async {
       // load the used fonts
-      final Future<ByteData> abrilFatFaceFontData =
-          rootBundle.load('assets/fonts/AbrilFatface-Regular.ttf');
-      final FontLoader fontLoader = FontLoader('AbrilFatFace')
-        ..addFont(abrilFatFaceFontData);
+      final Future<ByteData> abrilFatFaceFontData = rootBundle.load('assets/fonts/AbrilFatface-Regular.ttf');
+      final FontLoader fontLoader = FontLoader('AbrilFatFace')..addFont(abrilFatFaceFontData);
       await fontLoader.load();
 
       // setup the physical size
@@ -622,15 +600,12 @@ void main() {
       addTearDown(tester.binding.window.clearDevicePixelRatioTestValue);
 
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/one_generated_image');
+      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -640,17 +615,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
 
       cubit.setBaseFileName('nice');
       cubit.setFileNamingType(FileNamingType.namePlusNumber);
@@ -687,8 +651,7 @@ void main() {
           elements: [staticText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
         );
       });
 
@@ -696,11 +659,9 @@ void main() {
       expect(cubit.variableTextsData, isEmpty);
 
       // assert that the image is generated correctly
-      final bool generatedImageFileExists =
-          File('${outputDirectory.path}/nice_0.jpeg').existsSync();
+      final bool generatedImageFileExists = File('${outputDirectory.path}/nice_0.jpeg').existsSync();
       expect(generatedImageFileExists, true);
-      final Uint8List generatedImageBytes =
-          File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
+      final Uint8List generatedImageBytes = File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
       expect(generatedImageBytes, expectedGeneratedOneImageByteData);
 
       // assert that only 1 image is generated
@@ -708,12 +669,9 @@ void main() {
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 1'),
@@ -726,8 +684,7 @@ void main() {
           processingState: ProcessingState.savingData,
           progressMessage: some('Image 1 of 1'),
         ),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.idle, progressMessage: none()),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle, progressMessage: none()),
       ];
       expect(actualStates, expectedStates);
 
@@ -735,14 +692,10 @@ void main() {
       expect(result, right(null));
     });
 
-    testWidgets(
-        'Should generate and save multiple images correctly when there are variable texts',
-        (tester) async {
+    testWidgets('Should generate and save multiple images correctly when there are variable texts.', (tester) async {
       // load the used fonts
-      final Future<ByteData> abrilFatFaceFontData =
-          rootBundle.load('assets/fonts/AbrilFatface-Regular.ttf');
-      final FontLoader fontLoader = FontLoader('AbrilFatFace')
-        ..addFont(abrilFatFaceFontData);
+      final Future<ByteData> abrilFatFaceFontData = rootBundle.load('assets/fonts/AbrilFatface-Regular.ttf');
+      final FontLoader fontLoader = FontLoader('AbrilFatFace')..addFont(abrilFatFaceFontData);
       await fontLoader.load();
 
       // setup the physical size
@@ -754,15 +707,13 @@ void main() {
       addTearDown(tester.binding.window.clearDevicePixelRatioTestValue);
 
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/multiple_generated_images');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/multiple_generated_images');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -772,30 +723,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(491, 50, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text appears here',
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
 
       cubit.setBaseFileName('nice');
       cubit.setFileNamingType(FileNamingType.namePlusNumber);
@@ -829,11 +756,10 @@ void main() {
       await tester.runAsync(() async {
         result = await cubit.captureWidget(
           context: context,
-          elements: [staticText, variableText],
+          elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
         );
       });
 
@@ -843,17 +769,13 @@ void main() {
       ]);
 
       // assert that the images are generated correctly
-      final bool generatedImageFile1Exists =
-          File('${outputDirectory.path}/nice_0.jpeg').existsSync();
-      final bool generatedImageFile2Exists =
-          File('${outputDirectory.path}/nice_1.jpeg').existsSync();
+      final bool generatedImageFile1Exists = File('${outputDirectory.path}/nice_0.jpeg').existsSync();
+      final bool generatedImageFile2Exists = File('${outputDirectory.path}/nice_1.jpeg').existsSync();
       expect(generatedImageFile1Exists, true);
       expect(generatedImageFile2Exists, true);
 
-      final Uint8List generatedImage1Bytes =
-          File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
-      final Uint8List generatedImage2Bytes =
-          File('${outputDirectory.path}/nice_1.jpeg').readAsBytesSync();
+      final Uint8List generatedImage1Bytes = File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
+      final Uint8List generatedImage2Bytes = File('${outputDirectory.path}/nice_1.jpeg').readAsBytesSync();
       expect(generatedImage1Bytes, expectedGeneratedImage1ByteData);
       expect(generatedImage2Bytes, expectedGeneratedImage2ByteData);
 
@@ -862,12 +784,9 @@ void main() {
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 2'),
@@ -903,48 +822,36 @@ void main() {
       expect(result, right(null));
     });
 
-    testWidgets('Should return the proper response when an error happens',
-        (tester) async {
+    testWidgets('Should return the proper response when an error happens.', (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/one_generated_image');
+      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
-      final MockScreenshotService mockScreenshotService =
-          MockScreenshotService();
-      when(mockScreenshotService.captureWidget())
-          .thenThrow(Exception('An error has occurred.'));
+      final MockImageEditor mockImageEditor = MockImageEditor();
+      when(mockImageEditor.copyResize(
+        inputFormat: anyNamed('inputFormat'),
+        imageData: anyNamed('imageData'),
+        width: anyNamed('width'),
+        height: anyNamed('height'),
+        quality: anyNamed('quality'),
+        outputFormat: anyNamed('outputFormat'),
+      )).thenThrow(ImageEditorException('An error has occurred.'));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
         filePicker: mockFilePicker,
-        screenshotService: mockScreenshotService,
-        imageEditor: ImageEditor(),
+        screenshotService: ScreenshotService(),
+        imageEditor: mockImageEditor,
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> actualStates = [];
-
       cubit.stream.listen(actualStates.add);
 
       await tester.pumpWidget(
@@ -971,8 +878,7 @@ void main() {
           elements: [staticText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
         );
       });
       await tester.pumpAndSettle();
@@ -982,14 +888,15 @@ void main() {
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
+          progressMessage: some('Image 1 of 1'),
+        ),
+        stateBeforeCaptureStart.copyWith(
+          processingState: ProcessingState.resizing,
           progressMessage: some('Image 1 of 1'),
         ),
         stateBeforeCaptureStart.copyWith(
@@ -1001,21 +908,61 @@ void main() {
     });
   });
   group('cancel', () {
+    // variables used in multiple tests
     const Duration timeoutDuration = Duration(seconds: 1);
     const String operationCanceledString = 'Operation Canceled!';
+    const Duration delay = Duration(milliseconds: 100);
+    const editor.Element staticText = editor.Element(
+      id: '1',
+      showOrder: 1,
+      rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
+      properties: editor.StaticTextProperties(
+        text: 'Type the text here (Double tap to start):',
+        textStyle: TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+      ),
+    );
+
+    editor.Element variableTextNoSource = editor.Element(
+      id: '2',
+      showOrder: 2,
+      rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
+      properties: editor.VariableTextProperties(
+        placeHolderText: 'Generated Text Appears Here.',
+        sourceFilePath: none(),
+      ),
+    );
+    final editor.Element namesShortVariableText = editor.Element(
+      id: '2',
+      showOrder: 2,
+      rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
+      properties: editor.VariableTextProperties(
+        placeHolderText: 'Generated Text Appears Here.',
+        textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names_short.txt'),
+      ),
+    );
+    final editor.Element namesVariableText = editor.Element(
+      id: '3',
+      showOrder: 3,
+      rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
+      properties: editor.VariableTextProperties(
+        placeHolderText: 'Generated Text Appears Here.',
+        textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names.txt'),
+      ),
+    );
+
     testWidgets(
         'Should cancel the operation correctly when cancel is called after processStart processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1025,17 +972,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
 
       await tester.pumpAndSettle();
 
@@ -1070,19 +1006,18 @@ void main() {
         result = await cubit
             .captureWidget(
               context: context,
-              elements: [staticText],
+              elements: [staticText, variableTextNoSource],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File(
-                  'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
+        await Future.delayed(delay); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
         stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle),
       ];
 
@@ -1094,25 +1029,20 @@ void main() {
 
       expect(cubit.variableTextsData, isEmpty);
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after readingData processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1122,29 +1052,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
 
       await tester.pumpAndSettle();
 
@@ -1179,21 +1086,19 @@ void main() {
         result = await cubit
             .captureWidget(
               context: context,
-              elements: [staticText, variableText],
+              elements: [staticText, namesShortVariableText],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File(
-                  'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
+        await Future.delayed(delay); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
         stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle),
       ];
 
@@ -1203,27 +1108,27 @@ void main() {
 
       expect(outputDirectory.listSync(), isEmpty);
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
-      expect(cubit.variableTextsData, isEmpty);
+      expect(
+        cubit.variableTextsData,
+        [
+          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
+        ],
+      );
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after validatingReadData processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1234,28 +1139,8 @@ void main() {
 
       await cubit.setOutputImageDirectory();
 
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
+      editor.Element variableText1 = namesShortVariableText;
+      editor.Element variableText2 = namesVariableText;
 
       await tester.pumpAndSettle();
 
@@ -1290,23 +1175,20 @@ void main() {
         result = await cubit
             .captureWidget(
               context: context,
-              elements: [staticText, variableText],
+              elements: [staticText, variableText1, variableText2],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File(
-                  'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
+        await Future.delayed(delay); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle),
       ];
 
@@ -1316,15 +1198,13 @@ void main() {
 
       expect(outputDirectory.listSync(), isEmpty);
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
       expect(
         cubit.variableTextsData,
         UnmodifiableListView([
-          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
+          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2']),
+          VariableTextData(elementId: '3', data: ['Name 1', 'Name 2', 'Name 3', 'Name 4', 'Name 5']),
         ]),
       );
     });
@@ -1333,15 +1213,13 @@ void main() {
         'Should cancel the operation correctly when cancel is called after capturing processing state is emitted and there are no variable texts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1351,17 +1229,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
 
       await tester.pumpAndSettle();
 
@@ -1399,20 +1266,17 @@ void main() {
               elements: [staticText],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File(
-                  'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
+        await Future.delayed(delay); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 1'),
@@ -1429,10 +1293,7 @@ void main() {
 
       expect(outputDirectory.listSync(), isEmpty);
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
       expect(
         cubit.variableTextsData,
@@ -1444,15 +1305,13 @@ void main() {
         'Should cancel the operation correctly when cancel is called after capturing processing state is emitted and there are variable texts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1463,29 +1322,9 @@ void main() {
 
       await cubit.setOutputImageDirectory();
 
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
+      editor.Element variableText1 = namesShortVariableText;
 
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
+      editor.Element variableText2 = namesShortVariableText.copyWith(id: '3', showOrder: 3);
 
       await tester.pumpAndSettle();
 
@@ -1520,23 +1359,20 @@ void main() {
         result = await cubit
             .captureWidget(
               context: context,
-              elements: [staticText, variableText],
+              elements: [staticText, variableText1, variableText2],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File(
-                  'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
+        await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 2'),
@@ -1553,32 +1389,28 @@ void main() {
 
       expect(outputDirectory.listSync(), isEmpty);
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
       expect(
         cubit.variableTextsData,
         UnmodifiableListView([
-          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
+          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2']),
+          VariableTextData(elementId: '3', data: ['Name 1', 'Name 2']),
         ]),
       );
     });
 
     testWidgets(
-        'Should cancel the operation correctly when cancel is called after resizing processing state is emitted.',
+        'Should cancel the operation correctly when cancel is called after capturing ends and before resizing starts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory =
+          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1589,29 +1421,94 @@ void main() {
 
       await cubit.setOutputImageDirectory();
 
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
+      await tester.pumpAndSettle();
+
+      final List<ScreenshotState> actualStates = [];
+
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale.fromSubtags(languageCode: 'en'),
+          home: BlocProvider(
+            create: (_) => cubit,
+            child: Container(),
+          ),
         ),
+      );
+      await tester.pumpAndSettle();
+      final BuildContext context = tester.element(find.byType(Container));
+
+      cubit.stream.listen((state) {
+        actualStates.add(state);
+        if (state.processingState == ProcessingState.capturing) {
+          cubit.cancelCaptureWidget(context);
+        }
+      });
+
+      final ScreenshotState stateBeforeCaptureStart = cubit.state;
+
+      // start capturing
+      late final Either<String, void> result;
+      await tester.runAsync(() async {
+        result = await cubit.captureWidget(
+          context: context,
+          elements: [staticText],
+          canvasSize: const Size(1188.4, 605.7),
+          canvasBackgroundColor: const Some(Color(0xffff0000)),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+        );
+        await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
+      });
+      await tester.pumpAndSettle();
+
+      final List<ScreenshotState> expectedStates = [
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(
+          processingState: ProcessingState.capturing,
+          progressMessage: some('Image 1 of 1'),
+        ),
+        stateBeforeCaptureStart.copyWith(
+          processingState: ProcessingState.idle,
+          progressMessage: none(),
+        ),
+      ];
+
+      expect(actualStates, expectedStates);
+
+      expect(result, left(operationCanceledString));
+
+      expect(outputDirectory.listSync(), isEmpty);
+
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
+
+      expect(
+        cubit.variableTextsData,
+        UnmodifiableListView([]),
+      );
+    });
+    testWidgets(
+        'Should cancel the operation correctly when cancel is called after resizing processing state is emitted.',
+        (tester) async {
+      final MockFilePicker mockFilePicker = MockFilePicker();
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_directory/shouldnt_be_empty_after_saving_data');
+
+      createDirectoryIfNotExistsRecursive(outputDirectory);
+
+      when(
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
+      ).thenAnswer((_) async => some(outputDirectory));
+
+      final ScreenshotCubit cubit = createScreenshotCubit(
+        filePicker: mockFilePicker,
+        screenshotService: ScreenshotService(),
+        imageEditor: ImageEditor(),
       );
 
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
+      await cubit.setOutputImageDirectory();
 
       await tester.pumpAndSettle();
 
@@ -1645,22 +1542,19 @@ void main() {
       await tester.runAsync(() async {
         result = await cubit.captureWidget(
           context: context,
-          elements: [staticText, variableText],
+          elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
         );
+        await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 2'),
@@ -1671,143 +1565,6 @@ void main() {
         ),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.resizing,
-          progressMessage: some('Image 1 of 2'),
-        ),
-        stateBeforeCaptureStart.copyWith(
-          processingState: ProcessingState.idle,
-          progressMessage: none(),
-        ),
-      ];
-
-      expect(actualStates, expectedStates);
-
-      expect(result, left(operationCanceledString));
-
-      expect(outputDirectory.listSync(), isEmpty);
-
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
-
-      expect(
-        cubit.variableTextsData,
-        UnmodifiableListView([
-          VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
-        ]),
-      );
-    });
-    testWidgets(
-        'Should cancel the operation correctly when cancel is called after savingData processing state is emitted.',
-        (tester) async {
-      final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/shouldnt_be_empty_after_saving_data');
-
-      createDirectoryIfNotExistsRecursive(outputDirectory);
-
-      when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
-      ).thenAnswer((_) async => some(outputDirectory));
-
-      final ScreenshotCubit cubit = createScreenshotCubit(
-        filePicker: mockFilePicker,
-        screenshotService: ScreenshotService(),
-        imageEditor: ImageEditor(),
-      );
-
-      await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
-
-      await tester.pumpAndSettle();
-
-      final List<ScreenshotState> actualStates = [];
-
-      await tester.pumpWidget(
-        MaterialApp(
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: const Locale.fromSubtags(languageCode: 'en'),
-          home: BlocProvider(
-            create: (_) => cubit,
-            child: Container(),
-          ),
-        ),
-      );
-      await tester.pumpAndSettle();
-      final BuildContext context = tester.element(find.byType(Container));
-
-      cubit.stream.listen((state) {
-        actualStates.add(state);
-        if (state.processingState == ProcessingState.savingData &&
-            state.progressMessage == some('Image 1 of 2')) {
-          cubit.cancelCaptureWidget(context);
-        }
-      });
-
-      final ScreenshotState stateBeforeCaptureStart = cubit.state;
-
-      // start capturing
-      late final Either<String, void> result;
-      await tester.runAsync(() async {
-        result = await cubit.captureWidget(
-          context: context,
-          elements: [staticText, variableText],
-          canvasSize: const Size(1188.4, 605.7),
-          canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
-        );
-        await Future.delayed(const Duration(seconds: 1));
-      });
-      await tester.pumpAndSettle();
-
-      final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
-        stateBeforeCaptureStart.copyWith(
-          processingState: ProcessingState.capturing,
-          progressMessage: some('Image 1 of 2'),
-        ),
-        stateBeforeCaptureStart.copyWith(
-          processingState: ProcessingState.capturing,
-          progressMessage: some('Image 2 of 2'),
-        ),
-        stateBeforeCaptureStart.copyWith(
-          processingState: ProcessingState.resizing,
-          progressMessage: some('Image 1 of 2'),
-        ),
-        stateBeforeCaptureStart.copyWith(
-          processingState: ProcessingState.savingData,
           progressMessage: some('Image 1 of 2'),
         ),
         stateBeforeCaptureStart.copyWith(
@@ -1823,10 +1580,7 @@ void main() {
       expect(outputDirectory.listSync().length, 1);
       expect(outputDirectory.listSync()[0].path, endsWith('0.png'));
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
       expect(
         cubit.variableTextsData,
@@ -1836,8 +1590,7 @@ void main() {
       );
     });
 
-    testWidgets(
-        'Should cancel the operation correctly when cancel is called after processing is done.',
+    testWidgets('Should cancel the operation correctly when cancel is called after processing is done.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
       final Directory outputDirectory = Directory(
@@ -1846,9 +1599,7 @@ void main() {
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
       when(
-        mockFilePicker.pickPath(
-            initialDirectory:
-                captureThat(equals('/'), named: 'initialDirectory')),
+        mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
       ).thenAnswer((_) async => some(outputDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
@@ -1858,30 +1609,6 @@ void main() {
       );
 
       await cubit.setOutputImageDirectory();
-
-      editor.Element staticText = const editor.Element(
-        id: '1',
-        showOrder: 1,
-        rect: Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.StaticTextProperties(
-          text: 'Type the text here (Double tap to start):',
-          textStyle: TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        ),
-      );
-
-      editor.Element variableText = editor.Element(
-        id: '2',
-        showOrder: 2,
-        rect: const Rect.fromLTWH(339, 15.5, 598.40, 37.40),
-        properties: editor.VariableTextProperties(
-          placeHolderText: 'Generated Text Appears Here.',
-          textStyle: const TextStyle(
-              fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-          sourceFilePath: some(
-              'test_resources/screenshot_cubit_test_resources/names_short.txt'),
-        ),
-      );
 
       await tester.pumpAndSettle();
 
@@ -1903,8 +1630,7 @@ void main() {
 
       cubit.stream.listen((state) {
         actualStates.add(state);
-        if (state.processingState == ProcessingState.savingData &&
-            state.progressMessage == some('Image 2 of 2')) {
+        if (state.processingState == ProcessingState.savingData && state.progressMessage == some('Image 2 of 2')) {
           cubit.cancelCaptureWidget(context);
         }
       });
@@ -1916,23 +1642,19 @@ void main() {
       await tester.runAsync(() async {
         result = await cubit.captureWidget(
           context: context,
-          elements: [staticText, variableText],
+          elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File(
-              'test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
         );
-        await Future.delayed(const Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
       await tester.pumpAndSettle();
 
       final List<ScreenshotState> expectedStates = [
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.processStart),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.readingData),
-        stateBeforeCaptureStart.copyWith(
-            processingState: ProcessingState.validatingReadData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.processStart),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.readingData),
+        stateBeforeCaptureStart.copyWith(processingState: ProcessingState.validatingReadData),
         stateBeforeCaptureStart.copyWith(
           processingState: ProcessingState.capturing,
           progressMessage: some('Image 1 of 2'),
@@ -1971,10 +1693,7 @@ void main() {
       expect(outputDirectory.listSync()[0].path, endsWith('1.png'));
       expect(outputDirectory.listSync()[1].path, endsWith('0.png'));
 
-      expect(
-          cubit.state,
-          stateBeforeCaptureStart.copyWith(
-              processingState: ProcessingState.idle));
+      expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
       expect(
         cubit.variableTextsData,
@@ -1982,6 +1701,90 @@ void main() {
           VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
         ]),
       );
+    });
+  });
+  group('FileNamingType', () {
+    test(
+        'Should have the correct values',
+        () => expect(
+              FileNamingType.values,
+              [FileNamingType.date, FileNamingType.number, FileNamingType.namePlusNumber],
+            ));
+  });
+  group('AllowedOutputImageFileExtension', () {
+    test(
+        'Should have the correct values',
+        () => expect(
+              AllowedOutputImageFileExtension.values,
+              [AllowedOutputImageFileExtension.png, AllowedOutputImageFileExtension.jpeg],
+            ));
+  });
+  group('ProcessingState', () {
+    test(
+        'Should have the correct values',
+        () => expect(
+              ProcessingState.values,
+              [
+                ProcessingState.idle,
+                ProcessingState.processStart,
+                ProcessingState.readingData,
+                ProcessingState.validatingReadData,
+                ProcessingState.capturing,
+                ProcessingState.resizing,
+                ProcessingState.savingData,
+              ],
+            ));
+    testWidgets('ProcessingStateExtension should return correct messages', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale.fromSubtags(languageCode: 'en'),
+          home: Container(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final BuildContext context = tester.element(find.byType(Container));
+
+      expect(ProcessingState.idle.getMessage(context), 'Idle');
+      expect(ProcessingState.processStart.getMessage(context), 'Process started');
+      expect(ProcessingState.readingData.getMessage(context), 'Reading Data');
+      expect(ProcessingState.validatingReadData.getMessage(context), 'Validating Read Data');
+      expect(ProcessingState.capturing.getMessage(context), 'Capturing');
+      expect(ProcessingState.resizing.getMessage(context), 'Resizing');
+      expect(ProcessingState.savingData.getMessage(context), 'Saving Data');
+    });
+  });
+  group('GenerateImageSettingsValidationResults', () {
+    test(
+        'Should have the correct values',
+        () => expect(
+              GenerateImageSettingsValidationResult.values,
+              [
+                GenerateImageSettingsValidationResult.valid,
+                GenerateImageSettingsValidationResult.directoryMustBeSet,
+                GenerateImageSettingsValidationResult.baseFileNameMustBeSet,
+                GenerateImageSettingsValidationResult.baseFileNameMustBeAlphaNumeric
+              ],
+            ));
+    testWidgets('GenerateImageSettingsValidationResultExtension should return correct messages', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale.fromSubtags(languageCode: 'en'),
+          home: Container(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final BuildContext context = tester.element(find.byType(Container));
+
+      expect(GenerateImageSettingsValidationResult.baseFileNameMustBeSet.getMessage(context),
+          'Base file name must be set.');
+      expect(GenerateImageSettingsValidationResult.directoryMustBeSet.getMessage(context), 'Directory must be set.');
+      expect(GenerateImageSettingsValidationResult.baseFileNameMustBeAlphaNumeric.getMessage(context),
+          'Only lower case letters, upper case letters, numbers, and underscores are allowed in the base file name.');
+      expect(GenerateImageSettingsValidationResult.valid.getMessage(context), 'Valid');
     });
   });
 }

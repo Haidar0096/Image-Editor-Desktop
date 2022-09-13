@@ -27,9 +27,8 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) => context
-        .read<EditorBloc>()
-        .add(EditorEvent.setCanvasKey(some(_editorCanvasContainerKey))));
+    WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) => context.read<EditorBloc>().add(EditorEvent.setCanvasKey(some(_editorCanvasContainerKey))));
     RawKeyboard.instance.addListener(_keyboardKeysListener);
   }
 
@@ -44,8 +43,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   void _keyboardKeysListener(RawKeyEvent event) {
     bool isEditingText = context.read<EditorBloc>().state.isEditingTextElement;
 
-    if (event is RawKeyUpEvent &&
-        event.logicalKey == LogicalKeyboardKey.delete) {
+    if (event is RawKeyUpEvent && event.logicalKey == LogicalKeyboardKey.delete) {
       BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
     }
     if (event is RawKeyDownEvent &&
@@ -54,9 +52,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
         !isEditingText) {
       BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
     }
-    if (event is RawKeyDownEvent &&
-        event.isControlPressed &&
-        event.isKeyPressed(LogicalKeyboardKey.keyY)) {
+    if (event is RawKeyDownEvent && event.isControlPressed && event.isKeyPressed(LogicalKeyboardKey.keyY)) {
       BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
     }
   }
@@ -82,16 +78,13 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
           width: double.infinity,
           height: double.infinity,
           key: _editorCanvasContainerKey,
-          color: editorState.canvasBackgroundColor.toNullable() ??
-              toc.colorScheme.background,
+          color: editorState.canvasBackgroundColor.toNullable() ?? toc.colorScheme.background,
           child: Stack(
             children: [
               if (editorState.canvasBackgroundImageFile.isSome())
                 Positioned.fill(
                   child: Image.file(
-                    File(editorState.canvasBackgroundImageFile
-                        .toNullable()!
-                        .path),
+                    File(editorState.canvasBackgroundImageFile.toNullable()!.path),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -111,14 +104,10 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   GestureDetector _canvasEmptyAreaGestureDetector(BuildContext context) {
     return GestureDetector(
       onPanStart: (details) {
-        context
-            .read<EditorBloc>()
-            .add(EditorEvent.canvasDragStart(details.localPosition));
+        context.read<EditorBloc>().add(EditorEvent.canvasDragStart(details.localPosition));
       },
       onPanUpdate: (details) {
-        context
-            .read<EditorBloc>()
-            .add(EditorEvent.canvasDragUpdate(details.delta));
+        context.read<EditorBloc>().add(EditorEvent.canvasDragUpdate(details.delta));
       },
       onPanEnd: (details) {
         context.read<EditorBloc>().add(const EditorEvent.canvasDragEnd());
@@ -129,14 +118,11 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
     );
   }
 
-  Iterable<Positioned> _mapEditorElements(
-      BuildContext context, EditorState editorState) {
+  Iterable<Positioned> _mapEditorElements(BuildContext context, EditorState editorState) {
     return editorState.editor.elementsSortedByShowOrder.map(
       (element) {
         // check if current element is selected
-        bool isSelected = editorState.selectedElement
-            .map((el) => element.id == el.id)
-            .getOrElse(() => false);
+        bool isSelected = editorState.selectedElement.map((el) => element.id == el.id).getOrElse(() => false);
 
         // map each element to its specific widget
         Widget child = EditorElementDelegateWidget(element: element);
@@ -145,17 +131,11 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
         if (isSelected) {
           // decorate the selected element with a border
           child = _decoratedContainer(
-              child: child,
-              width: element.rect.width,
-              height: element.rect.height,
-              color: Colors.red);
+              child: child, width: element.rect.width, height: element.rect.height, color: Colors.red);
 
           // make the selected element resizable
           child = _resizableWidget(
-              context,
-              element.rect.size.longestSide / 100 +
-                  math.log(element.rect.size.longestSide),
-              child);
+              context, element.rect.size.longestSide / 100 + math.log(element.rect.size.longestSide), child);
         }
 
         // wrap the element with a gesture detector to detect tap and drag events that occur on it
@@ -173,41 +153,32 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
     );
   }
 
-  ManipulatingBallsWidget _resizableWidget(
-      BuildContext context, double ballDiameter, Widget child) {
+  ManipulatingBallsWidget _resizableWidget(BuildContext context, double ballDiameter, Widget child) {
     return ManipulatingBallsWidget(
       ballDiameter: ballDiameter,
       onResizeTopLeft: (details) {
-        context.read<EditorBloc>().add(
-            EditorEvent.resizeUpdate(ResizeDirection.topLeft, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topLeft, details.delta));
       },
       onResizeTopCenter: (details) {
-        context.read<EditorBloc>().add(
-            EditorEvent.resizeUpdate(ResizeDirection.topCenter, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topCenter, details.delta));
       },
       onResizeTopRight: (details) {
-        context.read<EditorBloc>().add(
-            EditorEvent.resizeUpdate(ResizeDirection.topRight, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.topRight, details.delta));
       },
       onResizeCenterRight: (details) {
-        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(
-            ResizeDirection.centerRight, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.centerRight, details.delta));
       },
       onResizeBottomRight: (details) {
-        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(
-            ResizeDirection.bottomRight, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.bottomRight, details.delta));
       },
       onResizeBottomCenter: (details) {
-        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(
-            ResizeDirection.bottomCenter, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.bottomCenter, details.delta));
       },
       onResizeBottomLeft: (details) {
-        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(
-            ResizeDirection.bottomLeft, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.bottomLeft, details.delta));
       },
       onResizeCenterLeft: (details) {
-        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(
-            ResizeDirection.centerLeft, details.delta));
+        context.read<EditorBloc>().add(EditorEvent.resizeUpdate(ResizeDirection.centerLeft, details.delta));
       },
       onResizeEnd: (details) {
         context.read<EditorBloc>().add(const EditorEvent.resizeEnd());
@@ -216,21 +187,15 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
     );
   }
 
-  GestureDetector _elementGestureDetector(
-      BuildContext context, editor.Element el, Widget child) {
+  GestureDetector _elementGestureDetector(BuildContext context, editor.Element el, Widget child) {
     return GestureDetector(
       onPanStart: (details) {
-        final Offset localPosition = (_editorCanvasContainerKey.currentContext!
-                .findRenderObject() as RenderBox)
+        final Offset localPosition = (_editorCanvasContainerKey.currentContext!.findRenderObject() as RenderBox)
             .globalToLocal(details.globalPosition);
-        context
-            .read<EditorBloc>()
-            .add(EditorEvent.elementDragStart(el, localPosition));
+        context.read<EditorBloc>().add(EditorEvent.elementDragStart(el, localPosition));
       },
       onPanUpdate: (details) {
-        context
-            .read<EditorBloc>()
-            .add(EditorEvent.elementDragUpdate(details.delta));
+        context.read<EditorBloc>().add(EditorEvent.elementDragUpdate(details.delta));
       },
       onPanEnd: (details) {
         context.read<EditorBloc>().add(const EditorEvent.elementDragEnd());
@@ -243,10 +208,7 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
   }
 
   Stack _decoratedContainer(
-      {required Widget child,
-      required double width,
-      required double height,
-      required Color color}) {
+      {required Widget child, required double width, required double height, required Color color}) {
     return Stack(
       children: [
         Positioned.fill(child: child),

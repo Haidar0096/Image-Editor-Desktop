@@ -23,8 +23,7 @@ class EditorScreenNavBar extends StatelessWidget {
               child: Text(
                 editorState.dragPosition.fold(
                   () => '( x , y )',
-                  (dragPosition) =>
-                      '(${dragPosition.dx.toStringAsFixed(2)},${dragPosition.dy.toStringAsFixed(2)})',
+                  (dragPosition) => '(${dragPosition.dx.toStringAsFixed(2)},${dragPosition.dy.toStringAsFixed(2)})',
                 ),
                 style: TextStyle(color: toc.colorScheme.onSecondary),
               ),
@@ -47,12 +46,9 @@ class EditorScreenNavBar extends StatelessWidget {
                           await showColorPickerDialog(
                             context: context,
                             onColorChanged: (color) {
-                              context.read<EditorBloc>().add(
-                                  EditorEvent.changeCanvasBackgroundColor(
-                                      color));
+                              context.read<EditorBloc>().add(EditorEvent.changeCanvasBackgroundColor(color));
                             },
-                            initialColor: editorState.canvasBackgroundColor
-                                .getOrElse(() => Colors.white),
+                            initialColor: editorState.canvasBackgroundColor.getOrElse(() => Colors.white),
                           );
                         },
                       ),
@@ -63,8 +59,7 @@ class EditorScreenNavBar extends StatelessWidget {
                     child: Tooltip(
                       message: editorState.canvasBackgroundImageFile.fold(
                         () => AppLocalizations.of(context)!.backgroundImage,
-                        (_) =>
-                            AppLocalizations.of(context)!.removeBackgroundImage,
+                        (_) => AppLocalizations.of(context)!.removeBackgroundImage,
                       ),
                       child: InkWell(
                         child: Icon(
@@ -76,12 +71,8 @@ class EditorScreenNavBar extends StatelessWidget {
                         ),
                         onTap: () async {
                           editorState.canvasBackgroundImageFile.fold(
-                            () => context.read<EditorBloc>().add(
-                                const EditorEvent
-                                    .changeCanvasBackgroundImage()),
-                            (_) => context.read<EditorBloc>().add(
-                                const EditorEvent
-                                    .removeCanvasBackgroundImage()),
+                            () => context.read<EditorBloc>().add(const EditorEvent.changeCanvasBackgroundImage()),
+                            (_) => context.read<EditorBloc>().add(const EditorEvent.removeCanvasBackgroundImage()),
                           );
                         },
                       ),

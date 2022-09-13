@@ -46,13 +46,11 @@ class ImageEditorDefaultImpl implements ImageEditor {
 
     switch (params.outputFormat) {
       case ImageFormat.jpeg:
-        return right(Uint8List.fromList(
-            image_api.JpegEncoder(quality: params.quality ?? 100)
-                .encodeImage(resizedImage)));
+        return right(
+            Uint8List.fromList(image_api.JpegEncoder(quality: params.quality ?? 100).encodeImage(resizedImage)));
       case ImageFormat.png:
       default:
-        return right(Uint8List.fromList(
-            image_api.PngEncoder().encodeImage(resizedImage)));
+        return right(Uint8List.fromList(image_api.PngEncoder().encodeImage(resizedImage)));
     }
   }
 
@@ -86,13 +84,11 @@ class ImageEditorDefaultImpl implements ImageEditor {
     }
     switch (params.outputFormat) {
       case ImageFormat.jpeg:
-        return right(Uint8List.fromList(
-            image_api.JpegEncoder(quality: params.quality ?? 100)
-                .encodeImage(decodedImage)));
+        return right(
+            Uint8List.fromList(image_api.JpegEncoder(quality: params.quality ?? 100).encodeImage(decodedImage)));
       case ImageFormat.png:
       default:
-        return right(Uint8List.fromList(
-            image_api.PngEncoder().encodeImage(decodedImage)));
+        return right(Uint8List.fromList(image_api.PngEncoder().encodeImage(decodedImage)));
     }
   }
 
@@ -114,8 +110,7 @@ class ImageEditorDefaultImpl implements ImageEditor {
       );
 
   static void _saveImage(_SaveImageParams params) async {
-    await File(
-            '${params.path}/${params.name}.${params.outputFormat.name.toLowerCase()}')
+    await File('${params.path}/${params.name}.${params.outputFormat.name.toLowerCase()}')
         .writeAsBytes(params.imageData);
   }
 
