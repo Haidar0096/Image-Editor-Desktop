@@ -6,3 +6,4 @@ some screen shots:
 
 ![Screenshot](screenshots/s1.png)
 ![Screenshot](screenshots/s2.png)
+[![Watch the video demo]()](screenshots/image_editor_tutorial.mkv)
