@@ -6,4 +6,4 @@ some screen shots:
 
 ![Screenshot](screenshots/s1.png)
 ![Screenshot](screenshots/s2.png)
-<video width="320" height="240" controls><source src="screenshots/image_editor_tutorial.mp4" type="video/mp4"></video>
+<video width="320" height="240" controls><source src="https://github.com/Haidar0096/Image-Editor-Desktop/blob/master/screenshots/image_editor_tutorial.mp4" type="video/mp4"></video>
