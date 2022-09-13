@@ -9,7 +9,8 @@ The main feature of this app is generating images based on texts from source fil
 You can download the app from:
 - Snap store (soon)
 - Windows store (soon)
-- The repository here: for linux, you find it in `releases/linux/bundle.zip`. When you unzip the file, you can find the executable as `photo_editor`.
+- Directly get the executable for linux, you can find it in `releases/linux/bundle.zip` in this repo. When you unzip the file, you can find the executable as `photo_editor`.
+- Directly get the executable for windows, you can find it in `releases/windows/Release.zip` in this repo. When you unzip the file, you can find the executable as `photo_editor.exe`.
 ## some screenshots:
 
 ![Screenshot](screenshots/s1.png)
