@@ -20,3 +20,6 @@ You can download the app from:
 ## Video Tutorial
 https://user-images.githubusercontent.com/49842031/189867344-cca75f07-7789-40a7-bd9d-c93ecd0ac3dc.mp4
 
+# Contributing
+- If you want to contribute you are welcome to make a pull request :)
+- You can also join the [discord server](https://discord.gg/m8h3ZBEp) of the app where we can talk about features and progress.

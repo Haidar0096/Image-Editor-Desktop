@@ -33,7 +33,9 @@ abstract class ImageEditor {
     int? quality,
   });
 
-  /// Writes the image to the file at the given [path].
+  /// Writes the image to the file at the given [path]. It does the operation inside an isolate.
+  ///
+  /// If file at the given [path] does not exist, the file and all the nonexistent directories in the path will be created.
   ///
   /// - [name] is the name of the file.
   Future<void> saveImage({

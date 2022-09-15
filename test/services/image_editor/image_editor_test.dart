@@ -5,13 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:photo_editor/services/image_editor/image_editor.dart';
 import 'package:photo_editor/services/image_editor/image_editor_exception.dart';
 
-part 'image_editor_test_constants.dart';
-
 void main() {
   group('copyResize', () {
     test('should return a resized copy of the image.', () async {
       final ImageEditor imageEditor = ImageEditor();
-      final Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
+      final Uint8List imageData =
+          File('test_resources/image_editor_test_resources/common/fayruz_love.png').readAsBytesSync();
+      final Directory expectedImagesDirectory = Directory('test_resources/image_editor_test_resources/copy_resize');
       final Uint8List jpegActualResizedImageData = await imageEditor.copyResize(
         imageData: imageData,
         inputFormat: ImageFormat.png,
@@ -27,8 +27,10 @@ void main() {
         width: 100,
         height: 100,
       );
-      expect(jpegActualResizedImageData, jpegExpectedResizedImageData);
-      expect(pngActualResizedImageData, pngExpectedResizedImageData);
+      File jpegExpectedImageFile = File('${expectedImagesDirectory.path}/jpeg_expected_image.jpg');
+      File pngExpectedImageFile = File('${expectedImagesDirectory.path}/png_expected_image.png');
+      expect(jpegActualResizedImageData, jpegExpectedImageFile.readAsBytesSync());
+      expect(pngActualResizedImageData, pngExpectedImageFile.readAsBytesSync());
     });
     test('Should throw an error if image could not be decoded when copyResize is called.', () async {
       final ImageEditor imageEditor = ImageEditor();
@@ -49,7 +51,9 @@ void main() {
   group('encodeImage', () {
     test('should return an encoded copy of the image.', () async {
       final ImageEditor imageEditor = ImageEditor();
-      final Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
+      final Uint8List imageData =
+          File('test_resources/image_editor_test_resources/common/fayruz_love.png').readAsBytesSync();
+      final Directory expectedImagesDirectory = Directory('test_resources/image_editor_test_resources/encode_image');
       final Uint8List jpegActualEncodedImageData = await imageEditor.encodeImage(
         imageData: imageData,
         inputFormat: ImageFormat.png,
@@ -61,8 +65,10 @@ void main() {
         inputFormat: ImageFormat.png,
         outputFormat: ImageFormat.png,
       );
-      expect(jpegActualEncodedImageData, jpegExpectedEncodedImageData);
-      expect(pngActualEncodedImageData, pngExpectedEncodedImageData);
+      File jpegExpectedImageFile = File('${expectedImagesDirectory.path}/jpeg_expected_image.jpg');
+      File pngExpectedImageFile = File('${expectedImagesDirectory.path}/png_expected_image.png');
+      expect(jpegActualEncodedImageData, jpegExpectedImageFile.readAsBytesSync());
+      expect(pngActualEncodedImageData, pngExpectedImageFile.readAsBytesSync());
     });
     test('Should throw an error if image could not be decoded when encode is called.', () async {
       final ImageEditor imageEditor = ImageEditor();
@@ -81,17 +87,18 @@ void main() {
 
   group('saveImage', () {
     test('Should save the image correctly', () async {
-      Uint8List imageData = File('test_resources/image_editor_test_resources/fayruz_love.png').readAsBytesSync();
+      Uint8List imageData = File('test_resources/image_editor_test_resources/common/fayruz_love.png').readAsBytesSync();
       final ImageEditor imageEditor = ImageEditor();
+      final Directory outputDirectory = Directory('test_resources/image_editor_test_resources/save_image');
       await imageEditor.saveImage(
         imageData: imageData,
         outputFormat: ImageFormat.png,
         name: 'fayruz_love',
-        path: 'test_resources/image_editor_test_resources/saved_image',
+        path: outputDirectory.path,
       );
-      final savedImageData =
-          File('test_resources/image_editor_test_resources/saved_image/fayruz_love.png').readAsBytesSync();
-      expect(savedImageData, imageData);
+      final File savedImageFile = File('${outputDirectory.path}/fayruz_love.png');
+      expect(savedImageFile.readAsBytesSync(), imageData);
+      outputDirectory.deleteSync(recursive: true);
     });
   });
 
