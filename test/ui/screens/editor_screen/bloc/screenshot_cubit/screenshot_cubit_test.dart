@@ -21,8 +21,6 @@ import 'package:photo_editor/services/editor/editor.dart' as editor;
 
 import 'screenshot_cubit_test.mocks.dart';
 
-part 'screenshot_cubit_test_constants.dart';
-
 @GenerateMocks(
   [
     Logger,
@@ -314,7 +312,7 @@ void main() {
       rect: const Rect.fromLTWH(0, 0, 100, 100),
       properties: editor.VariableTextProperties(
         placeHolderText: '',
-        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names.txt'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/common/names.txt'),
       ),
     );
     final editor.Element idsVariableText = editor.Element(
@@ -323,7 +321,7 @@ void main() {
       rect: const Rect.fromLTWH(0, 0, 100, 100),
       properties: editor.VariableTextProperties(
         placeHolderText: '',
-        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/ids_long.txt'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/common/ids_long.txt'),
       ),
     );
     const editor.Element staticText = editor.Element(
@@ -342,7 +340,7 @@ void main() {
       rect: const Rect.fromLTWH(491, 50, 598.40, 37.40),
       properties: editor.VariableTextProperties(
         placeHolderText: 'Generated Text appears here',
-        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names_short.txt'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/common/names_short.txt'),
         textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
       ),
     );
@@ -350,9 +348,8 @@ void main() {
     testWidgets('Should throw an exception if called multiple times simultaneously.', (tester) async {
       InvalidStateError? expectedError;
 
-      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
-
-      createDirectoryIfNotExistsRecursive(outputDirectory);
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/capture_widget/should_throw_if_called_simultaneously');
 
       final MockFilePicker mockFilePicker = MockFilePicker();
       when(
@@ -600,13 +597,14 @@ void main() {
       addTearDown(tester.binding.window.clearDevicePixelRatioTestValue);
 
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
-
-      createDirectoryIfNotExistsRecursive(outputDirectory);
+      final Directory generatedImageDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/capture_widget/should_generate_one_image_when_no_variable_text/generated');
+      final Directory expectedImageDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/capture_widget/should_generate_one_image_when_no_variable_text/expected');
 
       when(
         mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
-      ).thenAnswer((_) async => some(outputDirectory));
+      ).thenAnswer((_) async => some(generatedImageDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
         filePicker: mockFilePicker,
@@ -651,7 +649,7 @@ void main() {
           elements: [staticText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
       });
 
@@ -659,13 +657,14 @@ void main() {
       expect(cubit.variableTextsData, isEmpty);
 
       // assert that the image is generated correctly
-      final bool generatedImageFileExists = File('${outputDirectory.path}/nice_0.jpeg').existsSync();
+      final bool generatedImageFileExists = File('${generatedImageDirectory.path}/nice_0.jpeg').existsSync();
       expect(generatedImageFileExists, true);
-      final Uint8List generatedImageBytes = File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
-      expect(generatedImageBytes, expectedGeneratedOneImageByteData);
+      final Uint8List generatedImageBytes = File('${generatedImageDirectory.path}/nice_0.jpeg').readAsBytesSync();
+      final File expectedGeneratedImageFile = File('${expectedImageDirectory.path}/expected_generated_image.jpeg');
+      expect(generatedImageBytes, expectedGeneratedImageFile.readAsBytesSync());
 
       // assert that only 1 image is generated
-      expect(outputDirectory.listSync().length, 1);
+      expect(generatedImageDirectory.listSync().length, 1);
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
@@ -690,6 +689,9 @@ void main() {
 
       // assert that the result is correct
       expect(result, right(null));
+
+      // delete the generated image
+      generatedImageDirectory.deleteSync(recursive: true);
     });
 
     testWidgets('Should generate and save multiple images correctly when there are variable texts.', (tester) async {
@@ -707,14 +709,14 @@ void main() {
       addTearDown(tester.binding.window.clearDevicePixelRatioTestValue);
 
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/multiple_generated_images');
-
-      createDirectoryIfNotExistsRecursive(outputDirectory);
+      final Directory generatedImagesDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/capture_widget/should_generate_multiple_images_when_variable_texts/generated');
+      final Directory expectedImagesDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/capture_widget/should_generate_multiple_images_when_variable_texts/expected');
 
       when(
         mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
-      ).thenAnswer((_) async => some(outputDirectory));
+      ).thenAnswer((_) async => some(generatedImagesDirectory));
 
       final ScreenshotCubit cubit = createScreenshotCubit(
         filePicker: mockFilePicker,
@@ -759,7 +761,7 @@ void main() {
           elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
       });
 
@@ -769,18 +771,21 @@ void main() {
       ]);
 
       // assert that the images are generated correctly
-      final bool generatedImageFile1Exists = File('${outputDirectory.path}/nice_0.jpeg').existsSync();
-      final bool generatedImageFile2Exists = File('${outputDirectory.path}/nice_1.jpeg').existsSync();
+      final bool generatedImageFile1Exists = File('${generatedImagesDirectory.path}/nice_0.jpeg').existsSync();
+      final bool generatedImageFile2Exists = File('${generatedImagesDirectory.path}/nice_1.jpeg').existsSync();
       expect(generatedImageFile1Exists, true);
       expect(generatedImageFile2Exists, true);
 
-      final Uint8List generatedImage1Bytes = File('${outputDirectory.path}/nice_0.jpeg').readAsBytesSync();
-      final Uint8List generatedImage2Bytes = File('${outputDirectory.path}/nice_1.jpeg').readAsBytesSync();
-      expect(generatedImage1Bytes, expectedGeneratedImage1ByteData);
-      expect(generatedImage2Bytes, expectedGeneratedImage2ByteData);
+      final Uint8List generatedImage1Bytes = File('${generatedImagesDirectory.path}/nice_0.jpeg').readAsBytesSync();
+      final Uint8List generatedImage2Bytes = File('${generatedImagesDirectory.path}/nice_1.jpeg').readAsBytesSync();
+
+      final File expectedGeneratedImage1File = File('${expectedImagesDirectory.path}/expected_generated_image_1.jpeg');
+      final File expectedGeneratedImage2File = File('${expectedImagesDirectory.path}/expected_generated_image_2.jpeg');
+      expect(generatedImage1Bytes, expectedGeneratedImage1File.readAsBytesSync());
+      expect(generatedImage2Bytes, expectedGeneratedImage2File.readAsBytesSync());
 
       // assert that only 1 image is generated
-      expect(outputDirectory.listSync().length, 2);
+      expect(generatedImagesDirectory.listSync().length, 2);
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
@@ -820,13 +825,15 @@ void main() {
 
       // assert that the result is correct
       expect(result, right(null));
+
+      // delete the generated images
+      generatedImagesDirectory.deleteSync(recursive: true);
     });
 
     testWidgets('Should return the proper response when an error happens.', (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory = Directory('test_resources/screenshot_cubit_test_resources/one_generated_image');
-
-      createDirectoryIfNotExistsRecursive(outputDirectory);
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/captureWidget/should_return_proper_response_on_error');
 
       when(
         mockFilePicker.pickPath(initialDirectory: captureThat(equals('/'), named: 'initialDirectory')),
@@ -878,7 +885,7 @@ void main() {
           elements: [staticText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
       });
       await tester.pumpAndSettle();
@@ -907,7 +914,7 @@ void main() {
       expect(actualStates, expectedStates);
     });
   });
-  group('cancel', () {
+  group('cancelCaptureWidget', () {
     // variables used in multiple tests
     const Duration timeoutDuration = Duration(seconds: 1);
     const String operationCanceledString = 'Operation Canceled!';
@@ -938,7 +945,7 @@ void main() {
       properties: editor.VariableTextProperties(
         placeHolderText: 'Generated Text Appears Here.',
         textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names_short.txt'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/common/names_short.txt'),
       ),
     );
     final editor.Element namesVariableText = editor.Element(
@@ -948,7 +955,7 @@ void main() {
       properties: editor.VariableTextProperties(
         placeHolderText: 'Generated Text Appears Here.',
         textStyle: const TextStyle(fontSize: 30, color: Colors.white, fontFamily: 'AbrilFatFace'),
-        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/names.txt'),
+        sourceFilePath: some('test_resources/screenshot_cubit_test_resources/common/names.txt'),
       ),
     );
 
@@ -956,8 +963,8 @@ void main() {
         'Should cancel the operation correctly when cancel is called after processStart processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_process_start');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1009,7 +1016,7 @@ void main() {
               elements: [staticText, variableTextNoSource],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
         await Future.delayed(delay); // So the test can have a chance to fail
@@ -1030,14 +1037,18 @@ void main() {
       expect(cubit.variableTextsData, isEmpty);
 
       expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after readingData processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_reading_data');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1089,7 +1100,7 @@ void main() {
               elements: [staticText, namesShortVariableText],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
         await Future.delayed(delay); // So the test can have a chance to fail
@@ -1116,14 +1127,18 @@ void main() {
           VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
         ],
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after validatingReadData processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_validating_read_data');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1178,7 +1193,7 @@ void main() {
               elements: [staticText, variableText1, variableText2],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
         await Future.delayed(delay); // So the test can have a chance to fail
@@ -1207,14 +1222,18 @@ void main() {
           VariableTextData(elementId: '3', data: ['Name 1', 'Name 2', 'Name 3', 'Name 4', 'Name 5']),
         ]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after capturing processing state is emitted and there are no variable texts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_capturing_no_variable_texts');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1266,7 +1285,7 @@ void main() {
               elements: [staticText],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
         await Future.delayed(delay); // So the test can have a chance to fail
@@ -1299,14 +1318,18 @@ void main() {
         cubit.variableTextsData,
         UnmodifiableListView([]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after capturing processing state is emitted and there are variable texts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_capturing_with_variable_texts');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1362,7 +1385,7 @@ void main() {
               elements: [staticText, variableText1, variableText2],
               canvasSize: const Size(1188.4, 605.7),
               canvasBackgroundColor: const Some(Color(0xffff0000)),
-              canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+              canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
             )
             .timeout(timeoutDuration);
         await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
@@ -1398,14 +1421,18 @@ void main() {
           VariableTextData(elementId: '3', data: ['Name 1', 'Name 2']),
         ]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets(
         'Should cancel the operation correctly when cancel is called after capturing ends and before resizing starts.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
-      final Directory outputDirectory =
-          Directory('test_resources/screenshot_cubit_test_resources/cancel_directory/should_stay_empty');
+      final Directory outputDirectory = Directory(
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_capturing_ends');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1456,7 +1483,7 @@ void main() {
           elements: [staticText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
         await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
@@ -1488,13 +1515,17 @@ void main() {
         cubit.variableTextsData,
         UnmodifiableListView([]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
     testWidgets(
         'Should cancel the operation correctly when cancel is called after resizing processing state is emitted.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
       final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/shouldnt_be_empty_after_saving_data');
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_resizing_starts');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1545,7 +1576,7 @@ void main() {
           elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
         await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
@@ -1577,8 +1608,7 @@ void main() {
 
       expect(result, left(operationCanceledString));
 
-      expect(outputDirectory.listSync().length, 1);
-      expect(outputDirectory.listSync()[0].path, endsWith('0.png'));
+      expect(outputDirectory.listSync().length, 0);
 
       expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
@@ -1588,13 +1618,17 @@ void main() {
           VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
         ]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
 
     testWidgets('Should cancel the operation correctly when cancel is called after processing is done.',
         (tester) async {
       final MockFilePicker mockFilePicker = MockFilePicker();
       final Directory outputDirectory = Directory(
-          'test_resources/screenshot_cubit_test_resources/cancel_directory/shouldnt_be_empty_after_processing');
+          'test_resources/screenshot_cubit_test_resources/cancel_capture_widget/should_cancel_after_processing_is_done');
 
       createDirectoryIfNotExistsRecursive(outputDirectory);
 
@@ -1645,7 +1679,7 @@ void main() {
           elements: [staticText, namesShortVariableText],
           canvasSize: const Size(1188.4, 605.7),
           canvasBackgroundColor: const Some(Color(0xffff0000)),
-          canvasBackgroundImageFile: some(File('test_resources/screenshot_cubit_test_resources/fayruz_love.png')),
+          canvasBackgroundImageFile: some(File('test_resources/common/fayruz_love.png')),
         );
         await Future.delayed(const Duration(seconds: 5)); // So the test can have a chance to fail
       });
@@ -1701,6 +1735,10 @@ void main() {
           VariableTextData(elementId: '2', data: ['Name 1', 'Name 2'])
         ]),
       );
+
+      // delete the output directory
+      outputDirectory.deleteSync(recursive: true);
+      Directory('test_resources/screenshot_cubit_test_resources/cancel_capture_widget').deleteSync();
     });
   });
   group('FileNamingType', () {

@@ -110,7 +110,7 @@ class ImageEditorDefaultImpl implements ImageEditor {
       );
 
   static void _saveImage(_SaveImageParams params) async {
-    if(!Directory(params.path).existsSync()) {
+    if (!Directory(params.path).existsSync()) {
       Directory(params.path).createSync(recursive: true);
     }
     await File('${params.path}/${params.name}.${params.outputFormat.name.toLowerCase()}')

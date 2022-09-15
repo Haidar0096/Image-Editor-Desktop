@@ -15,8 +15,8 @@ slots:
 
 apps:
   batch-image-editor:
-    command: batch_image_editor
-    extensions: [flutter-master]
+    command: photo_editor
+    extensions: [flutter-stable]
     plugs:
       - network
     slots:

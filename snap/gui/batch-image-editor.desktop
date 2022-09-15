@@ -1,8 +1,8 @@
-  [Desktop Entry]
-  Name=Batch Image Editor
-  Comment=Batch Image Editor App  that edits images in batches
-  Exec=batch_image_editor
-  Icon=${SNAP}/meta/gui/batch-image-editor.png # replace name to your app name
-  Terminal=false
-  Type=Application
-  Categories=Media; #adjust accordingly your snap category
+[Desktop Entry]
+Name=Batch Image Editor
+Comment=Batch Image Editor App  that edits images in batches
+Exec=batch_image_editor
+Icon=${SNAP}/meta/gui/batch-image-editor.png
+Terminal=false
+Type=Application
+Categories=Photo and Video; #adjust accordingly your snap category

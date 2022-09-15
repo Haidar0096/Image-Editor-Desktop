@@ -6,11 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:photo_editor/services/screenshot_service/screenshot_service.dart';
 
-
 void main() {
   group('captureWidget', () {
-    testWidgets('Should return the correct Uint8List when successful.',
-        (WidgetTester tester) async {
+    testWidgets('Should return the correct Uint8List when successful.', (WidgetTester tester) async {
       TestWidgetsFlutterBinding.ensureInitialized();
 
       // setup the physical size
@@ -20,7 +18,6 @@ void main() {
       // reset the edited settings after the test ends
       addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
       addTearDown(tester.binding.window.clearDevicePixelRatioTestValue);
-
 
       final Widget appWidget = MaterialApp(
         home: Scaffold(
@@ -40,8 +37,8 @@ void main() {
       ScreenshotService screenshotService = ScreenshotService();
 
       // capture the widget and get the actual result Uint8List
-      final Uint8List? actualResult = await tester.runAsync<Uint8List?>(
-          () async => (await screenshotService.captureWidget(
+      final Uint8List? actualResult =
+          await tester.runAsync<Uint8List?>(() async => (await screenshotService.captureWidget(
                 widget: appWidget,
                 context: tester.element(find.byType(Container)),
                 outputImageSize: const Size(1366, 768),
@@ -52,8 +49,8 @@ void main() {
               )));
 
       // file that contains an expected screenshot of the widget
-      final File expectedResultFile = File(
-          'test_resources/screenshot_service_test_resources/capture_widget/test_image.png');
+      final File expectedResultFile =
+          File('test_resources/screenshot_service_test_resources/capture_widget/expected_captured_image.png');
 
       // assert the result is correct
       expect(actualResult, expectedResultFile.readAsBytesSync());
