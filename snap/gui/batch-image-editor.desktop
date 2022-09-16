@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Batch Image Editor
 Comment=Batch Image Editor App  that edits images in batches
-Exec=batch_image_editor
+Exec=batch-image-editor
 Icon=${SNAP}/meta/gui/batch-image-editor.png
 Terminal=false
 Type=Application
