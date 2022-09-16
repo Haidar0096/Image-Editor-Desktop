@@ -7,7 +7,7 @@ The main feature of this app is generating images based on texts from source fil
 # Using the app:
 
 You can download the app from:
-- Snap store (soon)
+- Snap store: https://snapcraft.io/batch-image-editor
 - Windows store (soon)
 - Directly get the executable for linux, you can find it in `releases/linux/bundle.zip` in this repo. When you unzip the file, you can find the executable as `photo_editor`.
 - Directly get the executable for windows, you can find it in `releases/windows/Release.zip` in this repo. When you unzip the file, you can find the executable as `photo_editor.exe`.
