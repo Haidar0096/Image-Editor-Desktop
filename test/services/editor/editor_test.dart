@@ -7,9 +7,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Editor', () {
-    test('Should return the correct allowedImageFilesExtensions', () {
-      expect(allowedImageFilesExtensions, IList(const ['jpeg', 'png', 'jpg']));
-    });
     test('Should return the correct allowedTextFilesExtensions', () {
       expect(allowedTextFilesExtensions, IList(const ['txt']));
     });

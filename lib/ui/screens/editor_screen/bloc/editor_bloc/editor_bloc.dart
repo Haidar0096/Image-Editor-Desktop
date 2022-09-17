@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 
 import 'package:bloc_concurrency/bloc_concurrency.dart';
@@ -12,6 +13,7 @@ import 'package:photo_editor/services/editor/editor.dart';
 import 'package:photo_editor/services/editor/editor_extension.dart';
 import 'package:photo_editor/services/editor/element_id_generator.dart';
 import 'package:photo_editor/services/file_picker/file_picker.dart';
+import 'package:photo_editor/services/image_editor/image_editor.dart';
 import 'package:photo_editor/services/timeline/timeline.dart';
 import 'package:photo_editor/ui/common/error/invalid_state_error.dart';
 import 'package:photo_editor/ui/common/widgets/manipulating_balls_widget.dart';
@@ -38,6 +40,9 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   final Logger _logger;
   final ElementIdGenerator _elementIdGenerator;
   final Timeline<Editor> _editorTimeline;
+
+  static final UnmodifiableListView<String> allowedImageFileExtensions =
+      UnmodifiableListView(ImageFormat.values.map((format) => format.toString().unCamelCase(capitalize: false)));
 
   @override
   void onEvent(EditorEvent event) {
@@ -534,7 +539,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
   Future<void> _handleAddImage(AddImage event, Emitter emit) async {
     // pick an image
     final Option<File> fileOption = await _filePicker.pickSingleFile(
-      allowedExtensions: allowedImageFilesExtensions.unlock,
+      allowedExtensions: allowedImageFileExtensions,
       initialDirectory: '/',
     );
 
@@ -873,8 +878,7 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
   Future<void> _handleChangeCanvasBackgroundImage(ChangeCanvasBackgroundImage event, Emitter emit) async {
     // pick an image
-    final Option<File> fileOption =
-        await _filePicker.pickSingleFile(allowedExtensions: allowedImageFilesExtensions.unlock);
+    final Option<File> fileOption = await _filePicker.pickSingleFile(allowedExtensions: allowedImageFileExtensions);
     fileOption.fold(
       () {},
       (_) => emit(state.copyWith(canvasBackgroundImageFile: fileOption)),

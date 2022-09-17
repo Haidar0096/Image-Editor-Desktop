@@ -30,9 +30,6 @@ class Editor with _$Editor {
 /// Represents the ID of an [Element] in the [Editor]
 typedef ElementId = String;
 
-/// The allowed extensions of image files that the editor can work with.
-IList<String> get allowedImageFilesExtensions => IList(const ['jpeg', 'png', 'jpg']);
-
 /// The allowed extensions of text files that the editor can work with.
 IList<String> get allowedTextFilesExtensions => IList(const ['txt']);
 

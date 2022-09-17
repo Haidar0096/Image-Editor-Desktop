@@ -1749,14 +1749,7 @@ void main() {
               [FileNamingType.date, FileNamingType.number, FileNamingType.namePlusNumber],
             ));
   });
-  group('AllowedOutputImageFileExtension', () {
-    test(
-        'Should have the correct values',
-        () => expect(
-              AllowedOutputImageFileExtension.values,
-              [AllowedOutputImageFileExtension.png, AllowedOutputImageFileExtension.jpeg],
-            ));
-  });
+
   group('ProcessingState', () {
     test(
         'Should have the correct values',

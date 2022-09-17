@@ -366,12 +366,6 @@ enum FileNamingType {
   namePlusNumber,
 }
 
-/// The allowed extensions for the generated image files.
-enum AllowedOutputImageFileExtension {
-  png,
-  jpeg,
-}
-
 /// The current state of the image generation process.
 enum ProcessingState {
   /// The cubit is ready to process new data.
@@ -441,7 +435,3 @@ extension GenerateImageSettingsValidationResultExtension on GenerateImageSetting
     }
   }
 }
-
-/////////////////// start at 23:56:55
-/////////////////// end at 12:11:45
-/////////////////// total 16 min and 40 secs

@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 import 'dart:ui';
 
@@ -86,6 +87,10 @@ void main() {
       );
     });
 
+    test('Should return correct values from static getters', () {
+      expect(EditorBloc.allowedImageFileExtensions, UnmodifiableListView(['jpeg', 'png']));
+    });
+
     blocTest<EditorBloc, EditorState>(
       'Should save the initial state to the editor timeline',
       build: () => createEditorBloc(
@@ -98,7 +103,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -143,7 +148,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -180,7 +185,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -234,7 +239,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -279,7 +284,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -1400,7 +1405,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -1429,7 +1434,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image2.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -1463,7 +1468,7 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => none());
       },
@@ -1488,7 +1493,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -1841,7 +1846,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -1999,7 +2004,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -2159,7 +2164,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image2.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -2498,7 +2503,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -2887,7 +2892,7 @@ void main() {
         mockElementIdGenerator = MockElementIdGenerator();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-          allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions'),
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
           initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
         )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
         // set up the mock element id generator
@@ -2963,7 +2968,8 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-                allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions')))
+                allowedExtensions:
+                    captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions')))
             .thenAnswer((realInvocation) async => some(backgroundImageFile));
       },
       build: () => createEditorBloc(filePicker: mockFilePicker),
@@ -2983,7 +2989,8 @@ void main() {
         mockFilePicker = MockFilePicker();
         // set up the mock file picker
         when(mockFilePicker.pickSingleFile(
-                allowedExtensions: captureThat(equals(allowedImageFilesExtensions.unlock), named: 'allowedExtensions')))
+                allowedExtensions:
+                    captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions')))
             .thenAnswer((realInvocation) async => none());
       },
       build: () => createEditorBloc(filePicker: mockFilePicker),

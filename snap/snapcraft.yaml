@@ -19,10 +19,17 @@ apps:
     extensions: [flutter-stable]
     plugs:
       - network
+      - home
     slots:
       - dbus-batch-image-editor
 parts:
+  zenity:
+    plugin: nil
+    stage-packages:
+      - zenity
   batch-image-editor:
+    after:
+      - zenity
     source: .
     plugin: flutter
     flutter-target: lib/main.dart
