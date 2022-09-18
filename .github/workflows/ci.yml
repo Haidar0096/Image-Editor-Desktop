@@ -34,7 +34,7 @@ jobs:
         with:
           channel: stable
       - run: |
-        sudo apt-get update -y
-        sudo apt-get install libgtk-3-0 libblkid1 liblzma5tm
+         sudo apt-get update -y
+         sudo apt-get install libgtk-3-0 libblkid1 liblzma5tm
       - run: flutter config --enable-linux-desktop
       - run: flutter build linux --release
