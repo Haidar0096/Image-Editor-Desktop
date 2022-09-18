@@ -401,6 +401,7 @@ void main() {
           );
         } on InvalidStateError catch (e) {
           expectedError = e;
+          cubit.cancelCaptureWidget(context);
         }
       });
       await tester.pumpAndSettle();
