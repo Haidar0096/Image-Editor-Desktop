@@ -1724,8 +1724,11 @@ void main() {
       expect(result, left(operationCanceledString));
 
       expect(outputDirectory.listSync().length, 2);
-      expect(outputDirectory.listSync()[0].path, endsWith('1.png'));
-      expect(outputDirectory.listSync()[1].path, endsWith('0.png'));
+
+      final List<FileSystemEntity> generatedFilesSorted =
+          (outputDirectory.listSync()..sort((f1, f2) => f1.path.compareTo(f2.path)));
+      expect(generatedFilesSorted[0].path, endsWith('0.png'));
+      expect(generatedFilesSorted[1].path, endsWith('1.png'));
 
       expect(cubit.state, stateBeforeCaptureStart.copyWith(processingState: ProcessingState.idle));
 
