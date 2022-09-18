@@ -16,6 +16,8 @@ class FilePickerDefaultImpl implements FilePicker {
     String? dialogTitle,
     List<String>? allowedExtensions,
   }) async {
+
+    throw Exception('hello');
     final api.FilePickerResult? pickerResult = await apiFilePicker.pickFiles(
       allowedExtensions: allowedExtensions,
       type: allowedExtensions == null ? api.FileType.any : api.FileType.custom,
