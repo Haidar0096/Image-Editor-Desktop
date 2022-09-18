@@ -39,7 +39,7 @@
       "sources": [
         {
           "type": "file",
-          "path": "flatpak/com.zlimits.batch_image_editor.metainfo.xml"
+          "path": "com.zlimits.batch_image_editor.metainfo.xml"
         },
         {
           "type": "file",
