@@ -61,7 +61,7 @@ jobs:
         uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
           bundle: batch_image_editor.flatpak
-          manifest-path: flatpak/org.zlimits.batch_image_editor.json
+          manifest-path: flatpak/com.zlimits.batch_image_editor.json
 
       - name: Upload .flatpak artifact to workflow
         uses: actions/upload-artifact@v2
