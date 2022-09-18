@@ -3,7 +3,7 @@ version: 0.1.0
 summary: Batch Image Editor
 description: Basic image editor that can generate images using text from text files in batches.
 
-confinement: classic
+confinement: strict
 base: core18
 grade: stable
 
@@ -16,7 +16,7 @@ slots:
 apps:
   batch-image-editor:
     command: photo_editor
-    extensions: [flutter-master]
+    extensions: [flutter-stable]
     plugs:
       - network
       - home
