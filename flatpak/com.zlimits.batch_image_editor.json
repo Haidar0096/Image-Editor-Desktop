@@ -28,7 +28,7 @@
         "mkdir -p /app/bin",
         "ln -s /app/FlutterApp/batch_image_editor /app/bin/batch_image_editor",
         "mkdir -p /app/share/metainfo",
-        "cp -r flatpak/org.zlimits.batch_image_editor.metainfo.xml /app/share/metainfo/",
+        "cp -r flatpak/com.zlimits.batch_image_editor.metainfo.xml /app/share/metainfo/",
         "mkdir -p /app/share/icons/hicolor/scalable/apps",
         "cp -r flatpak/batch-image-editor.png /app/share/icons/hicolor/scalable/apps/com.zlimits.batch-image-editor.png",
         "mkdir -p /app/share/applications",
