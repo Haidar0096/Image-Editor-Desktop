@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -94,8 +96,10 @@ Widget _buildFileMenu(BuildContext context) {
                     context: context,
                     title: AppLocalizations.of(context)!.openGeneratedImagesFolderPrompt,
                     onConfirm: () async {
-                      final Uri savedImagesUri = Uri.parse(
-                          'file:${context.read<ScreenshotCubit>().state.outputImageDirectory.toNullable()!.path}');
+                      final Uri savedImagesUri = Uri.file(
+                        context.read<ScreenshotCubit>().state.outputImageDirectory.toNullable()!.path,
+                        windows: Platform.isWindows,
+                      );
                       if (await url_launcher.canLaunchUrl(savedImagesUri)) {
                         await url_launcher.launchUrl(savedImagesUri);
                       }
