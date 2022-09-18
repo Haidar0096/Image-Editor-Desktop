@@ -39,15 +39,15 @@
       "sources": [
         {
           "type": "file",
-          "path": "flatpak/com.zlimits.batch_image_editor.metainfo.xml"
+          "path": "https://github.com/Haidar0096/Image-Editor-Desktop/blob/master/flatpak/com.zlimits.batch_image_editor.metainfo.xml"
         },
         {
           "type": "file",
-          "path": "flatpak/com.zlimits.batch-image-editor.desktop"
+          "path": "https://github.com/Haidar0096/Image-Editor-Desktop/blob/master/flatpak/com.zlimits.batch-image-editor.desktop"
         },
         {
           "type": "file",
-          "path": "flatpak/batch-image-editor.png"
+          "path": "https://raw.githubusercontent.com/Haidar0096/Image-Editor-Desktop/master/flatpak/batch-image-editor.png"
         },
         {
           "type": "file",
