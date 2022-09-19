@@ -37,7 +37,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build linux --release
       - run: mkdir bundle
-      - run: cp build/linux/release/bundle/* batch_image_editor/
+      - run: cp build/linux/x64/release/bundle/* batch_image_editor/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
