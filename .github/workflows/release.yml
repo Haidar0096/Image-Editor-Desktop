@@ -36,11 +36,15 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build linux --release
+      - name: Zip the release
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r linux-release-${{ github.run_number }}.zip build/linux/release/bundle
       - name: Push linux app to releases
         uses: ncipollo/release-action@v1
         with:
           name: Batch-Image-Editor-Linux
-          artifacts: "build/linux/release/bundle/*"
+          artifacts: "linux-release-${{ github.run_number }}.zip"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
   flutter_build__and_release_windows:
@@ -59,10 +63,14 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build windows --release
+      - name: Zip the release
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r windows-release-${{ github.run_number }}.zip build/windows/runner/Release
       - name: Push windows app to releases
         uses: ncipollo/release-action@v1
         with:
           name: Batch-Image-Editor-Windows
-          artifacts: "build/windows/runner/Release/*"
+          artifacts: "windows-release-${{ github.run_number }}.zip"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
