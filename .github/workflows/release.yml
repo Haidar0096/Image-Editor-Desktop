@@ -36,12 +36,14 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build linux --release
+      - run: mkdir bundle
+      - run: cp build/linux/release/bundle/* batch_image_editor/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: Batch-Image-Editor-${{github.run_number}}-linux.zip
-          path: build/linux/x64/release/bundle/*
+          path: batch_image_editor/
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
@@ -65,13 +67,14 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build windows --release
-      - run: cp windows/runner/resources/dlls/* build/windows/runner/Release/*
+      - run: cp windows/runner/resources/dlls/* batch_image_editor/
+      - run: cp build/windows/runner/Release/* batch_image_editor/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: Batch-Image-Editor-${{github.run_number}}-windows.zip
-          path: build/windows/runner/Release/
+          path: batch_image_editor
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
