@@ -41,13 +41,13 @@ jobs:
         with:
           type: 'zip'
           filename: Batch-Image-Editor-${{github.run_number}}-linux.zip
-          path: build/linux/x64/release/bundle
+          path: build/linux/x64/release/bundle/*
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{github.ref_name}}-linux.zip"
+          artifacts: "Batch-Image-Editor-${{github.run_number}}-linux.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}-linux
+          tag: v-${{ github.run_number }}-linux
 
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
@@ -69,11 +69,11 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Batch-Image-Editor-${{github.ref_name}}-windows.zip
+          filename: Batch-Image-Editor-${{github.run_number}}-windows.zip
           path: build/windows/runner/Release/* windows/runner/resources/dlls/*
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{github.ref_name}}-windows.zip"
+          artifacts: "Batch-Image-Editor-${{github.run_number}}-windows.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}-windows
+          tag: ${{ github.run_number }}-windows
