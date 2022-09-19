@@ -39,6 +39,7 @@ jobs:
       - name: Push linux app to releases
         uses: ncipollo/release-action@v1
         with:
+          name: Batch-Image-Editor-Linux
           artifacts: "build/linux/release/bundle/*"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
@@ -61,6 +62,7 @@ jobs:
       - name: Push windows app to releases
         uses: ncipollo/release-action@v1
         with:
+          name: Batch-Image-Editor-Windows
           artifacts: "build/windows/runner/Release/*"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
