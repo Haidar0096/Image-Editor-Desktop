@@ -662,10 +662,15 @@ void main() {
       expect(generatedImageFileExists, true);
       final Uint8List generatedImageBytes = File('${generatedImageDirectory.path}/nice_0.jpeg').readAsBytesSync();
       final File expectedGeneratedImageFile = File('${expectedImageDirectory.path}/expected_generated_image.jpeg');
-      expect(generatedImageBytes, expectedGeneratedImageFile.readAsBytesSync());
 
       // assert that only 1 image is generated
       expect(generatedImageDirectory.listSync().length, 1);
+
+      // delete the generated image
+      generatedImageDirectory.deleteSync(recursive: true);
+
+      // assert that the generated image is the same as the expected image
+      expect(generatedImageBytes, expectedGeneratedImageFile.readAsBytesSync());
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
@@ -690,9 +695,6 @@ void main() {
 
       // assert that the result is correct
       expect(result, right(null));
-
-      // delete the generated image
-      generatedImageDirectory.deleteSync(recursive: true);
     });
 
     testWidgets('Should generate and save multiple images correctly when there are variable texts.', (tester) async {
@@ -782,11 +784,15 @@ void main() {
 
       final File expectedGeneratedImage1File = File('${expectedImagesDirectory.path}/expected_generated_image_1.jpeg');
       final File expectedGeneratedImage2File = File('${expectedImagesDirectory.path}/expected_generated_image_2.jpeg');
+
+      // assert that 2 images are generated
+      expect(generatedImagesDirectory.listSync().length, 2);
+
+      // delete the generated images
+      generatedImagesDirectory.deleteSync(recursive: true);
+
       expect(generatedImage1Bytes, expectedGeneratedImage1File.readAsBytesSync());
       expect(generatedImage2Bytes, expectedGeneratedImage2File.readAsBytesSync());
-
-      // assert that only 1 image is generated
-      expect(generatedImagesDirectory.listSync().length, 2);
 
       // assert that states are emitted correctly
       final List<ScreenshotState> expectedStates = [
@@ -826,9 +832,6 @@ void main() {
 
       // assert that the result is correct
       expect(result, right(null));
-
-      // delete the generated images
-      generatedImagesDirectory.deleteSync(recursive: true);
     });
 
     testWidgets('Should return the proper response when an error happens.', (tester) async {
