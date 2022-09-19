@@ -65,12 +65,13 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build windows --release
+      - run: cp windows/runner/resources/dlls/* build/windows/runner/Release/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: Batch-Image-Editor-${{github.run_number}}-windows.zip
-          path: build/windows/runner/Release/* windows/runner/resources/dlls/*
+          path: build/windows/runner/Release/
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
