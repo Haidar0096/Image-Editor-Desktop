@@ -43,12 +43,11 @@ jobs:
           filename: Batch-Image-Editor-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
       - name: Linux Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          files: build/linux/x64/release/bundle/Batch-Image-Editor-${{github.ref_name}}-linux.zip
+          artifacts: "build/linux/x64/release/bundle/Batch-Image-Editor-${{github.ref_name}}-linux.zip"
+          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
 
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
@@ -73,9 +72,8 @@ jobs:
           filename: Batch-Image-Editor-${{github.ref_name}}-windows.zip
           directory: build/windows/runner/Release
       - name: Windows Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          files: build/windows/runner/Release/Batch-Image-Editor-${{github.ref_name}}-windows.zip
+          artifacts: "build/windows/runner/Release/Batch-Image-Editor-${{github.ref_name}}-windows.zip"
+          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
