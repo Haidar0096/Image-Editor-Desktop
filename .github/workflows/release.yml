@@ -41,7 +41,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'release.zip'
-          path: 'build/linux/release/bundle'
+          path: 'build/linux/release/x64/bundle'
       - name: Push linux app to releases
         uses: ncipollo/release-action@v1
         with:
