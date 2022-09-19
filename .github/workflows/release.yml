@@ -47,6 +47,7 @@ jobs:
         with:
           artifacts: "Batch-Image-Editor-${{github.ref_name}}-linux.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}-linux
 
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
@@ -75,3 +76,4 @@ jobs:
         with:
           artifacts: "Batch-Image-Editor-${{github.ref_name}}-windows.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}-windows
