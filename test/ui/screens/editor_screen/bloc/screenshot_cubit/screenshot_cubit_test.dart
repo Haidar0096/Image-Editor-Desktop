@@ -661,7 +661,12 @@ void main() {
       final bool generatedImageFileExists = File('${generatedImageDirectory.path}/nice_0.jpeg').existsSync();
       expect(generatedImageFileExists, true);
       final Uint8List generatedImageBytes = File('${generatedImageDirectory.path}/nice_0.jpeg').readAsBytesSync();
-      final File expectedGeneratedImageFile = File('${expectedImageDirectory.path}/expected_generated_image.jpeg');
+      final String expectedGeneratedImageFileName = Platform.isLinux
+          ? 'expected_generated_image_linux.jpeg'
+          : Platform.isWindows
+              ? 'expected_generated_image_windows.jpeg'
+              : '';
+      final File expectedGeneratedImageFile = File('${expectedImageDirectory.path}/$expectedGeneratedImageFileName');
 
       // assert that only 1 image is generated
       expect(generatedImageDirectory.listSync().length, 1);
@@ -782,8 +787,15 @@ void main() {
       final Uint8List generatedImage1Bytes = File('${generatedImagesDirectory.path}/nice_0.jpeg').readAsBytesSync();
       final Uint8List generatedImage2Bytes = File('${generatedImagesDirectory.path}/nice_1.jpeg').readAsBytesSync();
 
-      final File expectedGeneratedImage1File = File('${expectedImagesDirectory.path}/expected_generated_image_1.jpeg');
-      final File expectedGeneratedImage2File = File('${expectedImagesDirectory.path}/expected_generated_image_2.jpeg');
+      final String trailingText = Platform.isLinux
+          ? 'linux'
+          : Platform.isWindows
+              ? 'windows'
+              : '';
+      final File expectedGeneratedImage1File =
+          File('${expectedImagesDirectory.path}/expected_generated_image_1_$trailingText.jpeg');
+      final File expectedGeneratedImage2File =
+          File('${expectedImagesDirectory.path}/expected_generated_image_2_$trailingText.jpeg');
 
       // assert that 2 images are generated
       expect(generatedImagesDirectory.listSync().length, 2);
