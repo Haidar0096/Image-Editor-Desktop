@@ -37,18 +37,19 @@ jobs:
       - run: flutter pub get
       - run: flutter build linux --release
       - name: Archive Release
-        uses: thedoctor0/zip-release@main
+        uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: 'release.zip'
-          path: 'build/linux/release/x64/bundle'
-      - name: Push linux app to releases
-        uses: ncipollo/release-action@v1
-        with:
-          name: Batch-Image-Editor-Linux
-          artifacts: "release.zip"
-          tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          filename: Batch-Image-Editor-${{github.ref_name}}-linux.zip
+          directory: build/linux/x64/release/bundle
+        - name: Linux Release
+          uses: softprops/action-gh-release@v1
+          if: startsWith(github.ref, 'refs/tags/')
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            files: build/linux/x64/release/bundle/Batch-Image-Editor-${{github.ref_name}}-linux.zip
+
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
 #    needs: [ flutter_test_and_analyze ]
@@ -66,15 +67,15 @@ jobs:
       - run: flutter pub get
       - run: flutter build windows --release
       - name: Archive Release
-        uses: thedoctor0/zip-release@main
+        uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: 'release.zip'
-          path: 'build/windows/runner/Release'
-      - name: Push windows app to releases
-        uses: ncipollo/release-action@v1
+          filename: Batch-Image-Editor-${{github.ref_name}}-windows.zip
+          directory: build/windows/runner/Release
+      - name: Windows Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Batch-Image-Editor-Windows
-          artifacts: "windows-release-${{ github.run_number }}.zip"
-          tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+          files: build/windows/runner/Release/Batch-Image-Editor-${{github.ref_name}}-windows.zip
