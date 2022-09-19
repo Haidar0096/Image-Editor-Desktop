@@ -1,11 +1,7 @@
-name: CI
+name: Release
 on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+  workflow_dispatch: # Allows manual triggering of the workflow
+
 jobs:
   flutter_test_and_analyze:
     name: Run flutter test and analyze
@@ -21,8 +17,8 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
-  flutter_build_linux:
-    name: Build flutter app for linux
+  flutter_build_and_release_linux:
+    name: Build and release flutter app for linux
     needs: [flutter_test]
     runs-on: ubuntu-latest
     steps:
@@ -34,14 +30,20 @@ jobs:
         with:
           channel: stable
       - run: |
-         sudo apt-get update -y
-          sudo apt-get install -y ninja-build libgtk-3-dev
+          sudo apt-get update -y
+           sudo apt-get install -y ninja-build libgtk-3-dev
       - run: flutter config --enable-linux-desktop
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build linux --release
-  flutter_build_windows:
-    name: Build flutter app for windows
+      - name: Push linux app to releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/linux/release/bundle/*"
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
+  flutter_build__and_release_windows:
+    name: Build and release flutter app for windows
     needs: [ flutter_test ]
     runs-on: windows-latest
     steps:
@@ -56,3 +58,9 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build windows --release
+      - name: Push windows app to releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/windows/runner/Release/*"
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
