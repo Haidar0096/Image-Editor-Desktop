@@ -19,7 +19,7 @@ jobs:
       - run: flutter test
   flutter_build_and_release_linux:
     name: Build and release flutter app for linux
-    needs: [flutter_test]
+    needs: [flutter_test_and_analyze]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -44,7 +44,7 @@ jobs:
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
-    needs: [ flutter_test ]
+    needs: [ flutter_test_and_analyze ]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2

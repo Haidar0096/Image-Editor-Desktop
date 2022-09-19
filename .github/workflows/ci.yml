@@ -23,7 +23,7 @@ jobs:
       - run: flutter test
   flutter_build_linux:
     name: Build flutter app for linux
-    needs: [flutter_test]
+    needs: [flutter_test_and_analyze]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,7 +42,7 @@ jobs:
       - run: flutter build linux --release
   flutter_build_windows:
     name: Build flutter app for windows
-    needs: [ flutter_test ]
+    needs: [ flutter_test_and_analyze ]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
