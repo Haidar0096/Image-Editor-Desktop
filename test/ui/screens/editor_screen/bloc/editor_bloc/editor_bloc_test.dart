@@ -3013,4 +3013,98 @@ void main() {
       ],
     );
   });
+
+  group('DuplicateSelectedElement', () {
+    // define elements used in tests
+    const Element image1 = Element(
+      rect: Rect.fromLTWH(0.0, 0.0, 250, 250),
+      properties: ElementProperties.fileImageProperties(sourceFilePath: 'hello.jpeg'),
+      showOrder: 1,
+      id: '1',
+    );
+
+    // define mocks used in tests
+    late MockElementIdGenerator mockElementIdGenerator;
+    late MockFilePicker mockFilePicker;
+    blocTest<EditorBloc, EditorState>(
+      'Should duplicate the element correctly.',
+      seed: () => createEditorState(
+        editor: Editor.fromSet({image1}),
+        selectedElement: some(image1),
+      ),
+      setUp: () {
+        // define the mocks
+        mockFilePicker = MockFilePicker();
+        mockElementIdGenerator = MockElementIdGenerator();
+        // set up the mock file picker
+        when(mockFilePicker.pickSingleFile(
+          allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
+          initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
+        )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
+        // set up the mock element id generator
+        when(mockElementIdGenerator.generate()).thenReturn('2');
+      },
+      build: () => createEditorBloc(elementIdGenerator: mockElementIdGenerator, filePicker: mockFilePicker),
+      act: (bloc) => bloc.add(const DuplicateSelectedElement()),
+      expect: () {
+        final Element duplicate = image1.copyWith(id: '2', showOrder: 2, rect: image1.rect.translate(10, 10));
+        return [
+          createEditorState(editor: Editor.fromSet({image1, duplicate}), selectedElement: some(duplicate)),
+        ];
+      },
+    );
+    testWidgets('Should save the state after duplicating the element.', (WidgetTester tester) async {
+      // define the mocks
+      mockFilePicker = MockFilePicker();
+      mockElementIdGenerator = MockElementIdGenerator();
+      // set up the mock file picker
+      when(mockFilePicker.pickSingleFile(
+        allowedExtensions: captureThat(equals(EditorBloc.allowedImageFileExtensions), named: 'allowedExtensions'),
+        initialDirectory: captureThat(equals('/'), named: 'initialDirectory'),
+      )).thenAnswer((realInvocation) async => some(File((image1.properties as FileImageProperties).sourceFilePath)));
+      // set up the mock element id generator
+      when(mockElementIdGenerator.generate()).thenReturn(image1.id);
+
+      final EditorBloc bloc = createEditorBloc(elementIdGenerator: mockElementIdGenerator, filePicker: mockFilePicker);
+
+      final List<EditorState> actualStates = [];
+      bloc.stream.listen(actualStates.add);
+
+      //act
+
+      bloc.add(const AddImage()); // add image
+      await tester.pumpAndSettle(); // wait for bloc to process the states
+
+      bloc.add(const EditorEvent.elementTap(image1)); // select image
+      await tester.pumpAndSettle(); // wait for the bloc to process the events
+
+      when(mockElementIdGenerator.generate()).thenReturn('2');
+      bloc.add(const DuplicateSelectedElement());
+      await tester.pumpAndSettle(); // wait for the bloc to process the events
+
+      bloc.add(const Undo());
+      await tester.pumpAndSettle(); // wait for the bloc to process the events
+
+      bloc.add(const Redo());
+      await tester.pumpAndSettle(); // wait for the bloc to process the events
+
+      final Element duplicate = image1.copyWith(id: '2', showOrder: 2, rect: image1.rect.translate(10, 10));
+      final List<EditorState> expectedStates = [
+        createEditorState(editor: Editor.fromSet({image1})),
+        createEditorState(editor: Editor.fromSet({image1}), selectedElement: some(image1)),
+        createEditorState(editor: Editor.fromSet({image1, duplicate}), selectedElement: some(duplicate)),
+        createEditorState(editor: Editor.fromSet({image1})),
+        createEditorState(editor: Editor.fromSet({image1, duplicate})),
+      ];
+
+      expect(actualStates, expectedStates);
+    });
+    blocTest<EditorBloc, EditorState>(
+      'Should not emit states if there is no selected element.',
+      seed: () => createEditorState(editor: Editor.fromSet({image1}), selectedElement: none()),
+      build: () => createEditorBloc(),
+      act: (bloc) => bloc.add(const DuplicateSelectedElement()),
+      expect: () => [],
+    );
+  });
 }

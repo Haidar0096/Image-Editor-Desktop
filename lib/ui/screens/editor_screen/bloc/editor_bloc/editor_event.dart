@@ -157,4 +157,7 @@ class EditorEvent with _$EditorEvent {
 
   /// Fires when canvas background image is removed.
   const factory EditorEvent.removeCanvasBackgroundImage() = RemoveCanvasBackgroundImage;
+
+  /// Fires when selected element should be duplicated.
+  const factory EditorEvent.duplicateSelectedElement() = DuplicateSelectedElement;
 }

@@ -45,15 +45,15 @@ class _EditorScreenCanvasState extends State<EditorScreenCanvas> {
 
     if (event is RawKeyUpEvent && event.logicalKey == LogicalKeyboardKey.delete) {
       BlocProvider.of<EditorBloc>(context).add(const RemoveSelectedElement());
-    }
-    if (event is RawKeyDownEvent &&
+    } else if (event is RawKeyDownEvent &&
         event.isControlPressed &&
         event.isKeyPressed(LogicalKeyboardKey.keyZ) &&
         !isEditingText) {
       BlocProvider.of<EditorBloc>(context).add(const EditorEvent.undo());
-    }
-    if (event is RawKeyDownEvent && event.isControlPressed && event.isKeyPressed(LogicalKeyboardKey.keyY)) {
+    } else if (event is RawKeyDownEvent && event.isControlPressed && event.isKeyPressed(LogicalKeyboardKey.keyY)) {
       BlocProvider.of<EditorBloc>(context).add(const EditorEvent.redo());
+    } else if (event is RawKeyDownEvent && event.isControlPressed && event.isKeyPressed(LogicalKeyboardKey.keyD)) {
+      BlocProvider.of<EditorBloc>(context).add(const EditorEvent.duplicateSelectedElement());
     }
   }
 
