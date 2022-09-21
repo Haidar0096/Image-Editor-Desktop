@@ -5,7 +5,7 @@ on:
 env:
   RELEASE_VERSION: 1
   RELEASE_SUBVERSION1: 0
-  RELEASE_SUBVERSION2: (31 - ${{ github.run_number}})
+  RELEASE_SUBVERSION2: ${{ 31 - ${{ github.run_number }}}}
 
 jobs:
   flutter_test_and_analyze:
@@ -52,7 +52,7 @@ jobs:
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-linux.zip"
+          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-linux.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
           tag: v-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-linux
 
@@ -84,6 +84,6 @@ jobs:
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-windows.zip"
+          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-windows.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
           tag: v-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-windows
