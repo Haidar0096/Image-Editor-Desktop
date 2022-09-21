@@ -47,14 +47,14 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-linux.zip
+          filename: Batch-Image-Editor-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-linux.zip
           path: batch_image_editor/
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-linux.zip"
+          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-linux.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: v-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-linux
+          tag: v-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-linux
 
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
@@ -79,11 +79,11 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-windows.zip
+          filename: Batch-Image-Editor-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-windows.zip
           path: batch_image_editor
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-windows.zip"
+          artifacts: "Batch-Image-Editor-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-windows.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: v-${{env.RELEASE_VERSION}}_${{env.RELEASE_SUBVERSION1}}_${{env.RELEASE_SUBVERSION2}}-windows
+          tag: v-${{env.RELEASE_VERSION}}.${{env.RELEASE_SUBVERSION1}}.${{env.RELEASE_SUBVERSION2}}-windows
