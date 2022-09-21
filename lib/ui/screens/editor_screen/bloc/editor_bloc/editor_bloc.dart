@@ -230,6 +230,11 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
       transformer: droppable(),
     );
 
+    on<DuplicateSelectedElement>(
+      (event, emit) async => await _handleDuplicateSelectedElement(event, emit),
+      transformer: droppable(),
+    );
+
     // save the initial state of the editor
     _saveState(state);
   }
@@ -887,5 +892,29 @@ class EditorBloc extends Bloc<EditorEvent, EditorState> {
 
   Future<void> _handleRemoveCanvasBackgroundImage(RemoveCanvasBackgroundImage event, Emitter emit) async {
     emit(state.copyWith(canvasBackgroundImageFile: none()));
+  }
+
+  Future<void> _handleDuplicateSelectedElement(DuplicateSelectedElement event, Emitter emit) async {
+    state.selectedElement.fold(
+      () {
+        // no selected element, do nothing
+      },
+      (el) {
+        final Element duplicatedElement = el.copyWith(
+          id: _elementIdGenerator.generate(),
+          rect: el.rect.translate(10, 10),
+          showOrder: optionOf(state.editor.elementsSortedByShowOrder.lastOrNull).fold(() => 1, (e) => e.showOrder + 1),
+        );
+        emit(
+          state.copyWith(
+            editor: state.editor.addElement(duplicatedElement),
+            selectedElement: some(duplicatedElement),
+          ),
+        );
+
+        // save the state
+        _saveState(state);
+      },
+    );
   }
 }

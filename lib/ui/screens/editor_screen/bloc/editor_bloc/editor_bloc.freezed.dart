@@ -52,6 +52,7 @@ mixin _$EditorEvent {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +90,7 @@ mixin _$EditorEvent {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,6 +128,7 @@ mixin _$EditorEvent {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,6 +166,7 @@ mixin _$EditorEvent {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -199,6 +203,7 @@ mixin _$EditorEvent {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -235,6 +240,7 @@ mixin _$EditorEvent {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -322,6 +328,7 @@ class _$Undo implements Undo {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return undo();
   }
@@ -362,6 +369,7 @@ class _$Undo implements Undo {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return undo?.call();
   }
@@ -402,6 +410,7 @@ class _$Undo implements Undo {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -445,6 +454,7 @@ class _$Undo implements Undo {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return undo(this);
   }
@@ -484,6 +494,7 @@ class _$Undo implements Undo {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return undo?.call(this);
   }
@@ -523,6 +534,7 @@ class _$Undo implements Undo {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (undo != null) {
@@ -604,6 +616,7 @@ class _$Redo implements Redo {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return redo();
   }
@@ -644,6 +657,7 @@ class _$Redo implements Redo {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return redo?.call();
   }
@@ -684,6 +698,7 @@ class _$Redo implements Redo {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -727,6 +742,7 @@ class _$Redo implements Redo {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return redo(this);
   }
@@ -766,6 +782,7 @@ class _$Redo implements Redo {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return redo?.call(this);
   }
@@ -805,6 +822,7 @@ class _$Redo implements Redo {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (redo != null) {
@@ -950,6 +968,7 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return addStaticText(initialText, textDirection, minWidth, maxWidth);
   }
@@ -990,6 +1009,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return addStaticText?.call(initialText, textDirection, minWidth, maxWidth);
   }
@@ -1030,6 +1050,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -1073,6 +1094,7 @@ class _$AddStaticText implements AddStaticText {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return addStaticText(this);
   }
@@ -1112,6 +1134,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return addStaticText?.call(this);
   }
@@ -1151,6 +1174,7 @@ class _$AddStaticText implements AddStaticText {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addStaticText != null) {
@@ -1278,6 +1302,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return staticTextChanged(updatedText);
   }
@@ -1318,6 +1343,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return staticTextChanged?.call(updatedText);
   }
@@ -1358,6 +1384,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextChanged != null) {
@@ -1401,6 +1428,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return staticTextChanged(this);
   }
@@ -1440,6 +1468,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return staticTextChanged?.call(this);
   }
@@ -1479,6 +1508,7 @@ class _$StaticTextChanged implements StaticTextChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextChanged != null) {
@@ -1594,6 +1624,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return staticTextStyleChanged(updatedTextStyle);
   }
@@ -1634,6 +1665,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return staticTextStyleChanged?.call(updatedTextStyle);
   }
@@ -1674,6 +1706,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextStyleChanged != null) {
@@ -1717,6 +1750,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return staticTextStyleChanged(this);
   }
@@ -1756,6 +1790,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return staticTextStyleChanged?.call(this);
   }
@@ -1795,6 +1830,7 @@ class _$StaticTextStyleChanged implements StaticTextStyleChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextStyleChanged != null) {
@@ -1910,6 +1946,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return staticTextAlignChanged(updatedTextAlign);
   }
@@ -1950,6 +1987,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return staticTextAlignChanged?.call(updatedTextAlign);
   }
@@ -1990,6 +2028,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextAlignChanged != null) {
@@ -2033,6 +2072,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return staticTextAlignChanged(this);
   }
@@ -2072,6 +2112,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return staticTextAlignChanged?.call(this);
   }
@@ -2111,6 +2152,7 @@ class _$StaticTextAlignChanged implements StaticTextAlignChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (staticTextAlignChanged != null) {
@@ -2261,6 +2303,7 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return addVariableText(initialText, textDirection, minWidth, maxWidth);
   }
@@ -2301,6 +2344,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return addVariableText?.call(initialText, textDirection, minWidth, maxWidth);
   }
@@ -2341,6 +2385,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -2384,6 +2429,7 @@ class _$AddVariableText implements AddVariableText {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return addVariableText(this);
   }
@@ -2423,6 +2469,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return addVariableText?.call(this);
   }
@@ -2462,6 +2509,7 @@ class _$AddVariableText implements AddVariableText {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addVariableText != null) {
@@ -2566,6 +2614,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return variableTextFileChanged();
   }
@@ -2606,6 +2655,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return variableTextFileChanged?.call();
   }
@@ -2646,6 +2696,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextFileChanged != null) {
@@ -2689,6 +2740,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return variableTextFileChanged(this);
   }
@@ -2728,6 +2780,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return variableTextFileChanged?.call(this);
   }
@@ -2767,6 +2820,7 @@ class _$VariableTextFileChanged implements VariableTextFileChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextFileChanged != null) {
@@ -2878,6 +2932,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return variableTextStyleChanged(updatedTextStyle);
   }
@@ -2918,6 +2973,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return variableTextStyleChanged?.call(updatedTextStyle);
   }
@@ -2958,6 +3014,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextStyleChanged != null) {
@@ -3001,6 +3058,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return variableTextStyleChanged(this);
   }
@@ -3040,6 +3098,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return variableTextStyleChanged?.call(this);
   }
@@ -3079,6 +3138,7 @@ class _$VariableTextStyleChanged implements VariableTextStyleChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextStyleChanged != null) {
@@ -3195,6 +3255,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return variableTextAlignChanged(updatedTextAlign);
   }
@@ -3235,6 +3296,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return variableTextAlignChanged?.call(updatedTextAlign);
   }
@@ -3275,6 +3337,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextAlignChanged != null) {
@@ -3318,6 +3381,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return variableTextAlignChanged(this);
   }
@@ -3357,6 +3421,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return variableTextAlignChanged?.call(this);
   }
@@ -3396,6 +3461,7 @@ class _$VariableTextAlignChanged implements VariableTextAlignChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (variableTextAlignChanged != null) {
@@ -3483,6 +3549,7 @@ class _$AddImage implements AddImage {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return addImage();
   }
@@ -3523,6 +3590,7 @@ class _$AddImage implements AddImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return addImage?.call();
   }
@@ -3563,6 +3631,7 @@ class _$AddImage implements AddImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -3606,6 +3675,7 @@ class _$AddImage implements AddImage {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return addImage(this);
   }
@@ -3645,6 +3715,7 @@ class _$AddImage implements AddImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return addImage?.call(this);
   }
@@ -3684,6 +3755,7 @@ class _$AddImage implements AddImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (addImage != null) {
@@ -3793,6 +3865,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return canvasDragStart(localPosition);
   }
@@ -3833,6 +3906,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return canvasDragStart?.call(localPosition);
   }
@@ -3873,6 +3947,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragStart != null) {
@@ -3916,6 +3991,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return canvasDragStart(this);
   }
@@ -3955,6 +4031,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return canvasDragStart?.call(this);
   }
@@ -3994,6 +4071,7 @@ class _$CanvasDragStart implements CanvasDragStart {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragStart != null) {
@@ -4108,6 +4186,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return canvasDragUpdate(delta);
   }
@@ -4148,6 +4227,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return canvasDragUpdate?.call(delta);
   }
@@ -4188,6 +4268,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragUpdate != null) {
@@ -4231,6 +4312,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return canvasDragUpdate(this);
   }
@@ -4270,6 +4352,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return canvasDragUpdate?.call(this);
   }
@@ -4309,6 +4392,7 @@ class _$CanvasDragUpdate implements CanvasDragUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragUpdate != null) {
@@ -4398,6 +4482,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return canvasDragEnd();
   }
@@ -4438,6 +4523,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return canvasDragEnd?.call();
   }
@@ -4478,6 +4564,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragEnd != null) {
@@ -4521,6 +4608,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return canvasDragEnd(this);
   }
@@ -4560,6 +4648,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return canvasDragEnd?.call(this);
   }
@@ -4599,6 +4688,7 @@ class _$CanvasDragEnd implements CanvasDragEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasDragEnd != null) {
@@ -4728,6 +4818,7 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return elementDragStart(draggedElement, localPosition);
   }
@@ -4768,6 +4859,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return elementDragStart?.call(draggedElement, localPosition);
   }
@@ -4808,6 +4900,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragStart != null) {
@@ -4851,6 +4944,7 @@ class _$ElementDragStart implements ElementDragStart {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return elementDragStart(this);
   }
@@ -4890,6 +4984,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return elementDragStart?.call(this);
   }
@@ -4929,6 +5024,7 @@ class _$ElementDragStart implements ElementDragStart {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragStart != null) {
@@ -5046,6 +5142,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return elementDragUpdate(delta);
   }
@@ -5086,6 +5183,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return elementDragUpdate?.call(delta);
   }
@@ -5126,6 +5224,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragUpdate != null) {
@@ -5169,6 +5268,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return elementDragUpdate(this);
   }
@@ -5208,6 +5308,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return elementDragUpdate?.call(this);
   }
@@ -5247,6 +5348,7 @@ class _$ElementDragUpdate implements ElementDragUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragUpdate != null) {
@@ -5336,6 +5438,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return elementDragEnd();
   }
@@ -5376,6 +5479,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return elementDragEnd?.call();
   }
@@ -5416,6 +5520,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragEnd != null) {
@@ -5459,6 +5564,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return elementDragEnd(this);
   }
@@ -5498,6 +5604,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return elementDragEnd?.call(this);
   }
@@ -5537,6 +5644,7 @@ class _$ElementDragEnd implements ElementDragEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementDragEnd != null) {
@@ -5619,6 +5727,7 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return canvasTap();
   }
@@ -5659,6 +5768,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return canvasTap?.call();
   }
@@ -5699,6 +5809,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasTap != null) {
@@ -5742,6 +5853,7 @@ class _$CanvasTap implements CanvasTap {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return canvasTap(this);
   }
@@ -5781,6 +5893,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return canvasTap?.call(this);
   }
@@ -5820,6 +5933,7 @@ class _$CanvasTap implements CanvasTap {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (canvasTap != null) {
@@ -5936,6 +6050,7 @@ class _$ElementTap implements ElementTap {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return elementTap(element);
   }
@@ -5976,6 +6091,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return elementTap?.call(element);
   }
@@ -6016,6 +6132,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementTap != null) {
@@ -6059,6 +6176,7 @@ class _$ElementTap implements ElementTap {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return elementTap(this);
   }
@@ -6098,6 +6216,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return elementTap?.call(this);
   }
@@ -6137,6 +6256,7 @@ class _$ElementTap implements ElementTap {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (elementTap != null) {
@@ -6226,6 +6346,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return removeSelectedElement();
   }
@@ -6266,6 +6387,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return removeSelectedElement?.call();
   }
@@ -6306,6 +6428,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (removeSelectedElement != null) {
@@ -6349,6 +6472,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return removeSelectedElement(this);
   }
@@ -6388,6 +6512,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return removeSelectedElement?.call(this);
   }
@@ -6427,6 +6552,7 @@ class _$RemoveSelectedElement implements RemoveSelectedElement {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (removeSelectedElement != null) {
@@ -6511,6 +6637,7 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return deselectElement();
   }
@@ -6551,6 +6678,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return deselectElement?.call();
   }
@@ -6591,6 +6719,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (deselectElement != null) {
@@ -6634,6 +6763,7 @@ class _$DeselectElement implements DeselectElement {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return deselectElement(this);
   }
@@ -6673,6 +6803,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return deselectElement?.call(this);
   }
@@ -6712,6 +6843,7 @@ class _$DeselectElement implements DeselectElement {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (deselectElement != null) {
@@ -6798,6 +6930,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return bringSelectedElementToFront();
   }
@@ -6838,6 +6971,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return bringSelectedElementToFront?.call();
   }
@@ -6878,6 +7012,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (bringSelectedElementToFront != null) {
@@ -6921,6 +7056,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return bringSelectedElementToFront(this);
   }
@@ -6960,6 +7096,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return bringSelectedElementToFront?.call(this);
   }
@@ -6999,6 +7136,7 @@ class _$BringSelectedElementToFront implements BringSelectedElementToFront {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (bringSelectedElementToFront != null) {
@@ -7116,6 +7254,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return resizeUpdate(resizeDirection, delta);
   }
@@ -7156,6 +7295,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return resizeUpdate?.call(resizeDirection, delta);
   }
@@ -7196,6 +7336,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (resizeUpdate != null) {
@@ -7239,6 +7380,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return resizeUpdate(this);
   }
@@ -7278,6 +7420,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return resizeUpdate?.call(this);
   }
@@ -7317,6 +7460,7 @@ class _$ResizeUpdate implements ResizeUpdate {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (resizeUpdate != null) {
@@ -7404,6 +7548,7 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return resizeEnd();
   }
@@ -7444,6 +7589,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return resizeEnd?.call();
   }
@@ -7484,6 +7630,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (resizeEnd != null) {
@@ -7527,6 +7674,7 @@ class _$ResizeEnd implements ResizeEnd {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return resizeEnd(this);
   }
@@ -7566,6 +7714,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return resizeEnd?.call(this);
   }
@@ -7605,6 +7754,7 @@ class _$ResizeEnd implements ResizeEnd {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (resizeEnd != null) {
@@ -7715,6 +7865,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return selectedElementSizeChanged(updatedSize);
   }
@@ -7755,6 +7906,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return selectedElementSizeChanged?.call(updatedSize);
   }
@@ -7795,6 +7947,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (selectedElementSizeChanged != null) {
@@ -7838,6 +7991,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return selectedElementSizeChanged(this);
   }
@@ -7877,6 +8031,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return selectedElementSizeChanged?.call(this);
   }
@@ -7916,6 +8071,7 @@ class _$SelectedElementSizeChanged implements SelectedElementSizeChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (selectedElementSizeChanged != null) {
@@ -8032,6 +8188,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return selectedElementPositionChanged(updatedPosition);
   }
@@ -8072,6 +8229,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return selectedElementPositionChanged?.call(updatedPosition);
   }
@@ -8112,6 +8270,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (selectedElementPositionChanged != null) {
@@ -8155,6 +8314,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return selectedElementPositionChanged(this);
   }
@@ -8194,6 +8354,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return selectedElementPositionChanged?.call(this);
   }
@@ -8233,6 +8394,7 @@ class _$SelectedElementPositionChanged implements SelectedElementPositionChanged
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (selectedElementPositionChanged != null) {
@@ -8348,6 +8510,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return textEditingModeChanged(isEditingTextElement);
   }
@@ -8388,6 +8551,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return textEditingModeChanged?.call(isEditingTextElement);
   }
@@ -8428,6 +8592,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (textEditingModeChanged != null) {
@@ -8471,6 +8636,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return textEditingModeChanged(this);
   }
@@ -8510,6 +8676,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return textEditingModeChanged?.call(this);
   }
@@ -8549,6 +8716,7 @@ class _$TextEditingModeChanged implements TextEditingModeChanged {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (textEditingModeChanged != null) {
@@ -8637,6 +8805,7 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return clearEditor();
   }
@@ -8677,6 +8846,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return clearEditor?.call();
   }
@@ -8717,6 +8887,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -8760,6 +8931,7 @@ class _$ClearEditor implements ClearEditor {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return clearEditor(this);
   }
@@ -8799,6 +8971,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return clearEditor?.call(this);
   }
@@ -8838,6 +9011,7 @@ class _$ClearEditor implements ClearEditor {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (clearEditor != null) {
@@ -8946,6 +9120,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return setCanvasKey(key);
   }
@@ -8986,6 +9161,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return setCanvasKey?.call(key);
   }
@@ -9026,6 +9202,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (setCanvasKey != null) {
@@ -9069,6 +9246,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return setCanvasKey(this);
   }
@@ -9108,6 +9286,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return setCanvasKey?.call(this);
   }
@@ -9147,6 +9326,7 @@ class _$SetCanvasKey implements SetCanvasKey {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (setCanvasKey != null) {
@@ -9261,6 +9441,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundColor(color);
   }
@@ -9301,6 +9482,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundColor?.call(color);
   }
@@ -9341,6 +9523,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundColor != null) {
@@ -9384,6 +9567,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundColor(this);
   }
@@ -9423,6 +9607,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundColor?.call(this);
   }
@@ -9462,6 +9647,7 @@ class _$ChangeCanvasBackgroundColor implements ChangeCanvasBackgroundColor {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundColor != null) {
@@ -9553,6 +9739,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundImage();
   }
@@ -9593,6 +9780,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundImage?.call();
   }
@@ -9633,6 +9821,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundImage != null) {
@@ -9676,6 +9865,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundImage(this);
   }
@@ -9715,6 +9905,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return changeCanvasBackgroundImage?.call(this);
   }
@@ -9754,6 +9945,7 @@ class _$ChangeCanvasBackgroundImage implements ChangeCanvasBackgroundImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (changeCanvasBackgroundImage != null) {
@@ -9840,6 +10032,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     required TResult Function(Color color) changeCanvasBackgroundColor,
     required TResult Function() changeCanvasBackgroundImage,
     required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
   }) {
     return removeCanvasBackgroundImage();
   }
@@ -9880,6 +10073,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
   }) {
     return removeCanvasBackgroundImage?.call();
   }
@@ -9920,6 +10114,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(Color color)? changeCanvasBackgroundColor,
     TResult Function()? changeCanvasBackgroundImage,
     TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (removeCanvasBackgroundImage != null) {
@@ -9963,6 +10158,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
     required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
     required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
   }) {
     return removeCanvasBackgroundImage(this);
   }
@@ -10002,6 +10198,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
   }) {
     return removeCanvasBackgroundImage?.call(this);
   }
@@ -10041,6 +10238,7 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
     TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
     TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
     TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
     required TResult orElse(),
   }) {
     if (removeCanvasBackgroundImage != null) {
@@ -10052,6 +10250,299 @@ class _$RemoveCanvasBackgroundImage implements RemoveCanvasBackgroundImage {
 
 abstract class RemoveCanvasBackgroundImage implements EditorEvent {
   const factory RemoveCanvasBackgroundImage() = _$RemoveCanvasBackgroundImage;
+}
+
+/// @nodoc
+abstract class _$$DuplicateSelectedElementCopyWith<$Res> {
+  factory _$$DuplicateSelectedElementCopyWith(
+          _$DuplicateSelectedElement value, $Res Function(_$DuplicateSelectedElement) then) =
+      __$$DuplicateSelectedElementCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DuplicateSelectedElementCopyWithImpl<$Res> extends _$EditorEventCopyWithImpl<$Res>
+    implements _$$DuplicateSelectedElementCopyWith<$Res> {
+  __$$DuplicateSelectedElementCopyWithImpl(
+      _$DuplicateSelectedElement _value, $Res Function(_$DuplicateSelectedElement) _then)
+      : super(_value, (v) => _then(v as _$DuplicateSelectedElement));
+
+  @override
+  _$DuplicateSelectedElement get _value => super._value as _$DuplicateSelectedElement;
+}
+
+/// @nodoc
+
+class _$DuplicateSelectedElement implements DuplicateSelectedElement {
+  const _$DuplicateSelectedElement();
+
+  @override
+  String toString() {
+    return 'EditorEvent.duplicateSelectedElement()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$DuplicateSelectedElement);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
+        addStaticText,
+    required TResult Function(String updatedText) staticTextChanged,
+    required TResult Function(TextStyle? updatedTextStyle) staticTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) staticTextAlignChanged,
+    required TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)
+        addVariableText,
+    required TResult Function() variableTextFileChanged,
+    required TResult Function(TextStyle? updatedTextStyle) variableTextStyleChanged,
+    required TResult Function(TextAlign? updatedTextAlign) variableTextAlignChanged,
+    required TResult Function() addImage,
+    required TResult Function(Offset localPosition) canvasDragStart,
+    required TResult Function(Offset delta) canvasDragUpdate,
+    required TResult Function() canvasDragEnd,
+    required TResult Function(Element draggedElement, Offset localPosition) elementDragStart,
+    required TResult Function(Offset delta) elementDragUpdate,
+    required TResult Function() elementDragEnd,
+    required TResult Function() canvasTap,
+    required TResult Function(Element element) elementTap,
+    required TResult Function() removeSelectedElement,
+    required TResult Function() deselectElement,
+    required TResult Function() bringSelectedElementToFront,
+    required TResult Function(ResizeDirection resizeDirection, Offset delta) resizeUpdate,
+    required TResult Function() resizeEnd,
+    required TResult Function(Size updatedSize) selectedElementSizeChanged,
+    required TResult Function(Offset updatedPosition) selectedElementPositionChanged,
+    required TResult Function(bool isEditingTextElement) textEditingModeChanged,
+    required TResult Function() clearEditor,
+    required TResult Function(Option<GlobalKey<State<StatefulWidget>>> key) setCanvasKey,
+    required TResult Function(Color color) changeCanvasBackgroundColor,
+    required TResult Function() changeCanvasBackgroundImage,
+    required TResult Function() removeCanvasBackgroundImage,
+    required TResult Function() duplicateSelectedElement,
+  }) {
+    return duplicateSelectedElement();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
+    TResult Function(String updatedText)? staticTextChanged,
+    TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
+        addVariableText,
+    TResult Function()? variableTextFileChanged,
+    TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function()? addImage,
+    TResult Function(Offset localPosition)? canvasDragStart,
+    TResult Function(Offset delta)? canvasDragUpdate,
+    TResult Function()? canvasDragEnd,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
+    TResult Function(Offset delta)? elementDragUpdate,
+    TResult Function()? elementDragEnd,
+    TResult Function()? canvasTap,
+    TResult Function(Element element)? elementTap,
+    TResult Function()? removeSelectedElement,
+    TResult Function()? deselectElement,
+    TResult Function()? bringSelectedElementToFront,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
+    TResult Function()? resizeEnd,
+    TResult Function(Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
+    TResult Function()? clearEditor,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
+    TResult Function(Color color)? changeCanvasBackgroundColor,
+    TResult Function()? changeCanvasBackgroundImage,
+    TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
+  }) {
+    return duplicateSelectedElement?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)? addStaticText,
+    TResult Function(String updatedText)? staticTextChanged,
+    TResult Function(TextStyle? updatedTextStyle)? staticTextStyleChanged,
+    TResult Function(TextAlign? updatedTextAlign)? staticTextAlignChanged,
+    TResult Function(String initialText, TextDirection textDirection, double minWidth, double maxWidth)?
+        addVariableText,
+    TResult Function()? variableTextFileChanged,
+    TResult Function(TextStyle? updatedTextStyle)? variableTextStyleChanged,
+    TResult Function(TextAlign? updatedTextAlign)? variableTextAlignChanged,
+    TResult Function()? addImage,
+    TResult Function(Offset localPosition)? canvasDragStart,
+    TResult Function(Offset delta)? canvasDragUpdate,
+    TResult Function()? canvasDragEnd,
+    TResult Function(Element draggedElement, Offset localPosition)? elementDragStart,
+    TResult Function(Offset delta)? elementDragUpdate,
+    TResult Function()? elementDragEnd,
+    TResult Function()? canvasTap,
+    TResult Function(Element element)? elementTap,
+    TResult Function()? removeSelectedElement,
+    TResult Function()? deselectElement,
+    TResult Function()? bringSelectedElementToFront,
+    TResult Function(ResizeDirection resizeDirection, Offset delta)? resizeUpdate,
+    TResult Function()? resizeEnd,
+    TResult Function(Size updatedSize)? selectedElementSizeChanged,
+    TResult Function(Offset updatedPosition)? selectedElementPositionChanged,
+    TResult Function(bool isEditingTextElement)? textEditingModeChanged,
+    TResult Function()? clearEditor,
+    TResult Function(Option<GlobalKey<State<StatefulWidget>>> key)? setCanvasKey,
+    TResult Function(Color color)? changeCanvasBackgroundColor,
+    TResult Function()? changeCanvasBackgroundImage,
+    TResult Function()? removeCanvasBackgroundImage,
+    TResult Function()? duplicateSelectedElement,
+    required TResult orElse(),
+  }) {
+    if (duplicateSelectedElement != null) {
+      return duplicateSelectedElement();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Undo value) undo,
+    required TResult Function(Redo value) redo,
+    required TResult Function(AddStaticText value) addStaticText,
+    required TResult Function(StaticTextChanged value) staticTextChanged,
+    required TResult Function(StaticTextStyleChanged value) staticTextStyleChanged,
+    required TResult Function(StaticTextAlignChanged value) staticTextAlignChanged,
+    required TResult Function(AddVariableText value) addVariableText,
+    required TResult Function(VariableTextFileChanged value) variableTextFileChanged,
+    required TResult Function(VariableTextStyleChanged value) variableTextStyleChanged,
+    required TResult Function(VariableTextAlignChanged value) variableTextAlignChanged,
+    required TResult Function(AddImage value) addImage,
+    required TResult Function(CanvasDragStart value) canvasDragStart,
+    required TResult Function(CanvasDragUpdate value) canvasDragUpdate,
+    required TResult Function(CanvasDragEnd value) canvasDragEnd,
+    required TResult Function(ElementDragStart value) elementDragStart,
+    required TResult Function(ElementDragUpdate value) elementDragUpdate,
+    required TResult Function(ElementDragEnd value) elementDragEnd,
+    required TResult Function(CanvasTap value) canvasTap,
+    required TResult Function(ElementTap value) elementTap,
+    required TResult Function(RemoveSelectedElement value) removeSelectedElement,
+    required TResult Function(DeselectElement value) deselectElement,
+    required TResult Function(BringSelectedElementToFront value) bringSelectedElementToFront,
+    required TResult Function(ResizeUpdate value) resizeUpdate,
+    required TResult Function(ResizeEnd value) resizeEnd,
+    required TResult Function(SelectedElementSizeChanged value) selectedElementSizeChanged,
+    required TResult Function(SelectedElementPositionChanged value) selectedElementPositionChanged,
+    required TResult Function(TextEditingModeChanged value) textEditingModeChanged,
+    required TResult Function(ClearEditor value) clearEditor,
+    required TResult Function(SetCanvasKey value) setCanvasKey,
+    required TResult Function(ChangeCanvasBackgroundColor value) changeCanvasBackgroundColor,
+    required TResult Function(ChangeCanvasBackgroundImage value) changeCanvasBackgroundImage,
+    required TResult Function(RemoveCanvasBackgroundImage value) removeCanvasBackgroundImage,
+    required TResult Function(DuplicateSelectedElement value) duplicateSelectedElement,
+  }) {
+    return duplicateSelectedElement(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(StaticTextAlignChanged value)? staticTextAlignChanged,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextAlignChanged value)? variableTextAlignChanged,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(CanvasDragStart value)? canvasDragStart,
+    TResult Function(CanvasDragUpdate value)? canvasDragUpdate,
+    TResult Function(CanvasDragEnd value)? canvasDragEnd,
+    TResult Function(ElementDragStart value)? elementDragStart,
+    TResult Function(ElementDragUpdate value)? elementDragUpdate,
+    TResult Function(ElementDragEnd value)? elementDragEnd,
+    TResult Function(CanvasTap value)? canvasTap,
+    TResult Function(ElementTap value)? elementTap,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(DeselectElement value)? deselectElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    TResult Function(ResizeUpdate value)? resizeUpdate,
+    TResult Function(ResizeEnd value)? resizeEnd,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(SetCanvasKey value)? setCanvasKey,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
+  }) {
+    return duplicateSelectedElement?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Undo value)? undo,
+    TResult Function(Redo value)? redo,
+    TResult Function(AddStaticText value)? addStaticText,
+    TResult Function(StaticTextChanged value)? staticTextChanged,
+    TResult Function(StaticTextStyleChanged value)? staticTextStyleChanged,
+    TResult Function(StaticTextAlignChanged value)? staticTextAlignChanged,
+    TResult Function(AddVariableText value)? addVariableText,
+    TResult Function(VariableTextFileChanged value)? variableTextFileChanged,
+    TResult Function(VariableTextStyleChanged value)? variableTextStyleChanged,
+    TResult Function(VariableTextAlignChanged value)? variableTextAlignChanged,
+    TResult Function(AddImage value)? addImage,
+    TResult Function(CanvasDragStart value)? canvasDragStart,
+    TResult Function(CanvasDragUpdate value)? canvasDragUpdate,
+    TResult Function(CanvasDragEnd value)? canvasDragEnd,
+    TResult Function(ElementDragStart value)? elementDragStart,
+    TResult Function(ElementDragUpdate value)? elementDragUpdate,
+    TResult Function(ElementDragEnd value)? elementDragEnd,
+    TResult Function(CanvasTap value)? canvasTap,
+    TResult Function(ElementTap value)? elementTap,
+    TResult Function(RemoveSelectedElement value)? removeSelectedElement,
+    TResult Function(DeselectElement value)? deselectElement,
+    TResult Function(BringSelectedElementToFront value)? bringSelectedElementToFront,
+    TResult Function(ResizeUpdate value)? resizeUpdate,
+    TResult Function(ResizeEnd value)? resizeEnd,
+    TResult Function(SelectedElementSizeChanged value)? selectedElementSizeChanged,
+    TResult Function(SelectedElementPositionChanged value)? selectedElementPositionChanged,
+    TResult Function(TextEditingModeChanged value)? textEditingModeChanged,
+    TResult Function(ClearEditor value)? clearEditor,
+    TResult Function(SetCanvasKey value)? setCanvasKey,
+    TResult Function(ChangeCanvasBackgroundColor value)? changeCanvasBackgroundColor,
+    TResult Function(ChangeCanvasBackgroundImage value)? changeCanvasBackgroundImage,
+    TResult Function(RemoveCanvasBackgroundImage value)? removeCanvasBackgroundImage,
+    TResult Function(DuplicateSelectedElement value)? duplicateSelectedElement,
+    required TResult orElse(),
+  }) {
+    if (duplicateSelectedElement != null) {
+      return duplicateSelectedElement(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DuplicateSelectedElement implements EditorEvent {
+  const factory DuplicateSelectedElement() = _$DuplicateSelectedElement;
 }
 
 /// @nodoc
