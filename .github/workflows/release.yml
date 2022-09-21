@@ -3,7 +3,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
 env:
-  RELEASE_VERSION: 26 - ${{ - github.run_number}}
+  RELEASE_VERSION: (26 - ${{ - github.run_number}})
 
 jobs:
   flutter_test_and_analyze:
