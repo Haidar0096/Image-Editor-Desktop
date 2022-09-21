@@ -2,6 +2,9 @@ name: Release
 on:
   workflow_dispatch: # Allows manual triggering of the workflow
 
+env:
+  RELEASE_VERSION: ${{26 - github.run_number}}
+
 jobs:
   flutter_test_and_analyze:
     name: Run flutter test and analyze
@@ -19,7 +22,7 @@ jobs:
       - run: flutter test
   flutter_build_and_release_linux:
     name: Build and release flutter app for linux
-    needs: [flutter_test_and_analyze]
+    needs: [ flutter_test_and_analyze ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,14 +45,14 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Batch-Image-Editor-${{github.run_number}}-linux.zip
+          filename: Batch-Image-Editor-$RELEASE_VERSION-linux.zip
           path: batch_image_editor/
       - name: Linux Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{github.run_number}}-linux.zip"
+          artifacts: "Batch-Image-Editor-$RELEASE_VERSION-linux.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: v-${{ github.run_number }}-linux
+          tag: v-$RELEASE_VERSION-linux
 
   flutter_build__and_release_windows:
     name: Build and release flutter app for windows
@@ -74,11 +77,11 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Batch-Image-Editor-${{github.run_number}}-windows.zip
+          filename: Batch-Image-Editor-$RELEASE_VERSION-windows.zip
           path: batch_image_editor
       - name: Windows Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Batch-Image-Editor-${{github.run_number}}-windows.zip"
+          artifacts: "Batch-Image-Editor-$RELEASE_VERSION-windows.zip"
           token: ${{ secrets.BATCH_IMAGE_EDITOR_GITHUB_TOKEN }}
-          tag: v-${{ github.run_number }}-windows
+          tag: v-$RELEASE_VERSION-windows
